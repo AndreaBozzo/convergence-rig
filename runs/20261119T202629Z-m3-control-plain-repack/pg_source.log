@@ -1,0 +1,80 @@
+pg-source-1  | The files belonging to this database system will be owned by user "postgres".
+pg-source-1  | This user must also own the server process.
+pg-source-1  | 
+pg-source-1  | The database cluster will be initialized with locale "en_US.UTF-8".
+pg-source-1  | The default text search configuration will be set to "english".
+pg-source-1  | 
+pg-source-1  | Data page checksums are enabled.
+pg-source-1  | 
+pg-source-1  | fixing permissions on existing directory /var/lib/postgresql/19/data ... ok
+pg-source-1  | creating subdirectories ... ok
+pg-source-1  | selecting dynamic shared memory implementation ... posix
+pg-source-1  | selecting default "max_connections" ... 100
+pg-source-1  | selecting default "shared_buffers" ... 128MB
+pg-source-1  | selecting default time zone ... Etc/UTC
+pg-source-1  | creating configuration files ... ok
+pg-source-1  | running bootstrap script ... ok
+pg-source-1  | performing post-bootstrap initialization ... ok
+pg-source-1  | syncing data to disk ... ok
+pg-source-1  | 
+pg-source-1  | Success. You can now start the database server using:
+pg-source-1  | 
+pg-source-1  |     pg_ctl -D /var/lib/postgresql/19/data -l logfile start
+pg-source-1  | 
+pg-source-1  | waiting for server to start....2026-11-19 20:26:32.762 UTC [40] LOG:  starting PostgreSQL 19.0 on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+pg-source-1  | 2026-11-19 20:26:32.770 UTC [40] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+pg-source-1  | 2026-11-19 20:26:32.785 UTC [45] LOG:  database system was shut down at 2026-11-19 20:26:32 UTC
+pg-source-1  | 2026-11-19 20:26:32.793 UTC [40] LOG:  database system is ready to accept connections
+pg-source-1  |  done
+pg-source-1  | server started
+pg-source-1  | CREATE DATABASE
+pg-source-1  | waiting for server to shut down....2026-11-19 20:26:32.969 UTC [40] LOG:  received fast shutdown request
+pg-source-1  | 2026-11-19 20:26:32.978 UTC [40] LOG:  aborting any active transactions
+pg-source-1  | 2026-11-19 20:26:32.980 UTC [40] LOG:  background worker "logical replication launcher" (PID 48) exited with exit code 1
+pg-source-1  | 2026-11-19 20:26:32.981 UTC [43] LOG:  shutting down
+pg-source-1  | 2026-11-19 20:26:32.986 UTC [43] LOG:  checkpoint starting: shutdown fast
+pg-source-1  | 2026-11-19 20:26:33.125 UTC [43] LOG:  checkpoint complete: shutdown fast: wrote 948 buffers (5.8%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.036 s, sync=0.082 s, total=0.144 s; sync files=303, longest=0.010 s, average=0.001 s; distance=4394 kB, estimate=4394 kB; lsn=0/01BA1A98, redo lsn=0/01BA1A98
+pg-source-1  | 2026-11-19 20:26:33.146 UTC [40] LOG:  database system is shut down
+pg-source-1  |  done
+pg-source-1  | server stopped
+pg-source-1  | 2026-11-19 20:26:33.212 UTC [1] LOG:  starting PostgreSQL 19.0 on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+pg-source-1  | 2026-11-19 20:26:33.213 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+pg-source-1  | 2026-11-19 20:26:33.213 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+pg-source-1  | 2026-11-19 20:26:33.222 UTC [1] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+pg-source-1  | 2026-11-19 20:26:33.232 UTC [71] LOG:  database system was shut down at 2026-11-19 20:26:33 UTC
+pg-source-1  | 2026-11-19 20:26:33.248 UTC [1] LOG:  database system is ready to accept connections
+pg-source-1  | 2026-11-19 20:27:00.971 UTC [212] LOG:  logical decoding found consistent point at 0/19690D80
+pg-source-1  | 2026-11-19 20:27:00.971 UTC [212] DETAIL:  There are no running transactions.
+pg-source-1  | 2026-11-19 20:27:00.971 UTC [212] STATEMENT:  CREATE_REPLICATION_SLOT "pg2iceberg_slot" LOGICAL pgoutput NOEXPORT_SNAPSHOT
+pg-source-1  | 2026-11-19 20:27:06.274 UTC [255] LOG:  starting logical decoding for slot "pg2iceberg_slot"
+pg-source-1  | 2026-11-19 20:27:06.274 UTC [255] DETAIL:  Streaming transactions committing after 0/19690DB8, reading WAL from 0/19690D80.
+pg-source-1  | 2026-11-19 20:27:06.274 UTC [255] STATEMENT:  START_REPLICATION SLOT "pg2iceberg_slot" LOGICAL 0/196911D0 ("proto_version" '1', "publication_names" '"pg2iceberg_pub"')
+pg-source-1  | 2026-11-19 20:27:06.274 UTC [255] LOG:  logical decoding found consistent point at 0/19690D80
+pg-source-1  | 2026-11-19 20:27:06.274 UTC [255] DETAIL:  There are no running transactions.
+pg-source-1  | 2026-11-19 20:27:06.274 UTC [255] STATEMENT:  START_REPLICATION SLOT "pg2iceberg_slot" LOGICAL 0/196911D0 ("proto_version" '1', "publication_names" '"pg2iceberg_pub"')
+pg-source-1  | 2026-11-19 20:27:49.505 UTC [307] LOG:  process 307 still waiting for RowExclusiveLock on relation 16385 of database 16384 after 1001.774 ms
+pg-source-1  | 2026-11-19 20:27:49.505 UTC [307] DETAIL:  Process holding the lock: 453. Wait queue: 307.
+pg-source-1  | 2026-11-19 20:27:49.505 UTC [307] CONTEXT:  waiting for RowExclusiveLock on relation 16385 of database 16384
+pg-source-1  | 2026-11-19 20:27:49.505 UTC [307] STATEMENT:  
+pg-source-1  | 	                                UPDATE public.orders
+pg-source-1  | 	                                SET status = $1,
+pg-source-1  | 	                                    amount = $2,
+pg-source-1  | 	                                    updated_at = $3,
+pg-source-1  | 	                                    note = $4,
+pg-source-1  | 	                                    payload = $5::jsonb,
+pg-source-1  | 	                                    discount = $6
+pg-source-1  | 	                                WHERE id = $7
+pg-source-1  | 	                                
+pg-source-1  | 2026-11-19 20:27:50.387 UTC [69] LOG:  checkpoint starting: wal
+pg-source-1  | 2026-11-19 20:27:52.705 UTC [307] LOG:  process 307 acquired RowExclusiveLock on relation 16385 of database 16384 after 4201.680 ms
+pg-source-1  | 2026-11-19 20:27:52.705 UTC [307] CONTEXT:  waiting for RowExclusiveLock on relation 16385 of database 16384
+pg-source-1  | 2026-11-19 20:27:52.705 UTC [307] STATEMENT:  
+pg-source-1  | 	                                UPDATE public.orders
+pg-source-1  | 	                                SET status = $1,
+pg-source-1  | 	                                    amount = $2,
+pg-source-1  | 	                                    updated_at = $3,
+pg-source-1  | 	                                    note = $4,
+pg-source-1  | 	                                    payload = $5::jsonb,
+pg-source-1  | 	                                    discount = $6
+pg-source-1  | 	                                WHERE id = $7
+pg-source-1  | 	                                

@@ -31,6 +31,7 @@ from lab.pipeline import (
 from lab.reader import connect_iceberg, read_metadata_files, read_snapshots
 from lab.repack import (
     ConcurrentRepackRunner,
+    PLAIN_REPACK_SQL,
     REPACK_SQL,
     build_pair_comparison,
     capture_table_and_index_sizes,
@@ -67,9 +68,11 @@ def run_single_experiment(
     milestone: str = "M2",
     keep_up: bool = False,
 ) -> tuple[Path, dict[str, Any]]:
-    """Run one fresh baseline or concurrent-REPACK experiment and save raw evidence."""
-    if run_kind not in ("baseline", "repack"):
-        raise ValueError(f"run_kind must be 'baseline' or 'repack', got {run_kind!r}")
+    """Run one fresh baseline, concurrent-REPACK, or plain-REPACK experiment and save raw evidence."""
+    if run_kind not in ("baseline", "repack", "plain_repack"):
+        raise ValueError(
+            f"run_kind must be 'baseline', 'repack', or 'plain_repack', got {run_kind!r}"
+        )
 
     cfg = load_config()
     run_label = label or f"{milestone.lower()}-{run_kind}"
@@ -133,16 +136,17 @@ def run_single_experiment(
         pg_pos_window_start = capture_pg_pipeline_positions(pg_conn)
         sizes_window_start = capture_table_and_index_sizes(pg_conn)
 
-    # 6. Run measured paced workload (with concurrent REPACK anchored to window start if run_kind == 'repack').
+    # 6. Run measured paced workload (with REPACK anchored to window start if applicable).
     repack_runner: ConcurrentRepackRunner | None = None
     on_window_start = None
-    if run_kind == "repack":
+    if run_kind in ("repack", "plain_repack"):
+        repack_cmd = REPACK_SQL if run_kind == "repack" else PLAIN_REPACK_SQL
         repack_runner = ConcurrentRepackRunner(
             cfg,
             repack_delay_s=repack_delay_s,
             sample_interval_s=repack_sample_interval_s,
             samples_jsonl=run_dir / "repack_samples.jsonl",
-            command=REPACK_SQL,
+            command=repack_cmd,
         )
         on_window_start = repack_runner.start_anchored_to_window
 
@@ -293,8 +297,15 @@ def run_single_experiment(
             "batch_size": batch_size,
             "probe_interval_s": probe_interval_s,
             "probe_poll_interval_s": probe_poll_interval_s,
-            "repack_delay_s": repack_delay_s if run_kind == "repack" else None,
-            "repack_sample_interval_s": repack_sample_interval_s if run_kind == "repack" else None,
+            "repack_delay_s": repack_delay_s if run_kind in ("repack", "plain_repack") else None,
+            "repack_sample_interval_s": (
+                repack_sample_interval_s if run_kind in ("repack", "plain_repack") else None
+            ),
+            "repack_command": (
+                REPACK_SQL
+                if run_kind == "repack"
+                else (PLAIN_REPACK_SQL if run_kind == "plain_repack" else None)
+            ),
             "snapshot_timeout_s": snapshot_timeout_s,
             "convergence_timeout_s": convergence_timeout_s,
         },

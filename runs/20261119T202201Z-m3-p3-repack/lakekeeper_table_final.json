@@ -1,0 +1,1297 @@
+{
+  "catalog_config": {
+    "overrides": {
+      "uri": "http://127.0.0.1:18181/catalog"
+    },
+    "defaults": {
+      "rest-page-size": "100",
+      "prefix": "01a1f579-5d3f-73d4-9d7f-55c76af38dac"
+    },
+    "endpoints": [
+      "GET /v1/config",
+      "GET /v1/{prefix}/namespaces",
+      "HEAD /v1/{prefix}/namespaces/{namespace}",
+      "POST /v1/{prefix}/namespaces",
+      "GET /v1/{prefix}/namespaces/{namespace}",
+      "DELETE /v1/{prefix}/namespaces/{namespace}",
+      "POST /v1/{prefix}/namespaces/{namespace}/properties",
+      "GET /v1/{prefix}/namespaces/{namespace}/tables",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables",
+      "GET /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "DELETE /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "HEAD /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "GET /v1/{prefix}/namespaces/{namespace}/tables/{table}/credentials",
+      "POST /v1/{prefix}/tables/rename",
+      "POST /v1/{prefix}/namespaces/{namespace}/register",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables/{table}/metrics",
+      "POST /v1/{prefix}/transactions/commit",
+      "POST /v1/{prefix}/namespaces/{namespace}/views",
+      "GET /v1/{prefix}/namespaces/{namespace}/views",
+      "GET /v1/{prefix}/namespaces/{namespace}/views/{view}",
+      "POST /v1/{prefix}/namespaces/{namespace}/views/{view}",
+      "DELETE /v1/{prefix}/namespaces/{namespace}/views/{view}",
+      "HEAD /v1/{prefix}/namespaces/{namespace}/views/{view}",
+      "POST /v1/{prefix}/views/rename",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables/{table}/sign"
+    ],
+    "idempotency-key-lifetime": "PT30M"
+  },
+  "table_url": "http://127.0.0.1:18181/catalog/v1/01a1f579-5d3f-73d4-9d7f-55c76af38dac/namespaces/public/tables/orders",
+  "metadata_location": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00019-01a1f57c-cdb1-7502-9c9a-a84588ee7a55.gz.metadata.json",
+  "config": {
+    "scan-planning-mode": "client",
+    "s3.path-style-access": "true",
+    "s3.region": "local-01",
+    "s3.secret-access-key": "<redacted>",
+    "client.region": "local-01",
+    "region": "local-01",
+    "s3.endpoint": "http://silo.localhost:19000/",
+    "s3.session-token": "<redacted>",
+    "s3.access-key-id": "<redacted>"
+  },
+  "storage_credentials": [
+    {
+      "prefix": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee",
+      "config": {
+        "expiration-time": "1795123354000",
+        "s3.path-style-access": "true",
+        "s3.endpoint": "http://silo.localhost:19000/",
+        "s3.access-key-id": "<redacted>",
+        "client.refresh-credentials-endpoint": "http://127.0.0.1:18181/catalog/v1/01a1f579-5d3f-73d4-9d7f-55c76af38dac/namespaces/public/tables/orders/credentials",
+        "s3.session-token-expires-at-ms": "<redacted>",
+        "client.region": "local-01",
+        "s3.region": "local-01",
+        "s3.secret-access-key": "<redacted>",
+        "s3.session-token": "<redacted>"
+      }
+    }
+  ],
+  "metadata": {
+    "format-version": 2,
+    "table-uuid": "01a1f579-ae2a-708b-82de-62360ba319ee",
+    "location": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee",
+    "last-sequence-number": 43,
+    "last-updated-ms": 1795119959472,
+    "last-column-id": 7,
+    "schemas": [
+      {
+        "schema-id": 0,
+        "identifier-field-ids": [
+          1
+        ],
+        "type": "struct",
+        "fields": [
+          {
+            "id": 1,
+            "name": "id",
+            "required": true,
+            "type": "long"
+          },
+          {
+            "id": 2,
+            "name": "status",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "id": 3,
+            "name": "amount",
+            "required": true,
+            "type": "decimal(38, 9)"
+          },
+          {
+            "id": 4,
+            "name": "updated_at",
+            "required": true,
+            "type": "timestamptz"
+          },
+          {
+            "id": 5,
+            "name": "note",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "id": 6,
+            "name": "payload",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "id": 7,
+            "name": "discount",
+            "required": false,
+            "type": "decimal(38, 9)"
+          }
+        ]
+      }
+    ],
+    "current-schema-id": 0,
+    "partition-specs": [
+      {
+        "spec-id": 0,
+        "fields": []
+      }
+    ],
+    "default-spec-id": 0,
+    "last-partition-id": 999,
+    "properties": {
+      "pg2iceberg.log-ends": "{\"default\":1811}"
+    },
+    "current-snapshot-id": 2656832467375503428,
+    "snapshot-log": [
+      {
+        "snapshot-id": 310499311516510394,
+        "timestamp-ms": 1795119760598
+      },
+      {
+        "snapshot-id": 3725790766672741685,
+        "timestamp-ms": 1795119771024
+      },
+      {
+        "snapshot-id": 6119213505971497790,
+        "timestamp-ms": 1795119782406
+      },
+      {
+        "snapshot-id": 2649389774735989192,
+        "timestamp-ms": 1795119794119
+      },
+      {
+        "snapshot-id": 517724865133657644,
+        "timestamp-ms": 1795119805335
+      },
+      {
+        "snapshot-id": 1717339625058201345,
+        "timestamp-ms": 1795119816206
+      },
+      {
+        "snapshot-id": 8005937169857053068,
+        "timestamp-ms": 1795119827027
+      },
+      {
+        "snapshot-id": 6019400817779290543,
+        "timestamp-ms": 1795119838242
+      },
+      {
+        "snapshot-id": 2736870384020638311,
+        "timestamp-ms": 1795119849132
+      },
+      {
+        "snapshot-id": 5577277985243236286,
+        "timestamp-ms": 1795119860086
+      },
+      {
+        "snapshot-id": 5930774007622050422,
+        "timestamp-ms": 1795119871098
+      },
+      {
+        "snapshot-id": 1584792587533016231,
+        "timestamp-ms": 1795119881918
+      },
+      {
+        "snapshot-id": 8916046604932450574,
+        "timestamp-ms": 1795119893323
+      },
+      {
+        "snapshot-id": 2631570929748220250,
+        "timestamp-ms": 1795119904295
+      },
+      {
+        "snapshot-id": 8444226071816590430,
+        "timestamp-ms": 1795119915137
+      },
+      {
+        "snapshot-id": 4599101899824053925,
+        "timestamp-ms": 1795119925958
+      },
+      {
+        "snapshot-id": 3958539345157531888,
+        "timestamp-ms": 1795119937008
+      },
+      {
+        "snapshot-id": 4019937857088301852,
+        "timestamp-ms": 1795119948181
+      },
+      {
+        "snapshot-id": 2656832467375503428,
+        "timestamp-ms": 1795119959468
+      }
+    ],
+    "metadata-log": [
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00000-01a1f579-ae2a-708b-82de-6237783ddbf9.gz.metadata.json",
+        "timestamp-ms": 1795119754794
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00001-01a1f579-c57c-72b0-bcb1-80c0396f8d44.gz.metadata.json",
+        "timestamp-ms": 1795119760764
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00002-01a1f579-edb5-7517-a3c3-f13c67f5d8e5.gz.metadata.json",
+        "timestamp-ms": 1795119771060
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00003-01a1f57a-1a13-77b1-bf16-3f3d733eb23d.gz.metadata.json",
+        "timestamp-ms": 1795119782419
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00004-01a1f57a-47ce-7264-a7eb-5037a83e8b47.gz.metadata.json",
+        "timestamp-ms": 1795119794126
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00005-01a1f57a-73a0-7083-b4f7-f0075b2d0591.gz.metadata.json",
+        "timestamp-ms": 1795119805344
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00006-01a1f57a-9e1c-7324-927f-a94fb7a1ae4e.gz.metadata.json",
+        "timestamp-ms": 1795119816220
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00007-01a1f57a-c859-778f-8aec-aba4b69d9a44.gz.metadata.json",
+        "timestamp-ms": 1795119827033
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00008-01a1f57a-f43f-7370-9f4b-9c3810facdd4.gz.metadata.json",
+        "timestamp-ms": 1795119838271
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00009-01a1f57b-1eb5-72a8-9305-0464790047fe.gz.metadata.json",
+        "timestamp-ms": 1795119849141
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00010-01a1f57b-497e-7055-8a1f-3b30d7418062.gz.metadata.json",
+        "timestamp-ms": 1795119860094
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00011-01a1f57b-7482-75ab-9c8e-f21a19708787.gz.metadata.json",
+        "timestamp-ms": 1795119871106
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00012-01a1f57b-9ece-762d-8365-28b2fab93321.gz.metadata.json",
+        "timestamp-ms": 1795119881934
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00013-01a1f57b-cb52-75f3-8328-44e7fa3d68ba.gz.metadata.json",
+        "timestamp-ms": 1795119893330
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00014-01a1f57b-f62e-73f8-9c79-a2518fd8fdbb.gz.metadata.json",
+        "timestamp-ms": 1795119904302
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00015-01a1f57c-2088-7426-9ba7-5b6f0ecc5925.gz.metadata.json",
+        "timestamp-ms": 1795119915144
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00016-01a1f57c-4acd-778e-b09e-e0babe4cceed.gz.metadata.json",
+        "timestamp-ms": 1795119925965
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00017-01a1f57c-75f8-7726-857b-53eb1ad543d9.gz.metadata.json",
+        "timestamp-ms": 1795119937016
+      },
+      {
+        "metadata-file": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/00018-01a1f57c-a19e-773a-8bd6-2f7fac101350.gz.metadata.json",
+        "timestamp-ms": 1795119948190
+      }
+    ],
+    "sort-orders": [
+      {
+        "order-id": 0,
+        "fields": []
+      }
+    ],
+    "default-sort-order-id": 0,
+    "refs": {
+      "main": {
+        "snapshot-id": 2656832467375503428,
+        "type": "branch"
+      }
+    },
+    "snapshots": [
+      {
+        "snapshot-id": 1877617921049313628,
+        "parent-snapshot-id": 983605793107910008,
+        "sequence-number": 4,
+        "timestamp-ms": 1795119760597,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-1877617921049313628-0-01a1f579-c4d5-7ee0-8071-d1cce6606601.avro",
+        "summary": {
+          "operation": "append",
+          "total-data-files": "4",
+          "added-files-size": "1358401",
+          "total-records": "40000",
+          "added-records": "10000",
+          "total-files-size": "314617439",
+          "total-delete-files": "0",
+          "total-equality-deletes": "0",
+          "added-data-files": "1",
+          "total-position-deletes": "0"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 4599101899824053925,
+        "parent-snapshot-id": 8444226071816590430,
+        "sequence-number": 40,
+        "timestamp-ms": 1795119925958,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-4599101899824053925-0-01a1f57c-4ab0-7ef0-a0e3-6f3e8b03ad19.avro",
+        "summary": {
+          "operation": "append",
+          "added-data-files": "1",
+          "added-delete-files": "1",
+          "total-files-size": "349661626",
+          "total-position-deletes": "0",
+          "total-delete-files": "14",
+          "added-files-size": "399618",
+          "pg2iceberg.log-end": "1527",
+          "total-data-files": "40",
+          "total-equality-deletes": "1294",
+          "added-equality-deletes": "103",
+          "pg2iceberg.log-start": "1406",
+          "added-equality-delete-files": "1",
+          "added-records": "102",
+          "pg2iceberg.log-group": "default",
+          "total-records": "251283",
+          "pg2iceberg.log-ends": "{\"default\":1527}"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 2976273543888102945,
+        "parent-snapshot-id": 1774949318977067984,
+        "sequence-number": 13,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-2976273543888102945-0-01a1f579-c4d6-7702-8ba6-1720a9ffd8d5.avro",
+        "summary": {
+          "operation": "append",
+          "added-files-size": "1382910",
+          "total-equality-deletes": "0",
+          "total-position-deletes": "0",
+          "total-files-size": "326944278",
+          "total-data-files": "13",
+          "total-delete-files": "0",
+          "added-data-files": "1",
+          "added-records": "10000",
+          "total-records": "130000"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 2736870384020638311,
+        "parent-snapshot-id": 6019400817779290543,
+        "sequence-number": 33,
+        "timestamp-ms": 1795119849132,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-2736870384020638311-0-01a1f57b-1e96-7141-a525-c728492b2116.avro",
+        "summary": {
+          "operation": "append",
+          "added-delete-files": "1",
+          "pg2iceberg.log-ends": "{\"default\":742}",
+          "added-data-files": "1",
+          "added-equality-delete-files": "1",
+          "total-position-deletes": "0",
+          "added-records": "91",
+          "total-equality-deletes": "635",
+          "pg2iceberg.log-end": "742",
+          "added-files-size": "460082",
+          "total-records": "250626",
+          "pg2iceberg.log-group": "default",
+          "added-equality-deletes": "82",
+          "total-data-files": "33",
+          "pg2iceberg.log-start": "641",
+          "total-delete-files": "7",
+          "total-files-size": "346786138"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 3254500969559375912,
+        "parent-snapshot-id": 90345840602820274,
+        "sequence-number": 8,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-3254500969559375912-0-01a1f579-c4d6-7702-8ba6-16d5d8a500f4.avro",
+        "summary": {
+          "operation": "append",
+          "added-data-files": "1",
+          "added-files-size": "1359991",
+          "total-files-size": "320065641",
+          "total-position-deletes": "0",
+          "total-delete-files": "0",
+          "total-records": "80000",
+          "total-equality-deletes": "0",
+          "added-records": "10000",
+          "total-data-files": "8"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 3725790766672741685,
+        "parent-snapshot-id": 310499311516510394,
+        "sequence-number": 26,
+        "timestamp-ms": 1795119771024,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-3725790766672741685-0-01a1f579-ed44-76d2-b5ee-fb430cf1e963.avro",
+        "summary": {
+          "operation": "append",
+          "total-data-files": "26",
+          "added-records": "1",
+          "added-data-files": "1",
+          "total-files-size": "343580969",
+          "total-delete-files": "0",
+          "pg2iceberg.log-start": "0",
+          "total-equality-deletes": "0",
+          "added-files-size": "3370",
+          "pg2iceberg.log-end": "2",
+          "total-records": "250001",
+          "pg2iceberg.log-ends": "{\"default\":2}",
+          "pg2iceberg.log-group": "default",
+          "total-position-deletes": "0"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 90345840602820274,
+        "parent-snapshot-id": 6857311307083863930,
+        "sequence-number": 7,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-90345840602820274-0-01a1f579-c4d5-7ee0-8071-d1f3cb97fe27.avro",
+        "summary": {
+          "operation": "append",
+          "total-records": "70000",
+          "total-delete-files": "0",
+          "added-data-files": "1",
+          "total-data-files": "7",
+          "added-records": "10000",
+          "total-files-size": "318705650",
+          "total-equality-deletes": "0",
+          "total-position-deletes": "0",
+          "added-files-size": "1363709"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 5488197119512707587,
+        "parent-snapshot-id": 991388313621007355,
+        "sequence-number": 15,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-5488197119512707587-0-01a1f579-c4d6-7702-8ba6-1747d61f7bd4.avro",
+        "summary": {
+          "operation": "append",
+          "total-delete-files": "0",
+          "total-records": "150000",
+          "added-files-size": "1386096",
+          "added-data-files": "1",
+          "added-records": "10000",
+          "total-position-deletes": "0",
+          "total-data-files": "15",
+          "total-files-size": "329715824",
+          "total-equality-deletes": "0"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 6119213505971497790,
+        "parent-snapshot-id": 3725790766672741685,
+        "sequence-number": 27,
+        "timestamp-ms": 1795119782406,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-6119213505971497790-0-01a1f57a-19ed-7863-b988-5f73022de9bc.avro",
+        "summary": {
+          "operation": "append",
+          "added-delete-files": "1",
+          "total-position-deletes": "0",
+          "added-equality-delete-files": "1",
+          "total-files-size": "343900933",
+          "pg2iceberg.log-group": "default",
+          "added-equality-deletes": "65",
+          "added-data-files": "1",
+          "total-equality-deletes": "65",
+          "total-delete-files": "1",
+          "pg2iceberg.log-start": "2",
+          "total-records": "250060",
+          "added-records": "59",
+          "added-files-size": "319964",
+          "pg2iceberg.log-ends": "{\"default\":77}",
+          "pg2iceberg.log-end": "77",
+          "total-data-files": "27"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 6338418673705152485,
+        "parent-snapshot-id": 1877617921049313628,
+        "sequence-number": 5,
+        "timestamp-ms": 1795119760597,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-6338418673705152485-0-01a1f579-c4d5-7ee0-8071-d1d1b2ca1182.avro",
+        "summary": {
+          "operation": "append",
+          "total-equality-deletes": "0",
+          "total-files-size": "315976370",
+          "added-records": "10000",
+          "total-records": "50000",
+          "total-position-deletes": "0",
+          "total-delete-files": "0",
+          "total-data-files": "5",
+          "added-files-size": "1358931",
+          "added-data-files": "1"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 5797693988482432666,
+        "parent-snapshot-id": 2977343444656937353,
+        "sequence-number": 20,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-5797693988482432666-0-01a1f579-c4d6-7702-8ba6-17990beccc4b.avro",
+        "summary": {
+          "operation": "append",
+          "added-records": "10000",
+          "total-files-size": "336638344",
+          "total-delete-files": "0",
+          "total-records": "200000",
+          "total-position-deletes": "0",
+          "total-data-files": "20",
+          "added-files-size": "1384004",
+          "added-data-files": "1",
+          "total-equality-deletes": "0"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 8150466203881494622,
+        "parent-snapshot-id": 1048242165450471279,
+        "sequence-number": 11,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-8150466203881494622-0-01a1f579-c4d6-7702-8ba6-1703e0c7f824.avro",
+        "summary": {
+          "operation": "append",
+          "total-files-size": "324176017",
+          "added-data-files": "1",
+          "added-files-size": "1384491",
+          "total-equality-deletes": "0",
+          "total-delete-files": "0",
+          "added-records": "10000",
+          "total-records": "110000",
+          "total-data-files": "11",
+          "total-position-deletes": "0"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 1048242165450471279,
+        "parent-snapshot-id": 6955146800306016830,
+        "sequence-number": 10,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-1048242165450471279-0-01a1f579-c4d6-7702-8ba6-16fd9da80ed4.avro",
+        "summary": {
+          "operation": "append",
+          "total-delete-files": "0",
+          "total-position-deletes": "0",
+          "total-data-files": "10",
+          "added-files-size": "1361242",
+          "added-records": "10000",
+          "total-equality-deletes": "0",
+          "added-data-files": "1",
+          "total-files-size": "322791526",
+          "total-records": "100000"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 517724865133657644,
+        "parent-snapshot-id": 2649389774735989192,
+        "sequence-number": 29,
+        "timestamp-ms": 1795119805335,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-517724865133657644-0-01a1f57a-737a-7341-8598-61b465c45cd4.avro",
+        "summary": {
+          "operation": "append",
+          "total-records": "250252",
+          "pg2iceberg.log-group": "default",
+          "total-data-files": "29",
+          "total-position-deletes": "0",
+          "total-delete-files": "3",
+          "added-equality-delete-files": "1",
+          "pg2iceberg.log-start": "179",
+          "added-records": "104",
+          "added-delete-files": "1",
+          "added-files-size": "572698",
+          "pg2iceberg.log-end": "299",
+          "total-equality-deletes": "256",
+          "total-files-size": "344871375",
+          "pg2iceberg.log-ends": "{\"default\":299}",
+          "added-equality-deletes": "105",
+          "added-data-files": "1"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 917609828315938764,
+        "parent-snapshot-id": 240026923268084306,
+        "sequence-number": 18,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-917609828315938764-0-01a1f579-c4d6-7702-8ba6-177348cf3dd3.avro",
+        "summary": {
+          "operation": "append",
+          "added-data-files": "1",
+          "added-records": "10000",
+          "total-delete-files": "0",
+          "total-files-size": "333873010",
+          "total-equality-deletes": "0",
+          "total-position-deletes": "0",
+          "added-files-size": "1387444",
+          "total-records": "180000",
+          "total-data-files": "18"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 6019400817779290543,
+        "parent-snapshot-id": 8005937169857053068,
+        "sequence-number": 32,
+        "timestamp-ms": 1795119838242,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-6019400817779290543-0-01a1f57a-f3f6-74f2-8404-d91bc5fb52b1.avro",
+        "summary": {
+          "operation": "append",
+          "pg2iceberg.log-start": "520",
+          "total-files-size": "346326056",
+          "pg2iceberg.log-group": "default",
+          "added-equality-deletes": "104",
+          "total-delete-files": "6",
+          "added-files-size": "522345",
+          "added-data-files": "1",
+          "total-equality-deletes": "553",
+          "added-delete-files": "1",
+          "added-records": "96",
+          "added-equality-delete-files": "1",
+          "total-records": "250535",
+          "total-data-files": "32",
+          "pg2iceberg.log-ends": "{\"default\":641}",
+          "total-position-deletes": "0",
+          "pg2iceberg.log-end": "641"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 6955146800306016830,
+        "parent-snapshot-id": 3254500969559375912,
+        "sequence-number": 9,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-6955146800306016830-0-01a1f579-c4d6-7702-8ba6-16e4aeb1b001.avro",
+        "summary": {
+          "operation": "append",
+          "added-records": "10000",
+          "total-data-files": "9",
+          "added-data-files": "1",
+          "total-equality-deletes": "0",
+          "total-files-size": "321430284",
+          "total-records": "90000",
+          "added-files-size": "1364643",
+          "total-delete-files": "0",
+          "total-position-deletes": "0"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 1533210021454774317,
+        "parent-snapshot-id": 5797693988482432666,
+        "sequence-number": 21,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-1533210021454774317-0-01a1f579-c4d6-7702-8ba6-17a62b9ad412.avro",
+        "summary": {
+          "operation": "append",
+          "total-records": "210000",
+          "added-records": "10000",
+          "added-data-files": "1",
+          "total-position-deletes": "0",
+          "total-data-files": "21",
+          "total-files-size": "338026140",
+          "total-delete-files": "0",
+          "total-equality-deletes": "0",
+          "added-files-size": "1387796"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 8005937169857053068,
+        "parent-snapshot-id": 1717339625058201345,
+        "sequence-number": 31,
+        "timestamp-ms": 1795119827027,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-8005937169857053068-0-01a1f57a-c83c-7a02-9a92-8755713188f5.avro",
+        "summary": {
+          "operation": "append",
+          "pg2iceberg.log-group": "default",
+          "added-equality-delete-files": "1",
+          "total-position-deletes": "0",
+          "total-data-files": "31",
+          "pg2iceberg.log-ends": "{\"default\":520}",
+          "added-files-size": "434308",
+          "added-data-files": "1",
+          "total-files-size": "345803711",
+          "total-delete-files": "5",
+          "total-records": "250439",
+          "pg2iceberg.log-start": "420",
+          "added-delete-files": "1",
+          "pg2iceberg.log-end": "520",
+          "added-equality-deletes": "84",
+          "total-equality-deletes": "449",
+          "added-records": "85"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 5930774007622050422,
+        "parent-snapshot-id": 5577277985243236286,
+        "sequence-number": 35,
+        "timestamp-ms": 1795119871098,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-5930774007622050422-0-01a1f57b-7465-7662-852e-e18e68c949d0.avro",
+        "summary": {
+          "operation": "append",
+          "added-equality-delete-files": "1",
+          "added-data-files": "1",
+          "added-records": "83",
+          "added-files-size": "409518",
+          "total-position-deletes": "0",
+          "added-equality-deletes": "83",
+          "total-files-size": "347557408",
+          "pg2iceberg.log-start": "862",
+          "pg2iceberg.log-end": "963",
+          "pg2iceberg.log-ends": "{\"default\":963}",
+          "added-delete-files": "1",
+          "total-data-files": "35",
+          "total-equality-deletes": "816",
+          "total-delete-files": "9",
+          "total-records": "250808",
+          "pg2iceberg.log-group": "default"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 8125862895249341739,
+        "parent-snapshot-id": 640756703649902113,
+        "sequence-number": 2,
+        "timestamp-ms": 1795119760597,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-8125862895249341739-0-01a1f579-c4d5-7ee0-8071-d1ad0251c70d.avro",
+        "summary": {
+          "operation": "append",
+          "total-records": "20000",
+          "added-data-files": "1",
+          "total-delete-files": "0",
+          "total-files-size": "249929932",
+          "added-files-size": "125075715",
+          "total-position-deletes": "0",
+          "total-equality-deletes": "0",
+          "added-records": "10000",
+          "total-data-files": "2"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 1584792587533016231,
+        "parent-snapshot-id": 5930774007622050422,
+        "sequence-number": 36,
+        "timestamp-ms": 1795119881918,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-1584792587533016231-0-01a1f57b-9ea8-7ea2-835c-82853dced14f.avro",
+        "summary": {
+          "operation": "append",
+          "added-equality-delete-files": "1",
+          "total-delete-files": "10",
+          "added-files-size": "472825",
+          "added-equality-deletes": "104",
+          "total-position-deletes": "0",
+          "total-equality-deletes": "920",
+          "added-delete-files": "1",
+          "total-records": "250903",
+          "total-files-size": "348030233",
+          "pg2iceberg.log-ends": "{\"default\":1083}",
+          "pg2iceberg.log-end": "1083",
+          "added-records": "95",
+          "pg2iceberg.log-group": "default",
+          "pg2iceberg.log-start": "963",
+          "added-data-files": "1",
+          "total-data-files": "36"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 2977343444656937353,
+        "parent-snapshot-id": 917609828315938764,
+        "sequence-number": 19,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-2977343444656937353-0-01a1f579-c4d6-7702-8ba6-178dd31ff7ed.avro",
+        "summary": {
+          "operation": "append",
+          "total-delete-files": "0",
+          "added-data-files": "1",
+          "total-files-size": "335254340",
+          "added-files-size": "1381330",
+          "total-records": "190000",
+          "total-data-files": "19",
+          "added-records": "10000",
+          "total-position-deletes": "0",
+          "total-equality-deletes": "0"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 8916046604932450574,
+        "parent-snapshot-id": 1584792587533016231,
+        "sequence-number": 37,
+        "timestamp-ms": 1795119893323,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-8916046604932450574-0-01a1f57b-cb20-76c0-af49-00cc090dde91.avro",
+        "summary": {
+          "operation": "append",
+          "total-records": "250995",
+          "added-delete-files": "1",
+          "pg2iceberg.log-ends": "{\"default\":1184}",
+          "added-records": "92",
+          "added-files-size": "472294",
+          "pg2iceberg.log-group": "default",
+          "pg2iceberg.log-start": "1083",
+          "total-delete-files": "11",
+          "total-data-files": "37",
+          "added-data-files": "1",
+          "total-equality-deletes": "1006",
+          "pg2iceberg.log-end": "1184",
+          "total-position-deletes": "0",
+          "total-files-size": "348502527",
+          "added-equality-delete-files": "1",
+          "added-equality-deletes": "86"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 640756703649902113,
+        "sequence-number": 1,
+        "timestamp-ms": 1795119760597,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-640756703649902113-0-01a1f579-c4cf-70f1-95e6-1b546d97ff9e.avro",
+        "summary": {
+          "operation": "append",
+          "total-delete-files": "0",
+          "added-files-size": "124854217",
+          "total-records": "10000",
+          "added-data-files": "1",
+          "total-files-size": "124854217",
+          "added-records": "10000",
+          "total-data-files": "1",
+          "total-position-deletes": "0",
+          "total-equality-deletes": "0"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 2631570929748220250,
+        "parent-snapshot-id": 8916046604932450574,
+        "sequence-number": 38,
+        "timestamp-ms": 1795119904295,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-2631570929748220250-0-01a1f57b-f60f-7931-bb34-d23214fb1cb9.avro",
+        "summary": {
+          "operation": "append",
+          "added-files-size": "448818",
+          "total-equality-deletes": "1111",
+          "added-data-files": "1",
+          "total-records": "251096",
+          "pg2iceberg.log-start": "1184",
+          "added-records": "101",
+          "total-data-files": "38",
+          "total-delete-files": "12",
+          "added-equality-delete-files": "1",
+          "added-delete-files": "1",
+          "total-files-size": "348951345",
+          "pg2iceberg.log-end": "1304",
+          "pg2iceberg.log-ends": "{\"default\":1304}",
+          "added-equality-deletes": "105",
+          "pg2iceberg.log-group": "default",
+          "total-position-deletes": "0"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 983605793107910008,
+        "parent-snapshot-id": 8125862895249341739,
+        "sequence-number": 3,
+        "timestamp-ms": 1795119760597,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-983605793107910008-0-01a1f579-c4d5-7ee0-8071-d1b692c24972.avro",
+        "summary": {
+          "operation": "append",
+          "added-records": "10000",
+          "total-delete-files": "0",
+          "total-position-deletes": "0",
+          "added-data-files": "1",
+          "total-data-files": "3",
+          "total-records": "30000",
+          "added-files-size": "63329106",
+          "total-equality-deletes": "0",
+          "total-files-size": "313259038"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 1774949318977067984,
+        "parent-snapshot-id": 8150466203881494622,
+        "sequence-number": 12,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-1774949318977067984-0-01a1f579-c4d6-7702-8ba6-1718c7265216.avro",
+        "summary": {
+          "operation": "append",
+          "added-records": "10000",
+          "added-files-size": "1385351",
+          "total-files-size": "325561368",
+          "total-position-deletes": "0",
+          "total-delete-files": "0",
+          "total-equality-deletes": "0",
+          "added-data-files": "1",
+          "total-data-files": "12",
+          "total-records": "120000"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 6857311307083863930,
+        "parent-snapshot-id": 6338418673705152485,
+        "sequence-number": 6,
+        "timestamp-ms": 1795119760597,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-6857311307083863930-0-01a1f579-c4d5-7ee0-8071-d1e7fc838400.avro",
+        "summary": {
+          "operation": "append",
+          "total-delete-files": "0",
+          "total-position-deletes": "0",
+          "added-records": "10000",
+          "total-files-size": "317341941",
+          "added-data-files": "1",
+          "total-data-files": "6",
+          "total-records": "60000",
+          "total-equality-deletes": "0",
+          "added-files-size": "1365571"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 9170188530268865530,
+        "parent-snapshot-id": 1533210021454774317,
+        "sequence-number": 22,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-9170188530268865530-0-01a1f579-c4d6-7702-8ba6-17b64d8b7e34.avro",
+        "summary": {
+          "operation": "append",
+          "added-records": "10000",
+          "added-data-files": "1",
+          "added-files-size": "1384426",
+          "total-data-files": "22",
+          "total-files-size": "339410566",
+          "total-equality-deletes": "0",
+          "total-records": "220000",
+          "total-delete-files": "0",
+          "total-position-deletes": "0"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 2637426555137694982,
+        "parent-snapshot-id": 3212429031141297938,
+        "sequence-number": 24,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-2637426555137694982-0-01a1f579-c4d6-7702-8ba6-17d83ea75efb.avro",
+        "summary": {
+          "operation": "append",
+          "added-records": "10000",
+          "total-data-files": "24",
+          "total-equality-deletes": "0",
+          "total-position-deletes": "0",
+          "total-delete-files": "0",
+          "total-records": "240000",
+          "added-files-size": "1391867",
+          "added-data-files": "1",
+          "total-files-size": "342191746"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 2656832467375503428,
+        "parent-snapshot-id": 4019937857088301852,
+        "sequence-number": 43,
+        "timestamp-ms": 1795119959468,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-2656832467375503428-0-01a1f57c-cd8d-7012-963c-bbfa71f6cfe4.avro",
+        "summary": {
+          "operation": "append",
+          "added-records": "51",
+          "added-delete-files": "1",
+          "pg2iceberg.log-start": "1747",
+          "total-data-files": "43",
+          "total-records": "251518",
+          "pg2iceberg.log-end": "1811",
+          "total-delete-files": "17",
+          "pg2iceberg.log-ends": "{\"default\":1811}",
+          "total-files-size": "350690353",
+          "added-equality-delete-files": "1",
+          "added-files-size": "281990",
+          "added-data-files": "1",
+          "total-position-deletes": "0",
+          "added-equality-deletes": "56",
+          "pg2iceberg.log-group": "default",
+          "total-equality-deletes": "1544"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 310499311516510394,
+        "parent-snapshot-id": 2637426555137694982,
+        "sequence-number": 25,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-310499311516510394-0-01a1f579-c4d6-7702-8ba6-17e515c652c2.avro",
+        "summary": {
+          "operation": "append",
+          "total-equality-deletes": "0",
+          "added-data-files": "1",
+          "total-data-files": "25",
+          "total-position-deletes": "0",
+          "total-records": "250000",
+          "total-delete-files": "0",
+          "added-records": "10000",
+          "total-files-size": "343577599",
+          "added-files-size": "1385853"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 5597322842375488744,
+        "parent-snapshot-id": 5488197119512707587,
+        "sequence-number": 16,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-5597322842375488744-0-01a1f579-c4d6-7702-8ba6-1751c76cf037.avro",
+        "summary": {
+          "operation": "append",
+          "total-position-deletes": "0",
+          "total-files-size": "331101977",
+          "total-equality-deletes": "0",
+          "added-data-files": "1",
+          "added-files-size": "1386153",
+          "added-records": "10000",
+          "total-records": "160000",
+          "total-data-files": "16",
+          "total-delete-files": "0"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 8444226071816590430,
+        "parent-snapshot-id": 2631570929748220250,
+        "sequence-number": 39,
+        "timestamp-ms": 1795119915137,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-8444226071816590430-0-01a1f57c-2069-7ca3-8dec-4146b6f0da0f.avro",
+        "summary": {
+          "operation": "append",
+          "total-position-deletes": "0",
+          "pg2iceberg.log-ends": "{\"default\":1406}",
+          "added-equality-delete-files": "1",
+          "added-data-files": "1",
+          "total-equality-deletes": "1191",
+          "added-records": "85",
+          "pg2iceberg.log-group": "default",
+          "pg2iceberg.log-end": "1406",
+          "added-files-size": "310663",
+          "total-delete-files": "13",
+          "pg2iceberg.log-start": "1304",
+          "added-equality-deletes": "80",
+          "total-records": "251181",
+          "total-data-files": "39",
+          "added-delete-files": "1",
+          "total-files-size": "349262008"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 3958539345157531888,
+        "parent-snapshot-id": 4599101899824053925,
+        "sequence-number": 41,
+        "timestamp-ms": 1795119937008,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-3958539345157531888-0-01a1f57c-75d9-7223-a9cb-bda1e209a1fa.avro",
+        "summary": {
+          "operation": "append",
+          "total-records": "251364",
+          "added-delete-files": "1",
+          "pg2iceberg.log-ends": "{\"default\":1627}",
+          "total-files-size": "349984316",
+          "total-position-deletes": "0",
+          "pg2iceberg.log-group": "default",
+          "pg2iceberg.log-end": "1627",
+          "pg2iceberg.log-start": "1527",
+          "added-data-files": "1",
+          "total-equality-deletes": "1384",
+          "total-data-files": "41",
+          "added-equality-deletes": "90",
+          "added-files-size": "322690",
+          "total-delete-files": "15",
+          "added-equality-delete-files": "1",
+          "added-records": "81"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 5577277985243236286,
+        "parent-snapshot-id": 2736870384020638311,
+        "sequence-number": 34,
+        "timestamp-ms": 1795119860086,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-5577277985243236286-0-01a1f57b-4953-70d2-af30-cd31c2531253.avro",
+        "summary": {
+          "operation": "append",
+          "added-files-size": "361752",
+          "pg2iceberg.log-end": "862",
+          "added-records": "99",
+          "added-equality-delete-files": "1",
+          "added-data-files": "1",
+          "added-delete-files": "1",
+          "total-data-files": "34",
+          "total-position-deletes": "0",
+          "total-equality-deletes": "733",
+          "total-delete-files": "8",
+          "pg2iceberg.log-ends": "{\"default\":862}",
+          "total-files-size": "347147890",
+          "pg2iceberg.log-start": "742",
+          "pg2iceberg.log-group": "default",
+          "added-equality-deletes": "98",
+          "total-records": "250725"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 1717339625058201345,
+        "parent-snapshot-id": 517724865133657644,
+        "sequence-number": 30,
+        "timestamp-ms": 1795119816206,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-1717339625058201345-0-01a1f57a-9dfb-7452-8e63-7194c26da938.avro",
+        "summary": {
+          "operation": "append",
+          "added-equality-delete-files": "1",
+          "added-equality-deletes": "109",
+          "pg2iceberg.log-end": "420",
+          "total-data-files": "30",
+          "total-files-size": "345369403",
+          "pg2iceberg.log-group": "default",
+          "pg2iceberg.log-ends": "{\"default\":420}",
+          "total-equality-deletes": "365",
+          "added-records": "102",
+          "added-delete-files": "1",
+          "added-files-size": "498028",
+          "total-delete-files": "4",
+          "total-records": "250354",
+          "total-position-deletes": "0",
+          "added-data-files": "1",
+          "pg2iceberg.log-start": "299"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 2649389774735989192,
+        "parent-snapshot-id": 6119213505971497790,
+        "sequence-number": 28,
+        "timestamp-ms": 1795119794119,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-2649389774735989192-0-01a1f57a-47b0-7f33-b54c-62ec3b41aa9e.avro",
+        "summary": {
+          "operation": "append",
+          "total-position-deletes": "0",
+          "added-equality-delete-files": "1",
+          "added-delete-files": "1",
+          "pg2iceberg.log-ends": "{\"default\":179}",
+          "total-files-size": "344298677",
+          "pg2iceberg.log-end": "179",
+          "total-delete-files": "2",
+          "total-equality-deletes": "151",
+          "total-records": "250148",
+          "pg2iceberg.log-start": "77",
+          "added-data-files": "1",
+          "pg2iceberg.log-group": "default",
+          "added-records": "88",
+          "added-equality-deletes": "86",
+          "added-files-size": "397744",
+          "total-data-files": "28"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 991388313621007355,
+        "parent-snapshot-id": 2976273543888102945,
+        "sequence-number": 14,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-991388313621007355-0-01a1f579-c4d6-7702-8ba6-1735e7181699.avro",
+        "summary": {
+          "operation": "append",
+          "total-records": "140000",
+          "added-data-files": "1",
+          "added-records": "10000",
+          "total-data-files": "14",
+          "total-equality-deletes": "0",
+          "total-delete-files": "0",
+          "total-files-size": "328329728",
+          "added-files-size": "1385450",
+          "total-position-deletes": "0"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 4019937857088301852,
+        "parent-snapshot-id": 3958539345157531888,
+        "sequence-number": 42,
+        "timestamp-ms": 1795119948181,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-4019937857088301852-0-01a1f57c-a17a-7fa1-9585-10d32f471aa0.avro",
+        "summary": {
+          "operation": "append",
+          "added-files-size": "424047",
+          "added-equality-delete-files": "1",
+          "total-position-deletes": "0",
+          "added-records": "103",
+          "added-data-files": "1",
+          "total-records": "251467",
+          "pg2iceberg.log-ends": "{\"default\":1747}",
+          "pg2iceberg.log-start": "1627",
+          "pg2iceberg.log-group": "default",
+          "added-delete-files": "1",
+          "total-delete-files": "16",
+          "total-equality-deletes": "1488",
+          "total-data-files": "42",
+          "total-files-size": "350408363",
+          "pg2iceberg.log-end": "1747",
+          "added-equality-deletes": "104"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 3212429031141297938,
+        "parent-snapshot-id": 9170188530268865530,
+        "sequence-number": 23,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-3212429031141297938-0-01a1f579-c4d6-7702-8ba6-17cddfdfca1f.avro",
+        "summary": {
+          "operation": "append",
+          "added-files-size": "1389313",
+          "total-equality-deletes": "0",
+          "total-delete-files": "0",
+          "total-files-size": "340799879",
+          "total-position-deletes": "0",
+          "total-data-files": "23",
+          "added-data-files": "1",
+          "total-records": "230000",
+          "added-records": "10000"
+        },
+        "schema-id": 0
+      },
+      {
+        "snapshot-id": 240026923268084306,
+        "parent-snapshot-id": 5597322842375488744,
+        "sequence-number": 17,
+        "timestamp-ms": 1795119760598,
+        "manifest-list": "s3://cdclab/warehouse/01a1f579-ae2a-708b-82de-62360ba319ee/metadata/snap-240026923268084306-0-01a1f579-c4d6-7702-8ba6-176fbf37821f.avro",
+        "summary": {
+          "operation": "append",
+          "total-data-files": "17",
+          "total-equality-deletes": "0",
+          "total-position-deletes": "0",
+          "total-files-size": "332485566",
+          "added-data-files": "1",
+          "added-files-size": "1383589",
+          "added-records": "10000",
+          "total-delete-files": "0",
+          "total-records": "170000"
+        },
+        "schema-id": 0
+      }
+    ]
+  }
+}

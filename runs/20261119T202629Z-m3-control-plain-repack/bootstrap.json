@@ -1,0 +1,63 @@
+{
+  "bucket": {
+    "bucket": "cdclab",
+    "stdout": "Bucket created successfully `local/cdclab`.",
+    "ok": true
+  },
+  "lakekeeper": {
+    "action": "bootstrapped",
+    "http_status": 204,
+    "version": "0.15.1",
+    "default_project_id": "00000000-0000-0000-0000-000000000000",
+    "info": {
+      "version": "0.15.1",
+      "lakekeeper-version": "0.15.1",
+      "bootstrapped": true,
+      "server-id": "01a1f57d-64a2-7374-aed3-dee218316fae",
+      "default-project-id": "00000000-0000-0000-0000-000000000000",
+      "authz-backend": "allow-all",
+      "aws-system-identities-enabled": false,
+      "azure-system-identities-enabled": false,
+      "gcp-system-identities-enabled": false,
+      "queues": [
+        "soft_deletion",
+        "tabular_purge",
+        "task_log_cleanup"
+      ],
+      "managed-role-providers": [],
+      "license-status": {
+        "issuer": null,
+        "audience": "lakekeeper-core",
+        "license-type": "Apache-2.0",
+        "valid": true
+      }
+    }
+  },
+  "warehouse": {
+    "action": "created",
+    "warehouse_id": "01a1f57d-772b-75cd-8064-f32d69c7b14e",
+    "warehouse_name": "cdclab",
+    "advertised_endpoint": "http://silo.localhost:19000/",
+    "sts_endpoint": "http://silo.localhost:19000/",
+    "sts_enabled": true
+  },
+  "endpoint_reachability": {
+    "advertised_endpoint": "http://silo.localhost:19000/",
+    "host_probe_url": "http://silo.localhost:19000/minio/health/live",
+    "host_http_status": 200,
+    "container_probe_service": "pg-source",
+    "container_http_line": "HTTP/1.1 200 OK",
+    "both_reachable": true
+  },
+  "source_fixture": {
+    "table": "public.orders",
+    "pg_version": "PostgreSQL 19.0 on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "settings": {
+      "server_version": "19.0",
+      "wal_level": "logical",
+      "max_replication_slots": "16",
+      "max_wal_senders": "16",
+      "max_repack_replication_slots": "5"
+    }
+  }
+}

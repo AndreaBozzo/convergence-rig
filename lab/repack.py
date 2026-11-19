@@ -15,6 +15,7 @@ from lab.pipeline import json_default, utc_now_iso
 from lab.workload import summarize_latency
 
 REPACK_SQL = "REPACK (CONCURRENTLY) public.orders"
+PLAIN_REPACK_SQL = "REPACK public.orders"
 
 
 def capture_table_and_index_sizes(conn: psycopg.Connection[Any]) -> dict[str, Any]:
