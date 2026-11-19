@@ -1,0 +1,6 @@
+run1_single exit_code=1 RESULT: pg2iceberg exited with code 1 while the catalog was down; slot active=false
+run2_single exit_code=1 RESULT: pg2iceberg exited with code 1 while the catalog was down; slot active=false
+run3_single exit_code=1 RESULT: pg2iceberg exited with code 1 while the catalog was down; slot active=false
+run4_split exit_code=0 RESULT: split mode survived catalog outage (stream=running exit=0, materializer=running exit=0); slot active=true; snapshot_advanced=true
+final_down exit_code=0
+post_cleanup p2irepro_containers=0 p2irepro_volumes=0 p2irepro_networks=0 host_containers=14

@@ -1,0 +1,178 @@
+[2026-11-19T23:23:50Z] Mode: single-process (pg2iceberg run)
+[2026-11-19T23:23:50Z] Starting base services (pg-source, lakekeeper-db, silo, lakekeeper-migrate, lakekeeper)...
+bash.exe :  Volume p2irepro_silo_data Creating 
+In riga:14 car:5
++     & $bash $repro *> "$outDir/run${i}_single.log"
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( Volume p2irepro_silo_data Creating :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ Volume p2irepro_lakekeeper_db_data Creating 
+ Volume p2irepro_lakekeeper_db_data Creating 
+ Network p2irepro_p2irepro_net Creating 
+ Network p2irepro_p2irepro_net Creating 
+ Volume p2irepro_silo_data Creating 
+ Volume p2irepro_pg_source_data Creating 
+ Volume p2irepro_pg_source_data Creating 
+ Volume p2irepro_pg_source_data Created 
+ Volume p2irepro_pg_source_data Created 
+ Volume p2irepro_lakekeeper_db_data Created 
+ Volume p2irepro_lakekeeper_db_data Created 
+ Volume p2irepro_silo_data Created 
+ Volume p2irepro_silo_data Created 
+ Network p2irepro_p2irepro_net Created 
+ Network p2irepro_p2irepro_net Created 
+ Container p2irepro-silo-1 Creating 
+ Container p2irepro-pg-source-1 Creating 
+ Container p2irepro-lakekeeper-db-1 Creating 
+ Container p2irepro-silo-1 Created 
+ Container p2irepro-pg-source-1 Created 
+ Container p2irepro-lakekeeper-db-1 Created 
+ Container p2irepro-lakekeeper-migrate-1 Creating 
+ Container p2irepro-lakekeeper-migrate-1 Created 
+ Container p2irepro-lakekeeper-1 Creating 
+ Container p2irepro-lakekeeper-1 Created 
+ Container p2irepro-lakekeeper-db-1 Starting 
+ Container p2irepro-silo-1 Starting 
+ Container p2irepro-pg-source-1 Starting 
+ Container p2irepro-lakekeeper-db-1 Started 
+ Container p2irepro-lakekeeper-db-1 Waiting 
+ Container p2irepro-silo-1 Started 
+ Container p2irepro-silo-1 Waiting 
+ Container p2irepro-pg-source-1 Started 
+ Container p2irepro-lakekeeper-db-1 Healthy 
+ Container p2irepro-lakekeeper-migrate-1 Starting 
+ Container p2irepro-lakekeeper-migrate-1 Started 
+ Container p2irepro-lakekeeper-migrate-1 Waiting 
+ Container p2irepro-silo-1 Healthy 
+ Container p2irepro-lakekeeper-migrate-1 Exited 
+ Container p2irepro-lakekeeper-1 Starting 
+ Container p2irepro-lakekeeper-1 Started 
+ Container p2irepro-silo-1 Waiting 
+ Container p2irepro-lakekeeper-1 Waiting 
+ Container p2irepro-pg-source-1 Waiting 
+ Container p2irepro-lakekeeper-db-1 Waiting 
+ Container p2irepro-lakekeeper-migrate-1 Waiting 
+ Container p2irepro-lakekeeper-migrate-1 Exited 
+ Container p2irepro-lakekeeper-db-1 Healthy 
+ Container p2irepro-pg-source-1 Healthy 
+ Container p2irepro-silo-1 Healthy 
+ Container p2irepro-lakekeeper-1 Healthy 
+[2026-11-19T23:24:00Z] Creating S3 bucket 'repro' in Silo (idempotent)...
+Bucket created successfully `local/repro`.
+[2026-11-19T23:24:00Z] Bootstrapping Lakekeeper at http://127.0.0.1:28181 (idempotent)...
+[2026-11-19T23:24:00Z] Lakekeeper bootstrapped.
+[2026-11-19T23:24:00Z] Creating Lakekeeper warehouse 'repro' pointing at http://silo:9000 (idempotent)...
+[2026-11-19T23:24:00Z] Warehouse 'repro' ready (prefix=01a1f61f-c921-7506-aa63-631f2e4f66a8).
+[2026-11-19T23:24:00Z] Creating table public.items with primary key and inserting initial rows...
+CREATE TABLE
+INSERT 0 5
+[2026-11-19T23:24:01Z] Starting pg2iceberg (single-process run mode)...
+ Container p2irepro-lakekeeper-db-1 Running 
+ Container p2irepro-pg-source-1 Running 
+ Container p2irepro-silo-1 Running 
+ Container p2irepro-lakekeeper-1 Running 
+ Container p2irepro-pg2iceberg-1 Creating 
+ Container p2irepro-pg2iceberg-1 Created 
+ Container p2irepro-lakekeeper-db-1 Waiting 
+ Container p2irepro-silo-1 Waiting 
+ Container p2irepro-pg-source-1 Waiting 
+ Container p2irepro-pg-source-1 Healthy 
+ Container p2irepro-lakekeeper-db-1 Healthy 
+ Container p2irepro-lakekeeper-migrate-1 Starting 
+ Container p2irepro-silo-1 Healthy 
+ Container p2irepro-lakekeeper-migrate-1 Started 
+ Container p2irepro-lakekeeper-migrate-1 Waiting 
+ Container p2irepro-lakekeeper-migrate-1 Exited 
+ Container p2irepro-lakekeeper-1 Waiting 
+ Container p2irepro-lakekeeper-1 Healthy 
+ Container p2irepro-pg2iceberg-1 Starting 
+ Container p2irepro-pg2iceberg-1 Started 
+[2026-11-19T23:24:02Z] Waiting until a snapshot exists in Lakekeeper for public.items...
+[2026-11-19T23:24:05Z] Initial snapshot observed in Lakekeeper: current-snapshot-id=5510159476300396904
+[2026-11-19T23:24:05Z] pg_replication_slots:
+    slot_name    | slot_type | active | restart_lsn | confirmed_flush_lsn 
+-----------------+-----------+--------+-------------+---------------------
+ pg2iceberg_slot | logical   | t      | 0/19B0320   | 0/19B0770
+(1 row)
+
+[2026-11-19T23:24:05Z] Stopping Lakekeeper...
+ Container p2irepro-lakekeeper-1 Stopping 
+ Container p2irepro-lakekeeper-1 Stopped 
+[2026-11-19T23:24:05Z] Inserting more rows and an update into public.items while Lakekeeper is stopped...
+INSERT 0 5
+UPDATE 1
+[2026-11-19T23:24:06Z] Waiting 30 s while Lakekeeper is down...
+[2026-11-19T23:24:36Z] === State while Lakekeeper is down ===
+[2026-11-19T23:24:37Z] docker inspect pg2iceberg: status=exited running=false exit_code=1 finished_at=2026-11-19T23:24:18.922960593Z
+[2026-11-19T23:24:37Z] last log lines (pg2iceberg):
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.267106Z","level":"INFO","message":"reading config","path":"/etc/pg2iceberg/config.yaml","target":"pg2iceberg::config"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.269218Z","level":"INFO","message":"serving /metrics, /healthz and /readyz","addr":"0.0.0.0:9090","target":"pg2iceberg::telemetry"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.291866Z","level":"WARN","message":"vended-router: table not yet in catalog at startup; will be registered lazily once `materializer.register_table` creates it","ident":"public.items","target":"pg2iceberg_iceberg::prod::vended"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.291929Z","level":"INFO","message":"vended-credentials S3 router built (per-table object stores)","tables":1,"target":"pg2iceberg::run"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.306963Z","level":"INFO","message":"NOTICE: column \"flushable_lsn\" of relation \"log_index\" already exists, skipping","log.target":"tokio_postgres::connection","log.module_path":"tokio_postgres::connection","log.file":"/usr/local/cargo/git/checkouts/rust-postgres-c2560d49ee2b8b43/31acf55/tokio-postgres/src/connection.rs","log.line":358,"target":"tokio_postgres::connection"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.340609Z","level":"INFO","message":"discovering schema from PG","table":"public.items","target":"pg2iceberg::setup"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.345491Z","level":"INFO","message":"entering replication lifecycle","target":"pg2iceberg::run"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.345903Z","level":"INFO","message":"source cluster fingerprinted","system_id":7710027355283820582,"target":"pg2iceberg_validate::runtime","span":{"name":"startup"},"spans":[{"name":"startup"}]}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.387921Z","level":"INFO","message":"replication slot created","slot":"pg2iceberg_slot","cp":"Lsn(26936152)","target":"pg2iceberg_validate::runtime","span":{"name":"startup"},"spans":[{"name":"startup"}]}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.465242Z","level":"INFO","message":"Using Static credential provider","target":"object_store::aws::builder","span":{"op":"register_table","otel.kind":"client","otel.name":"object_store.register_table","store":"object_store","name":"request"},"spans":[{"name":"startup"},{"op":"register_table","otel.kind":"client","otel.name":"object_store.register_table","store":"object_store","name":"request"}]}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.470375Z","level":"INFO","message":"vended-router: table registered","ident":"public.items","target":"pg2iceberg_iceberg::prod::vended","span":{"op":"register_table","otel.kind":"client","otel.name":"object_store.register_table","store":"object_store","name":"request"},"spans":[{"name":"startup"},{"op":"register_table","otel.kind":"client","otel.name":"object_store.register_table","store":"object_store","name":"request"}]}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.486998Z","level":"INFO","message":"tables registered","count":1,"target":"pg2iceberg_validate::runtime","span":{"name":"startup"},"spans":[{"name":"startup"}]}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.492467Z","level":"INFO","message":"snapshot phase starting","count":1,"snap_lsn":"Lsn(26937200)","target":"pg2iceberg_validate::runtime","span":{"name":"startup"},"spans":[{"name":"startup"}]}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.586776Z","level":"INFO","message":"snapshot phase complete","snapshot_lsn":"Lsn(26937200)","target":"pg2iceberg_validate::runtime","span":{"name":"startup"},"spans":[{"name":"startup"}]}
+pg2iceberg-1  | Error: logical lifecycle
+pg2iceberg-1  | 
+pg2iceberg-1  | Caused by:
+pg2iceberg-1  |     0: materializer.cycle: catalog: other: catalog: other: Unexpected => Failed to execute http request, source: error sending request for url (http://lakekeeper:8181/catalog/v1/01a1f61f-c921-7506-aa63-631f2e4f66a8/namespaces/public/tables/items)
+pg2iceberg-1  |     1: catalog: other: catalog: other: Unexpected => Failed to execute http request, source: error sending request for url (http://lakekeeper:8181/catalog/v1/01a1f61f-c921-7506-aa63-631f2e4f66a8/namespaces/public/tables/items)
+pg2iceberg-1  |     2: other: catalog: other: Unexpected => Failed to execute http request, source: error sending request for url (http://lakekeeper:8181/catalog/v1/01a1f61f-c921-7506-aa63-631f2e4f66a8/namespaces/public/tables/items)
+[2026-11-19T23:24:37Z] pg_replication_slots:
+    slot_name    | slot_type | active | restart_lsn | confirmed_flush_lsn 
+-----------------+-----------+--------+-------------+---------------------
+ pg2iceberg_slot | logical   | f      | 0/19B1638   | 0/19B1670
+(1 row)
+
+[2026-11-19T23:24:37Z] Observed while down: status=exited exit_code=1 slot_active=false
+[2026-11-19T23:24:37Z] Starting Lakekeeper...
+ Container p2irepro-silo-1 Waiting 
+ Container p2irepro-lakekeeper-db-1 Waiting 
+ Container p2irepro-silo-1 Healthy 
+ Container p2irepro-lakekeeper-db-1 Healthy 
+ Container p2irepro-lakekeeper-migrate-1 Starting 
+ Container p2irepro-lakekeeper-migrate-1 Started 
+ Container p2irepro-lakekeeper-migrate-1 Waiting 
+ Container p2irepro-lakekeeper-migrate-1 Exited 
+ Container p2irepro-lakekeeper-1 Starting 
+ Container p2irepro-lakekeeper-1 Started 
+[2026-11-19T23:24:38Z] Waiting 30 s after starting Lakekeeper...
+[2026-11-19T23:25:09Z] === State after Lakekeeper returned ===
+[2026-11-19T23:25:09Z] docker inspect pg2iceberg: status=exited running=false exit_code=1 finished_at=2026-11-19T23:24:18.922960593Z
+[2026-11-19T23:25:09Z] last log lines (pg2iceberg):
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.267106Z","level":"INFO","message":"reading config","path":"/etc/pg2iceberg/config.yaml","target":"pg2iceberg::config"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.269218Z","level":"INFO","message":"serving /metrics, /healthz and /readyz","addr":"0.0.0.0:9090","target":"pg2iceberg::telemetry"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.291866Z","level":"WARN","message":"vended-router: table not yet in catalog at startup; will be registered lazily once `materializer.register_table` creates it","ident":"public.items","target":"pg2iceberg_iceberg::prod::vended"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.291929Z","level":"INFO","message":"vended-credentials S3 router built (per-table object stores)","tables":1,"target":"pg2iceberg::run"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.306963Z","level":"INFO","message":"NOTICE: column \"flushable_lsn\" of relation \"log_index\" already exists, skipping","log.target":"tokio_postgres::connection","log.module_path":"tokio_postgres::connection","log.file":"/usr/local/cargo/git/checkouts/rust-postgres-c2560d49ee2b8b43/31acf55/tokio-postgres/src/connection.rs","log.line":358,"target":"tokio_postgres::connection"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.340609Z","level":"INFO","message":"discovering schema from PG","table":"public.items","target":"pg2iceberg::setup"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.345491Z","level":"INFO","message":"entering replication lifecycle","target":"pg2iceberg::run"}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.345903Z","level":"INFO","message":"source cluster fingerprinted","system_id":7710027355283820582,"target":"pg2iceberg_validate::runtime","span":{"name":"startup"},"spans":[{"name":"startup"}]}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.387921Z","level":"INFO","message":"replication slot created","slot":"pg2iceberg_slot","cp":"Lsn(26936152)","target":"pg2iceberg_validate::runtime","span":{"name":"startup"},"spans":[{"name":"startup"}]}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.465242Z","level":"INFO","message":"Using Static credential provider","target":"object_store::aws::builder","span":{"op":"register_table","otel.kind":"client","otel.name":"object_store.register_table","store":"object_store","name":"request"},"spans":[{"name":"startup"},{"op":"register_table","otel.kind":"client","otel.name":"object_store.register_table","store":"object_store","name":"request"}]}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.470375Z","level":"INFO","message":"vended-router: table registered","ident":"public.items","target":"pg2iceberg_iceberg::prod::vended","span":{"op":"register_table","otel.kind":"client","otel.name":"object_store.register_table","store":"object_store","name":"request"},"spans":[{"name":"startup"},{"op":"register_table","otel.kind":"client","otel.name":"object_store.register_table","store":"object_store","name":"request"}]}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.486998Z","level":"INFO","message":"tables registered","count":1,"target":"pg2iceberg_validate::runtime","span":{"name":"startup"},"spans":[{"name":"startup"}]}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.492467Z","level":"INFO","message":"snapshot phase starting","count":1,"snap_lsn":"Lsn(26937200)","target":"pg2iceberg_validate::runtime","span":{"name":"startup"},"spans":[{"name":"startup"}]}
+pg2iceberg-1  | {"timestamp":"2026-11-19T23:24:02.586776Z","level":"INFO","message":"snapshot phase complete","snapshot_lsn":"Lsn(26937200)","target":"pg2iceberg_validate::runtime","span":{"name":"startup"},"spans":[{"name":"startup"}]}
+pg2iceberg-1  | Error: logical lifecycle
+pg2iceberg-1  | 
+pg2iceberg-1  | Caused by:
+pg2iceberg-1  |     0: materializer.cycle: catalog: other: catalog: other: Unexpected => Failed to execute http request, source: error sending request for url (http://lakekeeper:8181/catalog/v1/01a1f61f-c921-7506-aa63-631f2e4f66a8/namespaces/public/tables/items)
+pg2iceberg-1  |     1: catalog: other: catalog: other: Unexpected => Failed to execute http request, source: error sending request for url (http://lakekeeper:8181/catalog/v1/01a1f61f-c921-7506-aa63-631f2e4f66a8/namespaces/public/tables/items)
+pg2iceberg-1  |     2: other: catalog: other: Unexpected => Failed to execute http request, source: error sending request for url (http://lakekeeper:8181/catalog/v1/01a1f61f-c921-7506-aa63-631f2e4f66a8/namespaces/public/tables/items)
+[2026-11-19T23:25:09Z] pg_replication_slots:
+    slot_name    | slot_type | active | restart_lsn | confirmed_flush_lsn 
+-----------------+-----------+--------+-------------+---------------------
+ pg2iceberg_slot | logical   | f      | 0/19B1638   | 0/19B1670
+(1 row)
+
+[2026-11-19T23:25:10Z] Observed after return: status=exited exit_code=1 slot_active=false current-snapshot-id=5510159476300396904
+RESULT: pg2iceberg exited with code 1 while the catalog was down; slot active=false

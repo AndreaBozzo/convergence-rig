@@ -4,9 +4,9 @@ Local draft only (not submitted upstream).
 
 ## Summary
 
-In `polynyadev/pg2iceberg:0.12.0`, single-process `pg2iceberg run` terminates with exit code `1` on the first `materializer.cycle()` that encounters an unreachable Iceberg REST catalog (for example a 60-second Lakekeeper restart). Terminating the process stops WAL staging and disconnects the PostgreSQL logical replication slot, even though staging to object storage and `_pg2iceberg.log_index` was succeeding using cached vended credentials.
+In `polynyadev/pg2iceberg:0.12.0`, single-process `pg2iceberg run` terminates with exit code `1` on the first `materializer.cycle()` that encounters an unreachable Iceberg REST catalog (for example a brief Lakekeeper restart). Terminating the process stops WAL staging and disconnects the PostgreSQL logical replication slot (`pg_replication_slots.active = false`), even though staging to object storage and `_pg2iceberg.log_index` was succeeding using cached vended credentials.
 
-By contrast, `pg2iceberg` distributed `materializer-only` mode logs a warning and retries on the next interval (`crates/pg2iceberg/src/run.rs:478-484`), and `docs/architecture/materializer.md` states:
+By contrast, `pg2iceberg` split mode (`stream-only` plus `materializer-only --worker-id worker-1`, using the same `pg2iceberg.yaml`) survives the same outage: `stream-only` keeps the replication slot active, `materializer-only` logs a warning and retries on the next interval (`crates/pg2iceberg/src/run.rs:478-484`), and a new Iceberg snapshot is committed automatically once the catalog returns. `docs/architecture/materializer.md` also states:
 
 > A table that fails doesn't stop the others; the cycle reports the failure once they're done, and the next cycle takes the table up again.
 
@@ -16,21 +16,60 @@ By contrast, `pg2iceberg` distributed `materializer-only` mode logs a warning an
 - `crates/pg2iceberg-validate/src/runtime.rs:1404` (`Ticks::finish`): comment states `// cycle failure is fatal (propagates); compaction failure is ...`, causing `run_logical_lifecycle` to return `Err(LifecycleError::Materialize(...))`, which exits `pg2iceberg run` with status `1`.
 - `crates/pg2iceberg/src/run.rs:478-484` (`run_materializer_only`): catches `Err(e)` from `materializer.cycle().await`, logs `tracing::warn!(error = %e, "materializer cycle failed; will retry next interval")`, and keeps the worker alive.
 
-## Minimal reproduction observed in this lab
+## Standalone reproduction
 
-- Environment: PostgreSQL `19.0`, `polynyadev/pg2iceberg:0.12.0` (`sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b`), Lakekeeper `v0.15.1`, Silo `RELEASE.2026-09-03T13-18-01Z`.
-- Evidence runs: `runs/20261119T210838Z-l3-catalog-outage/` and `runs/20261119T212047Z-l3-catalog-outage-recovery/`.
-- Steps:
-  1. Start `pg2iceberg run` in single-process logical mode (`flush_interval: 2s`, `credential_mode: vended`) under a steady `10 ops/s` write workload.
-  2. Stop Lakekeeper for `60 s` while PostgreSQL continues accepting writes.
-  3. Observe `_pg2iceberg.log_seq` advance for ~`10 s` (`+5` staged log files uploaded to S3), followed by process exit code `1` on the first materializer tick:
-     ```text
-     Error: logical lifecycle
+A self-contained reproduction requiring only Docker Compose, `curl`, and POSIX `/bin/sh` is in [`repro/pg2iceberg-catalog-outage/`](../repro/pg2iceberg-catalog-outage/) (`docker-compose.yml`, `pg2iceberg.yaml`, `repro.sh`, `README.md`). It uses only public multi-arch images pinned by digest: PostgreSQL 17 (`postgres:17-bookworm`), Lakekeeper `v0.15.1`, Silo (`RELEASE.2026-09-03T13-18-01Z`), and `polynyadev/pg2iceberg:0.12.0`.
 
-     Caused by:
-         0: materializer.cycle: catalog: other: catalog: other: Unexpected => Failed to execute http request, source: error sending request for url (http://lakekeeper:8181/catalog/v1/<warehouse-id>/namespaces/public/tables/orders)
-     ```
-  4. Restarting `pg2iceberg` after Lakekeeper returns healthy resumes cleanly from `pg2iceberg_slot` and `_pg2iceberg.log_index` with zero row loss or duplication, leaving `2` uncommitted Parquet files (from the aborted pre-crash commit) in S3 for orphan cleanup.
+Run from `repro/pg2iceberg-catalog-outage/`:
+
+```sh
+./repro.sh down
+./repro.sh
+```
+
+What it does: starts the stack and bootstraps bucket and warehouse `repro`; creates `public.items` with a primary key and inserts 5 rows; starts `pg2iceberg run` and waits for the first Iceberg snapshot in Lakekeeper; stops `lakekeeper`, inserts 5 rows and updates 1 row, and waits 30 s; prints `docker inspect`, the last 25 log lines of `pg2iceberg`, and `pg_replication_slots`; starts `lakekeeper`, waits 30 s, and prints the same checks again.
+
+Exact output observed across 3 of 3 clean runs (`runs/20261119T232348Z-r1-catalog-outage-repro/`):
+
+```text
+Error: logical lifecycle
+
+Caused by:
+    0: materializer.cycle: catalog: other: catalog: other: Unexpected => Failed to execute http request, source: error sending request for url (http://lakekeeper:8181/catalog/v1/<warehouse-id>/namespaces/public/tables/items)
+```
+
+```text
+RESULT: pg2iceberg exited with code 1 while the catalog was down; slot active=false
+```
+
+`repro.sh` exits with status `1` when the fatal exit reproduces and `0` if `pg2iceberg` stays running across the outage.
+
+### Split-mode comparison with the same `pg2iceberg.yaml`
+
+Running the same steps with `stream-only` and `materializer-only --worker-id worker-1`:
+
+```sh
+./repro.sh down
+./repro.sh split
+```
+
+Exact output observed (`exit 0`):
+
+```text
+RESULT: split mode survived catalog outage (stream=running exit=0, materializer=running exit=0); slot active=true; snapshot_advanced=true
+```
+
+Note on split-mode startup: starting `stream-only` and `materializer-only` simultaneously against an empty catalog can fail `materializer-only` during startup with `Error: register public.items` / `catalog: conflict: TableAlreadyExists`. `repro.sh split` starts `stream-only` until the initial snapshot exists, then starts `materializer-only`.
+
+Cleanup removes only Compose project `p2irepro`:
+
+```sh
+./repro.sh down
+```
+
+### Additional lab evidence
+
+Full workload runs (`25,000` rows, `10 ops/s`, `60 s` Lakekeeper outage on PostgreSQL 19.0) are preserved under `runs/20261119T210838Z-l3-catalog-outage/` and `runs/20261119T212047Z-l3-catalog-outage-recovery/`. Restarting `pg2iceberg` after Lakekeeper returned resumed cleanly from `pg2iceberg_slot` and `_pg2iceberg.log_index` with zero row loss or duplication, leaving `2` uncommitted Parquet files (from the aborted pre-crash commit) in object storage for orphan cleanup.
 
 ## Suggested upstream improvement
 

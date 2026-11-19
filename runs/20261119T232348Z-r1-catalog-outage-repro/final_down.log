@@ -1,0 +1,44 @@
+[2026-11-19T23:29:24Z] Removing Compose project 'p2irepro' (containers, volumes, networks)...
+bash.exe :  Container p2irepro-pg2iceberg-stream-1 Stopping 
+In riga:30 car:1
++ & $bash $repro down *> "$outDir/final_down.log"
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( Container p2ir...eam-1 Stopping :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ Container p2irepro-pg2iceberg-materializer-1 Stopping 
+ Container p2irepro-pg2iceberg-stream-1 Stopped 
+ Container p2irepro-pg2iceberg-stream-1 Removing 
+ Container p2irepro-pg2iceberg-stream-1 Removed 
+ Container p2irepro-pg2iceberg-materializer-1 Stopped 
+ Container p2irepro-pg2iceberg-materializer-1 Removing 
+ Container p2irepro-pg2iceberg-materializer-1 Removed 
+ Container p2irepro-pg-source-1 Stopping 
+ Container p2irepro-lakekeeper-1 Stopping 
+ Container p2irepro-lakekeeper-1 Stopped 
+ Container p2irepro-lakekeeper-1 Removing 
+ Container p2irepro-lakekeeper-1 Removed 
+ Container p2irepro-lakekeeper-migrate-1 Stopping 
+ Container p2irepro-silo-1 Stopping 
+ Container p2irepro-lakekeeper-migrate-1 Stopped 
+ Container p2irepro-lakekeeper-migrate-1 Removing 
+ Container p2irepro-lakekeeper-migrate-1 Removed 
+ Container p2irepro-lakekeeper-db-1 Stopping 
+ Container p2irepro-pg-source-1 Stopped 
+ Container p2irepro-pg-source-1 Removing 
+ Container p2irepro-pg-source-1 Removed 
+ Container p2irepro-silo-1 Stopped 
+ Container p2irepro-silo-1 Removing 
+ Container p2irepro-silo-1 Removed 
+ Container p2irepro-lakekeeper-db-1 Stopped 
+ Container p2irepro-lakekeeper-db-1 Removing 
+ Container p2irepro-lakekeeper-db-1 Removed 
+ Volume p2irepro_lakekeeper_db_data Removing 
+ Volume p2irepro_pg_source_data Removing 
+ Volume p2irepro_silo_data Removing 
+ Network p2irepro_p2irepro_net Removing 
+ Volume p2irepro_pg_source_data Removed 
+ Volume p2irepro_lakekeeper_db_data Removed 
+ Volume p2irepro_silo_data Removed 
+ Network p2irepro_p2irepro_net Removed 
+[2026-11-19T23:29:26Z] Project 'p2irepro' removed.
