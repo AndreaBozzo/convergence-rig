@@ -1,7 +1,9 @@
 [project]
-name = "cdc-convergence-lab"
+name = "convergence-rig"
 version = "0.1.0"
-description = "PostgreSQL 19 -> pg2iceberg -> Lakekeeper -> DuckDB CDC convergence lab"
+description = "A local CDC test rig for exact row convergence under disruption"
+license = "MIT OR Apache-2.0"
+license-files = ["LICENSE-MIT", "LICENSE-APACHE"]
 requires-python = ">=3.12,<3.15"
 dependencies = [
     "duckdb>=1.2",
