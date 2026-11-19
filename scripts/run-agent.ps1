@@ -7,6 +7,12 @@
 #   pwsh scripts/run-agent.ps1 -Model gemini-4-neon-xhigh
 #
 # Logs: agent-runs/<timestamp>-<milestone>.json (agy's JSON envelope) and .err.
+#
+# Permissions: agy runs in its default headless mode (auto), where Google's
+# safety monitor approves each command. agy 1.5.12 loads the deny list in
+# .agy/settings.json but did not enforce it in any mode tested on 2026-11-19
+# (auto, accept-edits, sandbox); the real limits are AGENTS.md and the absence
+# of a git remote. Its sandbox blocks Docker, so it cannot run this lab.
 param(
     [string[]]$Milestones = @('M0', 'M1', 'M2', 'M3'),
     [string]$Model = 'gemini-4-neon-high',
