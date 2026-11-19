@@ -1,0 +1,154 @@
+name: cdclab
+
+services:
+  pg-source:
+    build:
+      context: ./postgres19
+      dockerfile: Dockerfile
+    image: cdclab/postgres:19.0
+    environment:
+      POSTGRES_USER: ${PG_SOURCE_USER:-postgres}
+      POSTGRES_PASSWORD: ${PG_SOURCE_PASSWORD:-cdclab_pg_pass}
+      POSTGRES_DB: ${PG_SOURCE_DB:-cdclab}
+    command:
+      - -c
+      - wal_level=logical
+      - -c
+      - max_replication_slots=16
+      - -c
+      - max_wal_senders=16
+      - -c
+      - max_repack_replication_slots=5
+    ports:
+      - "127.0.0.1:${PG_SOURCE_PORT:-15432}:5432"
+    volumes:
+      - pg_source_data:/var/lib/postgresql/19/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${PG_SOURCE_USER:-postgres} -d ${PG_SOURCE_DB:-cdclab}"]
+      interval: 2s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+    networks:
+      - cdclab_net
+
+  lakekeeper-db:
+    image: postgres:17-bookworm@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423
+    environment:
+      POSTGRES_USER: ${LAKEKEEPER_DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${LAKEKEEPER_DB_PASSWORD:-cdclab_lk_pass}
+      POSTGRES_DB: ${LAKEKEEPER_DB_NAME:-lakekeeper}
+    volumes:
+      - lakekeeper_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${LAKEKEEPER_DB_USER:-postgres} -d ${LAKEKEEPER_DB_NAME:-lakekeeper}"]
+      interval: 2s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+    networks:
+      - cdclab_net
+
+  silo:
+    image: pgsty/silo:RELEASE.2026-09-03T13-18-01Z@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30
+    command:
+      - server
+      - /data
+      - --address
+      - ":${SILO_PORT:-19000}"
+      - --console-address
+      - ":9001"
+    environment:
+      MINIO_ROOT_USER: ${SILO_ROOT_USER:-cdclab-silo-user}
+      MINIO_ROOT_PASSWORD: ${SILO_ROOT_PASSWORD:-cdclab-silo-pass}
+      MINIO_REGION_NAME: ${SILO_REGION:-local-01}
+    ports:
+      - "127.0.0.1:${SILO_PORT:-19000}:${SILO_PORT:-19000}"
+      - "127.0.0.1:${SILO_CONSOLE_PORT:-19001}:9001"
+    volumes:
+      - silo_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "mc alias set health http://127.0.0.1:${SILO_PORT:-19000} ${SILO_ROOT_USER:-cdclab-silo-user} ${SILO_ROOT_PASSWORD:-cdclab-silo-pass} >/dev/null 2>&1 && mc ready health >/dev/null 2>&1"]
+      interval: 2s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+    networks:
+      cdclab_net:
+        aliases:
+          - silo.localhost
+
+  lakekeeper-migrate:
+    image: quay.io/lakekeeper/catalog:v0.15.1@sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54
+    command: ["migrate"]
+    restart: "no"
+    environment:
+      LAKEKEEPER__PG_ENCRYPTION_KEY: ${LAKEKEEPER_ENCRYPTION_KEY:-cdclab-synthetic-encryption-key-not-for-prod}
+      LAKEKEEPER__PG_DATABASE_URL_READ: postgresql://${LAKEKEEPER_DB_USER:-postgres}:${LAKEKEEPER_DB_PASSWORD:-cdclab_lk_pass}@lakekeeper-db:5432/${LAKEKEEPER_DB_NAME:-lakekeeper}
+      LAKEKEEPER__PG_DATABASE_URL_WRITE: postgresql://${LAKEKEEPER_DB_USER:-postgres}:${LAKEKEEPER_DB_PASSWORD:-cdclab_lk_pass}@lakekeeper-db:5432/${LAKEKEEPER_DB_NAME:-lakekeeper}
+      RUST_LOG: info
+    depends_on:
+      lakekeeper-db:
+        condition: service_healthy
+    networks:
+      - cdclab_net
+
+  lakekeeper:
+    image: quay.io/lakekeeper/catalog:v0.15.1@sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54
+    command: ["serve"]
+    environment:
+      LAKEKEEPER__PG_ENCRYPTION_KEY: ${LAKEKEEPER_ENCRYPTION_KEY:-cdclab-synthetic-encryption-key-not-for-prod}
+      LAKEKEEPER__PG_DATABASE_URL_READ: postgresql://${LAKEKEEPER_DB_USER:-postgres}:${LAKEKEEPER_DB_PASSWORD:-cdclab_lk_pass}@lakekeeper-db:5432/${LAKEKEEPER_DB_NAME:-lakekeeper}
+      LAKEKEEPER__PG_DATABASE_URL_WRITE: postgresql://${LAKEKEEPER_DB_USER:-postgres}:${LAKEKEEPER_DB_PASSWORD:-cdclab_lk_pass}@lakekeeper-db:5432/${LAKEKEEPER_DB_NAME:-lakekeeper}
+      RUST_LOG: info
+    ports:
+      - "127.0.0.1:${LAKEKEEPER_PORT:-18181}:8181"
+    depends_on:
+      lakekeeper-migrate:
+        condition: service_completed_successfully
+      lakekeeper-db:
+        condition: service_healthy
+      silo:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "/home/nonroot/lakekeeper", "healthcheck"]
+      interval: 2s
+      timeout: 10s
+      retries: 20
+      start_period: 3s
+    networks:
+      - cdclab_net
+
+  pg2iceberg:
+    image: polynyadev/pg2iceberg:0.12.0@sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b
+    profiles: ["connector"]
+    command: ["run", "--config", "/etc/pg2iceberg/config.yaml"]
+    environment:
+      PG_SOURCE_USER: ${PG_SOURCE_USER:-postgres}
+      PG_SOURCE_PASSWORD: ${PG_SOURCE_PASSWORD:-cdclab_pg_pass}
+      PG_SOURCE_DB: ${PG_SOURCE_DB:-cdclab}
+      LAKEKEEPER_WAREHOUSE: ${LAKEKEEPER_WAREHOUSE:-cdclab}
+      LAKEKEEPER_NAMESPACE: ${LAKEKEEPER_NAMESPACE:-public}
+      SILO_REGION: ${SILO_REGION:-local-01}
+      PG2ICEBERG_LOG_FORMAT: json
+    ports:
+      - "127.0.0.1:${PG2ICEBERG_METRICS_PORT:-19090}:9090"
+    volumes:
+      - ./pg2iceberg.yaml:/etc/pg2iceberg/config.yaml:ro
+    depends_on:
+      pg-source:
+        condition: service_healthy
+      lakekeeper:
+        condition: service_healthy
+      silo:
+        condition: service_healthy
+    networks:
+      - cdclab_net
+
+volumes:
+  pg_source_data:
+  lakekeeper_db_data:
+  silo_data:
+
+networks:
+  cdclab_net:

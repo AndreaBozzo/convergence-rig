@@ -1,0 +1,353 @@
+{
+  "milestone": "M0",
+  "outcome": "converged",
+  "passed": true,
+  "completed_at_utc": "2026-11-19T18:29:18.614661Z",
+  "host": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python_version": "3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "config": {
+    "compose_project": "cdclab",
+    "pg_source_host": "127.0.0.1",
+    "pg_source_port": 15432,
+    "pg_source_db": "cdclab",
+    "lakekeeper_base_url": "http://127.0.0.1:18181",
+    "lakekeeper_catalog_url": "http://127.0.0.1:18181/catalog",
+    "lakekeeper_warehouse": "cdclab",
+    "lakekeeper_namespace": "public",
+    "silo_port": 19000,
+    "silo_advertised_endpoint": "http://silo.localhost:19000",
+    "silo_bucket": "cdclab",
+    "silo_region": "local-01",
+    "pg2iceberg_metrics_port": 19090
+  },
+  "commands_executed": [
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector up -d pg2iceberg",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector down -v --remove-orphans"
+  ],
+  "container_digests": [
+    {
+      "service": "lakekeeper",
+      "container_name": "cdclab-lakekeeper-1",
+      "image_ref": "quay.io/lakekeeper/catalog:v0.15.1@sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54",
+      "image_id": "sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54",
+      "repo_digests": [
+        "quay.io/lakekeeper/catalog@sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "lakekeeper-db",
+      "container_name": "cdclab-lakekeeper-db-1",
+      "image_ref": "postgres:17-bookworm@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "image_id": "sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "repo_digests": [
+        "postgres@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "pg-source",
+      "container_name": "cdclab-pg-source-1",
+      "image_ref": "cdclab/postgres:19.0",
+      "image_id": "sha256:8702cad789b7630a1ac0650b8358197bc79844aa302731392175f98cd8225a05",
+      "repo_digests": [
+        "cdclab/postgres@sha256:8702cad789b7630a1ac0650b8358197bc79844aa302731392175f98cd8225a05"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "pg2iceberg",
+      "container_name": "cdclab-pg2iceberg-1",
+      "image_ref": "polynyadev/pg2iceberg:0.12.0@sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b",
+      "image_id": "sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b",
+      "repo_digests": [
+        "polynyadev/pg2iceberg@sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "silo",
+      "container_name": "cdclab-silo-1",
+      "image_ref": "pgsty/silo:RELEASE.2026-09-03T13-18-01Z@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "image_id": "sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "repo_digests": [
+        "pgsty/silo@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    }
+  ],
+  "reader_versions": {
+    "duckdb": "2.0.0",
+    "extensions": [
+      {
+        "name": "httpfs",
+        "loaded": true,
+        "installed": true,
+        "version": "77392a7207",
+        "install_mode": "REPOSITORY"
+      },
+      {
+        "name": "iceberg",
+        "loaded": true,
+        "installed": true,
+        "version": "4c0c0874c4",
+        "install_mode": "REPOSITORY"
+      },
+      {
+        "name": "parquet",
+        "loaded": true,
+        "installed": true,
+        "version": "v2.0.0",
+        "install_mode": "STATICALLY_LINKED"
+      }
+    ]
+  },
+  "resources_after_pre_clean": {
+    "containers": [],
+    "volumes": [],
+    "networks": []
+  },
+  "connector_ready": {
+    "slot_name": "pg2iceberg_slot",
+    "plugin": "pgoutput",
+    "slot_type": "logical",
+    "active": true,
+    "restart_lsn": "0/01C52880",
+    "confirmed_flush_lsn": "0/01C52CD0",
+    "healthz_status": 200
+  },
+  "load_table_advertised_s3_endpoint": "http://silo.localhost:19000/",
+  "step2_insert": {
+    "commit_utc": "2026-11-19T18:28:54.800207Z",
+    "visible_ms": 14174.33,
+    "snapshot_id": 1727757835870596850,
+    "expected_rows": [
+      {
+        "id": 1,
+        "status": "created",
+        "amount": "12345678901234567890123456789.123456789",
+        "updated_at": "2026-11-19T18:00:00.123456+00:00",
+        "note": "first row",
+        "payload": {
+          "k": "v1",
+          "n": 1
+        },
+        "discount": "1E-9"
+      },
+      {
+        "id": 2,
+        "status": "created",
+        "amount": "42.500000000",
+        "updated_at": "2026-11-19T18:00:01.654321+00:00",
+        "note": null,
+        "payload": {
+          "k": "v2",
+          "arr": [
+            1,
+            2
+          ]
+        },
+        "discount": null
+      }
+    ],
+    "observed_rows": [
+      {
+        "id": 1,
+        "status": "created",
+        "amount": "12345678901234567890123456789.123456789",
+        "updated_at": "2026-11-19T18:00:00.123456+00:00",
+        "note": "first row",
+        "payload": {
+          "k": "v1",
+          "n": 1
+        },
+        "discount": "1E-9"
+      },
+      {
+        "id": 2,
+        "status": "created",
+        "amount": "42.500000000",
+        "updated_at": "2026-11-19T18:00:01.654321+00:00",
+        "note": null,
+        "payload": {
+          "k": "v2",
+          "arr": [
+            1,
+            2
+          ]
+        },
+        "discount": null
+      }
+    ],
+    "match": true,
+    "poll_errors_before_ready": []
+  },
+  "step2_update_delete": {
+    "commit_utc": "2026-11-19T18:29:08.964953Z",
+    "visible_ms": 4866.35,
+    "snapshot_id": 3118434309034486620,
+    "expected_rows": [
+      {
+        "id": 1,
+        "status": "updated",
+        "amount": "12345678901234567890123456789.123456788",
+        "updated_at": "2026-11-19T18:05:00.987654+00:00",
+        "note": "first row updated",
+        "payload": {
+          "k": "v1_updated",
+          "n": 2
+        },
+        "discount": "1.250000000"
+      }
+    ],
+    "observed_rows": [
+      {
+        "id": 1,
+        "status": "updated",
+        "amount": "12345678901234567890123456789.123456788",
+        "updated_at": "2026-11-19T18:05:00.987654+00:00",
+        "note": "first row updated",
+        "payload": {
+          "k": "v1_updated",
+          "n": 2
+        },
+        "discount": "1.250000000"
+      }
+    ],
+    "match": true,
+    "poll_errors_before_ready": [],
+    "equality_delete_evidence": {
+      "snapshot_id": 3118434309034486620,
+      "snapshot_summary": {
+        "operation": "append",
+        "pg2iceberg.log-ends": "{\"default\":5}",
+        "total-equality-deletes": "2",
+        "total-files-size": "6887",
+        "total-data-files": "2",
+        "added-data-files": "1",
+        "total-delete-files": "1",
+        "pg2iceberg.log-start": "3",
+        "added-equality-delete-files": "1",
+        "total-position-deletes": "0",
+        "pg2iceberg.log-group": "default",
+        "total-records": "3",
+        "added-files-size": "3749",
+        "pg2iceberg.log-end": "5",
+        "added-records": "1",
+        "added-delete-files": "1",
+        "added-equality-deletes": "2"
+      },
+      "total_equality_deletes": 2,
+      "added_equality_deletes": 2,
+      "total_delete_files": 1,
+      "added_delete_files": 1,
+      "duckdb_live_delete_entries": [
+        {
+          "manifest_path": "s3://cdclab/warehouse/01a1f511-9353-71ba-a84a-d9554ead84e8/metadata/01a1f511-e40c-7090-8cf9-a0d301f4ccb7-m1.avro",
+          "manifest_content": "DELETE",
+          "file_path": "s3://cdclab/warehouse/01a1f511-9353-71ba-a84a-d9554ead84e8/data/eq-delete-7552aca7e83a40cfb64afcd336666c70.parquet",
+          "content": "EQUALITY_DELETES",
+          "status": "ADDED",
+          "record_count": 2
+        }
+      ],
+      "confirmed": true
+    }
+  },
+  "step2_snapshot_pinned_reads": {
+    "pinned_after_update_delete_snapshot_id": 3118434309034486620,
+    "pinned_after_update_delete_match": true,
+    "pinned_after_update_delete_rows": [
+      {
+        "id": 1,
+        "status": "updated",
+        "amount": "12345678901234567890123456789.123456788",
+        "updated_at": "2026-11-19T18:05:00.987654+00:00",
+        "note": "first row updated",
+        "payload": {
+          "k": "v1_updated",
+          "n": 2
+        },
+        "discount": "1.250000000"
+      }
+    ],
+    "pinned_after_insert_snapshot_id": 1727757835870596850,
+    "pinned_after_insert_match": true,
+    "pinned_after_insert_rows": [
+      {
+        "id": 1,
+        "status": "created",
+        "amount": "12345678901234567890123456789.123456789",
+        "updated_at": "2026-11-19T18:00:00.123456+00:00",
+        "note": "first row",
+        "payload": {
+          "k": "v1",
+          "n": 1
+        },
+        "discount": "1E-9"
+      },
+      {
+        "id": 2,
+        "status": "created",
+        "amount": "42.500000000",
+        "updated_at": "2026-11-19T18:00:01.654321+00:00",
+        "note": null,
+        "payload": {
+          "k": "v2",
+          "arr": [
+            1,
+            2
+          ]
+        },
+        "discount": null
+      }
+    ]
+  },
+  "pg_slots_final": [
+    {
+      "slot_name": "pg2iceberg_slot",
+      "plugin": "pgoutput",
+      "active": true,
+      "restart_lsn": "0/01C53C08",
+      "confirmed_flush_lsn": "0/01C53D08",
+      "current_wal_lsn": "0/01C54538"
+    }
+  ],
+  "coordinator_tables": [
+    "consumer",
+    "flushed_lsn",
+    "lock",
+    "log_index",
+    "log_seq",
+    "marker_emissions",
+    "mat_cursor",
+    "pending_markers",
+    "pipeline_meta",
+    "replicated_lsn",
+    "snapshot_progress",
+    "table_epoch",
+    "tables"
+  ],
+  "step3_cleanup": {
+    "skipped_keep_up": false,
+    "resources_after_cleanup": {
+      "containers": [],
+      "volumes": [],
+      "networks": []
+    },
+    "all_project_resources_removed": true,
+    "non_project_containers_unchanged": true,
+    "non_project_count_before": 14,
+    "non_project_count_after": 14
+  }
+}

@@ -1,0 +1,15 @@
+[project]
+name = "cdc-convergence-lab"
+version = "0.1.0"
+description = "PostgreSQL 19 -> pg2iceberg -> Lakekeeper -> DuckDB CDC convergence lab"
+requires-python = ">=3.12,<3.15"
+dependencies = [
+    "duckdb>=1.2",
+    "psycopg[binary]>=3.2",
+    "pytest>=8.3",
+    "pytz>=2026.6",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

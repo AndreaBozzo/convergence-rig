@@ -1,0 +1,38 @@
+[
+  {
+    "manifest_path": "s3://cdclab/warehouse/01a1f511-9353-71ba-a84a-d9554ead84e8/metadata/01a1f511-bb75-7543-9e58-8d3ffa3f92e1-m0.avro",
+    "manifest_sequence_number": 1,
+    "manifest_content": "DATA",
+    "status": "ADDED",
+    "content": "DATA",
+    "file_path": "s3://cdclab/warehouse/01a1f511-9353-71ba-a84a-d9554ead84e8/data/data-0c94f4bcbc4e474bbb7b43b316df811c.parquet",
+    "file_format": "PARQUET",
+    "record_count": 2,
+    "data_sequence_number": 1,
+    "file_sequence_number": 1
+  },
+  {
+    "manifest_path": "s3://cdclab/warehouse/01a1f511-9353-71ba-a84a-d9554ead84e8/metadata/01a1f511-e40c-7090-8cf9-a0d301f4ccb7-m0.avro",
+    "manifest_sequence_number": 2,
+    "manifest_content": "DATA",
+    "status": "ADDED",
+    "content": "DATA",
+    "file_path": "s3://cdclab/warehouse/01a1f511-9353-71ba-a84a-d9554ead84e8/data/data-9b8be45146924240aaf3628e58f543f7.parquet",
+    "file_format": "PARQUET",
+    "record_count": 1,
+    "data_sequence_number": 2,
+    "file_sequence_number": 2
+  },
+  {
+    "manifest_path": "s3://cdclab/warehouse/01a1f511-9353-71ba-a84a-d9554ead84e8/metadata/01a1f511-e40c-7090-8cf9-a0d301f4ccb7-m1.avro",
+    "manifest_sequence_number": 2,
+    "manifest_content": "DELETE",
+    "status": "ADDED",
+    "content": "EQUALITY_DELETES",
+    "file_path": "s3://cdclab/warehouse/01a1f511-9353-71ba-a84a-d9554ead84e8/data/eq-delete-7552aca7e83a40cfb64afcd336666c70.parquet",
+    "file_format": "PARQUET",
+    "record_count": 2,
+    "data_sequence_number": 2,
+    "file_sequence_number": 2
+  }
+]

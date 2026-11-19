@@ -1,0 +1,51 @@
+[
+  {
+    "sequence_number": 1,
+    "snapshot_id": 1727757835870596850,
+    "parent_id": null,
+    "timestamp_ms": "2026-11-19T17:29:02.488000+00:00",
+    "manifest_list": "s3://cdclab/warehouse/01a1f511-9353-71ba-a84a-d9554ead84e8/metadata/snap-1727757835870596850-0-01a1f511-bb75-7543-9e58-8d3ffa3f92e1.avro",
+    "operation": "append",
+    "summary": {
+      "added-data-files": "1",
+      "added-files-size": "3138",
+      "added-records": "2",
+      "pg2iceberg.log-end": "3",
+      "pg2iceberg.log-ends": "{\"default\":3}",
+      "pg2iceberg.log-group": "default",
+      "pg2iceberg.log-start": "0",
+      "total-data-files": "1",
+      "total-delete-files": "0",
+      "total-equality-deletes": "0",
+      "total-files-size": "3138",
+      "total-position-deletes": "0",
+      "total-records": "2"
+    }
+  },
+  {
+    "sequence_number": 2,
+    "snapshot_id": 3118434309034486620,
+    "parent_id": 1727757835870596850,
+    "timestamp_ms": "2026-11-19T17:29:12.976000+00:00",
+    "manifest_list": "s3://cdclab/warehouse/01a1f511-9353-71ba-a84a-d9554ead84e8/metadata/snap-3118434309034486620-0-01a1f511-e40c-7090-8cf9-a0d301f4ccb7.avro",
+    "operation": "append",
+    "summary": {
+      "added-data-files": "1",
+      "added-delete-files": "1",
+      "added-equality-delete-files": "1",
+      "added-equality-deletes": "2",
+      "added-files-size": "3749",
+      "added-records": "1",
+      "pg2iceberg.log-end": "5",
+      "pg2iceberg.log-ends": "{\"default\":5}",
+      "pg2iceberg.log-group": "default",
+      "pg2iceberg.log-start": "3",
+      "total-data-files": "2",
+      "total-delete-files": "1",
+      "total-equality-deletes": "2",
+      "total-files-size": "6887",
+      "total-position-deletes": "0",
+      "total-records": "3"
+    }
+  }
+]

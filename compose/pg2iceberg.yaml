@@ -1,0 +1,28 @@
+tables:
+  - name: public.orders
+
+source:
+  mode: logical
+  postgres_url: "postgres://${PG_SOURCE_USER}:${PG_SOURCE_PASSWORD}@pg-source:5432/${PG_SOURCE_DB}?sslmode=disable"
+  logical:
+    publication_name: pg2iceberg_pub
+    slot_name: pg2iceberg_slot
+
+sink:
+  catalog_uri: "http://lakekeeper:8181/catalog"
+  catalog_auth: none
+  credential_mode: vended
+  warehouse: "${LAKEKEEPER_WAREHOUSE}"
+  namespace: "${LAKEKEEPER_NAMESPACE}"
+  s3_region: "${SILO_REGION}"
+  flush_interval: 2s
+  flush_rows: 1000
+  materializer_batch_rows: 10000
+  # Disable automatic compaction in M0 so equality-delete files remain
+  # referenced by the tested snapshot after update and delete.
+  target_file_size: 0
+
+state:
+  coordinator_schema: _pg2iceberg
+
+metrics_addr: ":9090"
