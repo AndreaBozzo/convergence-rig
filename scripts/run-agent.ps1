@@ -57,7 +57,7 @@ Your final answer: one paragraph with the verdict, the commit hash and anything 
     & $agy -p $prompt --model $Model --output-format json --print-timeout $Timeout `
         --settings (Join-Path $repo '.agy/settings.json') > $out 2> $err
     $code = $LASTEXITCODE
-    Write-Host "$m: agy exited $code"
+    Write-Host "${m}: agy exited $code"
 
     if ($code -ne 0) { Write-Host "Stopping: non-zero exit. See $out and $err."; exit $code }
     if (Test-Path 'reports/BLOCKED.md') { Write-Host 'Stopping: agent wrote reports/BLOCKED.md.'; exit 2 }
