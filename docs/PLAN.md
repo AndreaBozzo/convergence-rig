@@ -122,3 +122,31 @@ Change one component at a time and carry the same fixture, snapshot checks and a
 
 - **Start CDC with `wal_level=replica`.** Use a fresh source with zero logical slots. Record `wal_level` and `effective_wal_level`, then try pg2iceberg. If it refuses, use a fresh equivalent instance to demonstrate native slot creation and inspect the pinned connector's preflight. A preflight that requires `effective_wal_level=logical` before the first slot exists still blocks the clean-start case. Keep any upstream report as a draft. [PG19 logical decoding](https://www.postgresql.org/docs/19/logicaldecoding-explanation.html) · [pg2iceberg prerequisites](https://docs.pg2iceberg.dev/getting-started/installation/)
 - **Schema changes and slot loss.** Reuse the harness after the REPACK result is stable. Name the operation and expected recovery policy before running the experiment. Treat a fresh snapshot after slot loss as a recovery path with its own cost and timing.
+
+## Follow-up milestones (Lakekeeper track)
+
+These turn "Lakekeeper evaluation for future work" into three local milestones. They reuse the M0-M3 stack, fixture, verifier and evidence rules. Databricks, ADLS and any external environment stay out of scope: stop and write `reports/BLOCKED.md` if a step seems to need one.
+
+### L1 · Second reader on the same snapshot
+
+1. Add Apache Spark with the Iceberg runtime as an on-demand Compose service in project `cdclab` (profile `spark`), pinned by tag and digest. Configure it against the Lakekeeper REST catalog with the same storage endpoint the other clients use.
+2. On a fresh stack, seed a small fixture, run an update and a delete, and wait for the snapshot that holds them with live equality-delete files.
+3. Read that snapshot ID with DuckDB and with Spark. Compare snapshot IDs, the schema and exact rows using `lab/compare.py` (Spark output fed in the same ordered, batched form). Record which Iceberg features each reader used to read the deletes.
+
+**Pass:** both readers return the same snapshot ID, schema and rows, evidenced in `reports/L1.md`. A disagreement is a result: keep both outputs, decide which reader is wrong from the Iceberg metadata, and draft a minimal local reproduction in `drafts/`.
+
+### L2 · Scoped access with distinct identities
+
+1. In a separate Compose profile (`authz`), enable Lakekeeper authorization the way its pinned release documents it (identity provider and authorizer images pinned by digest). Create a writer identity and a reader identity.
+2. Put a `raw` and a `curated` table in distinct storage prefixes. Grant the reader access to `curated` only.
+3. Verify, with evidence for each: the reader can load and scan `curated`; the catalog denies loading `raw` to the reader; the reader's vended storage credentials cannot fetch a known `raw` data file directly from object storage; the writer can still write both. Record the exact deny responses.
+
+**Pass:** all four checks evidenced in `reports/L2.md`, with the deny paths shown failing for the reader and succeeding for the writer. State plainly what object-level authorization does not cover (row filters, column masks).
+
+### L3 · Catalog outage drill
+
+1. Start the M1 baseline workload on a fresh stack. After warm-up, stop the Lakekeeper container for a fixed interval (start with 60 s) while the source keeps accepting writes.
+2. During the outage, record the CDC slot positions, WAL retained, pg2iceberg's staging and applied progress from its logs and coordinator state, and any connector errors or restarts.
+3. Restart Lakekeeper, commit the final marker, and measure time to visibility and to the first verified exact match. Run the full verifier.
+
+**Pass:** an explicit outcome (converged, mismatch at deadline, reader error, invalid harness run) with the backlog and recovery timings in `reports/L3.md`. Note what a metadata restore drill and an operations owner list would need, without running a restore.

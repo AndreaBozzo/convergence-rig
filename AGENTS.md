@@ -5,11 +5,15 @@ the contract. Where this file and the plan disagree, this file wins.
 
 ## Scope of this run
 
-- Work the milestones in order: M0, M1, M2, M3. One milestone per session
-  unless the launcher prompt says otherwise.
-- Out of scope for this run: the Lakekeeper follow-up, "Other OSS worth
-  testing" and "Parked experiments". Do not start them. You may list ideas
-  for them at the end of a report.
+- Work the milestones in order: M0, M1, M2, M3, then the follow-up
+  milestones L1, L2, L3 ("Follow-up milestones" in the plan). One milestone
+  per session unless the launcher prompt says otherwise.
+- Out of scope: Databricks, ADLS or any other external environment, "Other
+  OSS worth testing" and "Parked experiments". Do not start them. You may
+  list ideas for them at the end of a report.
+- L milestones must not change the M0-M3 harness behaviour or rewrite their
+  evidence. Add new modules, Compose profiles and tests instead; if a shared
+  module must change, keep `uv run pytest -q` green and say why in the report.
 - Before starting a milestone, read `docs/PLAN.md`, every file in `reports/`
   and `git log --oneline`. Continue from what is committed; do not redo a
   milestone that has a report with a pass verdict.

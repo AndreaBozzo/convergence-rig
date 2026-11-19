@@ -21,7 +21,8 @@ param(
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path -Parent $PSScriptRoot
 Set-Location $repo
-$agy = Join-Path $env:LOCALAPPDATA 'agy\bin\agy.exe'
+$env:VIRTUAL_ENV = $null   # a caller's activated venv would leak into uv
+$agy =Join-Path $env:LOCALAPPDATA 'agy\bin\agy.exe'
 New-Item -ItemType Directory -Force (Join-Path $repo 'agent-runs') | Out-Null
 
 docker version --format '{{.Server.Version}}' 2>$null | Out-Null
