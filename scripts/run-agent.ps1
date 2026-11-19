@@ -19,6 +19,8 @@ param(
     [string]$Timeout = '5h'
 )
 $ErrorActionPreference = 'Stop'
+# Under `pwsh -File`, "-Milestones L1,L2,L3" arrives as one string; split it.
+$Milestones = @($Milestones | ForEach-Object { $_ -split ',' } | ForEach-Object { $_.Trim() } | Where-Object { $_ })
 $repo = Split-Path -Parent $PSScriptRoot
 Set-Location $repo
 $env:VIRTUAL_ENV = $null   # a caller's activated venv would leak into uv
