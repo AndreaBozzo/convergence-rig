@@ -1,0 +1,134 @@
+{
+  "writer_raw": {
+    "http_status": 200,
+    "url": "http://127.0.0.1:18182/catalog/v1/01a1f59e-57a1-725f-ab3a-8994152aed71/namespaces/raw/tables/orders",
+    "redacted": {
+      "metadata_location": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/metadata/00001-01a1f59e-8096-714e-b128-86ae1ab03270.gz.metadata.json",
+      "config": {
+        "s3.access-key-id": "<redacted>",
+        "s3.path-style-access": "true",
+        "s3.endpoint": "http://silo.localhost:19000/",
+        "region": "local-01",
+        "s3.secret-access-key": "<redacted>",
+        "s3.session-token": "<redacted>",
+        "scan-planning-mode": "client",
+        "s3.region": "local-01",
+        "client.region": "local-01"
+      },
+      "storage_credentials": [
+        {
+          "prefix": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9",
+          "config": {
+            "expiration-time": "1795125764000",
+            "s3.path-style-access": "true",
+            "s3.region": "local-01",
+            "s3.access-key-id": "<redacted>",
+            "s3.secret-access-key": "<redacted>",
+            "s3.session-token-expires-at-ms": "<redacted>",
+            "s3.session-token": "<redacted>",
+            "client.region": "local-01",
+            "s3.endpoint": "http://silo.localhost:19000/",
+            "client.refresh-credentials-endpoint": "http://127.0.0.1:18182/catalog/v1/01a1f59e-57a1-725f-ab3a-8994152aed71/namespaces/raw/tables/orders/credentials"
+          }
+        }
+      ],
+      "table_uuid": "01a1f59e-740b-73b9-b733-355bcc97caa9",
+      "location": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9",
+      "current_snapshot_id": 7850449544646830413,
+      "format_version": 2
+    }
+  },
+  "writer_curated": {
+    "http_status": 200,
+    "url": "http://127.0.0.1:18182/catalog/v1/01a1f59e-57a1-725f-ab3a-8994152aed71/namespaces/curated/tables/orders",
+    "redacted": {
+      "metadata_location": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0/metadata/00001-01a1f59e-82bc-7092-9765-3761fd17446e.gz.metadata.json",
+      "config": {
+        "s3.secret-access-key": "<redacted>",
+        "s3.path-style-access": "true",
+        "scan-planning-mode": "client",
+        "s3.access-key-id": "<redacted>",
+        "s3.region": "local-01",
+        "region": "local-01",
+        "client.region": "local-01",
+        "s3.session-token": "<redacted>",
+        "s3.endpoint": "http://silo.localhost:19000/"
+      },
+      "storage_credentials": [
+        {
+          "prefix": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0",
+          "config": {
+            "s3.session-token": "<redacted>",
+            "s3.endpoint": "http://silo.localhost:19000/",
+            "client.refresh-credentials-endpoint": "http://127.0.0.1:18182/catalog/v1/01a1f59e-57a1-725f-ab3a-8994152aed71/namespaces/curated/tables/orders/credentials",
+            "s3.access-key-id": "<redacted>",
+            "client.region": "local-01",
+            "s3.session-token-expires-at-ms": "<redacted>",
+            "s3.region": "local-01",
+            "s3.path-style-access": "true",
+            "s3.secret-access-key": "<redacted>",
+            "expiration-time": "1795125765000"
+          }
+        }
+      ],
+      "table_uuid": "01a1f59e-74e2-7698-a46d-d998349f40e0",
+      "location": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0",
+      "current_snapshot_id": 473902664529674759,
+      "format_version": 2
+    }
+  },
+  "reader_curated": {
+    "http_status": 200,
+    "url": "http://127.0.0.1:18182/catalog/v1/01a1f59e-57a1-725f-ab3a-8994152aed71/namespaces/curated/tables/orders",
+    "redacted": {
+      "metadata_location": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0/metadata/00001-01a1f59e-82bc-7092-9765-3761fd17446e.gz.metadata.json",
+      "config": {
+        "region": "local-01",
+        "s3.endpoint": "http://silo.localhost:19000/",
+        "s3.access-key-id": "<redacted>",
+        "s3.session-token": "<redacted>",
+        "s3.region": "local-01",
+        "scan-planning-mode": "client",
+        "s3.path-style-access": "true",
+        "client.region": "local-01",
+        "s3.secret-access-key": "<redacted>"
+      },
+      "storage_credentials": [
+        {
+          "prefix": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0",
+          "config": {
+            "client.region": "local-01",
+            "s3.session-token-expires-at-ms": "<redacted>",
+            "s3.path-style-access": "true",
+            "s3.region": "local-01",
+            "client.refresh-credentials-endpoint": "http://127.0.0.1:18182/catalog/v1/01a1f59e-57a1-725f-ab3a-8994152aed71/namespaces/curated/tables/orders/credentials",
+            "s3.endpoint": "http://silo.localhost:19000/",
+            "s3.access-key-id": "<redacted>",
+            "s3.secret-access-key": "<redacted>",
+            "s3.session-token": "<redacted>",
+            "expiration-time": "1795125783000"
+          }
+        }
+      ],
+      "table_uuid": "01a1f59e-74e2-7698-a46d-d998349f40e0",
+      "location": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0",
+      "current_snapshot_id": 473902664529674759,
+      "format_version": 2
+    }
+  },
+  "reader_raw_denied": {
+    "http_status": 404,
+    "url": "http://127.0.0.1:18182/catalog/v1/01a1f59e-57a1-725f-ab3a-8994152aed71/namespaces/raw/tables/orders",
+    "body": {
+      "error": {
+        "message": "Error getting tabular from catalog",
+        "type": "NoSuchTableException",
+        "code": 404,
+        "stack": [
+          "Error ID: 01a1f59e-c921-72e9-a242-f0ff977e20a7"
+        ]
+      }
+    },
+    "raw_body": "{\"error\":{\"message\":\"Error getting tabular from catalog\",\"type\":\"NoSuchTableException\",\"code\":404,\"stack\":[\"Error ID: 01a1f59e-c921-72e9-a242-f0ff977e20a7\"]}}"
+  }
+}

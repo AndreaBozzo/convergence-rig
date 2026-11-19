@@ -1,0 +1,74 @@
+{
+  "mode": "init",
+  "client_id": "cdclab-writer",
+  "raw": {
+    "table": "cdclab_authz.raw.orders",
+    "location": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9",
+    "current_snapshot_id": 7850449544646830413,
+    "snapshot_count": 1,
+    "data_files": [
+      {
+        "file_path": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00000-0-f7b677f9-cc07-4081-8a13-015d5541a15a-0-00001.parquet",
+        "content": 0,
+        "record_count": 1,
+        "file_size_in_bytes": 1378
+      },
+      {
+        "file_path": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00001-1-f7b677f9-cc07-4081-8a13-015d5541a15a-0-00001.parquet",
+        "content": 0,
+        "record_count": 1,
+        "file_size_in_bytes": 1370
+      }
+    ],
+    "row_count": 2,
+    "rows": [
+      {
+        "id": 1,
+        "status": "created",
+        "amount": "100.123456789",
+        "pii_note": "raw-secret-alpha"
+      },
+      {
+        "id": 2,
+        "status": "settled",
+        "amount": "250.000000001",
+        "pii_note": "raw-secret-beta"
+      }
+    ]
+  },
+  "curated": {
+    "table": "cdclab_authz.curated.orders",
+    "location": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0",
+    "current_snapshot_id": 473902664529674759,
+    "snapshot_count": 1,
+    "data_files": [
+      {
+        "file_path": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0/data/00000-2-6dd6a634-1af5-44a8-87f8-527aeebe8b88-0-00001.parquet",
+        "content": 0,
+        "record_count": 1,
+        "file_size_in_bytes": 1309
+      },
+      {
+        "file_path": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0/data/00001-3-6dd6a634-1af5-44a8-87f8-527aeebe8b88-0-00001.parquet",
+        "content": 0,
+        "record_count": 1,
+        "file_size_in_bytes": 1302
+      }
+    ],
+    "row_count": 2,
+    "rows": [
+      {
+        "id": 1,
+        "status": "created",
+        "amount": "100.123456789",
+        "tier": "standard"
+      },
+      {
+        "id": 2,
+        "status": "settled",
+        "amount": "250.000000001",
+        "tier": "premium"
+      }
+    ]
+  }
+}

@@ -1,0 +1,866 @@
+{
+  "milestone": "L1",
+  "label": "l1-spark-reader",
+  "outcome": "converged",
+  "passed": true,
+  "completed_at_utc": "2026-11-19T20:55:34.270554Z",
+  "parameters": {
+    "seed_rows": 30,
+    "toast_rows": 10,
+    "rng_seed": 20261119,
+    "batch_size": 10
+  },
+  "host": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python_version": "3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "config": {
+    "compose_project": "cdclab",
+    "pg_source_host": "127.0.0.1",
+    "pg_source_port": 15432,
+    "pg_source_db": "cdclab",
+    "lakekeeper_base_url": "http://127.0.0.1:18181",
+    "lakekeeper_catalog_url": "http://127.0.0.1:18181/catalog",
+    "lakekeeper_warehouse": "cdclab",
+    "lakekeeper_namespace": "public",
+    "silo_port": 19000,
+    "silo_advertised_endpoint": "http://silo.localhost:19000",
+    "silo_bucket": "cdclab",
+    "silo_region": "local-01",
+    "pg2iceberg_metrics_port": 19090
+  },
+  "commands_executed": [
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector up -d pg2iceberg",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile spark up -d spark",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile spark exec -T spark /opt/spark/bin/spark-submit --master local[2] /opt/cdclab/scripts/read_snapshot.py --catalog-name cdclab --catalog-uri http://lakekeeper:8181/catalog --warehouse cdclab --namespace public --table orders --snapshot-id 8570345793528564422 --rows-out /tmp/cdclab-spark/rows.jsonl --meta-out /tmp/cdclab-spark/meta.json",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz down -v --remove-orphans"
+  ],
+  "container_digests": [
+    {
+      "service": "lakekeeper",
+      "container_name": "cdclab-lakekeeper-1",
+      "image_ref": "quay.io/lakekeeper/catalog:v0.15.1@sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54",
+      "image_id": "sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54",
+      "repo_digests": [
+        "quay.io/lakekeeper/catalog@sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "lakekeeper-db",
+      "container_name": "cdclab-lakekeeper-db-1",
+      "image_ref": "postgres:17-bookworm@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "image_id": "sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "repo_digests": [
+        "postgres@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "pg-source",
+      "container_name": "cdclab-pg-source-1",
+      "image_ref": "cdclab/postgres:19.0",
+      "image_id": "sha256:8702cad789b7630a1ac0650b8358197bc79844aa302731392175f98cd8225a05",
+      "repo_digests": [
+        "cdclab/postgres@sha256:8702cad789b7630a1ac0650b8358197bc79844aa302731392175f98cd8225a05"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "pg2iceberg",
+      "container_name": "cdclab-pg2iceberg-1",
+      "image_ref": "polynyadev/pg2iceberg:0.12.0@sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b",
+      "image_id": "sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b",
+      "repo_digests": [
+        "polynyadev/pg2iceberg@sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "silo",
+      "container_name": "cdclab-silo-1",
+      "image_ref": "pgsty/silo:RELEASE.2026-09-03T13-18-01Z@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "image_id": "sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "repo_digests": [
+        "pgsty/silo@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "spark",
+      "container_name": "cdclab-spark-1",
+      "image_ref": "cdclab/spark-iceberg:3.5.9-iceberg1.12.0",
+      "image_id": "sha256:6d96720560c5a6396983664c65a4aa7c482a0d37799d2a2998676e4b1a578f12",
+      "repo_digests": [
+        "cdclab/spark-iceberg@sha256:6d96720560c5a6396983664c65a4aa7c482a0d37799d2a2998676e4b1a578f12"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    }
+  ],
+  "reader_versions": {
+    "duckdb": "2.0.0",
+    "duckdb_extensions": [
+      {
+        "name": "httpfs",
+        "loaded": true,
+        "installed": true,
+        "version": "77392a7207",
+        "install_mode": "REPOSITORY"
+      },
+      {
+        "name": "iceberg",
+        "loaded": true,
+        "installed": true,
+        "version": "4c0c0874c4",
+        "install_mode": "REPOSITORY"
+      },
+      {
+        "name": "parquet",
+        "loaded": true,
+        "installed": true,
+        "version": "v2.0.0",
+        "install_mode": "STATICALLY_LINKED"
+      }
+    ],
+    "spark": {
+      "spark_version": "3.5.9",
+      "scala_version": "2.12.18",
+      "java_version": "17.0.19",
+      "iceberg_version": "1.12.0",
+      "iceberg_git_commit_short": "212aa89",
+      "python_version": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]"
+    }
+  },
+  "resources_after_pre_clean": {
+    "containers": [],
+    "volumes": [],
+    "networks": []
+  },
+  "seed": {
+    "seed_rows": 30,
+    "rng_seed": 20261119,
+    "edge_row_count": 12,
+    "toast_row_count": 10,
+    "toast_id_range": [
+      13,
+      22
+    ],
+    "mutable_row_count": 8,
+    "seed_duration_ms": 35.64,
+    "toast_verification": {
+      "total_rows": 30,
+      "note_toasted_rows": 10,
+      "payload_toasted_rows": 10,
+      "both_toasted_rows": 10,
+      "max_note_bytes": 6167,
+      "max_payload_bytes": 6251,
+      "heap_bytes": 8192,
+      "table_and_toast_bytes": 188416,
+      "indexes_bytes": 16384,
+      "total_relation_bytes": 204800,
+      "toast_relation_bytes": 180224
+    }
+  },
+  "initial_snapshot": {
+    "elapsed_ms": 2018.95,
+    "healthz_status": 200,
+    "snapshot_logged_complete": true,
+    "current_snapshot_id": 8984358591390971612,
+    "snapshot_info": {
+      "snapshot_id": 8984358591390971612,
+      "parent_snapshot_id": null,
+      "sequence_number": 1,
+      "timestamp_ms": 1795121687286,
+      "schema_id": 0,
+      "pg2iceberg_log_start": null,
+      "pg2iceberg_log_end": null,
+      "pg2iceberg_log_ends": null,
+      "pg2iceberg_log_group": null,
+      "summary": {
+        "operation": "append",
+        "added-records": "30",
+        "total-data-files": "1",
+        "total-delete-files": "0",
+        "total-files-size": "129604",
+        "total-position-deletes": "0",
+        "added-files-size": "129604",
+        "added-data-files": "1",
+        "total-equality-deletes": "0",
+        "total-records": "30"
+      }
+    },
+    "pipeline_positions": {
+      "captured_at_utc": "2026-11-19T20:54:48.464340Z",
+      "current_wal_lsn": "0/01C76970",
+      "replication_slots": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "temporary": false,
+          "active": true,
+          "active_pid": 149,
+          "restart_lsn": "0/01C75FF0",
+          "confirmed_flush_lsn": "0/01C76458",
+          "wal_gap_bytes_confirmed_flush": 1304,
+          "wal_gap_bytes_restart": 2432
+        }
+      ],
+      "table_sizes": {
+        "heap_bytes": 8192,
+        "table_and_toast_bytes": 188416,
+        "indexes_bytes": 16384,
+        "total_relation_bytes": 204800,
+        "toast_relation_bytes": 180224,
+        "replica_identity": "d"
+      },
+      "coordinator_tables": [
+        "consumer",
+        "flushed_lsn",
+        "lock",
+        "log_index",
+        "log_seq",
+        "marker_emissions",
+        "mat_cursor",
+        "pending_markers",
+        "pipeline_meta",
+        "replicated_lsn",
+        "snapshot_progress",
+        "table_epoch",
+        "tables"
+      ],
+      "coordinator_state": {
+        "replicated_lsn": [],
+        "flushed_lsn": [
+          {
+            "id": 1,
+            "lsn": 29844568,
+            "updated_at": "2026-11-19T20:54:47.350453+00:00"
+          }
+        ],
+        "mat_cursor": [
+          {
+            "group_name": "default",
+            "table_name": "public.orders",
+            "last_offset": -1,
+            "last_committed": "2026-11-19T20:54:47.172477+00:00"
+          },
+          {
+            "group_name": "default#snapshot-lsn",
+            "table_name": "public.orders",
+            "last_offset": 29844568,
+            "last_committed": "2026-11-19T20:54:47.226090+00:00"
+          }
+        ],
+        "snapshot_progress": [],
+        "log_seq": [],
+        "pipeline_meta": [
+          {
+            "id": 1,
+            "system_identifier": 7709988872909029401,
+            "updated_at": "2026-11-19T20:54:46.998514+00:00"
+          }
+        ],
+        "table_epoch": [
+          {
+            "table_name": "public.orders",
+            "epoch": 2
+          }
+        ],
+        "log_index_row_count": 0
+      }
+    }
+  },
+  "mutations": {
+    "updated_ids": [
+      1,
+      13,
+      14
+    ],
+    "deleted_ids": [
+      2,
+      15,
+      25
+    ],
+    "marker_id": 900999999,
+    "marker_commit_utc": "2026-11-19T20:54:49.008984Z",
+    "marker_visibility_ms": 9898.19,
+    "toast_after_mutations": {
+      "total_rows": 27,
+      "note_toasted_rows": 9,
+      "payload_toasted_rows": 9,
+      "both_toasted_rows": 9,
+      "max_note_bytes": 6167,
+      "max_payload_bytes": 6251,
+      "heap_bytes": 8192,
+      "table_and_toast_bytes": 229376,
+      "indexes_bytes": 16384,
+      "total_relation_bytes": 245760,
+      "toast_relation_bytes": 221184
+    }
+  },
+  "snapshot_comparison": {
+    "tested_snapshot_id": 8570345793528564422,
+    "lakekeeper_current_snapshot_id": 8570345793528564422,
+    "duckdb_current_snapshot_id": 8570345793528564422,
+    "spark_current_snapshot_id": 8570345793528564422,
+    "spark_requested_snapshot_found": true,
+    "snapshot_ids_match": true,
+    "snapshot_info": {
+      "snapshot_id": 8570345793528564422,
+      "parent_snapshot_id": 8984358591390971612,
+      "sequence_number": 2,
+      "timestamp_ms": 1795121697424,
+      "schema_id": 0,
+      "pg2iceberg_log_start": "0",
+      "pg2iceberg_log_end": "8",
+      "pg2iceberg_log_ends": "{\"default\":8}",
+      "pg2iceberg_log_group": "default",
+      "summary": {
+        "operation": "append",
+        "total-delete-files": "1",
+        "added-files-size": "41750",
+        "total-files-size": "171354",
+        "pg2iceberg.log-start": "0",
+        "total-records": "34",
+        "added-records": "4",
+        "added-delete-files": "1",
+        "pg2iceberg.log-group": "default",
+        "total-equality-deletes": "6",
+        "total-position-deletes": "0",
+        "added-equality-delete-files": "1",
+        "total-data-files": "2",
+        "added-equality-deletes": "6",
+        "added-data-files": "1",
+        "pg2iceberg.log-ends": "{\"default\":8}",
+        "pg2iceberg.log-end": "8"
+      }
+    }
+  },
+  "equality_delete_evidence": {
+    "lakekeeper_and_duckdb": {
+      "snapshot_id": 8570345793528564422,
+      "snapshot_summary": {
+        "operation": "append",
+        "total-delete-files": "1",
+        "added-files-size": "41750",
+        "total-files-size": "171354",
+        "pg2iceberg.log-start": "0",
+        "total-records": "34",
+        "added-records": "4",
+        "added-delete-files": "1",
+        "pg2iceberg.log-group": "default",
+        "total-equality-deletes": "6",
+        "total-position-deletes": "0",
+        "added-equality-delete-files": "1",
+        "total-data-files": "2",
+        "added-equality-deletes": "6",
+        "added-data-files": "1",
+        "pg2iceberg.log-ends": "{\"default\":8}",
+        "pg2iceberg.log-end": "8"
+      },
+      "total_equality_deletes": 6,
+      "added_equality_deletes": 6,
+      "total_delete_files": 1,
+      "added_delete_files": 1,
+      "duckdb_live_delete_entries": [
+        {
+          "manifest_path": "s3://cdclab/warehouse/01a1f597-2a39-71da-ba5c-b47b3ecb71a5/metadata/01a1f597-5272-76e1-b2b4-e90248aeb00e-m1.avro",
+          "manifest_content": "DELETE",
+          "file_path": "s3://cdclab/warehouse/01a1f597-2a39-71da-ba5c-b47b3ecb71a5/data/eq-delete-5f48151573bb44e5bf7e9523d8f5fda9.parquet",
+          "content": "EQUALITY_DELETES",
+          "status": "ADDED",
+          "record_count": 6
+        }
+      ],
+      "confirmed": true
+    },
+    "spark_equality_delete_file_count": 1,
+    "spark_equality_delete_files": [
+      {
+        "content": 2,
+        "file_path": "s3://cdclab/warehouse/01a1f597-2a39-71da-ba5c-b47b3ecb71a5/data/eq-delete-5f48151573bb44e5bf7e9523d8f5fda9.parquet",
+        "file_format": "PARQUET",
+        "spec_id": 0,
+        "record_count": 6,
+        "file_size_in_bytes": 620,
+        "column_sizes": {},
+        "value_counts": {},
+        "null_value_counts": {},
+        "nan_value_counts": {},
+        "lower_bounds": {},
+        "upper_bounds": {},
+        "key_metadata": null,
+        "split_offsets": null,
+        "equality_ids": [
+          1
+        ],
+        "sort_order_id": null,
+        "first_row_id": null,
+        "referenced_data_file": null,
+        "content_offset": null,
+        "content_size_in_bytes": null,
+        "readable_metrics": {
+          "amount": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          },
+          "discount": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          },
+          "id": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          },
+          "note": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          },
+          "payload": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          },
+          "status": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          },
+          "updated_at": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          }
+        }
+      }
+    ],
+    "spark_manifests_count": 3,
+    "spark_read_duration_ms": 24427.33
+  },
+  "schema_comparison": {
+    "all_passed": true,
+    "iceberg_metadata": {
+      "passed": true,
+      "schema_id": 0,
+      "format_version": 2,
+      "identifier_field_ids": [
+        1
+      ],
+      "mismatches": [],
+      "actual_fields": [
+        {
+          "id": 1,
+          "name": "id",
+          "required": true,
+          "type": "long"
+        },
+        {
+          "id": 2,
+          "name": "status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "id": 3,
+          "name": "amount",
+          "required": true,
+          "type": "decimal(38, 9)"
+        },
+        {
+          "id": 4,
+          "name": "updated_at",
+          "required": true,
+          "type": "timestamptz"
+        },
+        {
+          "id": 5,
+          "name": "note",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "id": 6,
+          "name": "payload",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "id": 7,
+          "name": "discount",
+          "required": false,
+          "type": "decimal(38, 9)"
+        }
+      ],
+      "expected_fields": [
+        {
+          "name": "id",
+          "type": "long",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "type": "decimal(38, 9)",
+          "required": true
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamptz",
+          "required": true
+        },
+        {
+          "name": "note",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "payload",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "discount",
+          "type": "decimal(38, 9)",
+          "required": false
+        }
+      ]
+    },
+    "duckdb_describe": {
+      "passed": true,
+      "mismatches": [],
+      "actual_fields": [
+        {
+          "name": "id",
+          "duckdb_type": "BIGINT",
+          "canonical_type": "long",
+          "null": "YES"
+        },
+        {
+          "name": "status",
+          "duckdb_type": "VARCHAR",
+          "canonical_type": "string",
+          "null": "YES"
+        },
+        {
+          "name": "amount",
+          "duckdb_type": "DECIMAL(38,9)",
+          "canonical_type": "decimal(38, 9)",
+          "null": "YES"
+        },
+        {
+          "name": "updated_at",
+          "duckdb_type": "TIMESTAMP WITH TIME ZONE",
+          "canonical_type": "timestamptz",
+          "null": "YES"
+        },
+        {
+          "name": "note",
+          "duckdb_type": "VARCHAR",
+          "canonical_type": "string",
+          "null": "YES"
+        },
+        {
+          "name": "payload",
+          "duckdb_type": "VARCHAR",
+          "canonical_type": "string",
+          "null": "YES"
+        },
+        {
+          "name": "discount",
+          "duckdb_type": "DECIMAL(38,9)",
+          "canonical_type": "decimal(38, 9)",
+          "null": "YES"
+        }
+      ]
+    },
+    "spark_struct": {
+      "passed": true,
+      "mismatches": [],
+      "actual_fields": [
+        {
+          "name": "id",
+          "spark_type": "long",
+          "canonical_type": "long",
+          "required": true
+        },
+        {
+          "name": "status",
+          "spark_type": "string",
+          "canonical_type": "string",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "spark_type": "decimal(38,9)",
+          "canonical_type": "decimal(38, 9)",
+          "required": true
+        },
+        {
+          "name": "updated_at",
+          "spark_type": "timestamp",
+          "canonical_type": "timestamptz",
+          "required": true
+        },
+        {
+          "name": "note",
+          "spark_type": "string",
+          "canonical_type": "string",
+          "required": false
+        },
+        {
+          "name": "payload",
+          "spark_type": "string",
+          "canonical_type": "string",
+          "required": false
+        },
+        {
+          "name": "discount",
+          "spark_type": "decimal(38,9)",
+          "canonical_type": "decimal(38, 9)",
+          "required": false
+        }
+      ]
+    }
+  },
+  "row_comparisons": {
+    "all_passed": true,
+    "postgres_vs_duckdb": {
+      "passed": true,
+      "source_row_count": 28,
+      "lake_row_count": 28,
+      "matched_id_count": 28,
+      "exact_match_row_count": 28,
+      "source_only_count": 0,
+      "source_only_examples": [],
+      "lake_only_count": 0,
+      "lake_only_examples": [],
+      "duplicate_lake_id_count": 0,
+      "duplicate_lake_extra_row_count": 0,
+      "duplicate_lake_examples": [],
+      "duplicate_source_id_count": 0,
+      "duplicate_source_examples": [],
+      "value_mismatch_row_count": 0,
+      "value_mismatch_column_counts": {},
+      "value_mismatch_examples": [],
+      "batches_read_source": 3,
+      "batches_read_lake": 3,
+      "diff_duration_ms": 628.43
+    },
+    "postgres_vs_spark": {
+      "passed": true,
+      "source_row_count": 28,
+      "lake_row_count": 28,
+      "matched_id_count": 28,
+      "exact_match_row_count": 28,
+      "source_only_count": 0,
+      "source_only_examples": [],
+      "lake_only_count": 0,
+      "lake_only_examples": [],
+      "duplicate_lake_id_count": 0,
+      "duplicate_lake_extra_row_count": 0,
+      "duplicate_lake_examples": [],
+      "duplicate_source_id_count": 0,
+      "duplicate_source_examples": [],
+      "value_mismatch_row_count": 0,
+      "value_mismatch_column_counts": {},
+      "value_mismatch_examples": [],
+      "batches_read_source": 3,
+      "batches_read_lake": 3,
+      "diff_duration_ms": 30.83
+    },
+    "duckdb_vs_spark": {
+      "passed": true,
+      "source_row_count": 28,
+      "lake_row_count": 28,
+      "matched_id_count": 28,
+      "exact_match_row_count": 28,
+      "source_only_count": 0,
+      "source_only_examples": [],
+      "lake_only_count": 0,
+      "lake_only_examples": [],
+      "duplicate_lake_id_count": 0,
+      "duplicate_lake_extra_row_count": 0,
+      "duplicate_lake_examples": [],
+      "duplicate_source_id_count": 0,
+      "duplicate_source_examples": [],
+      "value_mismatch_row_count": 0,
+      "value_mismatch_column_counts": {},
+      "value_mismatch_examples": [],
+      "batches_read_source": 3,
+      "batches_read_lake": 3,
+      "diff_duration_ms": 39.15
+    }
+  },
+  "reader_features": {
+    "duckdb": {
+      "catalog_attachment": "ATTACH ... (TYPE iceberg, AUTHORIZATION_TYPE none, ENDPOINT ...)",
+      "snapshot_pinning": "AT (VERSION => 8570345793528564422)",
+      "storage_access": "vended credentials (S3 STS via Lakekeeper LoadTable)",
+      "explain": [
+        {
+          "key": "physical_plan",
+          "value": "\u256d\u2500 Order By \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n\u2502 Order By: id ASC         \u2502\n\u2502 ~28 rows                 \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n\u256d\u2500 Iceberg Scan \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n\u2502 Function: ICEBERG_SCAN   \u2502\n\u2502 Projections: id, status, \u2502\n\u2502              amount,     \u2502\n\u2502              updated_at, \u2502\n\u2502              note,       \u2502\n\u2502              payload,    \u2502\n\u2502              discount    \u2502\n\u2502 ~28 rows                 \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n"
+        }
+      ],
+      "explain_analyze": [
+        {
+          "key": "analyzed_plan",
+          "value": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\u2502\n\u2502\u2502         HTTPFS HTTP Stats         \u2502\u2502\n\u2502\u2502                                   \u2502\u2502\n\u2502\u2502           in: 173.8 KiB           \u2502\u2502\n\u2502\u2502            out: 0 bytes           \u2502\u2502\n\u2502\u2502              #HEAD: 0             \u2502\u2502\n\u2502\u2502              #GET: 4              \u2502\u2502\n\u2502\u2502              #PUT: 0              \u2502\u2502\n\u2502\u2502              #POST: 0             \u2502\u2502\n\u2502\u2502             #DELETE: 0            \u2502\u2502\n\u2502\u2502            #OPTIONS: 0            \u2502\u2502\n\u2502\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u256d\u2500 Summary \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n\u2502 Total Time:  0.237s \u2502\n\u2502 Data Read: 171.3 kB \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n\u256d\u2500 Order By \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n\u2502 Order By: id ASC                                                                                                                                                                                                             \u2502\n\u2502 28 rows                                                                                                                                                                                                                  0\u00b5s \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2512\u250e\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n\u256d\u2500 Table Scan \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u251a\u2516\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n\u2502 Function: ICEBERG_SCAN                                                                                                                                                                                                       \u2502\n\u2502 Projections: id, status, amount, updated_at, note, payload, discount                                                                                                                                                         \u2502\n\u2502 Total Files Read: 2                                                                                                                                                                                                          \u2502\n\u2502 Filename(s):                                                                                                                                                                                                                 \u2502\n\u2502 s3://cdclab/warehouse/01a1f597-2a39-71da-ba5c-b47b3ecb71a5/data/data-c59aab5c8ce5489497b8711d22c1d044.parquet, s3://cdclab/warehouse/01a1f597-2a39-71da-ba5c-b47b3ecb71a5/data/data-2e10d2ae80e34f3d97620d9216ec8bce.parquet \u2502\n\u2502 Row Groups Scanned: 2 / 2                                                                                                                                                                                                    \u2502\n\u2502 28 rows                                                                                                                                                                                                                1.77s \u2502\n\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n"
+        }
+      ]
+    },
+    "spark": {
+      "catalog_impl": "org.apache.iceberg.spark.SparkCatalog (type=rest)",
+      "snapshot_pinning": "VERSION AS OF 8570345793528564422",
+      "storage_access": "vended credentials (header.X-Iceberg-Access-Delegation=vended-credentials, Iceberg AWSFileIO)",
+      "explain_formatted": "== Physical Plan ==\nAdaptiveSparkPlan (4)\n+- Sort (3)\n   +- Exchange (2)\n      +- BatchScan cdclab.public.orders (1)\n\n\n(1) BatchScan cdclab.public.orders\nOutput [7]: [id#257L, status#258, amount#259, updated_at#260, note#261, payload#262, discount#263]\ncdclab.public.orders (branch=null) [filters=, groupedBy=]\n\n(2) Exchange\nInput [7]: [id#257L, status#258, amount#259, updated_at#260, note#261, payload#262, discount#263]\nArguments: rangepartitioning(id#257L ASC NULLS FIRST, 200), ENSURE_REQUIREMENTS, [plan_id=77]\n\n(3) Sort\nInput [7]: [id#257L, status#258, amount#259, updated_at#260, note#261, payload#262, discount#263]\nArguments: [id#257L ASC NULLS FIRST], true, 0\n\n(4) AdaptiveSparkPlan\nOutput [7]: [id#257L, status#258, amount#259, updated_at#260, note#261, payload#262, discount#263]\nArguments: isFinalPlan=false\n\n",
+      "iceberg_scan_details": {
+        "scan_nodes": [],
+        "parquet_vectorization_conf": "default (true)"
+      }
+    }
+  },
+  "pipeline_positions_final": {
+    "captured_at_utc": "2026-11-19T20:55:28.978711Z",
+    "current_wal_lsn": "0/01CD0F00",
+    "replication_slots": [
+      {
+        "slot_name": "pg2iceberg_slot",
+        "plugin": "pgoutput",
+        "slot_type": "logical",
+        "temporary": false,
+        "active": true,
+        "active_pid": 149,
+        "restart_lsn": "0/01C7DA88",
+        "confirmed_flush_lsn": "0/01C98D28",
+        "wal_gap_bytes_confirmed_flush": 229848,
+        "wal_gap_bytes_restart": 341112
+      }
+    ],
+    "table_sizes": {
+      "heap_bytes": 8192,
+      "table_and_toast_bytes": 229376,
+      "indexes_bytes": 16384,
+      "total_relation_bytes": 245760,
+      "toast_relation_bytes": 221184,
+      "replica_identity": "d"
+    },
+    "coordinator_tables": [
+      "consumer",
+      "flushed_lsn",
+      "lock",
+      "log_index",
+      "log_seq",
+      "marker_emissions",
+      "mat_cursor",
+      "pending_markers",
+      "pipeline_meta",
+      "replicated_lsn",
+      "snapshot_progress",
+      "table_epoch",
+      "tables"
+    ],
+    "coordinator_state": {
+      "replicated_lsn": [
+        {
+          "id": 1,
+          "lsn": 30215736,
+          "updated_at": "2026-11-19T20:55:27.452745+00:00"
+        }
+      ],
+      "flushed_lsn": [
+        {
+          "id": 1,
+          "lsn": 29986088,
+          "updated_at": "2026-11-19T20:55:27.420139+00:00"
+        }
+      ],
+      "mat_cursor": [
+        {
+          "group_name": "default#snapshot-lsn",
+          "table_name": "public.orders",
+          "last_offset": 29844568,
+          "last_committed": "2026-11-19T20:54:47.226090+00:00"
+        },
+        {
+          "group_name": "default",
+          "table_name": "public.orders",
+          "last_offset": 8,
+          "last_committed": "2026-11-19T20:54:57.482809+00:00"
+        }
+      ],
+      "snapshot_progress": [],
+      "log_seq": [
+        {
+          "table_name": "public.orders",
+          "next_offset": 8
+        }
+      ],
+      "pipeline_meta": [
+        {
+          "id": 1,
+          "system_identifier": 7709988872909029401,
+          "updated_at": "2026-11-19T20:54:46.998514+00:00"
+        }
+      ],
+      "table_epoch": [
+        {
+          "table_name": "public.orders",
+          "epoch": 3
+        }
+      ],
+      "log_index_row_count": 1
+    }
+  },
+  "cleanup": {
+    "skipped_keep_up": false,
+    "resources_after_cleanup": {
+      "containers": [],
+      "volumes": [],
+      "networks": []
+    },
+    "all_project_resources_removed": true,
+    "non_project_containers_unchanged": true,
+    "non_project_count_before": 14,
+    "non_project_count_after": 14
+  }
+}

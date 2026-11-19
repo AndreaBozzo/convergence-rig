@@ -1,0 +1,435 @@
+{
+  "milestone": "L2",
+  "label": "l2-authz-scoped-access",
+  "outcome": "converged",
+  "passed": true,
+  "completed_at_utc": "2026-11-19T21:03:46.795733Z",
+  "host": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python_version": "3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "config": {
+    "lab": {
+      "compose_project": "cdclab",
+      "pg_source_host": "127.0.0.1",
+      "pg_source_port": 15432,
+      "pg_source_db": "cdclab",
+      "lakekeeper_base_url": "http://127.0.0.1:18181",
+      "lakekeeper_catalog_url": "http://127.0.0.1:18181/catalog",
+      "lakekeeper_warehouse": "cdclab",
+      "lakekeeper_namespace": "public",
+      "silo_port": 19000,
+      "silo_advertised_endpoint": "http://silo.localhost:19000",
+      "silo_bucket": "cdclab",
+      "silo_region": "local-01",
+      "pg2iceberg_metrics_port": 19090
+    },
+    "authz": {
+      "keycloak_port": 18080,
+      "keycloak_realm": "cdclab",
+      "host_token_url": "http://127.0.0.1:18080/realms/cdclab/protocol/openid-connect/token",
+      "container_token_url": "http://keycloak:8080/realms/cdclab/protocol/openid-connect/token",
+      "lakekeeper_authz_port": 18182,
+      "host_lakekeeper_base_url": "http://127.0.0.1:18182",
+      "host_lakekeeper_catalog_url": "http://127.0.0.1:18182/catalog",
+      "container_lakekeeper_catalog_url": "http://lakekeeper-authz:8181/catalog",
+      "lakekeeper_authz_warehouse": "cdclab_authz",
+      "admin_client_id": "cdclab-admin",
+      "writer_client_id": "cdclab-writer",
+      "reader_client_id": "cdclab-reader"
+    }
+  },
+  "commands_executed": [
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile authz --profile spark up -d --wait silo keycloak openfga lakekeeper-authz spark",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile spark exec -T spark /opt/spark/bin/spark-submit --master local[2] /opt/cdclab/scripts/authz_writer.py --mode init --catalog-name cdclab_authz --catalog-uri http://lakekeeper-authz:8181/catalog --warehouse cdclab_authz --oauth2-server-uri http://keycloak:8080/realms/cdclab/protocol/openid-connect/token --client-id cdclab-writer --client-secret <redacted> --oauth2-scope lakekeeper --out-json /tmp/cdclab-spark/l2_init.json",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile spark exec -T spark /opt/spark/bin/spark-submit --master local[2] /opt/cdclab/scripts/authz_writer.py --mode append --catalog-name cdclab_authz --catalog-uri http://lakekeeper-authz:8181/catalog --warehouse cdclab_authz --oauth2-server-uri http://keycloak:8080/realms/cdclab/protocol/openid-connect/token --client-id cdclab-writer --client-secret <redacted> --oauth2-scope lakekeeper --out-json /tmp/cdclab-spark/l2_append.json",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz down -v --remove-orphans"
+  ],
+  "container_digests": [
+    {
+      "service": "keycloak",
+      "container_name": "cdclab-keycloak-1",
+      "image_ref": "quay.io/keycloak/keycloak:26.0.7@sha256:32d2eb0f84aaf85b3e3afef544d5b25fcd40a791d62374f327a0cb5ca9aa1da5",
+      "image_id": "sha256:32d2eb0f84aaf85b3e3afef544d5b25fcd40a791d62374f327a0cb5ca9aa1da5",
+      "repo_digests": [
+        "quay.io/keycloak/keycloak@sha256:32d2eb0f84aaf85b3e3afef544d5b25fcd40a791d62374f327a0cb5ca9aa1da5"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "lakekeeper-authz",
+      "container_name": "cdclab-lakekeeper-authz-1",
+      "image_ref": "quay.io/lakekeeper/catalog:v0.15.1@sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54",
+      "image_id": "sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54",
+      "repo_digests": [
+        "quay.io/lakekeeper/catalog@sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "lakekeeper-authz-db",
+      "container_name": "cdclab-lakekeeper-authz-db-1",
+      "image_ref": "postgres:17-bookworm@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "image_id": "sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "repo_digests": [
+        "postgres@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "openfga",
+      "container_name": "cdclab-openfga-1",
+      "image_ref": "openfga/openfga:v1.14@sha256:46c17e971bc63e15a861f5e3b7976998622d4dc03372098a13c77b57c14f5a84",
+      "image_id": "sha256:46c17e971bc63e15a861f5e3b7976998622d4dc03372098a13c77b57c14f5a84",
+      "repo_digests": [
+        "openfga/openfga@sha256:46c17e971bc63e15a861f5e3b7976998622d4dc03372098a13c77b57c14f5a84"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "openfga-db",
+      "container_name": "cdclab-openfga-db-1",
+      "image_ref": "postgres:17-bookworm@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "image_id": "sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "repo_digests": [
+        "postgres@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "silo",
+      "container_name": "cdclab-silo-1",
+      "image_ref": "pgsty/silo:RELEASE.2026-09-03T13-18-01Z@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "image_id": "sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "repo_digests": [
+        "pgsty/silo@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "spark",
+      "container_name": "cdclab-spark-1",
+      "image_ref": "cdclab/spark-iceberg:3.5.9-iceberg1.12.0",
+      "image_id": "sha256:6d96720560c5a6396983664c65a4aa7c482a0d37799d2a2998676e4b1a578f12",
+      "repo_digests": [
+        "cdclab/spark-iceberg@sha256:6d96720560c5a6396983664c65a4aa7c482a0d37799d2a2998676e4b1a578f12"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    }
+  ],
+  "resources_after_pre_clean": {
+    "containers": [],
+    "volumes": [],
+    "networks": []
+  },
+  "bucket": {
+    "bucket": "cdclab",
+    "stdout": "Bucket created successfully `local/cdclab`.",
+    "ok": true
+  },
+  "lakekeeper_authz_info": {
+    "before_bootstrap": {
+      "version": "0.15.1",
+      "lakekeeper-version": "0.15.1",
+      "bootstrapped": false,
+      "server-id": "01a1f59e-3acc-76cd-8f99-601112071d60",
+      "default-project-id": "00000000-0000-0000-0000-000000000000",
+      "authz-backend": "openfga",
+      "aws-system-identities-enabled": false,
+      "azure-system-identities-enabled": false,
+      "gcp-system-identities-enabled": false,
+      "queues": [
+        "soft_deletion",
+        "tabular_purge",
+        "task_log_cleanup"
+      ],
+      "managed-role-providers": [],
+      "license-status": {
+        "issuer": null,
+        "audience": "lakekeeper-core",
+        "license-type": "Apache-2.0",
+        "valid": true
+      }
+    },
+    "after_bootstrap": {
+      "version": "0.15.1",
+      "lakekeeper-version": "0.15.1",
+      "bootstrapped": true,
+      "server-id": "01a1f59e-3acc-76cd-8f99-601112071d60",
+      "default-project-id": "00000000-0000-0000-0000-000000000000",
+      "authz-backend": "openfga",
+      "aws-system-identities-enabled": false,
+      "azure-system-identities-enabled": false,
+      "gcp-system-identities-enabled": false,
+      "queues": [
+        "soft_deletion",
+        "tabular_purge",
+        "task_log_cleanup"
+      ],
+      "managed-role-providers": [],
+      "license-status": {
+        "issuer": null,
+        "audience": "lakekeeper-core",
+        "license-type": "Apache-2.0",
+        "valid": true
+      }
+    },
+    "warehouse_id": "01a1f59e-57a1-725f-ab3a-8994152aed71",
+    "warehouse_name": "cdclab_authz"
+  },
+  "identities": {
+    "admin": {
+      "client_id": "cdclab-admin",
+      "lakekeeper_user_id": "oidc~145c446a-2b0c-4cfb-8952-335a9ac3dfe4",
+      "iss": "http://127.0.0.1:18080/realms/cdclab",
+      "aud": "lakekeeper",
+      "preferred_username": "service-account-cdclab-admin"
+    },
+    "writer": {
+      "client_id": "cdclab-writer",
+      "lakekeeper_user_id": "oidc~5465215e-8f34-4996-b73e-b4ae0d285153",
+      "iss": "http://127.0.0.1:18080/realms/cdclab",
+      "aud": "lakekeeper",
+      "preferred_username": "service-account-cdclab-writer"
+    },
+    "reader": {
+      "client_id": "cdclab-reader",
+      "lakekeeper_user_id": "oidc~ecdc75d9-c2b3-4b16-9676-7cb93f8de8de",
+      "iss": "http://127.0.0.1:18080/realms/cdclab",
+      "aud": "lakekeeper",
+      "preferred_username": "service-account-cdclab-reader"
+    }
+  },
+  "grants": {
+    "writer_warehouse_grant": {
+      "endpoint": "/management/v1/permissions/warehouse/01a1f59e-57a1-725f-ab3a-8994152aed71/assignments",
+      "http_status": 204,
+      "writes": [
+        {
+          "type": "create",
+          "user": "oidc~5465215e-8f34-4996-b73e-b4ae0d285153"
+        },
+        {
+          "type": "modify",
+          "user": "oidc~5465215e-8f34-4996-b73e-b4ae0d285153"
+        }
+      ]
+    },
+    "reader_curated_table_grant": {
+      "endpoint": "/management/v1/permissions/warehouse/01a1f59e-57a1-725f-ab3a-8994152aed71/table/01a1f59e-74e2-7698-a46d-d998349f40e0/assignments",
+      "http_status": 204,
+      "writes": [
+        {
+          "type": "select",
+          "user": "oidc~ecdc75d9-c2b3-4b16-9676-7cb93f8de8de"
+        }
+      ]
+    },
+    "reader_raw_grants": []
+  },
+  "tables": {
+    "raw": {
+      "table_uuid": "01a1f59e-740b-73b9-b733-355bcc97caa9",
+      "location": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9",
+      "init_snapshot_id": 7850449544646830413,
+      "append_snapshot_id": 4596549386840688794,
+      "init_data_file": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00000-0-f7b677f9-cc07-4081-8a13-015d5541a15a-0-00001.parquet",
+      "append_data_file": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00000-0-151f73f6-b4ce-4620-953b-23c811ac59dd-0-00001.parquet"
+    },
+    "curated": {
+      "table_uuid": "01a1f59e-74e2-7698-a46d-d998349f40e0",
+      "location": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0",
+      "init_snapshot_id": 473902664529674759,
+      "append_snapshot_id": 8676849126284906662,
+      "init_data_file": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0/data/00000-2-6dd6a634-1af5-44a8-87f8-527aeebe8b88-0-00001.parquet"
+    },
+    "prefix_disjointness": {
+      "raw_location": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9",
+      "curated_location": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0",
+      "raw_bucket": "cdclab",
+      "raw_prefix": "authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9",
+      "curated_bucket": "cdclab",
+      "curated_prefix": "authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0",
+      "distinct_and_disjoint": true
+    }
+  },
+  "checks": {
+    "check1_reader_loads_and_scans_curated": {
+      "passed": true,
+      "rest_load_table_status": 200,
+      "vended_credential_prefix": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0",
+      "vended_credential_endpoint": "http://silo.localhost:19000/",
+      "duckdb_scan": {
+        "client_id": "cdclab-reader",
+        "target": "curated.orders",
+        "allowed": true,
+        "row_count": 2,
+        "rows": [
+          {
+            "id": 1,
+            "status": "created",
+            "amount": "100.123456789",
+            "tier": "standard"
+          },
+          {
+            "id": 2,
+            "status": "settled",
+            "amount": "250.000000001",
+            "tier": "premium"
+          }
+        ],
+        "error": null
+      },
+      "direct_s3_curated_positive_control": {
+        "url": "http://silo.localhost:19000/cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0/data/00000-2-6dd6a634-1af5-44a8-87f8-527aeebe8b88-0-00001.parquet",
+        "s3_uri": "s3://cdclab/authz-warehouse/01a1f59e-74e2-7698-a46d-d998349f40e0/data/00000-2-6dd6a634-1af5-44a8-87f8-527aeebe8b88-0-00001.parquet",
+        "http_status": 200,
+        "allowed": true,
+        "body_bytes": 1309,
+        "parquet_magic_valid": true,
+        "body_sha256": "ac170735b46e930c72c2e1ce9ffce5bfd37c15ad912ed6516207a5d7c8e16fcd",
+        "error_body": null,
+        "content_type": "application/octet-stream"
+      }
+    },
+    "check2_catalog_denies_raw_to_reader": {
+      "passed": true,
+      "reader_rest_load_table": {
+        "url": "http://127.0.0.1:18182/catalog/v1/01a1f59e-57a1-725f-ab3a-8994152aed71/namespaces/raw/tables/orders",
+        "http_status": 404,
+        "body": {
+          "error": {
+            "message": "Error getting tabular from catalog",
+            "type": "NoSuchTableException",
+            "code": 404,
+            "stack": [
+              "Error ID: 01a1f59e-c921-72e9-a242-f0ff977e20a7"
+            ]
+          }
+        },
+        "raw_body": "{\"error\":{\"message\":\"Error getting tabular from catalog\",\"type\":\"NoSuchTableException\",\"code\":404,\"stack\":[\"Error ID: 01a1f59e-c921-72e9-a242-f0ff977e20a7\"]}}"
+      },
+      "reader_duckdb_scan_raw": {
+        "client_id": "cdclab-reader",
+        "target": "raw.orders",
+        "allowed": false,
+        "row_count": 0,
+        "rows": [],
+        "error": "CatalogException: Catalog Error: Table with name \"raw.orders\" does not exist because schema \"raw\" does not exist.\n\nLINE 1: SELECT * FROM lk_authz.raw.orders ORDER BY id\n                      ^^^^^^^^^^^^^^^^^^^"
+      },
+      "writer_rest_load_table_control": {
+        "url": "http://127.0.0.1:18182/catalog/v1/01a1f59e-57a1-725f-ab3a-8994152aed71/namespaces/raw/tables/orders",
+        "http_status": 200,
+        "allowed": true,
+        "vended_credential_prefix": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9"
+      }
+    },
+    "check3_reader_vended_creds_denied_raw_s3": {
+      "passed": true,
+      "reader_vended_creds_on_raw_init_file": {
+        "url": "http://silo.localhost:19000/cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00000-0-f7b677f9-cc07-4081-8a13-015d5541a15a-0-00001.parquet",
+        "s3_uri": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00000-0-f7b677f9-cc07-4081-8a13-015d5541a15a-0-00001.parquet",
+        "http_status": 403,
+        "allowed": false,
+        "body_bytes": 539,
+        "parquet_magic_valid": false,
+        "body_sha256": null,
+        "error_body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied.</Message><Key>authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00000-0-f7b677f9-cc07-4081-8a13-015d5541a15a-0-00001.parquet</Key><BucketName>cdclab</BucketName><Resource>/cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00000-0-f7b677f9-cc07-4081-8a13-015d5541a15a-0-00001.parquet</Resource><RequestId>18E98E1EB9DAADE0</RequestId><HostId>470a0afc0f6fdbebb6a8e14ece29122784c0656e19563387135a7c8e02feb163</HostId></Error>",
+        "content_type": "application/xml"
+      },
+      "reader_vended_creds_on_raw_append_file": {
+        "url": "http://silo.localhost:19000/cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00000-0-151f73f6-b4ce-4620-953b-23c811ac59dd-0-00001.parquet",
+        "s3_uri": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00000-0-151f73f6-b4ce-4620-953b-23c811ac59dd-0-00001.parquet",
+        "http_status": 403,
+        "allowed": false,
+        "body_bytes": 539,
+        "parquet_magic_valid": false,
+        "body_sha256": null,
+        "error_body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied.</Message><Key>authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00000-0-151f73f6-b4ce-4620-953b-23c811ac59dd-0-00001.parquet</Key><BucketName>cdclab</BucketName><Resource>/cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00000-0-151f73f6-b4ce-4620-953b-23c811ac59dd-0-00001.parquet</Resource><RequestId>18E98E2631E2A964</RequestId><HostId>470a0afc0f6fdbebb6a8e14ece29122784c0656e19563387135a7c8e02feb163</HostId></Error>",
+        "content_type": "application/xml"
+      },
+      "writer_vended_creds_on_raw_init_file_control": {
+        "url": "http://silo.localhost:19000/cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00000-0-f7b677f9-cc07-4081-8a13-015d5541a15a-0-00001.parquet",
+        "s3_uri": "s3://cdclab/authz-warehouse/01a1f59e-740b-73b9-b733-355bcc97caa9/data/00000-0-f7b677f9-cc07-4081-8a13-015d5541a15a-0-00001.parquet",
+        "http_status": 200,
+        "allowed": true,
+        "body_bytes": 1378,
+        "parquet_magic_valid": true,
+        "body_sha256": "aefeacc6e7f28e2f9ebe94ec0f3b5f7fd0071e3292f126e877117b069a5d0c0f",
+        "error_body": null,
+        "content_type": "application/octet-stream"
+      }
+    },
+    "check4_writer_writes_both_and_reader_write_denied": {
+      "passed": true,
+      "writer_append_raw_rows": 3,
+      "writer_append_curated_rows": 3,
+      "writer_raw_snapshot_advanced": true,
+      "writer_curated_snapshot_advanced": true,
+      "reader_duckdb_curated_after_append": {
+        "client_id": "cdclab-reader",
+        "target": "curated.orders",
+        "allowed": true,
+        "row_count": 3,
+        "rows": [
+          {
+            "id": 1,
+            "status": "created",
+            "amount": "100.123456789",
+            "tier": "standard"
+          },
+          {
+            "id": 2,
+            "status": "settled",
+            "amount": "250.000000001",
+            "tier": "premium"
+          },
+          {
+            "id": 3,
+            "status": "shipped",
+            "amount": "420.500000000",
+            "tier": "enterprise"
+          }
+        ],
+        "error": null
+      },
+      "reader_commit_curated_denied": {
+        "url": "http://127.0.0.1:18182/catalog/v1/01a1f59e-57a1-725f-ab3a-8994152aed71/namespaces/curated/tables/orders",
+        "http_status": 403,
+        "allowed": false,
+        "body": {
+          "error": {
+            "message": "Table action `can_commit` forbidden on table 'curated.orders' in warehouse `01a1f59e-57a1-725f-ab3a-8994152aed71`",
+            "type": "TableActionForbidden",
+            "code": 403,
+            "stack": [
+              "Error ID: 01a1f59f-486d-775c-b736-d36c1fdd77fd"
+            ]
+          }
+        },
+        "raw_body": "{\"error\":{\"message\":\"Table action `can_commit` forbidden on table 'curated.orders' in warehouse `01a1f59e-57a1-725f-ab3a-8994152aed71`\",\"type\":\"TableActionForbidden\",\"code\":403,\"stack\":[\"Error ID: 01a1f59f-486d-775c-b736-d36c1fdd77fd\"]}}"
+      }
+    }
+  },
+  "cleanup": {
+    "skipped_keep_up": false,
+    "resources_after_cleanup": {
+      "containers": [],
+      "volumes": [],
+      "networks": []
+    },
+    "all_project_resources_removed": true,
+    "non_project_containers_unchanged": true,
+    "non_project_count_before": 14,
+    "non_project_count_after": 14
+  }
+}

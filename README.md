@@ -4,11 +4,12 @@ Local lab testing whether a PostgreSQL 19 source table (`public.orders`) can und
 
 ## Layout
 
-- `compose/`: Docker Compose project (`cdclab`), `.env`, PostgreSQL 19.0 tarball Dockerfile, and `pg2iceberg` configuration.
-- `lab/`: bootstrap, exact batched verifier (`compare.py`), seeded TOAST workload (`workload.py`), REPACK runner and sampler (`repack.py`), SVG plot generator (`plots.py`), and milestone runners (`m0.py`, `m1.py`, `m2.py`, `m3.py`).
-- `tests/`: fault-injection fixtures for the verifier and unit tests for workload, REPACK analysis, and repeated reporting.
-- `runs/`: raw committed evidence per run, matched pair, and repeated series.
-- `reports/`: milestone reports (`M0.md` through `M3.md`).
+- `compose/`: Docker Compose project (`cdclab`), `.env`, PostgreSQL 19.0 tarball Dockerfile, `pg2iceberg` configuration, pinned Spark + Iceberg image (`profile spark`), and Keycloak OIDC realm (`profile authz`).
+- `lab/`: bootstrap, exact batched verifier (`compare.py`), seeded TOAST workload (`workload.py`), REPACK runner and sampler (`repack.py`), SVG plot generator (`plots.py`), M0-M3 runners (`m0.py` through `m3.py`), and Lakekeeper follow-up runners (`l1.py`, `l2.py`, `l3.py`).
+- `tests/`: fault-injection fixtures for the verifier and unit tests for workload, REPACK analysis, repeated reporting, and L1-L3 adapters/helpers.
+- `runs/`: raw committed evidence per run, matched pair, repeated series, and Lakekeeper follow-up drills.
+- `reports/`: milestone reports (`M0.md` through `M3.md`, `L1.md` through `L3.md`, and `L1,L2,L3.md`).
+- `drafts/`: local drafts for suspected upstream issues.
 - `docs/PLAN.md`: lab plan and milestone pass criteria.
 
 ## Prerequisites
@@ -46,7 +47,24 @@ Regenerate the repeated summary JSON, Markdown results table, and all SVG plots 
 uv run python -m lab.m3 --render-from-manifest <repeat_dir>/manifest.json --output-dir <repeat_dir>
 ```
 
-### 3. Run unit and fault-injection tests
+### 3. Lakekeeper follow-up milestones (L1-L3)
+
+Build the pinned Spark + Iceberg image once (for L1 and L2):
+
+```text
+docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile spark build spark
+```
+
+Run L1 (second reader: Spark vs DuckDB on the same equality-delete snapshot), L2 (OpenFGA + Keycloak OIDC scoped access and vended STS checks), and L3 (60 s Lakekeeper catalog outage drill):
+
+```text
+uv run python -m lab.l1
+uv run python -m lab.l2
+uv run python -m lab.l3
+uv run python -m lab.l3 --restart-connector-after-recovery --label l3-catalog-outage-recovery
+```
+
+### 4. Run unit and fault-injection tests
 
 ```text
 uv run pytest -q

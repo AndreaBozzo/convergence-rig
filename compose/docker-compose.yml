@@ -145,10 +145,207 @@ services:
     networks:
       - cdclab_net
 
+  spark:
+    build:
+      context: ./spark
+      dockerfile: Dockerfile
+    image: cdclab/spark-iceberg:3.5.9-iceberg1.12.0
+    profiles: ["spark"]
+    command: ["sleep", "infinity"]
+    environment:
+      TZ: UTC
+      SILO_REGION: ${SILO_REGION:-local-01}
+      AWS_REGION: ${SILO_REGION:-local-01}
+    volumes:
+      - ./spark/scripts:/opt/cdclab/scripts:ro
+    networks:
+      - cdclab_net
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0.7@sha256:32d2eb0f84aaf85b3e3afef544d5b25fcd40a791d62374f327a0cb5ca9aa1da5
+    profiles: ["authz"]
+    command:
+      - start-dev
+      - --health-enabled=true
+      - --import-realm
+      - --log-level=INFO
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN_USER:-admin}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:-cdclab_kc_admin_pass}
+    ports:
+      - "127.0.0.1:${KEYCLOAK_PORT:-18080}:8080"
+    volumes:
+      - ./keycloak/cdclab-realm.json:/opt/keycloak/data/import/cdclab-realm.json:ro
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'exec 3<>/dev/tcp/127.0.0.1/8080; printf "GET /realms/${KEYCLOAK_REALM:-cdclab}/.well-known/openid-configuration HTTP/1.1\r\nHost: 127.0.0.1:8080\r\nConnection: close\r\n\r\n" >&3; grep -q "jwks_uri" <&3',
+        ]
+      interval: 2s
+      timeout: 10s
+      retries: 40
+      start_period: 15s
+    networks:
+      - cdclab_net
+
+  openfga-db:
+    image: postgres:17-bookworm@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423
+    profiles: ["authz"]
+    environment:
+      POSTGRES_USER: ${OPENFGA_DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${OPENFGA_DB_PASSWORD:-cdclab_fga_pass}
+      POSTGRES_DB: ${OPENFGA_DB_NAME:-openfga}
+    command: ["-c", "max_connections=200"]
+    volumes:
+      - openfga_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${OPENFGA_DB_USER:-postgres} -d ${OPENFGA_DB_NAME:-openfga}"]
+      interval: 2s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+    networks:
+      - cdclab_net
+
+  openfga-migrate:
+    image: openfga/openfga:v1.14@sha256:46c17e971bc63e15a861f5e3b7976998622d4dc03372098a13c77b57c14f5a84
+    profiles: ["authz"]
+    command: ["migrate"]
+    restart: "no"
+    environment:
+      OPENFGA_DATASTORE_ENGINE: postgres
+      OPENFGA_DATASTORE_URI: postgres://${OPENFGA_DB_USER:-postgres}:${OPENFGA_DB_PASSWORD:-cdclab_fga_pass}@openfga-db:5432/${OPENFGA_DB_NAME:-openfga}?sslmode=disable
+    depends_on:
+      openfga-db:
+        condition: service_healthy
+      keycloak:
+        condition: service_healthy
+    networks:
+      - cdclab_net
+
+  openfga:
+    image: openfga/openfga:v1.14@sha256:46c17e971bc63e15a861f5e3b7976998622d4dc03372098a13c77b57c14f5a84
+    profiles: ["authz"]
+    command: ["run"]
+    environment:
+      OPENFGA_DATASTORE_ENGINE: postgres
+      OPENFGA_DATASTORE_URI: postgres://${OPENFGA_DB_USER:-postgres}:${OPENFGA_DB_PASSWORD:-cdclab_fga_pass}@openfga-db:5432/${OPENFGA_DB_NAME:-openfga}?sslmode=disable
+      OPENFGA_DATASTORE_MAX_OPEN_CONNS: 100
+      OPENFGA_DATASTORE_MAX_IDLE_CONNS: 50
+      OPENFGA_PLAYGROUND_ENABLED: "false"
+      OPENFGA_AUTHN_METHOD: oidc
+      OPENFGA_AUTHN_OIDC_ISSUER: http://keycloak:8080/realms/${KEYCLOAK_REALM:-cdclab}
+      OPENFGA_AUTHN_OIDC_ISSUER_ALIASES: http://127.0.0.1:${KEYCLOAK_PORT:-18080}/realms/${KEYCLOAK_REALM:-cdclab}
+      OPENFGA_AUTHN_OIDC_AUDIENCE: openfga
+      OPENFGA_HTTP_TLS_ENABLED: "false"
+      OPENFGA_CACHE_CONTROLLER_ENABLED: "true"
+      OPENFGA_CHECK_QUERY_CACHE_ENABLED: "true"
+      OPENFGA_CHECK_ITERATOR_CACHE_ENABLED: "true"
+    depends_on:
+      openfga-db:
+        condition: service_healthy
+      openfga-migrate:
+        condition: service_completed_successfully
+      keycloak:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/grpc_health_probe", "-addr=openfga:8081"]
+      interval: 2s
+      timeout: 10s
+      retries: 20
+      start_period: 5s
+    networks:
+      - cdclab_net
+
+  lakekeeper-authz-db:
+    image: postgres:17-bookworm@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423
+    profiles: ["authz"]
+    environment:
+      POSTGRES_USER: ${LAKEKEEPER_AUTHZ_DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${LAKEKEEPER_AUTHZ_DB_PASSWORD:-cdclab_lk_authz_pass}
+      POSTGRES_DB: ${LAKEKEEPER_AUTHZ_DB_NAME:-lakekeeper_authz}
+    volumes:
+      - lakekeeper_authz_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${LAKEKEEPER_AUTHZ_DB_USER:-postgres} -d ${LAKEKEEPER_AUTHZ_DB_NAME:-lakekeeper_authz}"]
+      interval: 2s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+    networks:
+      - cdclab_net
+
+  lakekeeper-authz-migrate:
+    image: quay.io/lakekeeper/catalog:v0.15.1@sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54
+    profiles: ["authz"]
+    command: ["migrate"]
+    restart: "no"
+    environment:
+      LAKEKEEPER__PG_ENCRYPTION_KEY: ${LAKEKEEPER_ENCRYPTION_KEY:-cdclab-synthetic-encryption-key-not-for-prod}
+      LAKEKEEPER__PG_DATABASE_URL_READ: postgresql://${LAKEKEEPER_AUTHZ_DB_USER:-postgres}:${LAKEKEEPER_AUTHZ_DB_PASSWORD:-cdclab_lk_authz_pass}@lakekeeper-authz-db:5432/${LAKEKEEPER_AUTHZ_DB_NAME:-lakekeeper_authz}
+      LAKEKEEPER__PG_DATABASE_URL_WRITE: postgresql://${LAKEKEEPER_AUTHZ_DB_USER:-postgres}:${LAKEKEEPER_AUTHZ_DB_PASSWORD:-cdclab_lk_authz_pass}@lakekeeper-authz-db:5432/${LAKEKEEPER_AUTHZ_DB_NAME:-lakekeeper_authz}
+      LAKEKEEPER__AUTHZ_BACKEND: openfga
+      LAKEKEEPER__OPENFGA__ENDPOINT: http://openfga:8081
+      LAKEKEEPER__OPENFGA__CLIENT_ID: openfga
+      LAKEKEEPER__OPENFGA__CLIENT_SECRET: ${OPENFGA_OIDC_CLIENT_SECRET:-cdclab-openfga-secret}
+      LAKEKEEPER__OPENFGA__TOKEN_ENDPOINT: http://keycloak:8080/realms/${KEYCLOAK_REALM:-cdclab}/protocol/openid-connect/token
+      RUST_LOG: info
+    depends_on:
+      lakekeeper-authz-db:
+        condition: service_healthy
+      openfga:
+        condition: service_healthy
+      keycloak:
+        condition: service_healthy
+    networks:
+      - cdclab_net
+
+  lakekeeper-authz:
+    image: quay.io/lakekeeper/catalog:v0.15.1@sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54
+    profiles: ["authz"]
+    command: ["serve"]
+    environment:
+      LAKEKEEPER__PG_ENCRYPTION_KEY: ${LAKEKEEPER_ENCRYPTION_KEY:-cdclab-synthetic-encryption-key-not-for-prod}
+      LAKEKEEPER__PG_DATABASE_URL_READ: postgresql://${LAKEKEEPER_AUTHZ_DB_USER:-postgres}:${LAKEKEEPER_AUTHZ_DB_PASSWORD:-cdclab_lk_authz_pass}@lakekeeper-authz-db:5432/${LAKEKEEPER_AUTHZ_DB_NAME:-lakekeeper_authz}
+      LAKEKEEPER__PG_DATABASE_URL_WRITE: postgresql://${LAKEKEEPER_AUTHZ_DB_USER:-postgres}:${LAKEKEEPER_AUTHZ_DB_PASSWORD:-cdclab_lk_authz_pass}@lakekeeper-authz-db:5432/${LAKEKEEPER_AUTHZ_DB_NAME:-lakekeeper_authz}
+      LAKEKEEPER__AUTHZ_BACKEND: openfga
+      LAKEKEEPER__OPENFGA__ENDPOINT: http://openfga:8081
+      LAKEKEEPER__OPENFGA__CLIENT_ID: openfga
+      LAKEKEEPER__OPENFGA__CLIENT_SECRET: ${OPENFGA_OIDC_CLIENT_SECRET:-cdclab-openfga-secret}
+      LAKEKEEPER__OPENFGA__TOKEN_ENDPOINT: http://keycloak:8080/realms/${KEYCLOAK_REALM:-cdclab}/protocol/openid-connect/token
+      LAKEKEEPER__OPENID_PROVIDER_URI: http://keycloak:8080/realms/${KEYCLOAK_REALM:-cdclab}
+      LAKEKEEPER__OPENID_ADDITIONAL_ISSUERS: http://127.0.0.1:${KEYCLOAK_PORT:-18080}/realms/${KEYCLOAK_REALM:-cdclab}
+      LAKEKEEPER__OPENID_AUDIENCE: lakekeeper
+      RUST_LOG: info
+    ports:
+      - "127.0.0.1:${LAKEKEEPER_AUTHZ_PORT:-18182}:8181"
+    depends_on:
+      lakekeeper-authz-migrate:
+        condition: service_completed_successfully
+      lakekeeper-authz-db:
+        condition: service_healthy
+      openfga:
+        condition: service_healthy
+      keycloak:
+        condition: service_healthy
+      silo:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "/home/nonroot/lakekeeper", "healthcheck"]
+      interval: 2s
+      timeout: 10s
+      retries: 20
+      start_period: 3s
+    networks:
+      - cdclab_net
+
 volumes:
   pg_source_data:
   lakekeeper_db_data:
   silo_data:
+  openfga_db_data:
+  lakekeeper_authz_db_data:
 
 networks:
   cdclab_net:

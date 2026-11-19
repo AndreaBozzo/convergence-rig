@@ -1,0 +1,47 @@
+[
+  {
+    "sequence_number": 2,
+    "snapshot_id": 8570345793528564422,
+    "parent_id": 8984358591390971612,
+    "timestamp_ms": "2026-11-19T19:54:57.424000+00:00",
+    "manifest_list": "s3://cdclab/warehouse/01a1f597-2a39-71da-ba5c-b47b3ecb71a5/metadata/snap-8570345793528564422-0-01a1f597-5272-76e1-b2b4-e90248aeb00e.avro",
+    "operation": "append",
+    "summary": {
+      "added-data-files": "1",
+      "added-delete-files": "1",
+      "added-equality-delete-files": "1",
+      "added-equality-deletes": "6",
+      "added-files-size": "41750",
+      "added-records": "4",
+      "pg2iceberg.log-end": "8",
+      "pg2iceberg.log-ends": "{\"default\":8}",
+      "pg2iceberg.log-group": "default",
+      "pg2iceberg.log-start": "0",
+      "total-data-files": "2",
+      "total-delete-files": "1",
+      "total-equality-deletes": "6",
+      "total-files-size": "171354",
+      "total-position-deletes": "0",
+      "total-records": "34"
+    }
+  },
+  {
+    "sequence_number": 1,
+    "snapshot_id": 8984358591390971612,
+    "parent_id": null,
+    "timestamp_ms": "2026-11-19T19:54:47.286000+00:00",
+    "manifest_list": "s3://cdclab/warehouse/01a1f597-2a39-71da-ba5c-b47b3ecb71a5/metadata/snap-8984358591390971612-0-01a1f597-2adf-7011-bcc7-ddb3024aa735.avro",
+    "operation": "append",
+    "summary": {
+      "added-data-files": "1",
+      "added-files-size": "129604",
+      "added-records": "30",
+      "total-data-files": "1",
+      "total-delete-files": "0",
+      "total-equality-deletes": "0",
+      "total-files-size": "129604",
+      "total-position-deletes": "0",
+      "total-records": "30"
+    }
+  }
+]
