@@ -20,13 +20,19 @@ class ReaderVersions:
     extensions: list[dict[str, Any]]
 
 
+def _load_or_install_extension(con: duckdb.DuckDBPyConnection, name: str) -> None:
+    try:
+        con.execute(f"LOAD {name};")
+    except Exception:
+        con.execute(f"INSTALL {name};")
+        con.execute(f"LOAD {name};")
+
+
 def connect_iceberg(cfg: LabConfig) -> tuple[duckdb.DuckDBPyConnection, ReaderVersions]:
     """Open an in-memory DuckDB connection attached to Lakekeeper's Iceberg REST catalog."""
     con = duckdb.connect()
-    con.execute("INSTALL iceberg;")
-    con.execute("LOAD iceberg;")
-    con.execute("INSTALL httpfs;")
-    con.execute("LOAD httpfs;")
+    _load_or_install_extension(con, "iceberg")
+    _load_or_install_extension(con, "httpfs")
 
     ext_rows = con.execute(
         """
@@ -84,6 +90,21 @@ def read_orders_at_snapshot(
     return [dict(zip(cols, row)) for row in cur.fetchall()]
 
 
+def marker_exists_at_snapshot(
+    con: duckdb.DuckDBPyConnection,
+    snapshot_id: int,
+    marker_id: int,
+    namespace: str = "public",
+) -> bool:
+    """Point-lookup check for a single marker row at an explicit Iceberg snapshot ID."""
+    row = con.execute(
+        f"SELECT id FROM cdclab.{namespace}.orders AT (VERSION => {int(snapshot_id)}) "
+        f"WHERE id = ?",
+        [int(marker_id)],
+    ).fetchone()
+    return row is not None
+
+
 def read_snapshots(con: duckdb.DuckDBPyConnection, namespace: str = "public") -> list[dict[str, Any]]:
     """Read Iceberg snapshot history via DuckDB iceberg_snapshots()."""
     cur = con.execute(f"SELECT * FROM iceberg_snapshots(cdclab.{namespace}.orders)")
@@ -104,7 +125,8 @@ def fetch_lakekeeper_table_metadata(
     table: str = "orders",
     *,
     request_vended_credentials: bool = True,
-) -> dict[str, Any]:
+    allow_not_found: bool = False,
+) -> dict[str, Any] | None:
     """Call Lakekeeper's Iceberg REST LoadTable endpoint directly to inspect metadata and config."""
     wh_q = urllib.parse.urlencode({"warehouse": cfg.lakekeeper_warehouse})
     cfg_url = f"{cfg.lakekeeper_catalog_url}/v1/config?{wh_q}"
@@ -126,8 +148,13 @@ def fetch_lakekeeper_table_metadata(
     if request_vended_credentials:
         headers["X-Iceberg-Access-Delegation"] = "vended-credentials"
     req = urllib.request.Request(table_url, headers=headers)
-    with urllib.request.urlopen(req, timeout=15.0) as resp:
-        payload = json.loads(resp.read().decode("utf-8"))
+    try:
+        with urllib.request.urlopen(req, timeout=15.0) as resp:
+            payload = json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        if allow_not_found and exc.code == 404:
+            return None
+        raise
 
     # Redact temporary STS credentials before returning/persisting evidence.
     redacted_config = {}
