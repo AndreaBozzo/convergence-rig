@@ -166,7 +166,9 @@ def capture_pg_pipeline_positions(conn: psycopg.Connection[Any]) -> dict[str, An
                 slot_name,
                 plugin,
                 slot_type,
+                temporary,
                 active,
+                active_pid,
                 restart_lsn::text,
                 confirmed_flush_lsn::text,
                 CASE
@@ -188,11 +190,13 @@ def capture_pg_pipeline_positions(conn: psycopg.Connection[Any]) -> dict[str, An
                 "slot_name": r[0],
                 "plugin": r[1],
                 "slot_type": r[2],
-                "active": bool(r[3]),
-                "restart_lsn": r[4],
-                "confirmed_flush_lsn": r[5],
-                "wal_gap_bytes_confirmed_flush": r[6],
-                "wal_gap_bytes_restart": r[7],
+                "temporary": bool(r[3]),
+                "active": bool(r[4]),
+                "active_pid": r[5],
+                "restart_lsn": r[6],
+                "confirmed_flush_lsn": r[7],
+                "wal_gap_bytes_confirmed_flush": r[8],
+                "wal_gap_bytes_restart": r[9],
             }
             for r in cur.fetchall()
         ]
@@ -517,10 +521,12 @@ def verify_snapshot_convergence(
             # Run full schema check + bounded-batch row diff against quiescent source.
             schema_res: SchemaCheckResult = verify_iceberg_schema(lk_meta)
             con = None
+            source_read_opened_utc = ""
             try:
                 con, _ = connect_iceberg(cfg)
                 with psycopg.connect(cfg.pg_dsn) as pg_conn:
                     pg_conn.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY")
+                    source_read_opened_utc = utc_now_iso()
                     src_batches = stream_postgres_orders(pg_conn, batch_size=batch_size)
                     lake_batches = stream_duckdb_orders_at_snapshot(
                         con,
@@ -541,6 +547,7 @@ def verify_snapshot_convergence(
             attempt_passed = schema_res.passed and row_res.passed
             attempt = {
                 "snapshot_id": snap_int,
+                "source_read_opened_utc": source_read_opened_utc,
                 "checked_at_utc": utc_now_iso(),
                 "passed": attempt_passed,
                 "schema_check": schema_res.to_dict(),

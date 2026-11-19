@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import base64
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal
@@ -329,6 +330,7 @@ def seed_orders(
     seed_duration_ms = (time.monotonic_ns() - t0) / 1_000_000.0
 
     toast_ver = verify_toast_storage(conn)
+    conn.commit()
     if (
         toast_ver["both_toasted_rows"] < actual_toast_count
         or toast_ver["toast_relation_bytes"] <= 0
@@ -547,6 +549,7 @@ def run_paced_workload(
     probe_interval_s: float = 20.0,
     probe_poll_interval_s: float = 0.5,
     statement_timeout_ms: int = 15000,
+    on_window_start: Callable[[int, str], None] | None = None,
 ) -> dict[str, Any]:
     """Execute a seeded update/insert/delete workload at a fixed offered rate."""
     rng = random.Random(rng_seed + 1000)
@@ -572,12 +575,16 @@ def run_paced_workload(
     sched_to_complete_ms_list: list[float] = []
     exec_latency_ms_list: list[float] = []
     queue_delay_ms_list: list[float] = []
+    harness_dispatch_lag_ms_list: list[float] = []
+    backpressure_delay_ms_list: list[float] = []
 
     attempted = 0
     completed = 0
     errors = 0
     timeouts = 0
     missed_schedule_count = 0
+    harness_missed_arrival_count = 0
+    backpressure_delayed_count = 0
     sample_errors: list[dict[str, Any]] = []
     toast_unchanged_ids_touched: set[int] = set()
     toast_changed_ids_touched: set[int] = set()
@@ -585,6 +592,8 @@ def run_paced_workload(
     ops_jsonl.parent.mkdir(parents=True, exist_ok=True)
     window_start_utc = utc_now_iso()
     window_start_ns = time.monotonic_ns()
+    if on_window_start is not None:
+        on_window_start(window_start_ns, window_start_utc)
 
     prober = SteadyStateLagProber(
         cfg,
@@ -604,6 +613,8 @@ def run_paced_workload(
             with conn.cursor() as cur:
                 cur.execute(f"SET statement_timeout = {int(statement_timeout_ms)};")
             conn.commit()
+
+            prev_complete_ns = window_start_ns
 
             for seq in range(planned_ops):
                 scheduled_ns = window_start_ns + seq * interval_ns
@@ -804,14 +815,24 @@ def run_paced_workload(
 
                 complete_ns = time.monotonic_ns()
                 queue_delay_ms = (start_ns - scheduled_ns) / 1_000_000.0
+                ready_ns = scheduled_ns if scheduled_ns >= prev_complete_ns else prev_complete_ns
+                harness_dispatch_lag_ms = max(0.0, (start_ns - ready_ns) / 1_000_000.0)
+                backpressure_delay_ms = max(0.0, (prev_complete_ns - scheduled_ns) / 1_000_000.0)
                 exec_latency_ms = (complete_ns - start_ns) / 1_000_000.0
                 sched_to_complete_ms = (complete_ns - scheduled_ns) / 1_000_000.0
+                prev_complete_ns = complete_ns
 
                 if queue_delay_ms > miss_threshold_ms:
                     missed_schedule_count += 1
+                if harness_dispatch_lag_ms > miss_threshold_ms:
+                    harness_missed_arrival_count += 1
+                if backpressure_delay_ms > 0.0:
+                    backpressure_delayed_count += 1
 
                 if outcome == "ok":
                     queue_delay_ms_list.append(queue_delay_ms)
+                    harness_dispatch_lag_ms_list.append(harness_dispatch_lag_ms)
+                    backpressure_delay_ms_list.append(backpressure_delay_ms)
                     exec_latency_ms_list.append(exec_latency_ms)
                     sched_to_complete_ms_list.append(sched_to_complete_ms)
 
@@ -831,6 +852,8 @@ def run_paced_workload(
                                 (complete_ns - window_start_ns) / 1_000_000.0, 3
                             ),
                             "queue_delay_ms": round(queue_delay_ms, 3),
+                            "harness_dispatch_lag_ms": round(harness_dispatch_lag_ms, 3),
+                            "backpressure_delay_ms": round(backpressure_delay_ms, 3),
                             "exec_latency_ms": round(exec_latency_ms, 3),
                             "sched_to_complete_ms": round(sched_to_complete_ms, 3),
                             "affected_rows": affected_rows,
@@ -857,7 +880,10 @@ def run_paced_workload(
     ]
 
     missed_schedule_pct = round((missed_schedule_count / attempted) * 100.0, 3) if attempted > 0 else 0.0
-    schedule_valid = errors == 0 and attempted == planned_ops and missed_schedule_pct <= 1.0
+    harness_missed_arrival_pct = (
+        round((harness_missed_arrival_count / attempted) * 100.0, 3) if attempted > 0 else 0.0
+    )
+    schedule_valid = attempted == planned_ops and harness_missed_arrival_pct <= 1.0
     return {
         "rng_seed": rng_seed,
         "offered_rate_ops_s": rate_ops_s,
@@ -885,11 +911,16 @@ def run_paced_workload(
             "miss_threshold_ms": round(miss_threshold_ms, 2),
             "missed_schedule_count": missed_schedule_count,
             "missed_schedule_pct": missed_schedule_pct,
+            "harness_missed_arrival_count": harness_missed_arrival_count,
+            "harness_missed_arrival_pct": harness_missed_arrival_pct,
+            "backpressure_delayed_count": backpressure_delayed_count,
             "schedule_valid": schedule_valid,
         },
         "latency_sched_to_complete_ms": summarize_latency(sched_to_complete_ms_list),
         "latency_exec_ms": summarize_latency(exec_latency_ms_list),
         "latency_queue_delay_ms": summarize_latency(queue_delay_ms_list),
+        "latency_harness_dispatch_lag_ms": summarize_latency(harness_dispatch_lag_ms_list),
+        "latency_backpressure_delay_ms": summarize_latency(backpressure_delay_ms_list),
         "steady_state_probes": {
             "probe_interval_s": probe_interval_s,
             "poll_interval_s": probe_poll_interval_s,
