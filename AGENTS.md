@@ -41,6 +41,16 @@ the contract. Where this file and the plan disagree, this file wins.
   access to an external environment, or when you are stuck after three
   distinct attempts at the same problem. Then end the session.
 
+## When a tool call is denied
+
+- Read upstream docs and source with your URL-reading tool, or with
+  `curl`/`gh` inside the sandbox. Do not set `BypassSandbox` for network
+  fetches; the safety monitor denies that and headless mode cannot ask.
+- A denied call is not the end of the session. Try a different tool or a
+  sandboxed form of the same step. If nothing works, write
+  `reports/BLOCKED.md` with the denied call and stop. Never end a session
+  without either the milestone report or `BLOCKED.md`.
+
 ## Evidence and honesty
 
 - Never invent a version, digest, flag, config key or result. Verify each one
