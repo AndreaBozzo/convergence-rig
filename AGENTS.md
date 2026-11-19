@@ -6,8 +6,13 @@ the contract. Where this file and the plan disagree, this file wins.
 ## Scope of this run
 
 - Work the milestones in order: M0, M1, M2, M3, then the follow-up
-  milestones L1, L2, L3 ("Follow-up milestones" in the plan). One milestone
-  per session unless the launcher prompt says otherwise.
+  milestones L1, L2, L3 ("Follow-up milestones" in the plan), then R1 and C1
+  ("Second round"). One milestone per session unless the launcher prompt
+  says otherwise. R1 uses its own Compose project `p2irepro`; the Docker
+  rules below apply to it as they do to `cdclab`.
+- Keep the evidence of failed attempts. If a run fails because of a harness
+  bug, keep its run directory or summarise it in the report before
+  removing it, and say what was fixed.
 - Out of scope: Databricks, ADLS or any other external environment, "Other
   OSS worth testing" and "Parked experiments". Do not start them. You may
   list ideas for them at the end of a report.
@@ -24,7 +29,7 @@ the contract. Where this file and the plan disagree, this file wins.
   post anywhere. Suspected upstream problems go to `drafts/` as Markdown.
 - No paid services, no cloud accounts, no credentials beyond the synthetic
   lab ones. Synthetic data only.
-- Docker: one Compose project named `cdclab`, every published port bound to
+- Docker: one Compose project named `cdclab` (plus `p2irepro` for R1), every published port bound to
   `127.0.0.1` and configurable through `compose/.env`. Only create, stop or
   remove containers, volumes and networks of that project
   (`docker compose -p cdclab ...`). Never run `docker system prune`, any

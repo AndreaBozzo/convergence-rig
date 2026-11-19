@@ -150,3 +150,29 @@ These turn "Lakekeeper evaluation for future work" into three local milestones. 
 3. Restart Lakekeeper, commit the final marker, and measure time to visibility and to the first verified exact match. Run the full verifier.
 
 **Pass:** an explicit outcome (converged, mismatch at deadline, reader error, invalid harness run) with the backlog and recovery timings in `reports/L3.md`. Note what a metadata restore drill and an operations owner list would need, without running a restore.
+
+## Second round (R1, C1)
+
+### R1 · Minimal upstream reproduction of the catalog-outage exit
+
+Goal: a reproduction a pg2iceberg maintainer can run in a few minutes on Linux or macOS, with nothing from this lab.
+
+1. Create `repro/pg2iceberg-catalog-outage/` with its own `docker-compose.yml`, a `pg2iceberg.yaml`, a `README.md` and one POSIX `repro.sh`. Use Compose project `p2irepro`, ports bound to `127.0.0.1` and different from the lab's. Use only public images pinned by digest: the official `postgres` image (a released major that pg2iceberg 0.12.0 supports; PG19 is not needed), Lakekeeper `v0.15.1` with its catalog database and the storage backend from its pinned minimal example, and `polynyadev/pg2iceberg:0.12.0`. No Python, no lab modules: `docker compose`, `psql` inside the Postgres container and `curl` only.
+2. `repro.sh` does, printing each step with a UTC timestamp: start the stack and bootstrap; create a small table with a primary key; insert rows; wait until a snapshot exists in Lakekeeper; stop Lakekeeper; insert more rows; wait 30 s; print pg2iceberg's container state and exit code (`docker inspect`), its last log lines, and `pg_replication_slots` (`active`); start Lakekeeper; wait 30 s; print the same again. End with one line `RESULT: pg2iceberg exited with code N while the catalog was down; slot active=...` and a non-zero script exit when the reported behaviour reproduces, zero when it does not. `repro.sh down` removes only project `p2irepro`.
+3. If pg2iceberg 0.12.0 documents a split mode (`stream-only` plus `materializer-only`) usable with the same config, add `repro.sh split` that runs the same steps in that mode and reports whether the materializer process survives the outage. Skip it with a note if the mode cannot be configured from the published docs or source.
+4. Run `repro.sh` three times from a clean state (`down` between runs) and record each RESULT line and exit code in the report. Run it from Git Bash on this host; note anything that would differ on Linux.
+5. Update `drafts/pg2iceberg-catalog-outage-exit.md` so its reproduction section points at the folder and shows the exact RESULT output. Keep it a local draft.
+
+**Pass:** three of three runs reproduce the exit with the same RESULT line, the folder runs with nothing outside it, and `reports/R1.md` records image digests, the exact commands and outputs. If it does not reproduce outside the lab, that is a result: report what differs.
+
+### C1 · REPACK pairs with pg2iceberg compaction enabled
+
+Goal: repeat the M3 protocol with automatic compaction on, the way a production deployment would run, and compare with M3.
+
+1. Find pg2iceberg 0.12.0's compaction settings and defaults in its docs and source (`target_file_size` and any thresholds or intervals). Choose settings that make compaction actually run during a 180 s window at 10 ops/s on the 250,000-row fixture; record the choice and why. Add them as a separate config (for example `compose/pg2iceberg.compaction.yaml` selected by an environment variable or flag). M0-M3 defaults and evidence must stay unchanged.
+2. Run three fresh counterbalanced matched pairs with the same seeds, fixture, rate, window and REPACK timing as M3 (seeds 20261119, 20261120, 20261121; orders baseline-first, repack-first, baseline-first). Skip the plain REPACK control.
+3. For each run, prove compaction ran inside the measurement window from Iceberg snapshot metadata (operation and summary of each snapshot), and report the number of compaction commits, live data files and live equality-delete files at the verified snapshot. A run in which no compaction commit happened is an invalid harness run, the same way M2 required an observed REPACK overlap.
+4. Report every M3 metric for the C1 runs and a side-by-side table against M3 on the same seeds: convergence outcome, exact match, final-marker visibility, commit-to-match, diff time, steady-state reader lag, write latency in the matched interval and the full window, and pipeline positions. Say explicitly whether a compaction commit overlapped the REPACK window or the final-marker snapshot, and whether any conflict, retry or error appeared in the pg2iceberg log.
+5. Generate the C1 table and the comparison from raw runs with one documented command, as M3 does.
+
+**Pass:** six valid runs with explicit outcomes and evidence that compaction ran in each; the comparison with M3 is reproducible from raw files. A mismatch or a pg2iceberg error is a result: preserve it and draft a local reproduction.
