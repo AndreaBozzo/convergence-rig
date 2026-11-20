@@ -53,6 +53,7 @@ the contract. Where this file and the plan disagree, this file wins.
   commands with `;` or `&&`: the monitor denied a chained down/up/logs
   call in P1. Shell syntax is Windows PowerShell 5.1: no `&&`, no `<<`
   heredocs; write multi-line scripts to a file and run the file.
+- Do not copy or inspect binaries out of container images (`docker run --entrypoint cat`, `docker cp` of executables); the monitor denies it. Upstream source lives in `upstream/` when a milestone needs it.
 - A denied call is not the end of the session. Try a different tool or a
   sandboxed form of the same step. If nothing works, write
   `reports/BLOCKED.md` with the denied call and stop. Never end a session

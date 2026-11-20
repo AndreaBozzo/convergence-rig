@@ -6,3 +6,4 @@ agent-runs/
 compose/.env.local
 .agy/
 scripts/run-agent.ps1
+upstream/

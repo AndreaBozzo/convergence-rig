@@ -216,6 +216,8 @@ Goal: decide whether Lakekeeper earns its place against Apache Polaris for this 
 
 Run the parked experiment as written under "Parked experiments" (first item), on a fresh PostgreSQL 19.0 source from the lab's image. Record `wal_level` and `effective_wal_level` before and after the first logical slot exists, and what pg2iceberg 0.12.0's preflight does. If pg2iceberg refuses, show native slot creation working on an equivalent fresh instance and quote the preflight code at the pinned commit.
 
+The pg2iceberg source at the pinned tag (`v0.12.0`, commit `01c2e172eb5e7be82c60b77f20cb089354c06ce6`) is checked out in `upstream/pg2iceberg-v0.12.0/` (gitignored). The preflight is in `crates/pg2iceberg/src/init.rs` and `config.rs`. Read it there; do not extract or inspect binaries from container images.
+
 **Pass:** the outcome with the exact settings, the preflight behaviour and the source reference in `reports/W1.md`; a local draft in `drafts/` only if pg2iceberg rejects a configuration that PostgreSQL 19 supports.
 
 ### D1 · Databricks Free Edition, only with credentials
