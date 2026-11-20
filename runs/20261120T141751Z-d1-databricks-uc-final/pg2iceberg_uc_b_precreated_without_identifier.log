@@ -1,0 +1,19 @@
+pg2iceberg-uc-1  | {"timestamp":"2026-11-20T14:18:31.771065Z","level":"INFO","message":"reading config","path":"/etc/pg2iceberg/config.yaml","target":"pg2iceberg::config"}
+pg2iceberg-uc-1  | {"timestamp":"2026-11-20T14:18:31.773712Z","level":"INFO","message":"serving /metrics, /healthz and /readyz","addr":"0.0.0.0:9090","target":"pg2iceberg::telemetry"}
+pg2iceberg-uc-1  | {"timestamp":"2026-11-20T14:18:32.812704Z","level":"INFO","message":"Using Static credential provider","target":"object_store::aws::builder"}
+pg2iceberg-uc-1  | {"timestamp":"2026-11-20T14:18:32.818338Z","level":"INFO","message":"vended-credentials S3 router built (per-table object stores)","tables":1,"target":"pg2iceberg::run"}
+pg2iceberg-uc-1  | {"timestamp":"2026-11-20T14:18:32.935508Z","level":"INFO","message":"NOTICE: column \"flushable_lsn\" of relation \"log_index\" already exists, skipping","log.target":"tokio_postgres::connection","log.module_path":"tokio_postgres::connection","log.file":"/usr/local/cargo/git/checkouts/rust-postgres-c2560d49ee2b8b43/31acf55/tokio-postgres/src/connection.rs","log.line":358,"target":"tokio_postgres::connection"}
+pg2iceberg-uc-1  | {"timestamp":"2026-11-20T14:18:32.989815Z","level":"INFO","message":"discovering schema from PG","table":"public.orders","target":"pg2iceberg::setup"}
+pg2iceberg-uc-1  | {"timestamp":"2026-11-20T14:18:32.999050Z","level":"INFO","message":"entering replication lifecycle","target":"pg2iceberg::run"}
+pg2iceberg-uc-1  | {"timestamp":"2026-11-20T14:18:32.999584Z","level":"INFO","message":"source cluster fingerprinted","system_id":7710257868763754523,"target":"pg2iceberg_validate::runtime","span":{"name":"startup"},"spans":[{"name":"startup"}]}
+pg2iceberg-uc-1  | Error: logical lifecycle
+pg2iceberg-uc-1  | 
+pg2iceberg-uc-1  | Caused by:
+pg2iceberg-uc-1  |     startup validation: startup validation failed:
+pg2iceberg-uc-1  |       - [
+pg2iceberg-uc-1  |         OrphanedTables {
+pg2iceberg-uc-1  |             tables: [
+pg2iceberg-uc-1  |                 "convergence_rig.orders",
+pg2iceberg-uc-1  |             ],
+pg2iceberg-uc-1  |         },
+pg2iceberg-uc-1  |     ]

@@ -1,0 +1,461 @@
+{
+  "milestone": "D1",
+  "label": "d1-databricks-uc-final",
+  "completed_at_utc": "2026-11-20T14:20:39.699358Z",
+  "outcome": {
+    "rest_metadata_and_table_creation": "answered (see feasibility)",
+    "external_data_write_with_vended_credentials": "denied",
+    "external_data_read_with_vended_credentials": "denied",
+    "pg2iceberg_write": [
+      {
+        "label": "a_fresh",
+        "outcome": "refused by catalog",
+        "reason": "createTable with identifier columns",
+        "uc_error_code": 2014,
+        "http_status": 400
+      },
+      {
+        "label": "b_precreated_without_identifier",
+        "outcome": "refused by pg2iceberg startup validation",
+        "reason": "Iceberg table exists but pg2iceberg holds no state for it (OrphanedTables)",
+        "uc_error_code": null,
+        "http_status": null
+      }
+    ],
+    "demo_table_exact_in_databricks_sql": "converged"
+  },
+  "passed": true,
+  "parameters": {
+    "seed_rows": 2500,
+    "toast_rows": 50,
+    "rng_seed": 20261119,
+    "demo_max_id": 1000
+  },
+  "host": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python_version": "3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "feasibility": {
+    "config": {
+      "status": 200,
+      "prefix": "catalogs/convergence-rig",
+      "defaults": {
+        "snapshot-loading-mode": "refs",
+        "rest-page-size": "1000",
+        "s3.delete-enabled": "false"
+      },
+      "endpoint_count": 20,
+      "advertises": {
+        "create_namespace": true,
+        "create_table": true,
+        "commit_table": true,
+        "drop_table": true,
+        "table_credentials": true,
+        "multi_table_transactions": false
+      }
+    },
+    "schema": {
+      "name": "convergence_rig",
+      "action": "already_exists"
+    },
+    "tables_before_run": [
+      "orders_demo"
+    ],
+    "stale_tables_dropped_at_start": [
+      {
+        "table": "orders_demo",
+        "status": 204
+      }
+    ],
+    "external_create_table": {
+      "status": 200,
+      "present": true,
+      "format_version": 2,
+      "current_snapshot_id": -1,
+      "identifier_field_ids": [
+        null
+      ],
+      "config_keys": [
+        "client.region",
+        "s3.access-key-id",
+        "s3.secret-access-key",
+        "s3.session-token",
+        "s3.session-token-expires-at-ms"
+      ],
+      "config_values": {
+        "s3.session-token-expires-at-ms": "1795187872000",
+        "s3.access-key-id": "<redacted>",
+        "s3.session-token": "<redacted>",
+        "s3.secret-access-key": "<redacted>",
+        "client.region": "us-east-2"
+      },
+      "storage_credentials": [],
+      "has_s3_credentials_in_config": true,
+      "metadata_location_is_s3": true
+    },
+    "external_load_table_vended": {
+      "status": 200,
+      "present": true,
+      "format_version": 2,
+      "current_snapshot_id": -1,
+      "identifier_field_ids": [
+        null
+      ],
+      "config_keys": [
+        "client.region",
+        "s3.access-key-id",
+        "s3.secret-access-key",
+        "s3.session-token",
+        "s3.session-token-expires-at-ms"
+      ],
+      "config_values": {
+        "s3.session-token-expires-at-ms": "1795187874000",
+        "s3.access-key-id": "<redacted>",
+        "s3.session-token": "<redacted>",
+        "s3.secret-access-key": "<redacted>",
+        "client.region": "us-east-2"
+      },
+      "storage_credentials": [],
+      "has_s3_credentials_in_config": true,
+      "metadata_location_is_s3": true
+    },
+    "table_credentials_endpoint": {
+      "status": 200,
+      "keys": [
+        "storage-credentials"
+      ],
+      "credential_entries": [
+        {
+          "prefix_present": true,
+          "config_keys": [
+            "client.region",
+            "s3.access-key-id",
+            "s3.secret-access-key",
+            "s3.session-token",
+            "s3.session-token-expires-at-ms"
+          ]
+        }
+      ]
+    },
+    "drop_table": {
+      "status": 204
+    },
+    "create_table_with_identifier_columns": {
+      "status": 400,
+      "error": {
+        "error": {
+          "message": "Table with identifier columns is not allowed. [ErrorCode: 2014] (request_id: 899be530-9199-42c0-9a0b-84acfa0aa6aa)",
+          "type": "BadRequestException",
+          "code": 400
+        }
+      }
+    },
+    "create_table_without_identifier_columns": {
+      "status": 200
+    }
+  },
+  "pg2iceberg_attempts": [
+    {
+      "label": "a_fresh",
+      "exit_code": 1,
+      "snapshot_complete": false,
+      "log_file": "pg2iceberg_uc_a_fresh.log",
+      "log_lines": 13,
+      "outcome": "refused by catalog",
+      "reason": "createTable with identifier columns",
+      "uc_error_code": 2014,
+      "http_status": 400,
+      "precreated_table_status": null,
+      "slots_after": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "active": false
+        }
+      ],
+      "tables_after": []
+    },
+    {
+      "label": "b_precreated_without_identifier",
+      "exit_code": 1,
+      "snapshot_complete": false,
+      "log_file": "pg2iceberg_uc_b_precreated_without_identifier.log",
+      "log_lines": 19,
+      "outcome": "refused by pg2iceberg startup validation",
+      "reason": "Iceberg table exists but pg2iceberg holds no state for it (OrphanedTables)",
+      "precreated_table_status": 200,
+      "slots_after": [],
+      "tables_after": [
+        "orders"
+      ]
+    }
+  ],
+  "demo_rows_export": {
+    "rows": 1000,
+    "sha256": "e99939050ec33d5e6ed19cacbdd44289a541c7825e242dd8e8b6ed28a8bd683f",
+    "max_id": 1000
+  },
+  "seed": {
+    "seed_rows": 2500,
+    "rng_seed": 20261119,
+    "edge_row_count": 12,
+    "toast_row_count": 50,
+    "toast_id_range": [
+      13,
+      62
+    ],
+    "mutable_row_count": 2438,
+    "seed_duration_ms": 56.49,
+    "toast_verification": {
+      "total_rows": 2500,
+      "note_toasted_rows": 50,
+      "payload_toasted_rows": 50,
+      "both_toasted_rows": 50,
+      "max_note_bytes": 6167,
+      "max_payload_bytes": 6251,
+      "heap_bytes": 589824,
+      "table_and_toast_bytes": 1458176,
+      "indexes_bytes": 73728,
+      "total_relation_bytes": 1531904,
+      "toast_relation_bytes": 835584
+    }
+  },
+  "readback": {
+    "spark_external_write": {
+      "returncode": 1,
+      "elapsed_ms": 21575.6,
+      "table_created_through_rest": true,
+      "s3_failure": {
+        "denied": true,
+        "action": "s3:putobject",
+        "explicit_deny_in_resource_policy": true
+      }
+    },
+    "databricks_sql": {
+      "warehouse_found": true,
+      "rows_before_insert": 0,
+      "insert_statements": 20,
+      "insert_states": [
+        "SUCCEEDED"
+      ],
+      "hash_query_state": "SUCCEEDED",
+      "hash_comparison": {
+        "passed": true,
+        "expected_rows": 1000,
+        "actual_rows": 1000,
+        "missing_count": 0,
+        "missing_examples": [],
+        "extra_count": 0,
+        "extra_examples": [],
+        "duplicate_count": 0,
+        "duplicate_examples": [],
+        "differing_count": 0,
+        "differing_examples": []
+      },
+      "sample_rows": [
+        [
+          "1",
+          "created",
+          "12345678901234567890123456789.123456789",
+          "2026-11-19T12:00:00.123Z"
+        ],
+        [
+          "2",
+          "pending",
+          "0E-9",
+          "2026-11-19T12:00:00.000Z"
+        ],
+        [
+          "3",
+          "settled",
+          "-99999999999999999999999999999.999999999",
+          "2026-11-19T12:00:00.999Z"
+        ]
+      ],
+      "final_count": [
+        [
+          "1000"
+        ]
+      ]
+    },
+    "rest_schema_check": {
+      "passed": true,
+      "schema_id": 0,
+      "format_version": 2,
+      "identifier_field_ids": [],
+      "mismatches": [],
+      "actual_fields": [
+        {
+          "id": 1,
+          "name": "id",
+          "required": true,
+          "type": "long"
+        },
+        {
+          "id": 2,
+          "name": "status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "id": 3,
+          "name": "amount",
+          "required": true,
+          "type": "decimal(38, 9)"
+        },
+        {
+          "id": 4,
+          "name": "updated_at",
+          "required": true,
+          "type": "timestamptz"
+        },
+        {
+          "id": 5,
+          "name": "note",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "id": 6,
+          "name": "payload",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "id": 7,
+          "name": "discount",
+          "required": false,
+          "type": "decimal(38, 9)"
+        }
+      ],
+      "expected_fields": [
+        {
+          "name": "id",
+          "type": "long",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "type": "decimal(38, 9)",
+          "required": true
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamptz",
+          "required": true
+        },
+        {
+          "name": "note",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "payload",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "discount",
+          "type": "decimal(38, 9)",
+          "required": false
+        }
+      ]
+    },
+    "rest_current_snapshot_id": 9051272929170252050,
+    "rest_snapshot_count": 20,
+    "duckdb_external_read": {
+      "attached": true,
+      "passed": false,
+      "error": "HTTPException: HTTP Error: HTTP GET error reading 's3://<managed-storage>/tables/4a0d90d7-e70d-4952-b4e6-09594a54d61c/_iceberg/metadata/snap-9051272929170252050-1-47916183-9bf9-419a-95e8-79e2ba07f09d.avro' (HTTP 403 Forbidden)\n\nAccessDenied: User: <redacted-assumed-role>,s=JMAj2CW6TN2PghBPVE6ffQ is not authorized to perform: s3:GetObject on resource: \"arn:aws:s3:::<managed-storage>/tables/4a0d90d7-e70d-4952-b4e6-09594a54d61c/_iceberg/metadata/snap-9051272929170252050-1-47916183-9bf9-419a-95e8-79e2ba07f09d.avro\" with an explicit deny in a resource-based policy\n\nAuthentication Failure - this is usually caused by invalid or missing credentials.\n* Credentials are provided, but they did not work.\n* See https://duckdb.org/docs/stable/extensions/httpfs/s3api.html",
+      "s3_failure": {
+        "denied": true,
+        "action": "s3:getobject",
+        "explicit_deny_in_resource_policy": true
+      },
+      "reader_versions": {
+        "duckdb": "2.0.0",
+        "extensions": [
+          {
+            "name": "httpfs",
+            "loaded": true,
+            "installed": true,
+            "version": "77392a7207",
+            "install_mode": "REPOSITORY"
+          },
+          {
+            "name": "iceberg",
+            "loaded": true,
+            "installed": true,
+            "version": "4c0c0874c4",
+            "install_mode": "REPOSITORY"
+          },
+          {
+            "name": "parquet",
+            "loaded": true,
+            "installed": true,
+            "version": "v2.0.0",
+            "install_mode": "STATICALLY_LINKED"
+          }
+        ]
+      }
+    },
+    "spark_external_read": {
+      "returncode": 1,
+      "passed": false,
+      "s3_failure": {
+        "denied": true,
+        "action": null,
+        "explicit_deny_in_resource_policy": false
+      }
+    }
+  },
+  "cleanup_tables": {
+    "tables_before_run": [
+      "orders_demo"
+    ],
+    "existing_before_cleanup": [
+      "orders_demo"
+    ],
+    "dropped": [],
+    "kept": [
+      "orders_demo"
+    ],
+    "final_tables": [
+      "orders_demo"
+    ],
+    "demo_table_status": 200
+  },
+  "cleanup_docker": {
+    "skipped_keep_up": false,
+    "resources_after_cleanup": {
+      "containers": [],
+      "volumes": [],
+      "networks": []
+    },
+    "all_project_resources_removed": true,
+    "non_project_containers_unchanged": true,
+    "non_project_count_before": 14,
+    "non_project_count_after": 14
+  },
+  "commands_executed": [
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector --profile uc-connector --profile uc-spark down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait pg-source",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile uc-connector up -d pg2iceberg-uc",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector --profile uc-connector --profile uc-spark down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait pg-source",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile uc-connector up -d pg2iceberg-uc",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector --profile uc-connector --profile uc-spark down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait pg-source",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile uc-spark up -d spark-uc",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile uc-spark exec -T spark-uc mkdir -p /tmp/cdclab-spark",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile uc-spark cp runs/20261120T141751Z-d1-databricks-uc-final/orders_demo_rows.jsonl spark-uc:/tmp/cdclab-spark/rows_in.jsonl",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile uc-spark exec -T spark-uc /opt/spark/bin/spark-submit --master local[2] /opt/cdclab/scripts/uc_orders.py --mode create-write --table orders_demo --rows-in /tmp/cdclab-spark/rows_in.jsonl --result-out /tmp/cdclab-spark/write_result.json",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile uc-spark exec -T spark-uc /opt/spark/bin/spark-submit --master local[2] /opt/cdclab/scripts/uc_orders.py --mode read --table orders_demo --rows-out /tmp/cdclab-spark/rows_out.jsonl --meta-out /tmp/cdclab-spark/meta_out.json --result-out /tmp/cdclab-spark/read_result.json",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector --profile uc-connector --profile uc-spark down -v --remove-orphans"
+  ]
+}

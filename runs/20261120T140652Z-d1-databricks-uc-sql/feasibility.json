@@ -1,0 +1,119 @@
+{
+  "config": {
+    "status": 200,
+    "prefix": "catalogs/convergence-rig",
+    "defaults": {
+      "snapshot-loading-mode": "refs",
+      "rest-page-size": "1000",
+      "s3.delete-enabled": "false"
+    },
+    "endpoint_count": 20,
+    "advertises": {
+      "create_namespace": true,
+      "create_table": true,
+      "commit_table": true,
+      "drop_table": true,
+      "table_credentials": true,
+      "multi_table_transactions": false
+    }
+  },
+  "schema": {
+    "name": "convergence_rig",
+    "action": "already_exists"
+  },
+  "tables_before_run": [
+    "orders_demo"
+  ],
+  "stale_tables_dropped_at_start": [
+    {
+      "table": "orders_demo",
+      "status": 204
+    }
+  ],
+  "external_create_table": {
+    "status": 200,
+    "present": true,
+    "format_version": 2,
+    "current_snapshot_id": -1,
+    "identifier_field_ids": [
+      null
+    ],
+    "config_keys": [
+      "client.region",
+      "s3.access-key-id",
+      "s3.secret-access-key",
+      "s3.session-token",
+      "s3.session-token-expires-at-ms"
+    ],
+    "config_values": {
+      "s3.session-token-expires-at-ms": "1795187192000",
+      "s3.access-key-id": "<redacted>",
+      "s3.session-token": "<redacted>",
+      "s3.secret-access-key": "<redacted>",
+      "client.region": "us-east-2"
+    },
+    "storage_credentials": [],
+    "has_s3_credentials_in_config": true,
+    "metadata_location_is_s3": true
+  },
+  "external_load_table_vended": {
+    "status": 200,
+    "present": true,
+    "format_version": 2,
+    "current_snapshot_id": -1,
+    "identifier_field_ids": [
+      null
+    ],
+    "config_keys": [
+      "client.region",
+      "s3.access-key-id",
+      "s3.secret-access-key",
+      "s3.session-token",
+      "s3.session-token-expires-at-ms"
+    ],
+    "config_values": {
+      "s3.session-token-expires-at-ms": "1795187201000",
+      "s3.access-key-id": "<redacted>",
+      "s3.session-token": "<redacted>",
+      "s3.secret-access-key": "<redacted>",
+      "client.region": "us-east-2"
+    },
+    "storage_credentials": [],
+    "has_s3_credentials_in_config": true,
+    "metadata_location_is_s3": true
+  },
+  "table_credentials_endpoint": {
+    "status": 200,
+    "keys": [
+      "storage-credentials"
+    ],
+    "credential_entries": [
+      {
+        "prefix_present": true,
+        "config_keys": [
+          "client.region",
+          "s3.access-key-id",
+          "s3.secret-access-key",
+          "s3.session-token",
+          "s3.session-token-expires-at-ms"
+        ]
+      }
+    ]
+  },
+  "drop_table": {
+    "status": 204
+  },
+  "create_table_with_identifier_columns": {
+    "status": 400,
+    "error": {
+      "error": {
+        "message": "Table with identifier columns is not allowed. [ErrorCode: 2014] (request_id: f25d80b2-87ed-4acc-8fee-ad5372499d7d)",
+        "type": "BadRequestException",
+        "code": 400
+      }
+    }
+  },
+  "create_table_without_identifier_columns": {
+    "status": 200
+  }
+}

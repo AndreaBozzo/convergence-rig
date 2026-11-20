@@ -1,0 +1,16 @@
+{
+  "tables_before_run": [
+    "orders"
+  ],
+  "existing_before_cleanup": [
+    "orders_demo"
+  ],
+  "dropped": [],
+  "kept": [
+    "orders_demo"
+  ],
+  "final_tables": [
+    "orders_demo"
+  ],
+  "demo_table_status": 200
+}

@@ -1,0 +1,194 @@
+{
+  "spark_external_write": {
+    "returncode": 1,
+    "elapsed_ms": 21575.6,
+    "table_created_through_rest": true,
+    "s3_failure": {
+      "denied": true,
+      "action": "s3:putobject",
+      "explicit_deny_in_resource_policy": true
+    }
+  },
+  "databricks_sql": {
+    "warehouse_found": true,
+    "rows_before_insert": 0,
+    "insert_statements": 20,
+    "insert_states": [
+      "SUCCEEDED"
+    ],
+    "hash_query_state": "SUCCEEDED",
+    "hash_comparison": {
+      "passed": true,
+      "expected_rows": 1000,
+      "actual_rows": 1000,
+      "missing_count": 0,
+      "missing_examples": [],
+      "extra_count": 0,
+      "extra_examples": [],
+      "duplicate_count": 0,
+      "duplicate_examples": [],
+      "differing_count": 0,
+      "differing_examples": []
+    },
+    "sample_rows": [
+      [
+        "1",
+        "created",
+        "12345678901234567890123456789.123456789",
+        "2026-11-19T12:00:00.123Z"
+      ],
+      [
+        "2",
+        "pending",
+        "0E-9",
+        "2026-11-19T12:00:00.000Z"
+      ],
+      [
+        "3",
+        "settled",
+        "-99999999999999999999999999999.999999999",
+        "2026-11-19T12:00:00.999Z"
+      ]
+    ],
+    "final_count": [
+      [
+        "1000"
+      ]
+    ]
+  },
+  "rest_schema_check": {
+    "passed": true,
+    "schema_id": 0,
+    "format_version": 2,
+    "identifier_field_ids": [],
+    "mismatches": [],
+    "actual_fields": [
+      {
+        "id": 1,
+        "name": "id",
+        "required": true,
+        "type": "long"
+      },
+      {
+        "id": 2,
+        "name": "status",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "id": 3,
+        "name": "amount",
+        "required": true,
+        "type": "decimal(38, 9)"
+      },
+      {
+        "id": 4,
+        "name": "updated_at",
+        "required": true,
+        "type": "timestamptz"
+      },
+      {
+        "id": 5,
+        "name": "note",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "id": 6,
+        "name": "payload",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "id": 7,
+        "name": "discount",
+        "required": false,
+        "type": "decimal(38, 9)"
+      }
+    ],
+    "expected_fields": [
+      {
+        "name": "id",
+        "type": "long",
+        "required": true
+      },
+      {
+        "name": "status",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "amount",
+        "type": "decimal(38, 9)",
+        "required": true
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamptz",
+        "required": true
+      },
+      {
+        "name": "note",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "payload",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "discount",
+        "type": "decimal(38, 9)",
+        "required": false
+      }
+    ]
+  },
+  "rest_current_snapshot_id": 9051272929170252050,
+  "rest_snapshot_count": 20,
+  "duckdb_external_read": {
+    "attached": true,
+    "passed": false,
+    "error": "HTTPException: HTTP Error: HTTP GET error reading 's3://<managed-storage>/tables/4a0d90d7-e70d-4952-b4e6-09594a54d61c/_iceberg/metadata/snap-9051272929170252050-1-47916183-9bf9-419a-95e8-79e2ba07f09d.avro' (HTTP 403 Forbidden)\n\nAccessDenied: User: <redacted-assumed-role>,s=JMAj2CW6TN2PghBPVE6ffQ is not authorized to perform: s3:GetObject on resource: \"arn:aws:s3:::<managed-storage>/tables/4a0d90d7-e70d-4952-b4e6-09594a54d61c/_iceberg/metadata/snap-9051272929170252050-1-47916183-9bf9-419a-95e8-79e2ba07f09d.avro\" with an explicit deny in a resource-based policy\n\nAuthentication Failure - this is usually caused by invalid or missing credentials.\n* Credentials are provided, but they did not work.\n* See https://duckdb.org/docs/stable/extensions/httpfs/s3api.html",
+    "s3_failure": {
+      "denied": true,
+      "action": "s3:getobject",
+      "explicit_deny_in_resource_policy": true
+    },
+    "reader_versions": {
+      "duckdb": "2.0.0",
+      "extensions": [
+        {
+          "name": "httpfs",
+          "loaded": true,
+          "installed": true,
+          "version": "77392a7207",
+          "install_mode": "REPOSITORY"
+        },
+        {
+          "name": "iceberg",
+          "loaded": true,
+          "installed": true,
+          "version": "4c0c0874c4",
+          "install_mode": "REPOSITORY"
+        },
+        {
+          "name": "parquet",
+          "loaded": true,
+          "installed": true,
+          "version": "v2.0.0",
+          "install_mode": "STATICALLY_LINKED"
+        }
+      ]
+    }
+  },
+  "spark_external_read": {
+    "returncode": 1,
+    "passed": false,
+    "s3_failure": {
+      "denied": true,
+      "action": null,
+      "explicit_deny_in_resource_policy": false
+    }
+  }
+}

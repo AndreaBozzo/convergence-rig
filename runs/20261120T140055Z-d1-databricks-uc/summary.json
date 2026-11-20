@@ -1,0 +1,347 @@
+{
+  "milestone": "D1",
+  "label": "d1-databricks-uc",
+  "completed_at_utc": "2026-11-20T14:02:32.819459Z",
+  "outcome": {
+    "feasibility": "external create and vended credentials answered; see feasibility.json",
+    "pg2iceberg_write": [
+      {
+        "label": "a_fresh",
+        "outcome": "refused by catalog",
+        "reason": "createTable with identifier columns",
+        "uc_error_code": 2014,
+        "http_status": 400
+      },
+      {
+        "label": "b_precreated_without_identifier",
+        "outcome": "refused by pg2iceberg startup validation",
+        "reason": "Iceberg table exists but pg2iceberg holds no state for it (OrphanedTables)",
+        "uc_error_code": null,
+        "http_status": null
+      }
+    ],
+    "standard_engine_roundtrip": "not converged"
+  },
+  "passed": false,
+  "parameters": {
+    "seed_rows": 2500,
+    "toast_rows": 50,
+    "rng_seed": 20261119,
+    "demo_max_id": 1000
+  },
+  "host": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python_version": "3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "feasibility": {
+    "config": {
+      "status": 200,
+      "prefix": "catalogs/convergence-rig",
+      "defaults": {
+        "snapshot-loading-mode": "refs",
+        "rest-page-size": "1000",
+        "s3.delete-enabled": "false"
+      },
+      "endpoint_count": 20,
+      "advertises": {
+        "create_namespace": true,
+        "create_table": true,
+        "commit_table": true,
+        "drop_table": true,
+        "table_credentials": true,
+        "multi_table_transactions": false
+      }
+    },
+    "schema": {
+      "name": "convergence_rig",
+      "action": "already_exists"
+    },
+    "tables_before_run": [
+      "orders"
+    ],
+    "stale_tables_dropped_at_start": [
+      {
+        "table": "orders",
+        "status": 204
+      }
+    ],
+    "external_create_table": {
+      "status": 200,
+      "present": true,
+      "format_version": 2,
+      "current_snapshot_id": -1,
+      "identifier_field_ids": [
+        null
+      ],
+      "config_keys": [
+        "client.region",
+        "s3.access-key-id",
+        "s3.secret-access-key",
+        "s3.session-token",
+        "s3.session-token-expires-at-ms"
+      ],
+      "config_values": {
+        "s3.session-token-expires-at-ms": "1795186858000",
+        "s3.access-key-id": "<redacted>",
+        "s3.session-token": "<redacted>",
+        "s3.secret-access-key": "<redacted>",
+        "client.region": "us-east-2"
+      },
+      "storage_credentials": [],
+      "has_s3_credentials_in_config": true,
+      "metadata_location_is_s3": true
+    },
+    "external_load_table_vended": {
+      "status": 200,
+      "present": true,
+      "format_version": 2,
+      "current_snapshot_id": -1,
+      "identifier_field_ids": [
+        null
+      ],
+      "config_keys": [
+        "client.region",
+        "s3.access-key-id",
+        "s3.secret-access-key",
+        "s3.session-token",
+        "s3.session-token-expires-at-ms"
+      ],
+      "config_values": {
+        "s3.session-token-expires-at-ms": "1795186858000",
+        "s3.access-key-id": "<redacted>",
+        "s3.session-token": "<redacted>",
+        "s3.secret-access-key": "<redacted>",
+        "client.region": "us-east-2"
+      },
+      "storage_credentials": [],
+      "has_s3_credentials_in_config": true,
+      "metadata_location_is_s3": true
+    },
+    "table_credentials_endpoint": {
+      "status": 200,
+      "keys": [
+        "storage-credentials"
+      ],
+      "credential_entries": [
+        {
+          "prefix_present": true,
+          "config_keys": [
+            "client.region",
+            "s3.access-key-id",
+            "s3.secret-access-key",
+            "s3.session-token",
+            "s3.session-token-expires-at-ms"
+          ]
+        }
+      ]
+    },
+    "drop_table": {
+      "status": 204
+    },
+    "create_table_with_identifier_columns": {
+      "status": 400,
+      "error": {
+        "error": {
+          "message": "Table with identifier columns is not allowed. [ErrorCode: 2014] (request_id: 198baff1-f41b-4243-b1cd-d19c055954c9)",
+          "type": "BadRequestException",
+          "code": 400
+        }
+      }
+    },
+    "create_table_without_identifier_columns": {
+      "status": 200
+    }
+  },
+  "pg2iceberg_attempts": [
+    {
+      "label": "a_fresh",
+      "exit_code": 1,
+      "snapshot_complete": false,
+      "log_file": "pg2iceberg_uc_a_fresh.log",
+      "log_lines": 13,
+      "outcome": "refused by catalog",
+      "reason": "createTable with identifier columns",
+      "uc_error_code": 2014,
+      "http_status": 400,
+      "precreated_table_status": null,
+      "slots_after": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "active": false
+        }
+      ],
+      "tables_after": []
+    },
+    {
+      "label": "b_precreated_without_identifier",
+      "exit_code": 1,
+      "snapshot_complete": false,
+      "log_file": "pg2iceberg_uc_b_precreated_without_identifier.log",
+      "log_lines": 19,
+      "outcome": "refused by pg2iceberg startup validation",
+      "reason": "Iceberg table exists but pg2iceberg holds no state for it (OrphanedTables)",
+      "precreated_table_status": 200,
+      "slots_after": [],
+      "tables_after": [
+        "orders"
+      ]
+    }
+  ],
+  "demo_rows_export": {
+    "rows": 1000,
+    "sha256": "e99939050ec33d5e6ed19cacbdd44289a541c7825e242dd8e8b6ed28a8bd683f",
+    "max_id": 1000
+  },
+  "seed": {
+    "seed_rows": 2500,
+    "rng_seed": 20261119,
+    "edge_row_count": 12,
+    "toast_row_count": 50,
+    "toast_id_range": [
+      13,
+      62
+    ],
+    "mutable_row_count": 2438,
+    "seed_duration_ms": 137.33,
+    "toast_verification": {
+      "total_rows": 2500,
+      "note_toasted_rows": 50,
+      "payload_toasted_rows": 50,
+      "both_toasted_rows": 50,
+      "max_note_bytes": 6167,
+      "max_payload_bytes": 6251,
+      "heap_bytes": 589824,
+      "table_and_toast_bytes": 1458176,
+      "indexes_bytes": 73728,
+      "total_relation_bytes": 1531904,
+      "toast_relation_bytes": 835584
+    }
+  },
+  "readback": {
+    "spark_write": {
+      "returncode": 1,
+      "elapsed_ms": 24464.83,
+      "stderr_tail": [
+        "\tat org.apache.iceberg.aws.s3.S3OutputStream.close(S3OutputStream.java:255)",
+        "\tat org.apache.iceberg.shaded.org.apache.parquet.io.DelegatingPositionOutputStream.close(DelegatingPositionOutputStream.java:40)",
+        "\t... 28 more",
+        "",
+        "26/11/20 14:02:02 ERROR TaskSetManager: Task 0 in stage 4.0 failed 1 times; aborting job",
+        "26/11/20 14:02:02 ERROR AppendDataExec: Data source write support IcebergBatchWrite(table=uc.convergence_rig.orders_demo, format=PARQUET) is aborting.",
+        "26/11/20 14:02:02 WARN SparkWrite: Skipping cleanup of written files",
+        "26/11/20 14:02:02 ERROR AppendDataExec: Data source write support IcebergBatchWrite(table=uc.convergence_rig.orders_demo, format=PARQUET) aborted."
+      ]
+    },
+    "duckdb": {},
+    "spark_read": {},
+    "databricks_sql": {
+      "warehouses_returncode": 0,
+      "returncode": 0,
+      "response": {
+        "manifest": {
+          "chunks": [
+            {
+              "chunk_index": 0,
+              "row_count": 1,
+              "row_offset": 0
+            }
+          ],
+          "format": "JSON_ARRAY",
+          "schema": {
+            "column_count": 4,
+            "columns": [
+              {
+                "name": "n",
+                "position": 0,
+                "type_name": "LONG",
+                "type_text": "BIGINT"
+              },
+              {
+                "name": "min_id",
+                "position": 1,
+                "type_name": "LONG",
+                "type_text": "BIGINT"
+              },
+              {
+                "name": "max_id",
+                "position": 2,
+                "type_name": "LONG",
+                "type_text": "BIGINT"
+              },
+              {
+                "name": "null_notes",
+                "position": 3,
+                "type_name": "LONG",
+                "type_text": "BIGINT"
+              }
+            ]
+          },
+          "total_chunk_count": 1,
+          "total_row_count": 1,
+          "truncated": false
+        },
+        "result": {
+          "chunk_index": 0,
+          "data_array": [
+            [
+              "0",
+              null,
+              null,
+              null
+            ]
+          ],
+          "row_count": 1,
+          "row_offset": 0
+        },
+        "statement_id": "01f1e4ea-ff86-10d5-bea4-594c4bcf9cf0",
+        "status": {
+          "state": "SUCCEEDED"
+        }
+      }
+    }
+  },
+  "cleanup_tables": {
+    "tables_before_run": [
+      "orders"
+    ],
+    "existing_before_cleanup": [
+      "orders_demo"
+    ],
+    "dropped": [],
+    "kept": [
+      "orders_demo"
+    ],
+    "final_tables": [
+      "orders_demo"
+    ],
+    "demo_table_status": 200
+  },
+  "cleanup_docker": {
+    "skipped_keep_up": false,
+    "resources_after_cleanup": {
+      "containers": [],
+      "volumes": [],
+      "networks": []
+    },
+    "all_project_resources_removed": true,
+    "non_project_containers_unchanged": true,
+    "non_project_count_before": 14,
+    "non_project_count_after": 14
+  },
+  "commands_executed": [
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector --profile uc-connector --profile uc-spark down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait pg-source",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile uc-connector up -d pg2iceberg-uc",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector --profile uc-connector --profile uc-spark down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait pg-source",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile uc-connector up -d pg2iceberg-uc",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector --profile uc-connector --profile uc-spark down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait pg-source",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile uc-spark up -d spark-uc",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile uc-spark exec -T spark-uc mkdir -p /tmp/cdclab-spark",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile uc-spark cp runs/20261120T140055Z-d1-databricks-uc/orders_demo_rows.jsonl spark-uc:/tmp/cdclab-spark/rows_in.jsonl",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile uc-spark exec -T spark-uc /opt/spark/bin/spark-submit --master local[2] /opt/cdclab/scripts/uc_orders.py --mode create-write --table orders_demo --rows-in /tmp/cdclab-spark/rows_in.jsonl --result-out /tmp/cdclab-spark/write_result.json",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector --profile uc-connector --profile uc-spark down -v --remove-orphans"
+  ]
+}

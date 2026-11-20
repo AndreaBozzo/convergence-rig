@@ -1,0 +1,125 @@
+{
+  "status": 200,
+  "summary": {
+    "present": true,
+    "format_version": 2,
+    "current_snapshot_id": -1,
+    "identifier_field_ids": [
+      null
+    ],
+    "config_keys": [
+      "client.region",
+      "s3.access-key-id",
+      "s3.secret-access-key",
+      "s3.session-token",
+      "s3.session-token-expires-at-ms"
+    ],
+    "config_values": {
+      "s3.session-token-expires-at-ms": "1795186902000",
+      "s3.access-key-id": "<redacted>",
+      "s3.session-token": "<redacted>",
+      "s3.secret-access-key": "<redacted>",
+      "client.region": "us-east-2"
+    },
+    "storage_credentials": [],
+    "has_s3_credentials_in_config": true,
+    "metadata_location_is_s3": true
+  },
+  "metadata": {
+    "format-version": 2,
+    "table-uuid": "5f5949c5-32a8-486c-81f2-3ebbafe73615",
+    "location": "s3://<managed-storage>/tables/5f5949c5-32a8-486c-81f2-3ebbafe73615/_iceberg",
+    "last-sequence-number": 0,
+    "last-updated-ms": 1795183317517,
+    "last-column-id": 7,
+    "current-schema-id": 0,
+    "schemas": [
+      {
+        "type": "struct",
+        "schema-id": 0,
+        "fields": [
+          {
+            "id": 1,
+            "name": "id",
+            "required": true,
+            "type": "long"
+          },
+          {
+            "id": 2,
+            "name": "status",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "id": 3,
+            "name": "amount",
+            "required": true,
+            "type": "decimal(38, 9)"
+          },
+          {
+            "id": 4,
+            "name": "updated_at",
+            "required": true,
+            "type": "timestamptz"
+          },
+          {
+            "id": 5,
+            "name": "note",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "id": 6,
+            "name": "payload",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "id": 7,
+            "name": "discount",
+            "required": false,
+            "type": "decimal(38, 9)"
+          }
+        ]
+      }
+    ],
+    "default-spec-id": 0,
+    "partition-specs": [
+      {
+        "spec-id": 0,
+        "fields": []
+      }
+    ],
+    "last-partition-id": 999,
+    "default-sort-order-id": 0,
+    "sort-orders": [
+      {
+        "order-id": 0,
+        "fields": []
+      }
+    ],
+    "properties": {
+      "owner": "spark",
+      "write.object-storage.partitioned-paths": "false",
+      "write.metadata.path": "s3://<managed-storage>/tables/5f5949c5-32a8-486c-81f2-3ebbafe73615/_iceberg/metadata",
+      "gc.enabled": "false",
+      "write.parquet.compression-codec": "zstd",
+      "write.metadata.metrics.max-inferred-column-defaults": "32",
+      "history.expire.min-snapshots-to-keep": "100",
+      "history.expire.max-snapshot-age-ms": "0",
+      "write.data.path": "s3://<managed-storage>/tables/5f5949c5-32a8-486c-81f2-3ebbafe73615",
+      "write.wap.enabled": "false",
+      "write.metadata.previous-versions-max": "100",
+      "write.metadata.compression-codec": "gzip",
+      "write.object-storage.enabled": "true",
+      "write.summary.partition-limit": "100"
+    },
+    "current-snapshot-id": -1,
+    "refs": {},
+    "snapshots": [],
+    "statistics": [],
+    "partition-statistics": [],
+    "snapshot-log": [],
+    "metadata-log": []
+  }
+}

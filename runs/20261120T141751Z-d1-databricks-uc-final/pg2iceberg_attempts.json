@@ -1,0 +1,35 @@
+[
+  {
+    "label": "a_fresh",
+    "exit_code": 1,
+    "snapshot_complete": false,
+    "log_file": "pg2iceberg_uc_a_fresh.log",
+    "log_lines": 13,
+    "outcome": "refused by catalog",
+    "reason": "createTable with identifier columns",
+    "uc_error_code": 2014,
+    "http_status": 400,
+    "precreated_table_status": null,
+    "slots_after": [
+      {
+        "slot_name": "pg2iceberg_slot",
+        "active": false
+      }
+    ],
+    "tables_after": []
+  },
+  {
+    "label": "b_precreated_without_identifier",
+    "exit_code": 1,
+    "snapshot_complete": false,
+    "log_file": "pg2iceberg_uc_b_precreated_without_identifier.log",
+    "log_lines": 19,
+    "outcome": "refused by pg2iceberg startup validation",
+    "reason": "Iceberg table exists but pg2iceberg holds no state for it (OrphanedTables)",
+    "precreated_table_status": 200,
+    "slots_after": [],
+    "tables_after": [
+      "orders"
+    ]
+  }
+]

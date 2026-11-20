@@ -1,0 +1,40 @@
+{
+  "method": "GET",
+  "path": "/api/2.1/unity-catalog/iceberg-rest/v1/config?warehouse=convergence-rig",
+  "status": 200,
+  "json": {
+    "defaults": {
+      "snapshot-loading-mode": "refs",
+      "rest-page-size": "1000",
+      "s3.delete-enabled": "false"
+    },
+    "overrides": {
+      "prefix": "catalogs/convergence-rig"
+    },
+    "endpoints": [
+      "GET /v1/{prefix}/namespaces",
+      "GET /v1/{prefix}/namespaces/{namespace}",
+      "POST /v1/{prefix}/namespaces",
+      "POST /v1/{prefix}/namespaces/{namespace}/properties",
+      "DELETE /v1/{prefix}/namespaces/{namespace}",
+      "HEAD /v1/{prefix}/namespaces/{namespace}",
+      "GET /v1/{prefix}/namespaces/{namespace}/tables",
+      "GET /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "DELETE /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "POST /v1/{prefix}/tables/rename",
+      "HEAD /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "GET /v1/{prefix}/namespaces/{namespace}/tables/{table}/credentials",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables/{table}/metrics",
+      "HEAD /v1/{prefix}/namespaces/{namespace}/views/{view}",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables/{table}/plan",
+      "GET /v1/{prefix}/namespaces/{namespace}/tables/{table}/plan/{plan-id}",
+      "GET /v1/{prefix}/namespaces/{namespace}/views",
+      "GET /v1/{prefix}/namespaces/{namespace}/views/{view}"
+    ],
+    "idempotency-key-lifetime": "PT1H"
+  },
+  "text_head": null,
+  "elapsed_ms": 763.14
+}

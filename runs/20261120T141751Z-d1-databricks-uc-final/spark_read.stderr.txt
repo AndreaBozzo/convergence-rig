@@ -1,0 +1,39 @@
+26/11/20 14:20:17 INFO SparkContext: Running Spark version 3.5.9
+26/11/20 14:20:17 INFO SparkContext: OS info Linux, 6.18.33.1-microsoft-standard-WSL2, amd64
+26/11/20 14:20:17 INFO SparkContext: Java version 17.0.19
+26/11/20 14:20:17 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/11/20 14:20:17 INFO ResourceUtils: ==============================================================
+26/11/20 14:20:17 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/11/20 14:20:17 INFO ResourceUtils: ==============================================================
+26/11/20 14:20:17 INFO SparkContext: Submitted application: cdclab-d1-uc-orders
+26/11/20 14:20:17 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/11/20 14:20:17 INFO ResourceProfile: Limiting resource is cpu
+26/11/20 14:20:17 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/11/20 14:20:17 INFO SecurityManager: Changing view acls to: spark
+26/11/20 14:20:17 INFO SecurityManager: Changing modify acls to: spark
+26/11/20 14:20:17 INFO SecurityManager: Changing view acls groups to: 
+26/11/20 14:20:17 INFO SecurityManager: Changing modify acls groups to: 
+26/11/20 14:20:17 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: spark; groups with view permissions: EMPTY; users with modify permissions: spark; groups with modify permissions: EMPTY
+26/11/20 14:20:17 INFO Utils: Successfully started service 'sparkDriver' on port 34431.
+26/11/20 14:20:17 INFO SparkEnv: Registering MapOutputTracker
+26/11/20 14:20:18 INFO SparkEnv: Registering BlockManagerMaster
+26/11/20 14:20:18 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/11/20 14:20:18 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/11/20 14:20:18 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/11/20 14:20:18 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-c3f72a73-6a37-425c-b970-d570389a0e05
+26/11/20 14:20:18 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+26/11/20 14:20:18 INFO SparkEnv: Registering OutputCommitCoordinator
+26/11/20 14:20:18 INFO Executor: Starting executor ID driver on host 71a95b55b206
+26/11/20 14:20:18 INFO Executor: OS info Linux, 6.18.33.1-microsoft-standard-WSL2, amd64
+26/11/20 14:20:18 INFO Executor: Java version 17.0.19
+26/11/20 14:20:18 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/11/20 14:20:18 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@6f47345a for default.
+26/11/20 14:20:18 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 34033.
+26/11/20 14:20:18 INFO NettyBlockTransferService: Server created on 71a95b55b206:34033
+26/11/20 14:20:18 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/11/20 14:20:18 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 71a95b55b206, 34033, None)
+26/11/20 14:20:18 INFO BlockManagerMasterEndpoint: Registering block manager 71a95b55b206:34033 with 434.4 MiB RAM, BlockManagerId(driver, 71a95b55b206, 34033, None)
+26/11/20 14:20:18 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 71a95b55b206, 34033, None)
+26/11/20 14:20:18 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 71a95b55b206, 34033, None)
+26/11/20 14:20:19 WARN AuthManagers: Inferring rest.auth.type=oauth2 since property token was provided. Please explicitly set rest.auth.type to avoid this warning.
+26/11/20 14:20:20 WARN OAuth2Manager: Iceberg REST client is missing the OAuth2 server URI configuration and defaults to <databricks-host>/api/2.1/unity-catalog/iceberg-rest/v1/oauth/tokens. This automatic fallback will be removed in a future Iceberg release. It is recommended to configure the OAuth2 endpoint using the 'oauth2-server-uri' property to be prepared. This warning will disappear if the OAuth2 endpoint is explicitly configured. See https://github.com/apache/iceberg/issues/10537

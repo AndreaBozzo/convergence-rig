@@ -1,0 +1,21 @@
+{
+  "method": "GET",
+  "path": "/api/2.1/unity-catalog/iceberg-rest/v1/catalogs/convergence-rig/namespaces",
+  "status": 200,
+  "json": {
+    "namespaces": [
+      [
+        "convergence_rig"
+      ],
+      [
+        "default"
+      ],
+      [
+        "information_schema"
+      ]
+    ],
+    "next-page-token": null
+  },
+  "text_head": null,
+  "elapsed_ms": 624.98
+}

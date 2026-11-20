@@ -439,6 +439,48 @@ services:
     networks:
       - cdclab_net
 
+  pg2iceberg-uc:
+    image: polynyadev/pg2iceberg:0.12.0@sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b
+    profiles: ["uc-connector"]
+    command: ["run", "--config", "/etc/pg2iceberg/config.yaml"]
+    # D1 only. The Databricks values live in the gitignored compose/.env.local.
+    env_file:
+      - path: ./.env.local
+        required: false
+    environment:
+      PG_SOURCE_USER: ${PG_SOURCE_USER:-postgres}
+      PG_SOURCE_PASSWORD: ${PG_SOURCE_PASSWORD:-cdclab_pg_pass}
+      PG_SOURCE_DB: ${PG_SOURCE_DB:-cdclab}
+      PG2ICEBERG_LOG_FORMAT: json
+    ports:
+      - "127.0.0.1:${PG2ICEBERG_UC_METRICS_PORT:-19092}:9090"
+    volumes:
+      - ./pg2iceberg.uc.yaml:/etc/pg2iceberg/config.yaml:ro
+    depends_on:
+      pg-source:
+        condition: service_healthy
+    networks:
+      - cdclab_net
+
+  spark-uc:
+    build:
+      context: ./spark
+      dockerfile: Dockerfile
+    image: cdclab/spark-iceberg:3.5.9-iceberg1.12.0
+    profiles: ["uc-spark"]
+    command: ["sleep", "infinity"]
+    # D1 only. The Databricks values live in the gitignored compose/.env.local.
+    env_file:
+      - path: ./.env.local
+        required: false
+    environment:
+      TZ: UTC
+      AWS_REGION: us-east-2
+    volumes:
+      - ./spark/scripts:/opt/cdclab/scripts:ro
+    networks:
+      - cdclab_net
+
 volumes:
   pg_source_data:
   lakekeeper_db_data:

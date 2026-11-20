@@ -1,0 +1,196 @@
+{
+  "spark_external_write": {
+    "returncode": 1,
+    "elapsed_ms": 29238.32,
+    "table_created_through_rest": true,
+    "s3_failure": {
+      "denied": true,
+      "action": "s3:putobject",
+      "explicit_deny_in_resource_policy": true
+    }
+  },
+  "databricks_sql": {
+    "warehouse_found": true,
+    "rows_before_insert": 0,
+    "insert_statements": 20,
+    "insert_states": [
+      "FAILED"
+    ],
+    "hash_query_state": "SUCCEEDED",
+    "hash_comparison": {
+      "passed": false,
+      "expected_rows": 1000,
+      "actual_rows": 0,
+      "missing_count": 1000,
+      "missing_examples": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "extra_count": 0,
+      "extra_examples": [],
+      "duplicate_count": 0,
+      "duplicate_examples": [],
+      "differing_count": 0,
+      "differing_examples": []
+    },
+    "sample_rows": [],
+    "final_count": [
+      [
+        "0"
+      ]
+    ]
+  },
+  "rest_schema_check": {
+    "passed": true,
+    "schema_id": 0,
+    "format_version": 2,
+    "identifier_field_ids": [],
+    "mismatches": [],
+    "actual_fields": [
+      {
+        "id": 1,
+        "name": "id",
+        "required": true,
+        "type": "long"
+      },
+      {
+        "id": 2,
+        "name": "status",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "id": 3,
+        "name": "amount",
+        "required": true,
+        "type": "decimal(38, 9)"
+      },
+      {
+        "id": 4,
+        "name": "updated_at",
+        "required": true,
+        "type": "timestamptz"
+      },
+      {
+        "id": 5,
+        "name": "note",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "id": 6,
+        "name": "payload",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "id": 7,
+        "name": "discount",
+        "required": false,
+        "type": "decimal(38, 9)"
+      }
+    ],
+    "expected_fields": [
+      {
+        "name": "id",
+        "type": "long",
+        "required": true
+      },
+      {
+        "name": "status",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "amount",
+        "type": "decimal(38, 9)",
+        "required": true
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamptz",
+        "required": true
+      },
+      {
+        "name": "note",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "payload",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "discount",
+        "type": "decimal(38, 9)",
+        "required": false
+      }
+    ]
+  },
+  "rest_current_snapshot_id": -1,
+  "rest_snapshot_count": 0,
+  "duckdb_external_read": {
+    "attached": true,
+    "passed": false,
+    "error": "Error: Could not find snapshot with id -1",
+    "s3_failure": {
+      "denied": false,
+      "action": null,
+      "explicit_deny_in_resource_policy": false
+    },
+    "reader_versions": {
+      "duckdb": "2.0.0",
+      "extensions": [
+        {
+          "name": "httpfs",
+          "loaded": true,
+          "installed": true,
+          "version": "77392a7207",
+          "install_mode": "REPOSITORY"
+        },
+        {
+          "name": "iceberg",
+          "loaded": true,
+          "installed": true,
+          "version": "4c0c0874c4",
+          "install_mode": "REPOSITORY"
+        },
+        {
+          "name": "parquet",
+          "loaded": true,
+          "installed": true,
+          "version": "v2.0.0",
+          "install_mode": "STATICALLY_LINKED"
+        }
+      ]
+    }
+  },
+  "spark_external_read": {
+    "returncode": 1,
+    "passed": false,
+    "s3_failure": {
+      "denied": false,
+      "action": null,
+      "explicit_deny_in_resource_policy": false
+    }
+  }
+}

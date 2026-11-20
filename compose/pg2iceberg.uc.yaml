@@ -1,0 +1,31 @@
+tables:
+  - name: public.orders
+
+source:
+  mode: logical
+  postgres_url: "postgres://${PG_SOURCE_USER}:${PG_SOURCE_PASSWORD}@pg-source:5432/${PG_SOURCE_DB}?sslmode=disable"
+  logical:
+    publication_name: pg2iceberg_pub
+    slot_name: pg2iceberg_slot
+
+# D1: Unity Catalog's Iceberg REST endpoint on Databricks Free Edition.
+# DATABRICKS_HOST (with scheme), DATABRICKS_TOKEN and DATABRICKS_CATALOG come
+# from the gitignored compose/.env.local through the service's env_file.
+sink:
+  catalog_uri: "${DATABRICKS_HOST}/api/2.1/unity-catalog/iceberg-rest"
+  catalog_auth: bearer
+  catalog_token: "${DATABRICKS_TOKEN}"
+  credential_mode: vended
+  warehouse: "${DATABRICKS_CATALOG}"
+  namespace: convergence_rig
+  s3_region: us-east-2
+  flush_interval: 2s
+  flush_rows: 1000
+  materializer_batch_rows: 10000
+  # Same as M1: no compaction, so equality deletes stay live on the tested snapshot.
+  target_file_size: 0
+
+state:
+  coordinator_schema: _pg2iceberg
+
+metrics_addr: ":9090"

@@ -1,0 +1,83 @@
+{
+  "spark_write": {
+    "returncode": 1,
+    "elapsed_ms": 24464.83,
+    "stderr_tail": [
+      "\tat org.apache.iceberg.aws.s3.S3OutputStream.close(S3OutputStream.java:255)",
+      "\tat org.apache.iceberg.shaded.org.apache.parquet.io.DelegatingPositionOutputStream.close(DelegatingPositionOutputStream.java:40)",
+      "\t... 28 more",
+      "",
+      "26/11/20 14:02:02 ERROR TaskSetManager: Task 0 in stage 4.0 failed 1 times; aborting job",
+      "26/11/20 14:02:02 ERROR AppendDataExec: Data source write support IcebergBatchWrite(table=uc.convergence_rig.orders_demo, format=PARQUET) is aborting.",
+      "26/11/20 14:02:02 WARN SparkWrite: Skipping cleanup of written files",
+      "26/11/20 14:02:02 ERROR AppendDataExec: Data source write support IcebergBatchWrite(table=uc.convergence_rig.orders_demo, format=PARQUET) aborted."
+    ]
+  },
+  "duckdb": {},
+  "spark_read": {},
+  "databricks_sql": {
+    "warehouses_returncode": 0,
+    "returncode": 0,
+    "response": {
+      "manifest": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "row_count": 1,
+            "row_offset": 0
+          }
+        ],
+        "format": "JSON_ARRAY",
+        "schema": {
+          "column_count": 4,
+          "columns": [
+            {
+              "name": "n",
+              "position": 0,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            },
+            {
+              "name": "min_id",
+              "position": 1,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            },
+            {
+              "name": "max_id",
+              "position": 2,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            },
+            {
+              "name": "null_notes",
+              "position": 3,
+              "type_name": "LONG",
+              "type_text": "BIGINT"
+            }
+          ]
+        },
+        "total_chunk_count": 1,
+        "total_row_count": 1,
+        "truncated": false
+      },
+      "result": {
+        "chunk_index": 0,
+        "data_array": [
+          [
+            "0",
+            null,
+            null,
+            null
+          ]
+        ],
+        "row_count": 1,
+        "row_offset": 0
+      },
+      "statement_id": "01f1e4ea-ff86-10d5-bea4-594c4bcf9cf0",
+      "status": {
+        "state": "SUCCEEDED"
+      }
+    }
+  }
+}
