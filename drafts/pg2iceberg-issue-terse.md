@@ -17,6 +17,8 @@ The same config in split mode (`stream-only` + `materializer-only`) rides throug
 
 Looks like the difference is `Ticks::finish` in `crates/pg2iceberg-validate/src/runtime.rs` ("`cycle` failure is fatal", still there on main) vs the retry loop in `run_materializer_only` (`crates/pg2iceberg/src/run.rs`). `docs/architecture/materializer.md` reads as if a failed table is retried next cycle, so I'd have expected `run` to retry too.
 
-Repro (Postgres 17, Lakekeeper 0.15.1, Silo, pg2iceberg 0.12.0, all official images): REPRO_LINK. It fails the same way 3 of 3 runs; `./repro.sh split` is the comparison.
+Repro (Postgres 17, Lakekeeper 0.15.1, Silo, pg2iceberg 0.12.0, all official images): https://github.com/AndreaBozzo/convergence-rig/tree/main/repro/pg2iceberg-catalog-outage. It fails the same way 3 of 3 runs; `./repro.sh split` is the comparison.
 
 Happy to send a PR if retrying in `run` is the behaviour you want.
+
+Filed 2026-11-20 as https://github.com/polynya-dev/pg2iceberg/issues/154
