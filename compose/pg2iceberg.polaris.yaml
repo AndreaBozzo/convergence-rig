@@ -1,0 +1,32 @@
+tables:
+  - name: public.orders
+
+source:
+  mode: logical
+  postgres_url: "postgres://${PG_SOURCE_USER}:${PG_SOURCE_PASSWORD}@pg-source:5432/${PG_SOURCE_DB}?sslmode=disable"
+  logical:
+    publication_name: pg2iceberg_pub
+    slot_name: pg2iceberg_slot
+
+sink:
+  catalog_uri: "http://polaris:8181/api/catalog"
+  catalog_auth: oauth2
+  catalog_client_id: "${POLARIS_WRITER_CLIENT_ID}"
+  catalog_client_secret: "${POLARIS_WRITER_CLIENT_SECRET}"
+  credential_mode: vended
+  warehouse: "${POLARIS_CATALOG}"
+  namespace: "${LAKEKEEPER_NAMESPACE}"
+  s3_region: "${SILO_REGION}"
+  catalog_props:
+    scope: "PRINCIPAL_ROLE:ALL"
+  flush_interval: 2s
+  flush_rows: 1000
+  materializer_batch_rows: 10000
+  # Match M1 baseline: disable automatic compaction so equality-delete files remain
+  # live on the tested snapshot.
+  target_file_size: 0
+
+state:
+  coordinator_schema: _pg2iceberg
+
+metrics_addr: ":9090"

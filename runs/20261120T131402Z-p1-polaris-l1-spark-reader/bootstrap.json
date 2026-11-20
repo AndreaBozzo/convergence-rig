@@ -1,0 +1,107 @@
+{
+  "bucket": {
+    "bucket": "cdclab",
+    "stdout": "Bucket created successfully `local/cdclab`.",
+    "ok": true
+  },
+  "token_claims_sub": "root",
+  "token_expires_in": 3600,
+  "catalog": {
+    "action": "created",
+    "http_status": 201,
+    "request_payload": {
+      "catalog": {
+        "name": "cdclab_polaris",
+        "type": "INTERNAL",
+        "properties": {
+          "default-base-location": "s3://cdclab/polaris-warehouse"
+        },
+        "storageConfigInfo": {
+          "storageType": "S3",
+          "allowedLocations": [
+            "s3://cdclab/polaris-warehouse"
+          ],
+          "endpoint": "http://silo.localhost:19000",
+          "region": "local-01",
+          "pathStyleAccess": true,
+          "stsUnavailable": false,
+          "kmsUnavailable": true,
+          "roleArn": "arn:aws:iam::000000000000:role/cdclab-polaris",
+          "stsEndpoint": "http://silo.localhost:19000"
+        }
+      }
+    },
+    "catalog": {
+      "type": "INTERNAL",
+      "name": "cdclab_polaris",
+      "properties": {
+        "default-base-location": "s3://cdclab/polaris-warehouse"
+      },
+      "createTimestamp": 1795180461465,
+      "lastUpdateTimestamp": 1795180461465,
+      "entityVersion": 1,
+      "storageConfigInfo": {
+        "roleArn": "arn:aws:iam::000000000000:role/cdclab-polaris",
+        "allowedKmsKeys": [],
+        "encryptionKeys": [],
+        "decryptionKeys": [],
+        "region": "local-01",
+        "endpoint": "http://silo.localhost:19000",
+        "stsEndpoint": "http://silo.localhost:19000",
+        "stsUnavailable": false,
+        "pathStyleAccess": true,
+        "kmsUnavailable": true,
+        "storageType": "S3",
+        "allowedLocations": [
+          "s3://cdclab/polaris-warehouse"
+        ]
+      }
+    }
+  },
+  "grant": {
+    "grant": {
+      "http_status": 201,
+      "url": "http://127.0.0.1:18183/api/management/v1/catalogs/cdclab_polaris/catalog-roles/catalog_admin/grants",
+      "grant": {
+        "type": "catalog",
+        "privilege": "CATALOG_MANAGE_CONTENT"
+      }
+    },
+    "assign": {
+      "http_status": 201,
+      "url": "http://127.0.0.1:18183/api/management/v1/principal-roles/service_admin/catalog-roles/cdclab_polaris"
+    }
+  },
+  "namespace": {
+    "action": "created",
+    "http_status": 200,
+    "prefix": "cdclab_polaris",
+    "body": {
+      "namespace": [
+        "public"
+      ],
+      "properties": {
+        "location": "s3://cdclab/polaris-warehouse/public/"
+      }
+    }
+  },
+  "endpoint_reachability": {
+    "advertised_endpoint": "http://silo.localhost:19000",
+    "host_probe_url": "http://silo.localhost:19000/minio/health/live",
+    "host_http_status": 200,
+    "container_probe_service": "pg-source",
+    "container_http_line": "HTTP/1.1 200 OK",
+    "both_reachable": true
+  },
+  "source_fixture": {
+    "table": "public.orders",
+    "pg_version": "PostgreSQL 19.0 on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "settings": {
+      "server_version": "19.0",
+      "wal_level": "logical",
+      "max_replication_slots": "16",
+      "max_wal_senders": "16",
+      "max_repack_replication_slots": "5"
+    }
+  }
+}

@@ -1,0 +1,855 @@
+{
+  "milestone": "P1",
+  "subcheck": "L1_two_reader",
+  "catalog": "apache-polaris-1.9.0",
+  "label": "p1-polaris-l1-spark-reader",
+  "outcome": "converged",
+  "passed": true,
+  "completed_at_utc": "2026-11-20T13:15:24.420114Z",
+  "parameters": {
+    "seed_rows": 30,
+    "toast_rows": 10,
+    "rng_seed": 20261119,
+    "batch_size": 10
+  },
+  "host": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python_version": "3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "config": {
+    "lab": {
+      "compose_project": "cdclab",
+      "pg_source_host": "127.0.0.1",
+      "pg_source_port": 15432,
+      "pg_source_db": "cdclab",
+      "lakekeeper_base_url": "http://127.0.0.1:18181",
+      "lakekeeper_catalog_url": "http://127.0.0.1:18181/catalog",
+      "lakekeeper_warehouse": "cdclab",
+      "lakekeeper_namespace": "public",
+      "silo_port": 19000,
+      "silo_advertised_endpoint": "http://silo.localhost:19000",
+      "silo_bucket": "cdclab",
+      "silo_region": "local-01",
+      "pg2iceberg_metrics_port": 19090
+    },
+    "polaris": {
+      "polaris_port": 18183,
+      "polaris_mgmt_port": 18184,
+      "pg2iceberg_polaris_metrics_port": 19091,
+      "realm": "POLARIS",
+      "root_client_id": "root",
+      "catalog_name": "cdclab_polaris",
+      "authz_catalog_name": "cdclab_polaris_authz",
+      "host_catalog_url": "http://127.0.0.1:18183/api/catalog",
+      "host_management_url": "http://127.0.0.1:18183/api/management/v1",
+      "host_token_url": "http://127.0.0.1:18183/api/catalog/v1/oauth/tokens",
+      "container_catalog_url": "http://polaris:8181/api/catalog",
+      "container_token_url": "http://polaris:8181/api/catalog/v1/oauth/tokens"
+    }
+  },
+  "commands_executed": [
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile polaris up -d --wait pg-source silo polaris",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile polaris --profile polaris-connector up -d pg2iceberg-polaris",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile spark up -d spark",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile spark exec -T spark /opt/spark/bin/spark-submit --master local[2] /opt/cdclab/scripts/read_snapshot.py --catalog-name cdclab_polaris --catalog-uri http://polaris:8181/api/catalog --warehouse cdclab_polaris --namespace public --table orders --snapshot-id 5441468408702465798 --oauth2-server-uri http://polaris:8181/api/catalog/v1/oauth/tokens --client-id root --client-secret <redacted> --oauth2-scope PRINCIPAL_ROLE:ALL --rows-out /tmp/cdclab-spark/p1_l1_rows.jsonl --meta-out /tmp/cdclab-spark/p1_l1_meta.json",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector down -v --remove-orphans"
+  ],
+  "container_digests": [
+    {
+      "service": "pg-source",
+      "container_name": "cdclab-pg-source-1",
+      "image_ref": "cdclab/postgres:19.0",
+      "image_id": "sha256:8702cad789b7630a1ac0650b8358197bc79844aa302731392175f98cd8225a05",
+      "repo_digests": [
+        "cdclab/postgres@sha256:8702cad789b7630a1ac0650b8358197bc79844aa302731392175f98cd8225a05"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "pg2iceberg-polaris",
+      "container_name": "cdclab-pg2iceberg-polaris-1",
+      "image_ref": "polynyadev/pg2iceberg:0.12.0@sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b",
+      "image_id": "sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b",
+      "repo_digests": [
+        "polynyadev/pg2iceberg@sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "polaris",
+      "container_name": "cdclab-polaris-1",
+      "image_ref": "apache/polaris:1.9.0@sha256:5dabc353c16c7c4acc9de4087b63d85bbf0a40986aa86bd7f393219919834dcd",
+      "image_id": "sha256:5dabc353c16c7c4acc9de4087b63d85bbf0a40986aa86bd7f393219919834dcd",
+      "repo_digests": [
+        "apache/polaris@sha256:5dabc353c16c7c4acc9de4087b63d85bbf0a40986aa86bd7f393219919834dcd"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "polaris-db",
+      "container_name": "cdclab-polaris-db-1",
+      "image_ref": "postgres:17-bookworm@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "image_id": "sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "repo_digests": [
+        "postgres@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "silo",
+      "container_name": "cdclab-silo-1",
+      "image_ref": "pgsty/silo:RELEASE.2026-09-03T13-18-01Z@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "image_id": "sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "repo_digests": [
+        "pgsty/silo@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "spark",
+      "container_name": "cdclab-spark-1",
+      "image_ref": "cdclab/spark-iceberg:3.5.9-iceberg1.12.0",
+      "image_id": "sha256:6d96720560c5a6396983664c65a4aa7c482a0d37799d2a2998676e4b1a578f12",
+      "repo_digests": [
+        "cdclab/spark-iceberg@sha256:6d96720560c5a6396983664c65a4aa7c482a0d37799d2a2998676e4b1a578f12"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    }
+  ],
+  "reader_versions": {
+    "duckdb": "2.0.0",
+    "duckdb_extensions": [
+      {
+        "name": "httpfs",
+        "loaded": true,
+        "installed": true,
+        "version": "77392a7207",
+        "install_mode": "REPOSITORY"
+      },
+      {
+        "name": "iceberg",
+        "loaded": true,
+        "installed": true,
+        "version": "4c0c0874c4",
+        "install_mode": "REPOSITORY"
+      },
+      {
+        "name": "parquet",
+        "loaded": true,
+        "installed": true,
+        "version": "v2.0.0",
+        "install_mode": "STATICALLY_LINKED"
+      }
+    ],
+    "spark": {
+      "spark_version": "3.5.9",
+      "scala_version": "2.12.18",
+      "java_version": "17.0.19",
+      "iceberg_version": "1.12.0",
+      "iceberg_git_commit_short": "212aa89",
+      "python_version": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]"
+    }
+  },
+  "resources_after_pre_clean": {
+    "containers": [],
+    "volumes": [],
+    "networks": []
+  },
+  "seed": {
+    "seed_rows": 30,
+    "rng_seed": 20261119,
+    "edge_row_count": 12,
+    "toast_row_count": 10,
+    "toast_id_range": [
+      13,
+      22
+    ],
+    "mutable_row_count": 8,
+    "seed_duration_ms": 23.95,
+    "toast_verification": {
+      "total_rows": 30,
+      "note_toasted_rows": 10,
+      "payload_toasted_rows": 10,
+      "both_toasted_rows": 10,
+      "max_note_bytes": 6167,
+      "max_payload_bytes": 6251,
+      "heap_bytes": 8192,
+      "table_and_toast_bytes": 188416,
+      "indexes_bytes": 16384,
+      "total_relation_bytes": 204800,
+      "toast_relation_bytes": 180224
+    }
+  },
+  "initial_snapshot": {
+    "elapsed_ms": 4010.17,
+    "healthz_status": 200,
+    "snapshot_logged_complete": true,
+    "current_snapshot_id": 6157830328123120096,
+    "snapshot_info": {
+      "snapshot_id": 6157830328123120096,
+      "parent_snapshot_id": null,
+      "sequence_number": 1,
+      "timestamp_ms": 1795180471278,
+      "schema_id": 0,
+      "pg2iceberg_log_start": null,
+      "pg2iceberg_log_end": null,
+      "pg2iceberg_log_ends": null,
+      "pg2iceberg_log_group": null,
+      "summary": {
+        "operation": "append",
+        "added-records": "30",
+        "total-equality-deletes": "0",
+        "added-files-size": "129604",
+        "total-files-size": "129604",
+        "added-data-files": "1",
+        "total-data-files": "1",
+        "total-delete-files": "0",
+        "total-records": "30",
+        "total-position-deletes": "0"
+      }
+    },
+    "pipeline_positions": {
+      "captured_at_utc": "2026-11-20T13:14:32.807133Z",
+      "current_wal_lsn": "0/01C76538",
+      "replication_slots": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "temporary": false,
+          "active": true,
+          "active_pid": 202,
+          "restart_lsn": "0/01C75BB0",
+          "confirmed_flush_lsn": "0/01C76058",
+          "wal_gap_bytes_confirmed_flush": 1248,
+          "wal_gap_bytes_restart": 2440
+        }
+      ],
+      "table_sizes": {
+        "heap_bytes": 8192,
+        "table_and_toast_bytes": 188416,
+        "indexes_bytes": 16384,
+        "total_relation_bytes": 204800,
+        "toast_relation_bytes": 180224,
+        "replica_identity": "d"
+      },
+      "coordinator_tables": [
+        "consumer",
+        "flushed_lsn",
+        "lock",
+        "log_index",
+        "log_seq",
+        "marker_emissions",
+        "mat_cursor",
+        "pending_markers",
+        "pipeline_meta",
+        "replicated_lsn",
+        "snapshot_progress",
+        "table_epoch",
+        "tables"
+      ],
+      "coordinator_state": {
+        "replicated_lsn": [],
+        "flushed_lsn": [
+          {
+            "id": 1,
+            "lsn": 29843544,
+            "updated_at": "2026-11-20T13:14:31.402636+00:00"
+          }
+        ],
+        "mat_cursor": [
+          {
+            "group_name": "default",
+            "table_name": "public.orders",
+            "last_offset": -1,
+            "last_committed": "2026-11-20T13:14:31.159999+00:00"
+          },
+          {
+            "group_name": "default#snapshot-lsn",
+            "table_name": "public.orders",
+            "last_offset": 29843544,
+            "last_committed": "2026-11-20T13:14:31.217424+00:00"
+          }
+        ],
+        "snapshot_progress": [],
+        "log_seq": [],
+        "pipeline_meta": [
+          {
+            "id": 1,
+            "system_identifier": 7710241308092911643,
+            "updated_at": "2026-11-20T13:14:29.567259+00:00"
+          }
+        ],
+        "table_epoch": [
+          {
+            "table_name": "public.orders",
+            "epoch": 2
+          }
+        ],
+        "log_index_row_count": 0
+      }
+    }
+  },
+  "mutations": {
+    "updated_ids": [
+      1,
+      13,
+      14
+    ],
+    "deleted_ids": [
+      2,
+      15,
+      25
+    ],
+    "marker_id": 900999999,
+    "marker_commit_utc": "2026-11-20T13:14:33.452339Z",
+    "marker_visibility_ms": 10350.1,
+    "toast_after_mutations": {
+      "total_rows": 27,
+      "note_toasted_rows": 9,
+      "payload_toasted_rows": 9,
+      "both_toasted_rows": 9,
+      "max_note_bytes": 6167,
+      "max_payload_bytes": 6251,
+      "heap_bytes": 8192,
+      "table_and_toast_bytes": 229376,
+      "indexes_bytes": 16384,
+      "total_relation_bytes": 245760,
+      "toast_relation_bytes": 221184
+    }
+  },
+  "snapshot_comparison": {
+    "tested_snapshot_id": 5441468408702465798,
+    "polaris_current_snapshot_id": 5441468408702465798,
+    "duckdb_current_snapshot_id": 5441468408702465798,
+    "spark_current_snapshot_id": 5441468408702465798,
+    "spark_requested_snapshot_found": true,
+    "snapshot_ids_match": true,
+    "snapshot_info": {
+      "snapshot_id": 5441468408702465798,
+      "parent_snapshot_id": 6157830328123120096,
+      "sequence_number": 2,
+      "timestamp_ms": 1795180481593,
+      "schema_id": 0,
+      "pg2iceberg_log_start": "0",
+      "pg2iceberg_log_end": "8",
+      "pg2iceberg_log_ends": "{\"default\":8}",
+      "pg2iceberg_log_group": "default",
+      "summary": {
+        "operation": "append",
+        "pg2iceberg.log-start": "0",
+        "pg2iceberg.log-ends": "{\"default\":8}",
+        "added-equality-delete-files": "1",
+        "added-records": "4",
+        "added-delete-files": "1",
+        "total-data-files": "2",
+        "pg2iceberg.log-end": "8",
+        "total-files-size": "171386",
+        "total-delete-files": "1",
+        "total-position-deletes": "0",
+        "total-equality-deletes": "6",
+        "pg2iceberg.log-group": "default",
+        "total-records": "34",
+        "added-equality-deletes": "6",
+        "added-data-files": "1",
+        "added-files-size": "41782"
+      }
+    }
+  },
+  "equality_delete_evidence": {
+    "polaris_and_duckdb": {
+      "snapshot_id": 5441468408702465798,
+      "snapshot_summary": {
+        "operation": "append",
+        "pg2iceberg.log-start": "0",
+        "pg2iceberg.log-ends": "{\"default\":8}",
+        "added-equality-delete-files": "1",
+        "added-records": "4",
+        "added-delete-files": "1",
+        "total-data-files": "2",
+        "pg2iceberg.log-end": "8",
+        "total-files-size": "171386",
+        "total-delete-files": "1",
+        "total-position-deletes": "0",
+        "total-equality-deletes": "6",
+        "pg2iceberg.log-group": "default",
+        "total-records": "34",
+        "added-equality-deletes": "6",
+        "added-data-files": "1",
+        "added-files-size": "41782"
+      },
+      "total_equality_deletes": 6,
+      "added_equality_deletes": 6,
+      "total_delete_files": 1,
+      "added_delete_files": 1,
+      "duckdb_live_delete_entries": [
+        {
+          "manifest_path": "s3://cdclab/polaris-warehouse/public/orders/metadata/01a1f918-4bed-7743-a546-f8c0b0571f5d-m1.avro",
+          "manifest_content": "DELETE",
+          "file_path": "s3://cdclab/polaris-warehouse/public/orders/data/eq-delete-446a104abe984582bfa5cf745380c10b.parquet",
+          "content": "EQUALITY_DELETES",
+          "status": "ADDED",
+          "record_count": 6
+        }
+      ],
+      "confirmed": true
+    },
+    "spark_equality_delete_file_count": 1,
+    "spark_equality_delete_files": [
+      {
+        "content": 2,
+        "file_path": "s3://cdclab/polaris-warehouse/public/orders/data/eq-delete-446a104abe984582bfa5cf745380c10b.parquet",
+        "file_format": "PARQUET",
+        "spec_id": 0,
+        "record_count": 6,
+        "file_size_in_bytes": 620,
+        "column_sizes": {},
+        "value_counts": {},
+        "null_value_counts": {},
+        "nan_value_counts": {},
+        "lower_bounds": {},
+        "upper_bounds": {},
+        "key_metadata": null,
+        "split_offsets": null,
+        "equality_ids": [
+          1
+        ],
+        "sort_order_id": null,
+        "first_row_id": null,
+        "referenced_data_file": null,
+        "content_offset": null,
+        "content_size_in_bytes": null,
+        "readable_metrics": {
+          "amount": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          },
+          "discount": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          },
+          "id": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          },
+          "note": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          },
+          "payload": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          },
+          "status": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          },
+          "updated_at": {
+            "column_size": null,
+            "value_count": null,
+            "null_value_count": null,
+            "nan_value_count": null,
+            "lower_bound": null,
+            "upper_bound": null
+          }
+        }
+      }
+    ],
+    "spark_manifests_count": 3,
+    "spark_read_duration_ms": 24580.65
+  },
+  "schema_comparison": {
+    "all_passed": true,
+    "iceberg_metadata": {
+      "passed": true,
+      "schema_id": 0,
+      "format_version": 2,
+      "identifier_field_ids": [
+        1
+      ],
+      "mismatches": [],
+      "actual_fields": [
+        {
+          "id": 1,
+          "name": "id",
+          "required": true,
+          "type": "long"
+        },
+        {
+          "id": 2,
+          "name": "status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "id": 3,
+          "name": "amount",
+          "required": true,
+          "type": "decimal(38, 9)"
+        },
+        {
+          "id": 4,
+          "name": "updated_at",
+          "required": true,
+          "type": "timestamptz"
+        },
+        {
+          "id": 5,
+          "name": "note",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "id": 6,
+          "name": "payload",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "id": 7,
+          "name": "discount",
+          "required": false,
+          "type": "decimal(38, 9)"
+        }
+      ],
+      "expected_fields": [
+        {
+          "name": "id",
+          "type": "long",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "type": "decimal(38, 9)",
+          "required": true
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamptz",
+          "required": true
+        },
+        {
+          "name": "note",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "payload",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "discount",
+          "type": "decimal(38, 9)",
+          "required": false
+        }
+      ]
+    },
+    "duckdb_describe": {
+      "passed": true,
+      "mismatches": [],
+      "actual_fields": [
+        {
+          "name": "id",
+          "duckdb_type": "BIGINT",
+          "canonical_type": "long",
+          "null": "YES"
+        },
+        {
+          "name": "status",
+          "duckdb_type": "VARCHAR",
+          "canonical_type": "string",
+          "null": "YES"
+        },
+        {
+          "name": "amount",
+          "duckdb_type": "DECIMAL(38,9)",
+          "canonical_type": "decimal(38, 9)",
+          "null": "YES"
+        },
+        {
+          "name": "updated_at",
+          "duckdb_type": "TIMESTAMP WITH TIME ZONE",
+          "canonical_type": "timestamptz",
+          "null": "YES"
+        },
+        {
+          "name": "note",
+          "duckdb_type": "VARCHAR",
+          "canonical_type": "string",
+          "null": "YES"
+        },
+        {
+          "name": "payload",
+          "duckdb_type": "VARCHAR",
+          "canonical_type": "string",
+          "null": "YES"
+        },
+        {
+          "name": "discount",
+          "duckdb_type": "DECIMAL(38,9)",
+          "canonical_type": "decimal(38, 9)",
+          "null": "YES"
+        }
+      ]
+    },
+    "spark_struct": {
+      "passed": true,
+      "mismatches": [],
+      "actual_fields": [
+        {
+          "name": "id",
+          "spark_type": "long",
+          "canonical_type": "long",
+          "required": true
+        },
+        {
+          "name": "status",
+          "spark_type": "string",
+          "canonical_type": "string",
+          "required": true
+        },
+        {
+          "name": "amount",
+          "spark_type": "decimal(38,9)",
+          "canonical_type": "decimal(38, 9)",
+          "required": true
+        },
+        {
+          "name": "updated_at",
+          "spark_type": "timestamp",
+          "canonical_type": "timestamptz",
+          "required": true
+        },
+        {
+          "name": "note",
+          "spark_type": "string",
+          "canonical_type": "string",
+          "required": false
+        },
+        {
+          "name": "payload",
+          "spark_type": "string",
+          "canonical_type": "string",
+          "required": false
+        },
+        {
+          "name": "discount",
+          "spark_type": "decimal(38,9)",
+          "canonical_type": "decimal(38, 9)",
+          "required": false
+        }
+      ]
+    }
+  },
+  "row_comparisons": {
+    "all_passed": true,
+    "postgres_vs_duckdb": {
+      "passed": true,
+      "source_row_count": 28,
+      "lake_row_count": 28,
+      "matched_id_count": 28,
+      "exact_match_row_count": 28,
+      "source_only_count": 0,
+      "source_only_examples": [],
+      "lake_only_count": 0,
+      "lake_only_examples": [],
+      "duplicate_lake_id_count": 0,
+      "duplicate_lake_extra_row_count": 0,
+      "duplicate_lake_examples": [],
+      "duplicate_source_id_count": 0,
+      "duplicate_source_examples": [],
+      "value_mismatch_row_count": 0,
+      "value_mismatch_column_counts": {},
+      "value_mismatch_examples": [],
+      "batches_read_source": 3,
+      "batches_read_lake": 3,
+      "diff_duration_ms": 5219.45
+    },
+    "postgres_vs_spark": {
+      "passed": true,
+      "source_row_count": 28,
+      "lake_row_count": 28,
+      "matched_id_count": 28,
+      "exact_match_row_count": 28,
+      "source_only_count": 0,
+      "source_only_examples": [],
+      "lake_only_count": 0,
+      "lake_only_examples": [],
+      "duplicate_lake_id_count": 0,
+      "duplicate_lake_extra_row_count": 0,
+      "duplicate_lake_examples": [],
+      "duplicate_source_id_count": 0,
+      "duplicate_source_examples": [],
+      "value_mismatch_row_count": 0,
+      "value_mismatch_column_counts": {},
+      "value_mismatch_examples": [],
+      "batches_read_source": 3,
+      "batches_read_lake": 3,
+      "diff_duration_ms": 60.73
+    },
+    "duckdb_vs_spark": {
+      "passed": true,
+      "source_row_count": 28,
+      "lake_row_count": 28,
+      "matched_id_count": 28,
+      "exact_match_row_count": 28,
+      "source_only_count": 0,
+      "source_only_examples": [],
+      "lake_only_count": 0,
+      "lake_only_examples": [],
+      "duplicate_lake_id_count": 0,
+      "duplicate_lake_extra_row_count": 0,
+      "duplicate_lake_examples": [],
+      "duplicate_source_id_count": 0,
+      "duplicate_source_examples": [],
+      "value_mismatch_row_count": 0,
+      "value_mismatch_column_counts": {},
+      "value_mismatch_examples": [],
+      "batches_read_source": 3,
+      "batches_read_lake": 3,
+      "diff_duration_ms": 53.9
+    }
+  },
+  "pipeline_positions_final": {
+    "captured_at_utc": "2026-11-20T13:15:18.983475Z",
+    "current_wal_lsn": "0/01CD0D50",
+    "replication_slots": [
+      {
+        "slot_name": "pg2iceberg_slot",
+        "plugin": "pgoutput",
+        "slot_type": "logical",
+        "temporary": false,
+        "active": true,
+        "active_pid": 202,
+        "restart_lsn": "0/01C7D198",
+        "confirmed_flush_lsn": "0/01CD07A0",
+        "wal_gap_bytes_confirmed_flush": 1456,
+        "wal_gap_bytes_restart": 342968
+      }
+    ],
+    "table_sizes": {
+      "heap_bytes": 8192,
+      "table_and_toast_bytes": 229376,
+      "indexes_bytes": 16384,
+      "total_relation_bytes": 245760,
+      "toast_relation_bytes": 221184,
+      "replica_identity": "d"
+    },
+    "coordinator_tables": [
+      "consumer",
+      "flushed_lsn",
+      "lock",
+      "log_index",
+      "log_seq",
+      "marker_emissions",
+      "mat_cursor",
+      "pending_markers",
+      "pipeline_meta",
+      "replicated_lsn",
+      "snapshot_progress",
+      "table_epoch",
+      "tables"
+    ],
+    "coordinator_state": {
+      "replicated_lsn": [
+        {
+          "id": 1,
+          "lsn": 30215304,
+          "updated_at": "2026-11-20T13:15:17.488151+00:00"
+        }
+      ],
+      "flushed_lsn": [
+        {
+          "id": 1,
+          "lsn": 30214048,
+          "updated_at": "2026-11-20T13:15:11.452385+00:00"
+        }
+      ],
+      "mat_cursor": [
+        {
+          "group_name": "default#snapshot-lsn",
+          "table_name": "public.orders",
+          "last_offset": 29843544,
+          "last_committed": "2026-11-20T13:14:31.217424+00:00"
+        },
+        {
+          "group_name": "default",
+          "table_name": "public.orders",
+          "last_offset": 8,
+          "last_committed": "2026-11-20T13:14:41.757649+00:00"
+        }
+      ],
+      "snapshot_progress": [],
+      "log_seq": [
+        {
+          "table_name": "public.orders",
+          "next_offset": 8
+        }
+      ],
+      "pipeline_meta": [
+        {
+          "id": 1,
+          "system_identifier": 7710241308092911643,
+          "updated_at": "2026-11-20T13:14:29.567259+00:00"
+        }
+      ],
+      "table_epoch": [
+        {
+          "table_name": "public.orders",
+          "epoch": 3
+        }
+      ],
+      "log_index_row_count": 1
+    }
+  },
+  "cleanup": {
+    "skipped_keep_up": false,
+    "resources_after_cleanup": {
+      "containers": [],
+      "volumes": [],
+      "networks": []
+    },
+    "all_project_resources_removed": true,
+    "non_project_containers_unchanged": true,
+    "non_project_count_before": 14,
+    "non_project_count_after": 14
+  }
+}

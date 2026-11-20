@@ -1,0 +1,38 @@
+[
+  {
+    "manifest_path": "s3://cdclab/polaris-warehouse/public/orders/metadata/01a1f918-23d7-7f81-9a55-cb12558c3a7b-m0.avro",
+    "manifest_sequence_number": 1,
+    "manifest_content": "DATA",
+    "status": "ADDED",
+    "content": "DATA",
+    "file_path": "s3://cdclab/polaris-warehouse/public/orders/data/data-3f47b2ce476a4ff7b5dbd5fd5ac60f6d.parquet",
+    "file_format": "PARQUET",
+    "record_count": 30,
+    "data_sequence_number": 1,
+    "file_sequence_number": 1
+  },
+  {
+    "manifest_path": "s3://cdclab/polaris-warehouse/public/orders/metadata/01a1f918-4bed-7743-a546-f8c0b0571f5d-m0.avro",
+    "manifest_sequence_number": 2,
+    "manifest_content": "DATA",
+    "status": "ADDED",
+    "content": "DATA",
+    "file_path": "s3://cdclab/polaris-warehouse/public/orders/data/data-07bf52de561f4d0cacaaaf951b4c7560.parquet",
+    "file_format": "PARQUET",
+    "record_count": 4,
+    "data_sequence_number": 2,
+    "file_sequence_number": 2
+  },
+  {
+    "manifest_path": "s3://cdclab/polaris-warehouse/public/orders/metadata/01a1f918-4bed-7743-a546-f8c0b0571f5d-m1.avro",
+    "manifest_sequence_number": 2,
+    "manifest_content": "DELETE",
+    "status": "ADDED",
+    "content": "EQUALITY_DELETES",
+    "file_path": "s3://cdclab/polaris-warehouse/public/orders/data/eq-delete-446a104abe984582bfa5cf745380c10b.parquet",
+    "file_format": "PARQUET",
+    "record_count": 6,
+    "data_sequence_number": 2,
+    "file_sequence_number": 2
+  }
+]

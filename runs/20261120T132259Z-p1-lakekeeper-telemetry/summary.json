@@ -1,0 +1,342 @@
+{
+  "milestone": "P1",
+  "subcheck": "lakekeeper_startup_and_idle_telemetry",
+  "note": "Measures startup time and idle container memory only; M1/L1/L2 Lakekeeper checks were NOT re-run.",
+  "completed_at_utc": "2026-11-20T13:24:12.485213Z",
+  "commands_executed": [
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait silo",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait lakekeeper",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait silo",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile authz up -d --wait keycloak openfga lakekeeper-authz",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector down -v --remove-orphans"
+  ],
+  "lakekeeper_unauth": {
+    "startup_ms": 9375.32,
+    "idle_memory": {
+      "samples": [
+        {
+          "captured_at_utc": "2026-11-20T13:23:17.119743Z",
+          "returncode": 0,
+          "containers": {
+            "cdclab-lakekeeper-1": {
+              "mem_usage_raw": "35.3MiB / 15.38GiB",
+              "mem_used_mib": 35.3,
+              "mem_perc": "0.22%",
+              "cpu_perc": "3.18%",
+              "pids": "17"
+            },
+            "cdclab-lakekeeper-db-1": {
+              "mem_usage_raw": "59.82MiB / 15.38GiB",
+              "mem_used_mib": 59.82,
+              "mem_perc": "0.38%",
+              "cpu_perc": "0.16%",
+              "pids": "14"
+            },
+            "cdclab-silo-1": {
+              "mem_usage_raw": "68.72MiB / 15.38GiB",
+              "mem_used_mib": 68.72,
+              "mem_perc": "0.44%",
+              "cpu_perc": "5.43%",
+              "pids": "13"
+            }
+          }
+        },
+        {
+          "captured_at_utc": "2026-11-20T13:23:21.176315Z",
+          "returncode": 0,
+          "containers": {
+            "cdclab-lakekeeper-1": {
+              "mem_usage_raw": "35.48MiB / 15.38GiB",
+              "mem_used_mib": 35.48,
+              "mem_perc": "0.23%",
+              "cpu_perc": "3.57%",
+              "pids": "17"
+            },
+            "cdclab-lakekeeper-db-1": {
+              "mem_usage_raw": "59.4MiB / 15.38GiB",
+              "mem_used_mib": 59.4,
+              "mem_perc": "0.38%",
+              "cpu_perc": "0.13%",
+              "pids": "14"
+            },
+            "cdclab-silo-1": {
+              "mem_usage_raw": "68.17MiB / 15.38GiB",
+              "mem_used_mib": 68.17,
+              "mem_perc": "0.43%",
+              "cpu_perc": "5.61%",
+              "pids": "13"
+            }
+          }
+        },
+        {
+          "captured_at_utc": "2026-11-20T13:23:25.233126Z",
+          "returncode": 0,
+          "containers": {
+            "cdclab-lakekeeper-1": {
+              "mem_usage_raw": "34.8MiB / 15.38GiB",
+              "mem_used_mib": 34.8,
+              "mem_perc": "0.22%",
+              "cpu_perc": "3.02%",
+              "pids": "13"
+            },
+            "cdclab-lakekeeper-db-1": {
+              "mem_usage_raw": "59.94MiB / 15.38GiB",
+              "mem_used_mib": 59.94,
+              "mem_perc": "0.38%",
+              "cpu_perc": "0.05%",
+              "pids": "14"
+            },
+            "cdclab-silo-1": {
+              "mem_usage_raw": "68.85MiB / 15.38GiB",
+              "mem_used_mib": 68.85,
+              "mem_perc": "0.44%",
+              "cpu_perc": "5.53%",
+              "pids": "13"
+            }
+          }
+        }
+      ],
+      "summary": {
+        "cdclab-lakekeeper-1": {
+          "count": 3,
+          "min_mib": 34.8,
+          "p50_mib": 35.3,
+          "mean_mib": 35.19,
+          "p95_mib": 35.46,
+          "max_mib": 35.48
+        },
+        "cdclab-lakekeeper-db-1": {
+          "count": 3,
+          "min_mib": 59.4,
+          "p50_mib": 59.82,
+          "mean_mib": 59.72,
+          "p95_mib": 59.93,
+          "max_mib": 59.94
+        },
+        "cdclab-silo-1": {
+          "count": 3,
+          "min_mib": 68.17,
+          "p50_mib": 68.72,
+          "mean_mib": 68.58,
+          "p95_mib": 68.84,
+          "max_mib": 68.85
+        }
+      }
+    }
+  },
+  "lakekeeper_authz": {
+    "startup_ms": 28484.01,
+    "idle_memory": {
+      "samples": [
+        {
+          "captured_at_utc": "2026-11-20T13:24:02.340463Z",
+          "returncode": 0,
+          "containers": {
+            "cdclab-lakekeeper-authz-1": {
+              "mem_usage_raw": "36.88MiB / 15.38GiB",
+              "mem_used_mib": 36.88,
+              "mem_perc": "0.23%",
+              "cpu_perc": "2.80%",
+              "pids": "15"
+            },
+            "cdclab-lakekeeper-authz-db-1": {
+              "mem_usage_raw": "64.46MiB / 15.38GiB",
+              "mem_used_mib": 64.46,
+              "mem_perc": "0.41%",
+              "cpu_perc": "2.72%",
+              "pids": "16"
+            },
+            "cdclab-keycloak-1": {
+              "mem_usage_raw": "706.3MiB / 15.38GiB",
+              "mem_used_mib": 706.3,
+              "mem_perc": "4.48%",
+              "cpu_perc": "2.93%",
+              "pids": "52"
+            },
+            "cdclab-openfga-1": {
+              "mem_usage_raw": "37.77MiB / 15.38GiB",
+              "mem_used_mib": 37.77,
+              "mem_perc": "0.24%",
+              "cpu_perc": "2.23%",
+              "pids": "14"
+            },
+            "cdclab-openfga-db-1": {
+              "mem_usage_raw": "40.08MiB / 15.38GiB",
+              "mem_used_mib": 40.08,
+              "mem_perc": "0.25%",
+              "cpu_perc": "0.03%",
+              "pids": "8"
+            },
+            "cdclab-silo-1": {
+              "mem_usage_raw": "73.54MiB / 15.38GiB",
+              "mem_used_mib": 73.54,
+              "mem_perc": "0.47%",
+              "cpu_perc": "5.89%",
+              "pids": "13"
+            }
+          }
+        },
+        {
+          "captured_at_utc": "2026-11-20T13:24:06.409984Z",
+          "returncode": 0,
+          "containers": {
+            "cdclab-lakekeeper-authz-1": {
+              "mem_usage_raw": "37.12MiB / 15.38GiB",
+              "mem_used_mib": 37.12,
+              "mem_perc": "0.24%",
+              "cpu_perc": "2.99%",
+              "pids": "15"
+            },
+            "cdclab-lakekeeper-authz-db-1": {
+              "mem_usage_raw": "64.27MiB / 15.38GiB",
+              "mem_used_mib": 64.27,
+              "mem_perc": "0.41%",
+              "cpu_perc": "3.54%",
+              "pids": "14"
+            },
+            "cdclab-keycloak-1": {
+              "mem_usage_raw": "706.7MiB / 15.38GiB",
+              "mem_used_mib": 706.7,
+              "mem_perc": "4.49%",
+              "cpu_perc": "3.30%",
+              "pids": "52"
+            },
+            "cdclab-openfga-1": {
+              "mem_usage_raw": "38.42MiB / 15.38GiB",
+              "mem_used_mib": 38.42,
+              "mem_perc": "0.24%",
+              "cpu_perc": "2.17%",
+              "pids": "14"
+            },
+            "cdclab-openfga-db-1": {
+              "mem_usage_raw": "40.66MiB / 15.38GiB",
+              "mem_used_mib": 40.66,
+              "mem_perc": "0.26%",
+              "cpu_perc": "3.39%",
+              "pids": "8"
+            },
+            "cdclab-silo-1": {
+              "mem_usage_raw": "73.8MiB / 15.38GiB",
+              "mem_used_mib": 73.8,
+              "mem_perc": "0.47%",
+              "cpu_perc": "5.30%",
+              "pids": "13"
+            }
+          }
+        },
+        {
+          "captured_at_utc": "2026-11-20T13:24:10.446454Z",
+          "returncode": 0,
+          "containers": {
+            "cdclab-lakekeeper-authz-1": {
+              "mem_usage_raw": "37.14MiB / 15.38GiB",
+              "mem_used_mib": 37.14,
+              "mem_perc": "0.24%",
+              "cpu_perc": "3.48%",
+              "pids": "13"
+            },
+            "cdclab-lakekeeper-authz-db-1": {
+              "mem_usage_raw": "60.14MiB / 15.38GiB",
+              "mem_used_mib": 60.14,
+              "mem_perc": "0.38%",
+              "cpu_perc": "0.09%",
+              "pids": "14"
+            },
+            "cdclab-keycloak-1": {
+              "mem_usage_raw": "706.5MiB / 15.38GiB",
+              "mem_used_mib": 706.5,
+              "mem_perc": "4.49%",
+              "cpu_perc": "3.41%",
+              "pids": "52"
+            },
+            "cdclab-openfga-1": {
+              "mem_usage_raw": "38.2MiB / 15.38GiB",
+              "mem_used_mib": 38.2,
+              "mem_perc": "0.24%",
+              "cpu_perc": "2.38%",
+              "pids": "14"
+            },
+            "cdclab-openfga-db-1": {
+              "mem_usage_raw": "40.32MiB / 15.38GiB",
+              "mem_used_mib": 40.32,
+              "mem_perc": "0.26%",
+              "cpu_perc": "0.06%",
+              "pids": "8"
+            },
+            "cdclab-silo-1": {
+              "mem_usage_raw": "72.94MiB / 15.38GiB",
+              "mem_used_mib": 72.94,
+              "mem_perc": "0.46%",
+              "cpu_perc": "0.00%",
+              "pids": "13"
+            }
+          }
+        }
+      ],
+      "summary": {
+        "cdclab-keycloak-1": {
+          "count": 3,
+          "min_mib": 706.3,
+          "p50_mib": 706.5,
+          "mean_mib": 706.5,
+          "p95_mib": 706.68,
+          "max_mib": 706.7
+        },
+        "cdclab-lakekeeper-authz-1": {
+          "count": 3,
+          "min_mib": 36.88,
+          "p50_mib": 37.12,
+          "mean_mib": 37.05,
+          "p95_mib": 37.14,
+          "max_mib": 37.14
+        },
+        "cdclab-lakekeeper-authz-db-1": {
+          "count": 3,
+          "min_mib": 60.14,
+          "p50_mib": 64.27,
+          "mean_mib": 62.96,
+          "p95_mib": 64.44,
+          "max_mib": 64.46
+        },
+        "cdclab-openfga-1": {
+          "count": 3,
+          "min_mib": 37.77,
+          "p50_mib": 38.2,
+          "mean_mib": 38.13,
+          "p95_mib": 38.4,
+          "max_mib": 38.42
+        },
+        "cdclab-openfga-db-1": {
+          "count": 3,
+          "min_mib": 40.08,
+          "p50_mib": 40.32,
+          "mean_mib": 40.35,
+          "p95_mib": 40.63,
+          "max_mib": 40.66
+        },
+        "cdclab-silo-1": {
+          "count": 3,
+          "min_mib": 72.94,
+          "p50_mib": 73.54,
+          "mean_mib": 73.43,
+          "p95_mib": 73.77,
+          "max_mib": 73.8
+        }
+      }
+    }
+  },
+  "cleanup": {
+    "skipped_keep_up": false,
+    "resources_after_cleanup": {
+      "containers": [],
+      "volumes": [],
+      "networks": []
+    },
+    "all_project_resources_removed": true,
+    "non_project_containers_unchanged": true,
+    "non_project_count_before": 14,
+    "non_project_count_after": 14
+  }
+}

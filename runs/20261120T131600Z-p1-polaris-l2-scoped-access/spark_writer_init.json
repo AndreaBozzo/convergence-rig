@@ -1,0 +1,74 @@
+{
+  "mode": "init",
+  "client_id": "5d8fbb1e552ca29f",
+  "raw": {
+    "table": "cdclab_polaris_authz.raw.orders",
+    "location": "s3://cdclab/polaris-authz/raw/orders",
+    "current_snapshot_id": 4747863572526813369,
+    "snapshot_count": 1,
+    "data_files": [
+      {
+        "file_path": "s3://cdclab/polaris-authz/raw/orders/data/00000-0-15d38d8e-fb47-49f7-8c10-7599cac5bfc7-0-00001.parquet",
+        "content": 0,
+        "record_count": 1,
+        "file_size_in_bytes": 1356
+      },
+      {
+        "file_path": "s3://cdclab/polaris-authz/raw/orders/data/00001-1-15d38d8e-fb47-49f7-8c10-7599cac5bfc7-0-00001.parquet",
+        "content": 0,
+        "record_count": 1,
+        "file_size_in_bytes": 1349
+      }
+    ],
+    "row_count": 2,
+    "rows": [
+      {
+        "id": 1,
+        "status": "created",
+        "amount": "100.123456789",
+        "pii_note": "raw-secret-alpha"
+      },
+      {
+        "id": 2,
+        "status": "settled",
+        "amount": "250.000000001",
+        "pii_note": "raw-secret-beta"
+      }
+    ]
+  },
+  "curated": {
+    "table": "cdclab_polaris_authz.curated.orders",
+    "location": "s3://cdclab/polaris-authz/curated/orders",
+    "current_snapshot_id": 166444171061304700,
+    "snapshot_count": 1,
+    "data_files": [
+      {
+        "file_path": "s3://cdclab/polaris-authz/curated/orders/data/00000-2-7d2062ae-e9b4-4a19-9f9e-7955341d0c37-0-00001.parquet",
+        "content": 0,
+        "record_count": 1,
+        "file_size_in_bytes": 1288
+      },
+      {
+        "file_path": "s3://cdclab/polaris-authz/curated/orders/data/00001-3-7d2062ae-e9b4-4a19-9f9e-7955341d0c37-0-00001.parquet",
+        "content": 0,
+        "record_count": 1,
+        "file_size_in_bytes": 1281
+      }
+    ],
+    "row_count": 2,
+    "rows": [
+      {
+        "id": 1,
+        "status": "created",
+        "amount": "100.123456789",
+        "tier": "standard"
+      },
+      {
+        "id": 2,
+        "status": "settled",
+        "amount": "250.000000001",
+        "tier": "premium"
+      }
+    ]
+  }
+}

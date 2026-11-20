@@ -1,0 +1,1664 @@
+{
+  "milestone": "P1",
+  "subcheck": "M1_baseline",
+  "catalog": "apache-polaris-1.9.0",
+  "label": "p1-polaris-m1-baseline",
+  "outcome": "converged",
+  "passed": true,
+  "completed_at_utc": "2026-11-20T13:22:13.308238Z",
+  "parameters": {
+    "seed_rows": 25000,
+    "toast_rows": 100,
+    "duration_s": 180.0,
+    "rate_ops_s": 10.0,
+    "rng_seed": 20261119,
+    "batch_size": 2000,
+    "probe_interval_s": 20.0,
+    "probe_poll_interval_s": 0.5,
+    "convergence_timeout_s": 180.0
+  },
+  "host": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python_version": "3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "config": {
+    "lab": {
+      "compose_project": "cdclab",
+      "pg_source_host": "127.0.0.1",
+      "pg_source_port": 15432,
+      "pg_source_db": "cdclab",
+      "lakekeeper_base_url": "http://127.0.0.1:18181",
+      "lakekeeper_catalog_url": "http://127.0.0.1:18181/catalog",
+      "lakekeeper_warehouse": "cdclab",
+      "lakekeeper_namespace": "public",
+      "silo_port": 19000,
+      "silo_advertised_endpoint": "http://silo.localhost:19000",
+      "silo_bucket": "cdclab",
+      "silo_region": "local-01",
+      "pg2iceberg_metrics_port": 19090
+    },
+    "polaris": {
+      "polaris_port": 18183,
+      "polaris_mgmt_port": 18184,
+      "pg2iceberg_polaris_metrics_port": 19091,
+      "realm": "POLARIS",
+      "root_client_id": "root",
+      "catalog_name": "cdclab_polaris",
+      "authz_catalog_name": "cdclab_polaris_authz",
+      "host_catalog_url": "http://127.0.0.1:18183/api/catalog",
+      "host_management_url": "http://127.0.0.1:18183/api/management/v1",
+      "host_token_url": "http://127.0.0.1:18183/api/catalog/v1/oauth/tokens",
+      "container_catalog_url": "http://polaris:8181/api/catalog",
+      "container_token_url": "http://polaris:8181/api/catalog/v1/oauth/tokens"
+    }
+  },
+  "commands_executed": [
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait pg-source silo",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile polaris up -d --wait polaris",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile polaris --profile polaris-connector up -d pg2iceberg-polaris",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector down -v --remove-orphans"
+  ],
+  "container_digests": [
+    {
+      "service": "pg-source",
+      "container_name": "cdclab-pg-source-1",
+      "image_ref": "cdclab/postgres:19.0",
+      "image_id": "sha256:8702cad789b7630a1ac0650b8358197bc79844aa302731392175f98cd8225a05",
+      "repo_digests": [
+        "cdclab/postgres@sha256:8702cad789b7630a1ac0650b8358197bc79844aa302731392175f98cd8225a05"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "pg2iceberg-polaris",
+      "container_name": "cdclab-pg2iceberg-polaris-1",
+      "image_ref": "polynyadev/pg2iceberg:0.12.0@sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b",
+      "image_id": "sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b",
+      "repo_digests": [
+        "polynyadev/pg2iceberg@sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "polaris",
+      "container_name": "cdclab-polaris-1",
+      "image_ref": "apache/polaris:1.9.0@sha256:5dabc353c16c7c4acc9de4087b63d85bbf0a40986aa86bd7f393219919834dcd",
+      "image_id": "sha256:5dabc353c16c7c4acc9de4087b63d85bbf0a40986aa86bd7f393219919834dcd",
+      "repo_digests": [
+        "apache/polaris@sha256:5dabc353c16c7c4acc9de4087b63d85bbf0a40986aa86bd7f393219919834dcd"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "polaris-db",
+      "container_name": "cdclab-polaris-db-1",
+      "image_ref": "postgres:17-bookworm@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "image_id": "sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "repo_digests": [
+        "postgres@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "silo",
+      "container_name": "cdclab-silo-1",
+      "image_ref": "pgsty/silo:RELEASE.2026-09-03T13-18-01Z@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "image_id": "sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "repo_digests": [
+        "pgsty/silo@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    }
+  ],
+  "reader_versions": {
+    "duckdb": "2.0.0",
+    "extensions": [
+      {
+        "name": "httpfs",
+        "loaded": true,
+        "installed": true,
+        "version": "77392a7207",
+        "install_mode": "REPOSITORY"
+      },
+      {
+        "name": "iceberg",
+        "loaded": true,
+        "installed": true,
+        "version": "4c0c0874c4",
+        "install_mode": "REPOSITORY"
+      },
+      {
+        "name": "parquet",
+        "loaded": true,
+        "installed": true,
+        "version": "v2.0.0",
+        "install_mode": "STATICALLY_LINKED"
+      }
+    ]
+  },
+  "resources_after_pre_clean": {
+    "containers": [],
+    "volumes": [],
+    "networks": []
+  },
+  "telemetry": {
+    "polaris_stack_startup_ms": 13377.03,
+    "polaris_quarkus_started_in_s": 2.649,
+    "idle_memory": {
+      "samples": [
+        {
+          "captured_at_utc": "2026-11-20T13:18:27.813036Z",
+          "returncode": 0,
+          "containers": {
+            "cdclab-polaris-1": {
+              "mem_usage_raw": "333.3MiB / 15.38GiB",
+              "mem_used_mib": 333.3,
+              "mem_perc": "2.12%",
+              "cpu_perc": "2.45%",
+              "pids": "35"
+            },
+            "cdclab-polaris-db-1": {
+              "mem_usage_raw": "34.52MiB / 15.38GiB",
+              "mem_used_mib": 34.52,
+              "mem_perc": "0.22%",
+              "cpu_perc": "3.69%",
+              "pids": "7"
+            },
+            "cdclab-silo-1": {
+              "mem_usage_raw": "77.64MiB / 15.38GiB",
+              "mem_used_mib": 77.64,
+              "mem_perc": "0.49%",
+              "cpu_perc": "5.51%",
+              "pids": "13"
+            }
+          }
+        },
+        {
+          "captured_at_utc": "2026-11-20T13:18:31.872138Z",
+          "returncode": 0,
+          "containers": {
+            "cdclab-polaris-1": {
+              "mem_usage_raw": "333.5MiB / 15.38GiB",
+              "mem_used_mib": 333.5,
+              "mem_perc": "2.12%",
+              "cpu_perc": "2.40%",
+              "pids": "35"
+            },
+            "cdclab-polaris-db-1": {
+              "mem_usage_raw": "34.61MiB / 15.38GiB",
+              "mem_used_mib": 34.61,
+              "mem_perc": "0.22%",
+              "cpu_perc": "0.05%",
+              "pids": "7"
+            },
+            "cdclab-silo-1": {
+              "mem_usage_raw": "78.07MiB / 15.38GiB",
+              "mem_used_mib": 78.07,
+              "mem_perc": "0.50%",
+              "cpu_perc": "5.46%",
+              "pids": "13"
+            }
+          }
+        },
+        {
+          "captured_at_utc": "2026-11-20T13:18:35.927702Z",
+          "returncode": 0,
+          "containers": {
+            "cdclab-polaris-1": {
+              "mem_usage_raw": "333.4MiB / 15.38GiB",
+              "mem_used_mib": 333.4,
+              "mem_perc": "2.12%",
+              "cpu_perc": "2.68%",
+              "pids": "35"
+            },
+            "cdclab-polaris-db-1": {
+              "mem_usage_raw": "36.65MiB / 15.38GiB",
+              "mem_used_mib": 36.65,
+              "mem_perc": "0.23%",
+              "cpu_perc": "0.06%",
+              "pids": "7"
+            },
+            "cdclab-silo-1": {
+              "mem_usage_raw": "78.13MiB / 15.38GiB",
+              "mem_used_mib": 78.13,
+              "mem_perc": "0.50%",
+              "cpu_perc": "5.45%",
+              "pids": "13"
+            }
+          }
+        }
+      ],
+      "summary": {
+        "cdclab-polaris-1": {
+          "count": 3,
+          "min_mib": 333.3,
+          "p50_mib": 333.4,
+          "mean_mib": 333.4,
+          "p95_mib": 333.49,
+          "max_mib": 333.5
+        },
+        "cdclab-polaris-db-1": {
+          "count": 3,
+          "min_mib": 34.52,
+          "p50_mib": 34.61,
+          "mean_mib": 35.26,
+          "p95_mib": 36.45,
+          "max_mib": 36.65
+        },
+        "cdclab-silo-1": {
+          "count": 3,
+          "min_mib": 77.64,
+          "p50_mib": 78.07,
+          "mean_mib": 77.95,
+          "p95_mib": 78.12,
+          "max_mib": 78.13
+        }
+      }
+    },
+    "workload_memory_sample_count": 15,
+    "workload_memory_summary": {
+      "cdclab-pg2iceberg-polaris-1": {
+        "count": 15,
+        "min_mib": 26.12,
+        "p50_mib": 67.66,
+        "mean_mib": 66.29,
+        "p95_mib": 88.57,
+        "max_mib": 88.7
+      },
+      "cdclab-polaris-1": {
+        "count": 15,
+        "min_mib": 406.6,
+        "p50_mib": 425.4,
+        "mean_mib": 423.91,
+        "p95_mib": 431.82,
+        "max_mib": 432.1
+      },
+      "cdclab-polaris-db-1": {
+        "count": 15,
+        "min_mib": 39.88,
+        "p50_mib": 41.61,
+        "mean_mib": 41.32,
+        "p95_mib": 42.05,
+        "max_mib": 42.18
+      },
+      "cdclab-silo-1": {
+        "count": 15,
+        "min_mib": 106.3,
+        "p50_mib": 191.2,
+        "mean_mib": 204.0,
+        "p95_mib": 267.35,
+        "max_mib": 274.7
+      }
+    }
+  },
+  "seed": {
+    "seed_rows": 25000,
+    "rng_seed": 20261119,
+    "edge_row_count": 12,
+    "toast_row_count": 100,
+    "toast_id_range": [
+      13,
+      112
+    ],
+    "mutable_row_count": 24888,
+    "seed_duration_ms": 420.7,
+    "toast_verification": {
+      "total_rows": 25000,
+      "note_toasted_rows": 100,
+      "payload_toasted_rows": 100,
+      "both_toasted_rows": 100,
+      "max_note_bytes": 6168,
+      "max_payload_bytes": 6252,
+      "heap_bytes": 5177344,
+      "table_and_toast_bytes": 6889472,
+      "indexes_bytes": 581632,
+      "total_relation_bytes": 7471104,
+      "toast_relation_bytes": 1679360
+    }
+  },
+  "initial_snapshot": {
+    "elapsed_ms": 1601.24,
+    "healthz_status": 200,
+    "snapshot_logged_complete": true,
+    "current_snapshot_id": 6266762752989805106,
+    "snapshot_info": {
+      "snapshot_id": 6266762752989805106,
+      "parent_snapshot_id": 4851387260086297270,
+      "sequence_number": 3,
+      "timestamp_ms": 1795180725573,
+      "schema_id": 0,
+      "pg2iceberg_log_start": null,
+      "pg2iceberg_log_end": null,
+      "pg2iceberg_log_ends": null,
+      "pg2iceberg_log_group": null,
+      "summary": {
+        "operation": "append",
+        "total-delete-files": "0",
+        "total-records": "25000",
+        "added-files-size": "680626",
+        "added-records": "5000",
+        "total-files-size": "4607771",
+        "total-equality-deletes": "0",
+        "total-data-files": "3",
+        "total-position-deletes": "0",
+        "added-data-files": "1"
+      }
+    },
+    "pipeline_positions": {
+      "captured_at_utc": "2026-11-20T13:18:46.729721Z",
+      "current_wal_lsn": "0/0233A560",
+      "replication_slots": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "temporary": false,
+          "active": true,
+          "active_pid": 272,
+          "restart_lsn": "0/02339BD8",
+          "confirmed_flush_lsn": "0/0233A040",
+          "wal_gap_bytes_confirmed_flush": 1312,
+          "wal_gap_bytes_restart": 2440
+        }
+      ],
+      "table_sizes": {
+        "heap_bytes": 5177344,
+        "table_and_toast_bytes": 6889472,
+        "indexes_bytes": 581632,
+        "total_relation_bytes": 7471104,
+        "toast_relation_bytes": 1679360,
+        "replica_identity": "d"
+      },
+      "coordinator_tables": [
+        "consumer",
+        "flushed_lsn",
+        "lock",
+        "log_index",
+        "log_seq",
+        "marker_emissions",
+        "mat_cursor",
+        "pending_markers",
+        "pipeline_meta",
+        "replicated_lsn",
+        "snapshot_progress",
+        "table_epoch",
+        "tables"
+      ],
+      "coordinator_state": {
+        "replicated_lsn": [],
+        "flushed_lsn": [
+          {
+            "id": 1,
+            "lsn": 36937792,
+            "updated_at": "2026-11-20T13:18:45.729257+00:00"
+          }
+        ],
+        "mat_cursor": [
+          {
+            "group_name": "default",
+            "table_name": "public.orders",
+            "last_offset": -1,
+            "last_committed": "2026-11-20T13:18:45.306954+00:00"
+          },
+          {
+            "group_name": "default#snapshot-lsn",
+            "table_name": "public.orders",
+            "last_offset": 36937792,
+            "last_committed": "2026-11-20T13:18:45.367349+00:00"
+          }
+        ],
+        "snapshot_progress": [],
+        "log_seq": [],
+        "pipeline_meta": [
+          {
+            "id": 1,
+            "system_identifier": 7710242342704046106,
+            "updated_at": "2026-11-20T13:18:44.463034+00:00"
+          }
+        ],
+        "table_epoch": [
+          {
+            "table_name": "public.orders",
+            "epoch": 2
+          }
+        ],
+        "log_index_row_count": 0
+      }
+    }
+  },
+  "warmup_marker": {
+    "marker_id": 900000000,
+    "commit_utc": "2026-11-20T13:18:46.988918Z",
+    "visible": true,
+    "visibility_ms": 9719.77,
+    "snapshot_id": 7455652691527543887,
+    "polls": 16,
+    "duckdb_checks": 2,
+    "errors": [],
+    "snapshot_info": {
+      "snapshot_id": 7455652691527543887,
+      "parent_snapshot_id": 6266762752989805106,
+      "sequence_number": 4,
+      "timestamp_ms": 1795180735774,
+      "schema_id": 0,
+      "pg2iceberg_log_start": "0",
+      "pg2iceberg_log_end": "2",
+      "pg2iceberg_log_ends": "{\"default\":2}",
+      "pg2iceberg_log_group": "default",
+      "summary": {
+        "operation": "append",
+        "pg2iceberg.log-group": "default",
+        "total-position-deletes": "0",
+        "total-equality-deletes": "0",
+        "total-files-size": "4611330",
+        "total-delete-files": "0",
+        "pg2iceberg.log-ends": "{\"default\":2}",
+        "added-files-size": "3559",
+        "pg2iceberg.log-end": "2",
+        "added-data-files": "1",
+        "total-data-files": "4",
+        "pg2iceberg.log-start": "0",
+        "added-records": "1",
+        "total-records": "25001"
+      }
+    }
+  },
+  "workload": {
+    "window_start_utc": "2026-11-20T13:18:56.742951Z",
+    "window_end_utc": "2026-11-20T13:21:56.649911Z",
+    "planned_duration_s": 180.0,
+    "actual_duration_s": 179.907,
+    "offered_rate_ops_s": 10.0,
+    "planned_ops": 1800,
+    "attempted_ops": 1800,
+    "completed_ops": 1800,
+    "error_count": 0,
+    "timeout_count": 0,
+    "sample_errors": [],
+    "attempted_throughput_ops_s": 10.005,
+    "completed_throughput_ops_s": 10.005,
+    "op_counts": {
+      "update_normal": 716,
+      "update_toast_unchanged": 263,
+      "update_toast_changed": 300,
+      "insert": 275,
+      "delete": 246
+    },
+    "affected_rows_by_op": {
+      "update_normal": 716,
+      "update_toast_unchanged": 263,
+      "update_toast_changed": 300,
+      "insert": 275,
+      "delete": 246
+    },
+    "total_affected_rows": 1800,
+    "toast_exercise": {
+      "unchanged_toast_updates": 263,
+      "changed_toast_updates": 300,
+      "distinct_unchanged_toast_ids": 96,
+      "distinct_changed_toast_ids": 93
+    },
+    "arrival_schedule": {
+      "miss_threshold_ms": 250.0,
+      "missed_schedule_count": 0,
+      "missed_schedule_fraction": 0.0,
+      "harness_missed_arrival_count": 0,
+      "harness_missed_arrival_fraction": 0.0,
+      "backpressure_delayed_count": 0,
+      "schedule_valid": true
+    },
+    "latency_sched_to_complete_ms": {
+      "count": 1800,
+      "min_ms": 2.506,
+      "mean_ms": 5.842,
+      "p50_ms": 5.619,
+      "p95_ms": 7.679,
+      "p99_ms": 11.798,
+      "max_ms": 50.32
+    },
+    "latency_exec_ms": {
+      "count": 1800,
+      "min_ms": 2.274,
+      "mean_ms": 5.212,
+      "p50_ms": 4.98,
+      "p95_ms": 6.964,
+      "p99_ms": 10.977,
+      "max_ms": 49.34
+    },
+    "latency_queue_delay_ms": {
+      "count": 1800,
+      "min_ms": 0.001,
+      "mean_ms": 0.631,
+      "p50_ms": 0.742,
+      "p95_ms": 1.031,
+      "p99_ms": 1.234,
+      "max_ms": 10.626
+    },
+    "latency_backpressure_delay_ms": {
+      "count": 1800,
+      "min_ms": 0.0,
+      "mean_ms": 0.0,
+      "p50_ms": 0.0,
+      "p95_ms": 0.0,
+      "p99_ms": 0.0,
+      "max_ms": 0.0
+    },
+    "latency_harness_dispatch_lag_ms": {
+      "count": 1800,
+      "min_ms": 0.001,
+      "mean_ms": 0.631,
+      "p50_ms": 0.742,
+      "p95_ms": 1.031,
+      "p99_ms": 1.234,
+      "max_ms": 10.626
+    },
+    "steady_state_probes": {
+      "probe_interval_s": 20.0,
+      "poll_interval_s": 0.5,
+      "total_probes": 8,
+      "visible_probes": 8,
+      "reader_error_count": 0,
+      "visibility_lag_ms": {
+        "count": 8,
+        "min_ms": 10344.01,
+        "mean_ms": 11017.896,
+        "p50_ms": 11172.24,
+        "p95_ms": 11672.945,
+        "p99_ms": 11674.877,
+        "max_ms": 11675.36
+      },
+      "probes": [
+        {
+          "probe_seq": 1,
+          "marker_id": 900000001,
+          "scheduled_offset_s": 10.0,
+          "commit_offset_s": 10.016,
+          "commit_utc": "2026-11-20T13:19:06.758490Z",
+          "visible": true,
+          "visibility_ms": 10363.62,
+          "observed_utc": "2026-11-20T13:19:17.122108Z",
+          "snapshot_id": 8149867539207188572,
+          "polls": 17,
+          "duckdb_checks": 2,
+          "poll_interval_s": 0.5,
+          "reader_errors": [],
+          "snapshot_info": {
+            "snapshot_id": 8149867539207188572,
+            "parent_snapshot_id": 3489336315535299174,
+            "sequence_number": 6,
+            "timestamp_ms": 1795180755971,
+            "schema_id": 0,
+            "pg2iceberg_log_start": "92",
+            "pg2iceberg_log_end": "193",
+            "pg2iceberg_log_ends": "{\"default\":193}",
+            "pg2iceberg_log_group": "default",
+            "summary": {
+              "operation": "append",
+              "pg2iceberg.log-ends": "{\"default\":193}",
+              "added-files-size": "384250",
+              "added-records": "80",
+              "total-equality-deletes": "145",
+              "total-position-deletes": "0",
+              "pg2iceberg.log-start": "92",
+              "total-data-files": "6",
+              "total-delete-files": "2",
+              "added-equality-deletes": "79",
+              "total-files-size": "5378747",
+              "added-delete-files": "1",
+              "pg2iceberg.log-group": "default",
+              "added-data-files": "1",
+              "added-equality-delete-files": "1",
+              "pg2iceberg.log-end": "193",
+              "total-records": "25154"
+            }
+          },
+          "pg_positions_at_commit": {
+            "current_wal_lsn": "0/023E7068",
+            "replication_slots": [
+              {
+                "slot_name": "pg2iceberg_slot",
+                "plugin": "pgoutput",
+                "slot_type": "logical",
+                "temporary": false,
+                "active": true,
+                "active_pid": 272,
+                "restart_lsn": "0/0233AD60",
+                "confirmed_flush_lsn": "0/023B3138",
+                "wal_gap_bytes_confirmed_flush": 212784,
+                "wal_gap_bytes_restart": 705288
+              }
+            ]
+          }
+        },
+        {
+          "probe_seq": 2,
+          "marker_id": 900000002,
+          "scheduled_offset_s": 30.0,
+          "commit_offset_s": 30.013,
+          "commit_utc": "2026-11-20T13:19:26.756199Z",
+          "visible": true,
+          "visibility_ms": 10344.01,
+          "observed_utc": "2026-11-20T13:19:37.100212Z",
+          "snapshot_id": 3258504049028800820,
+          "polls": 17,
+          "duckdb_checks": 2,
+          "poll_interval_s": 0.5,
+          "reader_errors": [],
+          "snapshot_info": {
+            "snapshot_id": 3258504049028800820,
+            "parent_snapshot_id": 8418663948348632939,
+            "sequence_number": 8,
+            "timestamp_ms": 1795180776163,
+            "schema_id": 0,
+            "pg2iceberg_log_start": "294",
+            "pg2iceberg_log_end": "395",
+            "pg2iceberg_log_ends": "{\"default\":395}",
+            "pg2iceberg_log_group": "default",
+            "summary": {
+              "operation": "append",
+              "total-files-size": "6147993",
+              "pg2iceberg.log-end": "395",
+              "pg2iceberg.log-start": "294",
+              "total-position-deletes": "0",
+              "added-equality-deletes": "80",
+              "pg2iceberg.log-ends": "{\"default\":395}",
+              "pg2iceberg.log-group": "default",
+              "added-data-files": "1",
+              "added-records": "86",
+              "added-equality-delete-files": "1",
+              "added-delete-files": "1",
+              "added-files-size": "397093",
+              "total-delete-files": "4",
+              "total-equality-deletes": "304",
+              "total-data-files": "8",
+              "total-records": "25322"
+            }
+          },
+          "pg_positions_at_commit": {
+            "current_wal_lsn": "0/0246C728",
+            "replication_slots": [
+              {
+                "slot_name": "pg2iceberg_slot",
+                "plugin": "pgoutput",
+                "slot_type": "logical",
+                "temporary": false,
+                "active": true,
+                "active_pid": 272,
+                "restart_lsn": "0/023FDBF0",
+                "confirmed_flush_lsn": "0/02442738",
+                "wal_gap_bytes_confirmed_flush": 172016,
+                "wal_gap_bytes_restart": 453432
+              }
+            ]
+          }
+        },
+        {
+          "probe_seq": 3,
+          "marker_id": 900000003,
+          "scheduled_offset_s": 50.0,
+          "commit_offset_s": 50.037,
+          "commit_utc": "2026-11-20T13:19:46.779832Z",
+          "visible": true,
+          "visibility_ms": 10541.17,
+          "observed_utc": "2026-11-20T13:19:57.321001Z",
+          "snapshot_id": 7228654023869729173,
+          "polls": 17,
+          "duckdb_checks": 2,
+          "poll_interval_s": 0.5,
+          "reader_errors": [],
+          "snapshot_info": {
+            "snapshot_id": 7228654023869729173,
+            "parent_snapshot_id": 13080116953515023,
+            "sequence_number": 10,
+            "timestamp_ms": 1795180796341,
+            "schema_id": 0,
+            "pg2iceberg_log_start": "495",
+            "pg2iceberg_log_end": "596",
+            "pg2iceberg_log_ends": "{\"default\":596}",
+            "pg2iceberg_log_group": "default",
+            "summary": {
+              "operation": "append",
+              "added-files-size": "347228",
+              "total-records": "25487",
+              "total-files-size": "6941440",
+              "pg2iceberg.log-start": "495",
+              "added-equality-deletes": "84",
+              "pg2iceberg.log-ends": "{\"default\":596}",
+              "total-data-files": "10",
+              "added-records": "82",
+              "added-equality-delete-files": "1",
+              "added-data-files": "1",
+              "total-delete-files": "6",
+              "added-delete-files": "1",
+              "total-equality-deletes": "470",
+              "pg2iceberg.log-group": "default",
+              "total-position-deletes": "0",
+              "pg2iceberg.log-end": "596"
+            }
+          },
+          "pg_positions_at_commit": {
+            "current_wal_lsn": "0/025452A8",
+            "replication_slots": [
+              {
+                "slot_name": "pg2iceberg_slot",
+                "plugin": "pgoutput",
+                "slot_type": "logical",
+                "temporary": false,
+                "active": true,
+                "active_pid": 272,
+                "restart_lsn": "0/0250EC30",
+                "confirmed_flush_lsn": "0/02521CB8",
+                "wal_gap_bytes_confirmed_flush": 144880,
+                "wal_gap_bytes_restart": 222840
+              }
+            ]
+          }
+        },
+        {
+          "probe_seq": 4,
+          "marker_id": 900000004,
+          "scheduled_offset_s": 70.0,
+          "commit_offset_s": 70.017,
+          "commit_utc": "2026-11-20T13:20:06.759891Z",
+          "visible": true,
+          "visibility_ms": 11190.02,
+          "observed_utc": "2026-11-20T13:20:17.949919Z",
+          "snapshot_id": 5292902022132550817,
+          "polls": 18,
+          "duckdb_checks": 2,
+          "poll_interval_s": 0.5,
+          "reader_errors": [],
+          "snapshot_info": {
+            "snapshot_id": 5292902022132550817,
+            "parent_snapshot_id": 5630319359534042064,
+            "sequence_number": 12,
+            "timestamp_ms": 1795180816515,
+            "schema_id": 0,
+            "pg2iceberg_log_start": "696",
+            "pg2iceberg_log_end": "797",
+            "pg2iceberg_log_ends": "{\"default\":797}",
+            "pg2iceberg_log_group": "default",
+            "summary": {
+              "operation": "append",
+              "added-records": "81",
+              "pg2iceberg.log-ends": "{\"default\":797}",
+              "pg2iceberg.log-end": "797",
+              "added-equality-deletes": "79",
+              "total-delete-files": "8",
+              "total-equality-deletes": "631",
+              "pg2iceberg.log-start": "696",
+              "added-files-size": "384329",
+              "total-data-files": "12",
+              "pg2iceberg.log-group": "default",
+              "total-position-deletes": "0",
+              "added-data-files": "1",
+              "total-records": "25642",
+              "added-equality-delete-files": "1",
+              "added-delete-files": "1",
+              "total-files-size": "7696940"
+            }
+          },
+          "pg_positions_at_commit": {
+            "current_wal_lsn": "0/025BFA00",
+            "replication_slots": [
+              {
+                "slot_name": "pg2iceberg_slot",
+                "plugin": "pgoutput",
+                "slot_type": "logical",
+                "temporary": false,
+                "active": true,
+                "active_pid": 272,
+                "restart_lsn": "0/02566C38",
+                "confirmed_flush_lsn": "0/0258EC98",
+                "wal_gap_bytes_confirmed_flush": 200040,
+                "wal_gap_bytes_restart": 363976
+              }
+            ]
+          }
+        },
+        {
+          "probe_seq": 5,
+          "marker_id": 900000005,
+          "scheduled_offset_s": 90.0,
+          "commit_offset_s": 90.029,
+          "commit_utc": "2026-11-20T13:20:26.771869Z",
+          "visible": true,
+          "visibility_ms": 11154.46,
+          "observed_utc": "2026-11-20T13:20:37.926328Z",
+          "snapshot_id": 5323384883780313701,
+          "polls": 18,
+          "duckdb_checks": 2,
+          "poll_interval_s": 0.5,
+          "reader_errors": [],
+          "snapshot_info": {
+            "snapshot_id": 5323384883780313701,
+            "parent_snapshot_id": 8404686011327865676,
+            "sequence_number": 14,
+            "timestamp_ms": 1795180836680,
+            "schema_id": 0,
+            "pg2iceberg_log_start": "897",
+            "pg2iceberg_log_end": "998",
+            "pg2iceberg_log_ends": "{\"default\":998}",
+            "pg2iceberg_log_group": "default",
+            "summary": {
+              "operation": "append",
+              "added-equality-delete-files": "1",
+              "added-delete-files": "1",
+              "added-records": "78",
+              "pg2iceberg.log-group": "default",
+              "pg2iceberg.log-end": "998",
+              "total-records": "25802",
+              "total-files-size": "8366628",
+              "pg2iceberg.log-start": "897",
+              "added-files-size": "297516",
+              "added-equality-deletes": "79",
+              "total-equality-deletes": "787",
+              "total-position-deletes": "0",
+              "total-delete-files": "10",
+              "added-data-files": "1",
+              "pg2iceberg.log-ends": "{\"default\":998}",
+              "total-data-files": "14"
+            }
+          },
+          "pg_positions_at_commit": {
+            "current_wal_lsn": "0/0264C078",
+            "replication_slots": [
+              {
+                "slot_name": "pg2iceberg_slot",
+                "plugin": "pgoutput",
+                "slot_type": "logical",
+                "temporary": false,
+                "active": true,
+                "active_pid": 272,
+                "restart_lsn": "0/0260A970",
+                "confirmed_flush_lsn": "0/0262C7D0",
+                "wal_gap_bytes_confirmed_flush": 129192,
+                "wal_gap_bytes_restart": 268040
+              }
+            ]
+          }
+        },
+        {
+          "probe_seq": 6,
+          "marker_id": 900000006,
+          "scheduled_offset_s": 110.0,
+          "commit_offset_s": 110.026,
+          "commit_utc": "2026-11-20T13:20:46.769212Z",
+          "visible": true,
+          "visibility_ms": 11206.07,
+          "observed_utc": "2026-11-20T13:20:57.975287Z",
+          "snapshot_id": 5872305191212772169,
+          "polls": 18,
+          "duckdb_checks": 2,
+          "poll_interval_s": 0.5,
+          "reader_errors": [],
+          "snapshot_info": {
+            "snapshot_id": 5872305191212772169,
+            "parent_snapshot_id": 1108328451867215600,
+            "sequence_number": 16,
+            "timestamp_ms": 1795180856860,
+            "schema_id": 0,
+            "pg2iceberg_log_start": "1098",
+            "pg2iceberg_log_end": "1199",
+            "pg2iceberg_log_ends": "{\"default\":1199}",
+            "pg2iceberg_log_group": "default",
+            "summary": {
+              "operation": "append",
+              "added-equality-delete-files": "1",
+              "added-files-size": "360446",
+              "added-records": "86",
+              "total-records": "25965",
+              "pg2iceberg.log-ends": "{\"default\":1199}",
+              "pg2iceberg.log-start": "1098",
+              "added-delete-files": "1",
+              "added-equality-deletes": "74",
+              "added-data-files": "1",
+              "total-delete-files": "12",
+              "total-position-deletes": "0",
+              "total-data-files": "16",
+              "total-files-size": "9061513",
+              "pg2iceberg.log-group": "default",
+              "total-equality-deletes": "939",
+              "pg2iceberg.log-end": "1199"
+            }
+          },
+          "pg_positions_at_commit": {
+            "current_wal_lsn": "0/026E25C0",
+            "replication_slots": [
+              {
+                "slot_name": "pg2iceberg_slot",
+                "plugin": "pgoutput",
+                "slot_type": "logical",
+                "temporary": false,
+                "active": true,
+                "active_pid": 272,
+                "restart_lsn": "0/0260A970",
+                "confirmed_flush_lsn": "0/026C2BF0",
+                "wal_gap_bytes_confirmed_flush": 129488,
+                "wal_gap_bytes_restart": 883792
+              }
+            ]
+          }
+        },
+        {
+          "probe_seq": 7,
+          "marker_id": 900000007,
+          "scheduled_offset_s": 130.0,
+          "commit_offset_s": 130.022,
+          "commit_utc": "2026-11-20T13:21:06.764504Z",
+          "visible": true,
+          "visibility_ms": 11675.36,
+          "observed_utc": "2026-11-20T13:21:18.439865Z",
+          "snapshot_id": 7461941836359195086,
+          "polls": 17,
+          "duckdb_checks": 3,
+          "poll_interval_s": 0.5,
+          "reader_errors": [],
+          "snapshot_info": {
+            "snapshot_id": 7461941836359195086,
+            "parent_snapshot_id": 7889233066556584987,
+            "sequence_number": 18,
+            "timestamp_ms": 1795180877035,
+            "schema_id": 0,
+            "pg2iceberg_log_start": "1299",
+            "pg2iceberg_log_end": "1400",
+            "pg2iceberg_log_ends": "{\"default\":1400}",
+            "pg2iceberg_log_group": "default",
+            "summary": {
+              "operation": "append",
+              "total-delete-files": "14",
+              "added-equality-delete-files": "1",
+              "pg2iceberg.log-group": "default",
+              "added-files-size": "384822",
+              "pg2iceberg.log-ends": "{\"default\":1400}",
+              "added-data-files": "1",
+              "pg2iceberg.log-start": "1299",
+              "added-records": "85",
+              "total-records": "26134",
+              "total-data-files": "18",
+              "total-equality-deletes": "1108",
+              "total-files-size": "9781556",
+              "added-delete-files": "1",
+              "pg2iceberg.log-end": "1400",
+              "total-position-deletes": "0",
+              "added-equality-deletes": "80"
+            }
+          },
+          "pg_positions_at_commit": {
+            "current_wal_lsn": "0/02767DB0",
+            "replication_slots": [
+              {
+                "slot_name": "pg2iceberg_slot",
+                "plugin": "pgoutput",
+                "slot_type": "logical",
+                "temporary": false,
+                "active": true,
+                "active_pid": 272,
+                "restart_lsn": "0/026F54D8",
+                "confirmed_flush_lsn": "0/0274B6A8",
+                "wal_gap_bytes_confirmed_flush": 116488,
+                "wal_gap_bytes_restart": 469208
+              }
+            ]
+          }
+        },
+        {
+          "probe_seq": 8,
+          "marker_id": 900000008,
+          "scheduled_offset_s": 150.0,
+          "commit_offset_s": 150.025,
+          "commit_utc": "2026-11-20T13:21:26.768288Z",
+          "visible": true,
+          "visibility_ms": 11668.46,
+          "observed_utc": "2026-11-20T13:21:38.436754Z",
+          "snapshot_id": 3710995041907589123,
+          "polls": 17,
+          "duckdb_checks": 3,
+          "poll_interval_s": 0.5,
+          "reader_errors": [],
+          "snapshot_info": {
+            "snapshot_id": 3710995041907589123,
+            "parent_snapshot_id": 7224347326139233356,
+            "sequence_number": 20,
+            "timestamp_ms": 1795180897185,
+            "schema_id": 0,
+            "pg2iceberg_log_start": "1500",
+            "pg2iceberg_log_end": "1601",
+            "pg2iceberg_log_ends": "{\"default\":1601}",
+            "pg2iceberg_log_group": "default",
+            "summary": {
+              "operation": "append",
+              "total-position-deletes": "0",
+              "pg2iceberg.log-end": "1601",
+              "added-equality-deletes": "83",
+              "total-delete-files": "16",
+              "total-files-size": "10502003",
+              "pg2iceberg.log-ends": "{\"default\":1601}",
+              "added-files-size": "434731",
+              "added-data-files": "1",
+              "pg2iceberg.log-start": "1500",
+              "added-delete-files": "1",
+              "total-data-files": "20",
+              "total-equality-deletes": "1270",
+              "added-records": "88",
+              "total-records": "26305",
+              "pg2iceberg.log-group": "default",
+              "added-equality-delete-files": "1"
+            }
+          },
+          "pg_positions_at_commit": {
+            "current_wal_lsn": "0/027D8618",
+            "replication_slots": [
+              {
+                "slot_name": "pg2iceberg_slot",
+                "plugin": "pgoutput",
+                "slot_type": "logical",
+                "temporary": false,
+                "active": true,
+                "active_pid": 272,
+                "restart_lsn": "0/027836D0",
+                "confirmed_flush_lsn": "0/027C2DF0",
+                "wal_gap_bytes_confirmed_flush": 88104,
+                "wal_gap_bytes_restart": 347976
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "toast_after_workload": {
+    "total_rows": 25038,
+    "note_toasted_rows": 110,
+    "payload_toasted_rows": 110,
+    "both_toasted_rows": 110,
+    "max_note_bytes": 6175,
+    "max_payload_bytes": 6259,
+    "heap_bytes": 5193728,
+    "table_and_toast_bytes": 8740864,
+    "indexes_bytes": 581632,
+    "total_relation_bytes": 9322496,
+    "toast_relation_bytes": 3514368
+  },
+  "final_marker_commit_utc": "2026-11-20T13:21:56.690271Z",
+  "convergence": {
+    "outcome": "converged",
+    "passed": true,
+    "final_marker_id": 900999999,
+    "first_marker_snapshot_id": 2116351348497739831,
+    "first_marker_observed_utc": "2026-11-20T13:22:08.976216Z",
+    "final_marker_visibility_ms": 12285.94,
+    "verified_snapshot_id": 2116351348497739831,
+    "verified_at_utc": "2026-11-20T13:22:10.498052Z",
+    "final_marker_to_verified_match_ms": 13807.78,
+    "diff_duration_ms": 1285.0,
+    "batch_size": 2000,
+    "poll_interval_s": 1.0,
+    "polls": 10,
+    "reader_errors": [],
+    "snapshot_attempts": [
+      {
+        "snapshot_id": 2116351348497739831,
+        "source_read_opened_utc": "2026-11-20T13:22:09.199086Z",
+        "checked_at_utc": "2026-11-20T13:22:10.497982Z",
+        "passed": true,
+        "schema_check": {
+          "passed": true,
+          "schema_id": 0,
+          "format_version": 2,
+          "identifier_field_ids": [
+            1
+          ],
+          "mismatches": [],
+          "actual_fields": [
+            {
+              "id": 1,
+              "name": "id",
+              "required": true,
+              "type": "long"
+            },
+            {
+              "id": 2,
+              "name": "status",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "id": 3,
+              "name": "amount",
+              "required": true,
+              "type": "decimal(38, 9)"
+            },
+            {
+              "id": 4,
+              "name": "updated_at",
+              "required": true,
+              "type": "timestamptz"
+            },
+            {
+              "id": 5,
+              "name": "note",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "id": 6,
+              "name": "payload",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "id": 7,
+              "name": "discount",
+              "required": false,
+              "type": "decimal(38, 9)"
+            }
+          ],
+          "expected_fields": [
+            {
+              "name": "id",
+              "type": "long",
+              "required": true
+            },
+            {
+              "name": "status",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "amount",
+              "type": "decimal(38, 9)",
+              "required": true
+            },
+            {
+              "name": "updated_at",
+              "type": "timestamptz",
+              "required": true
+            },
+            {
+              "name": "note",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "payload",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "discount",
+              "type": "decimal(38, 9)",
+              "required": false
+            }
+          ]
+        },
+        "row_comparison": {
+          "passed": true,
+          "source_row_count": 25039,
+          "lake_row_count": 25039,
+          "matched_id_count": 25039,
+          "exact_match_row_count": 25039,
+          "source_only_count": 0,
+          "source_only_examples": [],
+          "lake_only_count": 0,
+          "lake_only_examples": [],
+          "duplicate_lake_id_count": 0,
+          "duplicate_lake_extra_row_count": 0,
+          "duplicate_lake_examples": [],
+          "duplicate_source_id_count": 0,
+          "duplicate_source_examples": [],
+          "value_mismatch_row_count": 0,
+          "value_mismatch_column_counts": {},
+          "value_mismatch_examples": [],
+          "batches_read_source": 13,
+          "batches_read_lake": 13,
+          "diff_duration_ms": 1285.0
+        },
+        "snapshot_info": {
+          "snapshot_id": 2116351348497739831,
+          "parent_snapshot_id": 5535721015150762449,
+          "sequence_number": 23,
+          "timestamp_ms": 1795180927416,
+          "schema_id": 0,
+          "pg2iceberg_log_start": "1802",
+          "pg2iceberg_log_end": "1811",
+          "pg2iceberg_log_ends": "{\"default\":1811}",
+          "pg2iceberg_log_group": "default",
+          "summary": {
+            "operation": "append",
+            "pg2iceberg.log-end": "1811",
+            "total-equality-deletes": "1444",
+            "added-records": "7",
+            "total-data-files": "23",
+            "pg2iceberg.log-group": "default",
+            "added-equality-deletes": "6",
+            "added-files-size": "41716",
+            "pg2iceberg.log-start": "1802",
+            "total-records": "26483",
+            "added-data-files": "1",
+            "total-files-size": "11214287",
+            "total-position-deletes": "0",
+            "total-delete-files": "19",
+            "pg2iceberg.log-ends": "{\"default\":1811}",
+            "added-equality-delete-files": "1",
+            "added-delete-files": "1"
+          }
+        }
+      }
+    ]
+  },
+  "duckdb_final_snapshot_count": 23,
+  "duckdb_final_metadata_summary": {
+    "total_live_entries": 42,
+    "live_data_files": 23,
+    "live_equality_delete_files": 19,
+    "live_position_delete_files": 0,
+    "live_data_records": 26483,
+    "live_equality_delete_records": 1444,
+    "live_position_delete_records": 0
+  },
+  "pipeline_positions": {
+    "after_seed": {
+      "captured_at_utc": "2026-11-20T13:18:42.204286Z",
+      "current_wal_lsn": "0/022B4290",
+      "replication_slots": [],
+      "table_sizes": {
+        "heap_bytes": 5177344,
+        "table_and_toast_bytes": 6889472,
+        "indexes_bytes": 581632,
+        "total_relation_bytes": 7471104,
+        "toast_relation_bytes": 1679360,
+        "replica_identity": "d"
+      },
+      "coordinator_tables": [],
+      "coordinator_state": {}
+    },
+    "window_start": {
+      "captured_at_utc": "2026-11-20T13:18:56.742169Z",
+      "current_wal_lsn": "0/0233B090",
+      "replication_slots": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "temporary": false,
+          "active": true,
+          "active_pid": 272,
+          "restart_lsn": "0/02339BD8",
+          "confirmed_flush_lsn": "0/0233ABD0",
+          "wal_gap_bytes_confirmed_flush": 1216,
+          "wal_gap_bytes_restart": 5304
+        }
+      ],
+      "table_sizes": {
+        "heap_bytes": 5177344,
+        "table_and_toast_bytes": 6889472,
+        "indexes_bytes": 581632,
+        "total_relation_bytes": 7471104,
+        "toast_relation_bytes": 1679360,
+        "replica_identity": "d"
+      },
+      "coordinator_tables": [
+        "consumer",
+        "flushed_lsn",
+        "lock",
+        "log_index",
+        "log_seq",
+        "marker_emissions",
+        "mat_cursor",
+        "pending_markers",
+        "pipeline_meta",
+        "replicated_lsn",
+        "snapshot_progress",
+        "table_epoch",
+        "tables"
+      ],
+      "coordinator_state": {
+        "replicated_lsn": [
+          {
+            "id": 1,
+            "lsn": 36941408,
+            "updated_at": "2026-11-20T13:18:55.737043+00:00"
+          }
+        ],
+        "flushed_lsn": [
+          {
+            "id": 1,
+            "lsn": 36940752,
+            "updated_at": "2026-11-20T13:18:55.733568+00:00"
+          }
+        ],
+        "mat_cursor": [
+          {
+            "group_name": "default#snapshot-lsn",
+            "table_name": "public.orders",
+            "last_offset": 36937792,
+            "last_committed": "2026-11-20T13:18:45.367349+00:00"
+          },
+          {
+            "group_name": "default",
+            "table_name": "public.orders",
+            "last_offset": 2,
+            "last_committed": "2026-11-20T13:18:55.809894+00:00"
+          }
+        ],
+        "snapshot_progress": [],
+        "log_seq": [
+          {
+            "table_name": "public.orders",
+            "next_offset": 2
+          }
+        ],
+        "pipeline_meta": [
+          {
+            "id": 1,
+            "system_identifier": 7710242342704046106,
+            "updated_at": "2026-11-20T13:18:44.463034+00:00"
+          }
+        ],
+        "table_epoch": [
+          {
+            "table_name": "public.orders",
+            "epoch": 3
+          }
+        ],
+        "log_index_row_count": 1
+      }
+    },
+    "window_end": {
+      "captured_at_utc": "2026-11-20T13:21:56.679287Z",
+      "current_wal_lsn": "0/028AC958",
+      "replication_slots": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "temporary": false,
+          "active": true,
+          "active_pid": 272,
+          "restart_lsn": "0/028612C0",
+          "confirmed_flush_lsn": "0/02886748",
+          "wal_gap_bytes_confirmed_flush": 156176,
+          "wal_gap_bytes_restart": 308888
+        }
+      ],
+      "table_sizes": {
+        "heap_bytes": 5193728,
+        "table_and_toast_bytes": 8740864,
+        "indexes_bytes": 581632,
+        "total_relation_bytes": 9322496,
+        "toast_relation_bytes": 3514368,
+        "replica_identity": "d"
+      },
+      "coordinator_tables": [
+        "consumer",
+        "flushed_lsn",
+        "lock",
+        "log_index",
+        "log_seq",
+        "marker_emissions",
+        "mat_cursor",
+        "pending_markers",
+        "pipeline_meta",
+        "replicated_lsn",
+        "snapshot_progress",
+        "table_epoch",
+        "tables"
+      ],
+      "coordinator_state": {
+        "replicated_lsn": [
+          {
+            "id": 1,
+            "lsn": 42633208,
+            "updated_at": "2026-11-20T13:21:55.860542+00:00"
+          }
+        ],
+        "flushed_lsn": [
+          {
+            "id": 1,
+            "lsn": 42493768,
+            "updated_at": "2026-11-20T13:21:55.818678+00:00"
+          }
+        ],
+        "mat_cursor": [
+          {
+            "group_name": "default#snapshot-lsn",
+            "table_name": "public.orders",
+            "last_offset": 36937792,
+            "last_committed": "2026-11-20T13:18:45.367349+00:00"
+          },
+          {
+            "group_name": "default",
+            "table_name": "public.orders",
+            "last_offset": 1701,
+            "last_committed": "2026-11-20T13:21:47.290202+00:00"
+          }
+        ],
+        "snapshot_progress": [],
+        "log_seq": [
+          {
+            "table_name": "public.orders",
+            "next_offset": 1802
+          }
+        ],
+        "pipeline_meta": [
+          {
+            "id": 1,
+            "system_identifier": 7710242342704046106,
+            "updated_at": "2026-11-20T13:18:44.463034+00:00"
+          }
+        ],
+        "table_epoch": [
+          {
+            "table_name": "public.orders",
+            "epoch": 20
+          }
+        ],
+        "log_index_row_count": 91
+      }
+    },
+    "after_final_marker": {
+      "captured_at_utc": "2026-11-20T13:21:56.700095Z",
+      "current_wal_lsn": "0/028B3CF8",
+      "replication_slots": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "temporary": false,
+          "active": true,
+          "active_pid": 272,
+          "restart_lsn": "0/028612C0",
+          "confirmed_flush_lsn": "0/02886748",
+          "wal_gap_bytes_confirmed_flush": 185776,
+          "wal_gap_bytes_restart": 338488
+        }
+      ],
+      "table_sizes": {
+        "heap_bytes": 5193728,
+        "table_and_toast_bytes": 8740864,
+        "indexes_bytes": 581632,
+        "total_relation_bytes": 9322496,
+        "toast_relation_bytes": 3514368,
+        "replica_identity": "d"
+      },
+      "coordinator_tables": [
+        "consumer",
+        "flushed_lsn",
+        "lock",
+        "log_index",
+        "log_seq",
+        "marker_emissions",
+        "mat_cursor",
+        "pending_markers",
+        "pipeline_meta",
+        "replicated_lsn",
+        "snapshot_progress",
+        "table_epoch",
+        "tables"
+      ],
+      "coordinator_state": {
+        "replicated_lsn": [
+          {
+            "id": 1,
+            "lsn": 42633208,
+            "updated_at": "2026-11-20T13:21:55.860542+00:00"
+          }
+        ],
+        "flushed_lsn": [
+          {
+            "id": 1,
+            "lsn": 42493768,
+            "updated_at": "2026-11-20T13:21:55.818678+00:00"
+          }
+        ],
+        "mat_cursor": [
+          {
+            "group_name": "default#snapshot-lsn",
+            "table_name": "public.orders",
+            "last_offset": 36937792,
+            "last_committed": "2026-11-20T13:18:45.367349+00:00"
+          },
+          {
+            "group_name": "default",
+            "table_name": "public.orders",
+            "last_offset": 1701,
+            "last_committed": "2026-11-20T13:21:47.290202+00:00"
+          }
+        ],
+        "snapshot_progress": [],
+        "log_seq": [
+          {
+            "table_name": "public.orders",
+            "next_offset": 1802
+          }
+        ],
+        "pipeline_meta": [
+          {
+            "id": 1,
+            "system_identifier": 7710242342704046106,
+            "updated_at": "2026-11-20T13:18:44.463034+00:00"
+          }
+        ],
+        "table_epoch": [
+          {
+            "table_name": "public.orders",
+            "epoch": 20
+          }
+        ],
+        "log_index_row_count": 91
+      }
+    },
+    "final": {
+      "captured_at_utc": "2026-11-20T13:22:11.106670Z",
+      "current_wal_lsn": "0/028B47D8",
+      "replication_slots": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "temporary": false,
+          "active": true,
+          "active_pid": 272,
+          "restart_lsn": "0/028612C0",
+          "confirmed_flush_lsn": "0/028B4188",
+          "wal_gap_bytes_confirmed_flush": 1616,
+          "wal_gap_bytes_restart": 341272
+        }
+      ],
+      "table_sizes": {
+        "heap_bytes": 5193728,
+        "table_and_toast_bytes": 8740864,
+        "indexes_bytes": 581632,
+        "total_relation_bytes": 9322496,
+        "toast_relation_bytes": 3514368,
+        "replica_identity": "d"
+      },
+      "coordinator_tables": [
+        "consumer",
+        "flushed_lsn",
+        "lock",
+        "log_index",
+        "log_seq",
+        "marker_emissions",
+        "mat_cursor",
+        "pending_markers",
+        "pipeline_meta",
+        "replicated_lsn",
+        "snapshot_progress",
+        "table_epoch",
+        "tables"
+      ],
+      "coordinator_state": {
+        "replicated_lsn": [
+          {
+            "id": 1,
+            "lsn": 42682128,
+            "updated_at": "2026-11-20T13:22:09.863297+00:00"
+          }
+        ],
+        "flushed_lsn": [
+          {
+            "id": 1,
+            "lsn": 42680712,
+            "updated_at": "2026-11-20T13:22:05.822111+00:00"
+          }
+        ],
+        "mat_cursor": [
+          {
+            "group_name": "default#snapshot-lsn",
+            "table_name": "public.orders",
+            "last_offset": 36937792,
+            "last_committed": "2026-11-20T13:18:45.367349+00:00"
+          },
+          {
+            "group_name": "default",
+            "table_name": "public.orders",
+            "last_offset": 1811,
+            "last_committed": "2026-11-20T13:22:07.445623+00:00"
+          }
+        ],
+        "snapshot_progress": [],
+        "log_seq": [
+          {
+            "table_name": "public.orders",
+            "next_offset": 1811
+          }
+        ],
+        "pipeline_meta": [
+          {
+            "id": 1,
+            "system_identifier": 7710242342704046106,
+            "updated_at": "2026-11-20T13:18:44.463034+00:00"
+          }
+        ],
+        "table_epoch": [
+          {
+            "table_name": "public.orders",
+            "epoch": 22
+          }
+        ],
+        "log_index_row_count": 92
+      }
+    }
+  },
+  "cleanup": {
+    "skipped_keep_up": false,
+    "resources_after_cleanup": {
+      "containers": [],
+      "volumes": [],
+      "networks": []
+    },
+    "all_project_resources_removed": true,
+    "non_project_containers_unchanged": true,
+    "non_project_count_before": 14,
+    "non_project_count_after": 14
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "writer_raw": {
+    "http_status": 200,
+    "url": "http://127.0.0.1:18183/api/catalog/v1/cdclab_polaris_authz/namespaces/raw/tables/orders",
+    "redacted": {
+      "metadata_location": "s3://cdclab/polaris-authz/raw/orders/metadata/00001-5c781fff-043c-45ec-9076-844a6bc250d7.metadata.json",
+      "config": {
+        "s3.path-style-access": "true",
+        "s3.access-key-id": "<redacted>",
+        "s3.secret-access-key": "<redacted>",
+        "s3.session-token": "<redacted>",
+        "client.refresh-credentials-endpoint": "v1/cdclab_polaris_authz/namespaces/raw/tables/orders/credentials",
+        "s3.endpoint": "http://silo.localhost:19000",
+        "s3.session-token-expires-at-ms": "<redacted>",
+        "client.region": "local-01"
+      },
+      "storage_credentials": [
+        {
+          "prefix": "s3://cdclab/polaris-authz/raw/orders",
+          "config": {
+            "s3.access-key-id": "<redacted>",
+            "s3.secret-access-key": "<redacted>",
+            "s3.session-token": "<redacted>",
+            "s3.session-token-expires-at-ms": "<redacted>"
+          }
+        }
+      ],
+      "table_uuid": "fcee8bca-a91d-47fc-b7da-6d1773c074e5",
+      "location": "s3://cdclab/polaris-authz/raw/orders",
+      "current_snapshot_id": 4747863572526813369,
+      "format_version": 2
+    }
+  },
+  "writer_curated": {
+    "http_status": 200,
+    "url": "http://127.0.0.1:18183/api/catalog/v1/cdclab_polaris_authz/namespaces/curated/tables/orders",
+    "redacted": {
+      "metadata_location": "s3://cdclab/polaris-authz/curated/orders/metadata/00001-324a38ab-92ea-4ca8-9113-b2b787104db8.metadata.json",
+      "config": {
+        "s3.path-style-access": "true",
+        "s3.access-key-id": "<redacted>",
+        "s3.secret-access-key": "<redacted>",
+        "s3.session-token": "<redacted>",
+        "client.refresh-credentials-endpoint": "v1/cdclab_polaris_authz/namespaces/curated/tables/orders/credentials",
+        "s3.endpoint": "http://silo.localhost:19000",
+        "s3.session-token-expires-at-ms": "<redacted>",
+        "client.region": "local-01"
+      },
+      "storage_credentials": [
+        {
+          "prefix": "s3://cdclab/polaris-authz/curated/orders",
+          "config": {
+            "s3.access-key-id": "<redacted>",
+            "s3.secret-access-key": "<redacted>",
+            "s3.session-token": "<redacted>",
+            "s3.session-token-expires-at-ms": "<redacted>"
+          }
+        }
+      ],
+      "table_uuid": "62342d2a-66df-418b-8de3-ea45381a5d17",
+      "location": "s3://cdclab/polaris-authz/curated/orders",
+      "current_snapshot_id": 166444171061304700,
+      "format_version": 2
+    }
+  },
+  "reader_curated": {
+    "http_status": 200,
+    "url": "http://127.0.0.1:18183/api/catalog/v1/cdclab_polaris_authz/namespaces/curated/tables/orders",
+    "redacted": {
+      "metadata_location": "s3://cdclab/polaris-authz/curated/orders/metadata/00001-324a38ab-92ea-4ca8-9113-b2b787104db8.metadata.json",
+      "config": {
+        "s3.path-style-access": "true",
+        "s3.access-key-id": "<redacted>",
+        "s3.secret-access-key": "<redacted>",
+        "s3.session-token": "<redacted>",
+        "client.refresh-credentials-endpoint": "v1/cdclab_polaris_authz/namespaces/curated/tables/orders/credentials",
+        "s3.endpoint": "http://silo.localhost:19000",
+        "s3.session-token-expires-at-ms": "<redacted>",
+        "client.region": "local-01"
+      },
+      "storage_credentials": [
+        {
+          "prefix": "s3://cdclab/polaris-authz/curated/orders",
+          "config": {
+            "s3.access-key-id": "<redacted>",
+            "s3.secret-access-key": "<redacted>",
+            "s3.session-token": "<redacted>",
+            "s3.session-token-expires-at-ms": "<redacted>"
+          }
+        }
+      ],
+      "table_uuid": "62342d2a-66df-418b-8de3-ea45381a5d17",
+      "location": "s3://cdclab/polaris-authz/curated/orders",
+      "current_snapshot_id": 166444171061304700,
+      "format_version": 2
+    }
+  },
+  "reader_raw_denied": {
+    "http_status": 403,
+    "url": "http://127.0.0.1:18183/api/catalog/v1/cdclab_polaris_authz/namespaces/raw/tables/orders",
+    "body": {
+      "error": {
+        "message": "Principal 'cdclab_reader' with activated PrincipalRoles '[reader_pr]' and activated grants via '[reader_pr, reader_cr]' is not authorized for op LOAD_TABLE_WITH_READ_DELEGATION",
+        "type": "ForbiddenException",
+        "code": 403
+      }
+    },
+    "raw_body": "{\"error\":{\"message\":\"Principal 'cdclab_reader' with activated PrincipalRoles '[reader_pr]' and activated grants via '[reader_pr, reader_cr]' is not authorized for op LOAD_TABLE_WITH_READ_DELEGATION\",\"type\":\"ForbiddenException\",\"code\":403}}"
+  }
+}

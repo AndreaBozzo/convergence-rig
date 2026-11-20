@@ -1,0 +1,409 @@
+{
+  "milestone": "P1",
+  "subcheck": "L2_scoped_access",
+  "catalog": "apache-polaris-1.9.0",
+  "label": "p1-polaris-l2-scoped-access",
+  "outcome": "converged",
+  "passed": true,
+  "completed_at_utc": "2026-11-20T13:17:28.567153Z",
+  "host": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python_version": "3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "config": {
+    "lab": {
+      "compose_project": "cdclab",
+      "pg_source_host": "127.0.0.1",
+      "pg_source_port": 15432,
+      "pg_source_db": "cdclab",
+      "lakekeeper_base_url": "http://127.0.0.1:18181",
+      "lakekeeper_catalog_url": "http://127.0.0.1:18181/catalog",
+      "lakekeeper_warehouse": "cdclab",
+      "lakekeeper_namespace": "public",
+      "silo_port": 19000,
+      "silo_advertised_endpoint": "http://silo.localhost:19000",
+      "silo_bucket": "cdclab",
+      "silo_region": "local-01",
+      "pg2iceberg_metrics_port": 19090
+    },
+    "polaris": {
+      "polaris_port": 18183,
+      "polaris_mgmt_port": 18184,
+      "pg2iceberg_polaris_metrics_port": 19091,
+      "realm": "POLARIS",
+      "root_client_id": "root",
+      "catalog_name": "cdclab_polaris",
+      "authz_catalog_name": "cdclab_polaris_authz",
+      "host_catalog_url": "http://127.0.0.1:18183/api/catalog",
+      "host_management_url": "http://127.0.0.1:18183/api/management/v1",
+      "host_token_url": "http://127.0.0.1:18183/api/catalog/v1/oauth/tokens",
+      "container_catalog_url": "http://polaris:8181/api/catalog",
+      "container_token_url": "http://polaris:8181/api/catalog/v1/oauth/tokens"
+    }
+  },
+  "commands_executed": [
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait silo",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile polaris --profile spark up -d --wait polaris spark",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile spark exec -T spark /opt/spark/bin/spark-submit --master local[2] /opt/cdclab/scripts/authz_writer.py --mode init --catalog-name cdclab_polaris_authz --catalog-uri http://polaris:8181/api/catalog --warehouse cdclab_polaris_authz --oauth2-server-uri http://polaris:8181/api/catalog/v1/oauth/tokens --client-id 5d8fbb1e552ca29f --client-secret <redacted> --oauth2-scope PRINCIPAL_ROLE:writer_pr --out-json /tmp/cdclab-spark/p1_l2_init.json",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile spark exec -T spark /opt/spark/bin/spark-submit --master local[2] /opt/cdclab/scripts/authz_writer.py --mode append --catalog-name cdclab_polaris_authz --catalog-uri http://polaris:8181/api/catalog --warehouse cdclab_polaris_authz --oauth2-server-uri http://polaris:8181/api/catalog/v1/oauth/tokens --client-id 5d8fbb1e552ca29f --client-secret <redacted> --oauth2-scope PRINCIPAL_ROLE:writer_pr --out-json /tmp/cdclab-spark/p1_l2_append.json",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector down -v --remove-orphans"
+  ],
+  "container_digests": [
+    {
+      "service": "polaris",
+      "container_name": "cdclab-polaris-1",
+      "image_ref": "apache/polaris:1.9.0@sha256:5dabc353c16c7c4acc9de4087b63d85bbf0a40986aa86bd7f393219919834dcd",
+      "image_id": "sha256:5dabc353c16c7c4acc9de4087b63d85bbf0a40986aa86bd7f393219919834dcd",
+      "repo_digests": [
+        "apache/polaris@sha256:5dabc353c16c7c4acc9de4087b63d85bbf0a40986aa86bd7f393219919834dcd"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "polaris-db",
+      "container_name": "cdclab-polaris-db-1",
+      "image_ref": "postgres:17-bookworm@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "image_id": "sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "repo_digests": [
+        "postgres@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "silo",
+      "container_name": "cdclab-silo-1",
+      "image_ref": "pgsty/silo:RELEASE.2026-09-03T13-18-01Z@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "image_id": "sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "repo_digests": [
+        "pgsty/silo@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "spark",
+      "container_name": "cdclab-spark-1",
+      "image_ref": "cdclab/spark-iceberg:3.5.9-iceberg1.12.0",
+      "image_id": "sha256:6d96720560c5a6396983664c65a4aa7c482a0d37799d2a2998676e4b1a578f12",
+      "repo_digests": [
+        "cdclab/spark-iceberg@sha256:6d96720560c5a6396983664c65a4aa7c482a0d37799d2a2998676e4b1a578f12"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    }
+  ],
+  "resources_after_pre_clean": {
+    "containers": [],
+    "volumes": [],
+    "networks": []
+  },
+  "polaris_authz_startup_ms": 17882.26,
+  "bucket": {
+    "bucket": "cdclab",
+    "stdout": "Bucket created successfully `local/cdclab`.",
+    "ok": true
+  },
+  "catalog_created": {
+    "action": "created",
+    "http_status": 201,
+    "request_payload": {
+      "catalog": {
+        "name": "cdclab_polaris_authz",
+        "type": "INTERNAL",
+        "properties": {
+          "default-base-location": "s3://cdclab/polaris-authz"
+        },
+        "storageConfigInfo": {
+          "storageType": "S3",
+          "allowedLocations": [
+            "s3://cdclab/polaris-authz"
+          ],
+          "endpoint": "http://silo.localhost:19000",
+          "region": "local-01",
+          "pathStyleAccess": true,
+          "stsUnavailable": false,
+          "kmsUnavailable": true,
+          "roleArn": "arn:aws:iam::000000000000:role/cdclab-polaris",
+          "stsEndpoint": "http://silo.localhost:19000"
+        }
+      }
+    },
+    "catalog": {
+      "type": "INTERNAL",
+      "name": "cdclab_polaris_authz",
+      "properties": {
+        "default-base-location": "s3://cdclab/polaris-authz"
+      },
+      "createTimestamp": 1795180588225,
+      "lastUpdateTimestamp": 1795180588225,
+      "entityVersion": 1,
+      "storageConfigInfo": {
+        "roleArn": "arn:aws:iam::000000000000:role/cdclab-polaris",
+        "allowedKmsKeys": [],
+        "encryptionKeys": [],
+        "decryptionKeys": [],
+        "region": "local-01",
+        "endpoint": "http://silo.localhost:19000",
+        "stsEndpoint": "http://silo.localhost:19000",
+        "stsUnavailable": false,
+        "pathStyleAccess": true,
+        "kmsUnavailable": true,
+        "storageType": "S3",
+        "allowedLocations": [
+          "s3://cdclab/polaris-authz"
+        ]
+      }
+    }
+  },
+  "identities": {
+    "admin": {
+      "principal_name": "root",
+      "principal_role": "service_admin",
+      "token_sub": "root",
+      "principal_id": 2977931417856687783,
+      "scope": "PRINCIPAL_ROLE:ALL"
+    },
+    "writer": {
+      "principal_name": "cdclab_writer",
+      "principal_role": "writer_pr",
+      "catalog_role": "writer_cr",
+      "token_sub": "cdclab_writer",
+      "principal_id": 5338254886889279267,
+      "scope": "PRINCIPAL_ROLE:writer_pr"
+    },
+    "reader": {
+      "principal_name": "cdclab_reader",
+      "principal_role": "reader_pr",
+      "catalog_role": "reader_cr",
+      "token_sub": "cdclab_reader",
+      "principal_id": 224325865650541608,
+      "scope": "PRINCIPAL_ROLE:reader_pr"
+    }
+  },
+  "grants": {
+    "writer_grant": {
+      "http_status": 201,
+      "url": "http://127.0.0.1:18183/api/management/v1/catalogs/cdclab_polaris_authz/catalog-roles/writer_cr/grants",
+      "grant": {
+        "type": "catalog",
+        "privilege": "CATALOG_MANAGE_CONTENT"
+      }
+    },
+    "reader_grant": {
+      "http_status": 201,
+      "url": "http://127.0.0.1:18183/api/management/v1/catalogs/cdclab_polaris_authz/catalog-roles/reader_cr/grants",
+      "grant": {
+        "type": "table",
+        "namespace": [
+          "curated"
+        ],
+        "tableName": "orders",
+        "privilege": "TABLE_READ_DATA"
+      }
+    },
+    "reader_raw_grants": []
+  },
+  "tables": {
+    "raw": {
+      "table_uuid": "fcee8bca-a91d-47fc-b7da-6d1773c074e5",
+      "location": "s3://cdclab/polaris-authz/raw/orders",
+      "init_snapshot_id": 4747863572526813369,
+      "append_snapshot_id": 744310829984915964,
+      "init_data_file": "s3://cdclab/polaris-authz/raw/orders/data/00000-0-15d38d8e-fb47-49f7-8c10-7599cac5bfc7-0-00001.parquet",
+      "append_data_file": "s3://cdclab/polaris-authz/raw/orders/data/00000-0-6afbea7d-1f1f-49ae-97bc-01a47c8a1b47-0-00001.parquet"
+    },
+    "curated": {
+      "table_uuid": "62342d2a-66df-418b-8de3-ea45381a5d17",
+      "location": "s3://cdclab/polaris-authz/curated/orders",
+      "init_snapshot_id": 166444171061304700,
+      "append_snapshot_id": 8763970293700715580,
+      "init_data_file": "s3://cdclab/polaris-authz/curated/orders/data/00000-2-7d2062ae-e9b4-4a19-9f9e-7955341d0c37-0-00001.parquet"
+    },
+    "prefix_disjointness": {
+      "raw_location": "s3://cdclab/polaris-authz/raw/orders",
+      "curated_location": "s3://cdclab/polaris-authz/curated/orders",
+      "raw_bucket": "cdclab",
+      "raw_prefix": "polaris-authz/raw/orders",
+      "curated_bucket": "cdclab",
+      "curated_prefix": "polaris-authz/curated/orders",
+      "distinct_and_disjoint": true
+    }
+  },
+  "checks": {
+    "evaluation": {
+      "prefix_disjoint": true,
+      "check1_reader_curated": true,
+      "check2_catalog_denies_raw": true,
+      "check3_s3_denies_raw": true,
+      "check4_writer_writes_both_and_commit_denied": true,
+      "all_passed": true
+    },
+    "check1_reader_loads_and_scans_curated": {
+      "passed": true,
+      "rest_load_table_status": 200,
+      "vended_credential_prefix": "s3://cdclab/polaris-authz/curated/orders",
+      "vended_credential_endpoint": "http://silo.localhost:19000",
+      "duckdb_scan": {
+        "client_id": "c5f7eaa371a02107",
+        "scope": "PRINCIPAL_ROLE:reader_pr",
+        "target": "curated.orders",
+        "allowed": true,
+        "row_count": 2,
+        "rows": [
+          {
+            "id": 1,
+            "status": "created",
+            "amount": "100.123456789",
+            "tier": "standard"
+          },
+          {
+            "id": 2,
+            "status": "settled",
+            "amount": "250.000000001",
+            "tier": "premium"
+          }
+        ],
+        "error": null
+      },
+      "direct_s3_curated_positive_control": {
+        "url": "http://silo.localhost:19000/cdclab/polaris-authz/curated/orders/data/00000-2-7d2062ae-e9b4-4a19-9f9e-7955341d0c37-0-00001.parquet",
+        "s3_uri": "s3://cdclab/polaris-authz/curated/orders/data/00000-2-7d2062ae-e9b4-4a19-9f9e-7955341d0c37-0-00001.parquet",
+        "http_status": 200,
+        "allowed": true,
+        "body_bytes": 1288,
+        "parquet_magic_valid": true,
+        "body_sha256": "777813deb89a1bdb94c34fe0425fa205b9b54237ac052ea7f72ce05695b9606f",
+        "error_body": null,
+        "content_type": "application/octet-stream"
+      }
+    },
+    "check2_catalog_denies_raw_to_reader": {
+      "passed": true,
+      "reader_rest_load_table": {
+        "url": "http://127.0.0.1:18183/api/catalog/v1/cdclab_polaris_authz/namespaces/raw/tables/orders",
+        "http_status": 403,
+        "body": {
+          "error": {
+            "message": "Principal 'cdclab_reader' with activated PrincipalRoles '[reader_pr]' and activated grants via '[reader_pr, reader_cr]' is not authorized for op LOAD_TABLE_WITH_READ_DELEGATION",
+            "type": "ForbiddenException",
+            "code": 403
+          }
+        },
+        "raw_body": "{\"error\":{\"message\":\"Principal 'cdclab_reader' with activated PrincipalRoles '[reader_pr]' and activated grants via '[reader_pr, reader_cr]' is not authorized for op LOAD_TABLE_WITH_READ_DELEGATION\",\"type\":\"ForbiddenException\",\"code\":403}}"
+      },
+      "reader_duckdb_scan_raw": {
+        "client_id": "c5f7eaa371a02107",
+        "scope": "PRINCIPAL_ROLE:reader_pr",
+        "target": "raw.orders",
+        "allowed": false,
+        "row_count": 0,
+        "rows": [],
+        "error": "HTTPException: HTTP Error: GetTableInformation endpoint returned response code Forbidden_403 with message \"Principal 'cdclab_reader' with activated PrincipalRoles '[reader_pr]' and activated grants via '[reader_pr, reader_cr]' is not authorized for op LOAD_TABLE_WITH_READ_DELEGATION\""
+      },
+      "writer_rest_load_table_control": {
+        "url": "http://127.0.0.1:18183/api/catalog/v1/cdclab_polaris_authz/namespaces/raw/tables/orders",
+        "http_status": 200,
+        "allowed": true,
+        "vended_credential_prefix": "s3://cdclab/polaris-authz/raw/orders"
+      }
+    },
+    "check3_reader_vended_creds_denied_raw_s3": {
+      "passed": true,
+      "reader_vended_creds_on_raw_init_file": {
+        "url": "http://silo.localhost:19000/cdclab/polaris-authz/raw/orders/data/00000-0-15d38d8e-fb47-49f7-8c10-7599cac5bfc7-0-00001.parquet",
+        "s3_uri": "s3://cdclab/polaris-authz/raw/orders/data/00000-0-15d38d8e-fb47-49f7-8c10-7599cac5bfc7-0-00001.parquet",
+        "http_status": 403,
+        "allowed": false,
+        "body_bytes": 483,
+        "parquet_magic_valid": false,
+        "body_sha256": null,
+        "error_body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied.</Message><Key>polaris-authz/raw/orders/data/00000-0-15d38d8e-fb47-49f7-8c10-7599cac5bfc7-0-00001.parquet</Key><BucketName>cdclab</BucketName><Resource>/cdclab/polaris-authz/raw/orders/data/00000-0-15d38d8e-fb47-49f7-8c10-7599cac5bfc7-0-00001.parquet</Resource><RequestId>18E9C34360583420</RequestId><HostId>470a0afc0f6fdbebb6a8e14ece29122784c0656e19563387135a7c8e02feb163</HostId></Error>",
+        "content_type": "application/xml"
+      },
+      "reader_vended_creds_on_raw_append_file": {
+        "url": "http://silo.localhost:19000/cdclab/polaris-authz/raw/orders/data/00000-0-6afbea7d-1f1f-49ae-97bc-01a47c8a1b47-0-00001.parquet",
+        "s3_uri": "s3://cdclab/polaris-authz/raw/orders/data/00000-0-6afbea7d-1f1f-49ae-97bc-01a47c8a1b47-0-00001.parquet",
+        "http_status": 403,
+        "allowed": false,
+        "body_bytes": 483,
+        "parquet_magic_valid": false,
+        "body_sha256": null,
+        "error_body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>AccessDenied</Code><Message>Access Denied.</Message><Key>polaris-authz/raw/orders/data/00000-0-6afbea7d-1f1f-49ae-97bc-01a47c8a1b47-0-00001.parquet</Key><BucketName>cdclab</BucketName><Resource>/cdclab/polaris-authz/raw/orders/data/00000-0-6afbea7d-1f1f-49ae-97bc-01a47c8a1b47-0-00001.parquet</Resource><RequestId>18E9C348E52DAC64</RequestId><HostId>470a0afc0f6fdbebb6a8e14ece29122784c0656e19563387135a7c8e02feb163</HostId></Error>",
+        "content_type": "application/xml"
+      },
+      "writer_vended_creds_on_raw_init_file_control": {
+        "url": "http://silo.localhost:19000/cdclab/polaris-authz/raw/orders/data/00000-0-15d38d8e-fb47-49f7-8c10-7599cac5bfc7-0-00001.parquet",
+        "s3_uri": "s3://cdclab/polaris-authz/raw/orders/data/00000-0-15d38d8e-fb47-49f7-8c10-7599cac5bfc7-0-00001.parquet",
+        "http_status": 200,
+        "allowed": true,
+        "body_bytes": 1356,
+        "parquet_magic_valid": true,
+        "body_sha256": "489d2ffb8e3ed2fea7e49260c2cb9ba49e4497148396c5e0906c0fce374ccf36",
+        "error_body": null,
+        "content_type": "application/octet-stream"
+      }
+    },
+    "check4_writer_writes_both_and_reader_write_denied": {
+      "passed": true,
+      "writer_append_raw_rows": 3,
+      "writer_append_curated_rows": 3,
+      "reader_duckdb_curated_after_append": {
+        "client_id": "c5f7eaa371a02107",
+        "scope": "PRINCIPAL_ROLE:reader_pr",
+        "target": "curated.orders",
+        "allowed": true,
+        "row_count": 3,
+        "rows": [
+          {
+            "id": 1,
+            "status": "created",
+            "amount": "100.123456789",
+            "tier": "standard"
+          },
+          {
+            "id": 2,
+            "status": "settled",
+            "amount": "250.000000001",
+            "tier": "premium"
+          },
+          {
+            "id": 3,
+            "status": "shipped",
+            "amount": "420.500000000",
+            "tier": "enterprise"
+          }
+        ],
+        "error": null
+      },
+      "reader_commit_curated_denied": {
+        "url": "http://127.0.0.1:18183/api/catalog/v1/cdclab_polaris_authz/namespaces/curated/tables/orders",
+        "http_status": 403,
+        "allowed": false,
+        "body": {
+          "error": {
+            "message": "Principal 'cdclab_reader' with activated PrincipalRoles '[reader_pr]' and activated grants via '[reader_pr, reader_cr]' is not authorized for op SET_TABLE_PROPERTIES",
+            "type": "ForbiddenException",
+            "code": 403
+          }
+        },
+        "raw_body": "{\"error\":{\"message\":\"Principal 'cdclab_reader' with activated PrincipalRoles '[reader_pr]' and activated grants via '[reader_pr, reader_cr]' is not authorized for op SET_TABLE_PROPERTIES\",\"type\":\"ForbiddenException\",\"code\":403}}"
+      }
+    }
+  },
+  "cleanup": {
+    "skipped_keep_up": false,
+    "resources_after_cleanup": {
+      "containers": [],
+      "volumes": [],
+      "networks": []
+    },
+    "all_project_resources_removed": true,
+    "non_project_containers_unchanged": true,
+    "non_project_count_before": 14,
+    "non_project_count_after": 14
+  }
+}

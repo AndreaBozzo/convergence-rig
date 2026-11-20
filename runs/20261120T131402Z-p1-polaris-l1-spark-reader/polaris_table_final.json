@@ -1,0 +1,234 @@
+{
+  "catalog_config": {
+    "defaults": {
+      "default-base-location": "s3://cdclab/polaris-warehouse"
+    },
+    "overrides": {
+      "namespace-separator": "%1F",
+      "prefix": "cdclab_polaris"
+    },
+    "endpoints": [
+      "GET /v1/{prefix}/namespaces",
+      "GET /v1/{prefix}/namespaces/{namespace}",
+      "HEAD /v1/{prefix}/namespaces/{namespace}",
+      "POST /v1/{prefix}/namespaces",
+      "POST /v1/{prefix}/namespaces/{namespace}/properties",
+      "DELETE /v1/{prefix}/namespaces/{namespace}",
+      "GET /v1/{prefix}/namespaces/{namespace}/tables",
+      "GET /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "HEAD /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "DELETE /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "POST /v1/{prefix}/tables/rename",
+      "POST /v1/{prefix}/namespaces/{namespace}/register",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables/{table}/metrics",
+      "POST /v1/{prefix}/transactions/commit",
+      "GET /v1/{prefix}/namespaces/{namespace}/tables/{table}/credentials",
+      "GET /v1/{prefix}/namespaces/{namespace}/views",
+      "GET /v1/{prefix}/namespaces/{namespace}/views/{view}",
+      "HEAD /v1/{prefix}/namespaces/{namespace}/views/{view}",
+      "POST /v1/{prefix}/namespaces/{namespace}/views",
+      "POST /v1/{prefix}/namespaces/{namespace}/views/{view}",
+      "DELETE /v1/{prefix}/namespaces/{namespace}/views/{view}",
+      "POST /v1/{prefix}/views/rename",
+      "POST /v1/{prefix}/namespaces/{namespace}/register-view",
+      "GET polaris/v1/{prefix}/namespaces/{namespace}/generic-tables",
+      "POST polaris/v1/{prefix}/namespaces/{namespace}/generic-tables",
+      "DELETE polaris/v1/{prefix}/namespaces/{namespace}/generic-tables/{generic-table}",
+      "GET polaris/v1/{prefix}/namespaces/{namespace}/generic-tables/{generic-table}",
+      "GET /polaris/v1/{prefix}/namespaces/{namespace}/policies",
+      "POST /polaris/v1/{prefix}/namespaces/{namespace}/policies",
+      "GET /polaris/v1/{prefix}/namespaces/{namespace}/policies/{policy-name}",
+      "PUT /polaris/v1/{prefix}/namespaces/{namespace}/policies/{policy-name}",
+      "DELETE /polaris/v1/{prefix}/namespaces/{namespace}/policies/{policy-name}",
+      "PUT /polaris/v1/{prefix}/namespaces/{namespace}/policies/{policy-name}/mappings",
+      "POST /polaris/v1/{prefix}/namespaces/{namespace}/policies/{policy-name}/mappings",
+      "GET /polaris/v1/{prefix}/applicable-policies",
+      "POST /api/openlineage/v1/lineage",
+      "POST /api/openlineage/v1/lineage/batch"
+    ]
+  },
+  "table_url": "http://127.0.0.1:18183/api/catalog/v1/cdclab_polaris/namespaces/public/tables/orders",
+  "metadata_location": "s3://cdclab/polaris-warehouse/public/orders/metadata/00002-47070af7-5b14-4301-b918-19bf461c6bf7.metadata.json",
+  "config": {
+    "s3.path-style-access": "true",
+    "s3.access-key-id": "<redacted>",
+    "s3.secret-access-key": "<redacted>",
+    "s3.session-token": "<redacted>",
+    "client.refresh-credentials-endpoint": "v1/cdclab_polaris/namespaces/public/tables/orders/credentials",
+    "s3.endpoint": "http://silo.localhost:19000",
+    "s3.session-token-expires-at-ms": "<redacted>",
+    "client.region": "local-01"
+  },
+  "storage_credentials": [
+    {
+      "prefix": "s3://cdclab/polaris-warehouse/public/orders",
+      "config": {
+        "s3.access-key-id": "<redacted>",
+        "s3.secret-access-key": "<redacted>",
+        "s3.session-token": "<redacted>",
+        "s3.session-token-expires-at-ms": "<redacted>"
+      }
+    }
+  ],
+  "metadata": {
+    "format-version": 2,
+    "table-uuid": "03e61046-72d0-417b-9837-9e383be28b22",
+    "location": "s3://cdclab/polaris-warehouse/public/orders",
+    "last-sequence-number": 2,
+    "last-updated-ms": 1795180481646,
+    "last-column-id": 7,
+    "current-schema-id": 0,
+    "schemas": [
+      {
+        "type": "struct",
+        "schema-id": 0,
+        "identifier-field-ids": [
+          1
+        ],
+        "fields": [
+          {
+            "id": 1,
+            "name": "id",
+            "required": true,
+            "type": "long"
+          },
+          {
+            "id": 2,
+            "name": "status",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "id": 3,
+            "name": "amount",
+            "required": true,
+            "type": "decimal(38, 9)"
+          },
+          {
+            "id": 4,
+            "name": "updated_at",
+            "required": true,
+            "type": "timestamptz"
+          },
+          {
+            "id": 5,
+            "name": "note",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "id": 6,
+            "name": "payload",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "id": 7,
+            "name": "discount",
+            "required": false,
+            "type": "decimal(38, 9)"
+          }
+        ]
+      }
+    ],
+    "default-spec-id": 0,
+    "partition-specs": [
+      {
+        "spec-id": 0,
+        "fields": []
+      }
+    ],
+    "last-partition-id": 999,
+    "default-sort-order-id": 0,
+    "sort-orders": [
+      {
+        "order-id": 0,
+        "fields": []
+      }
+    ],
+    "properties": {
+      "pg2iceberg.log-ends": "{\"default\":8}",
+      "created-at": "2026-11-20T13:14:29.821286617Z",
+      "write.parquet.compression-codec": "zstd"
+    },
+    "current-snapshot-id": 5441468408702465798,
+    "refs": {
+      "main": {
+        "snapshot-id": 5441468408702465798,
+        "type": "branch"
+      }
+    },
+    "snapshots": [
+      {
+        "sequence-number": 1,
+        "snapshot-id": 6157830328123120096,
+        "timestamp-ms": 1795180471278,
+        "summary": {
+          "operation": "append",
+          "added-records": "30",
+          "total-equality-deletes": "0",
+          "added-files-size": "129604",
+          "total-files-size": "129604",
+          "added-data-files": "1",
+          "total-data-files": "1",
+          "total-delete-files": "0",
+          "total-records": "30",
+          "total-position-deletes": "0"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-6157830328123120096-0-01a1f918-23d7-7f81-9a55-cb12558c3a7b.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 2,
+        "snapshot-id": 5441468408702465798,
+        "parent-snapshot-id": 6157830328123120096,
+        "timestamp-ms": 1795180481593,
+        "summary": {
+          "operation": "append",
+          "pg2iceberg.log-start": "0",
+          "pg2iceberg.log-ends": "{\"default\":8}",
+          "added-equality-delete-files": "1",
+          "added-records": "4",
+          "added-delete-files": "1",
+          "total-data-files": "2",
+          "pg2iceberg.log-end": "8",
+          "total-files-size": "171386",
+          "total-delete-files": "1",
+          "total-position-deletes": "0",
+          "total-equality-deletes": "6",
+          "pg2iceberg.log-group": "default",
+          "total-records": "34",
+          "added-equality-deletes": "6",
+          "added-data-files": "1",
+          "added-files-size": "41782"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-5441468408702465798-0-01a1f918-4bed-7743-a546-f8c0b0571f5d.avro",
+        "schema-id": 0
+      }
+    ],
+    "statistics": [],
+    "partition-statistics": [],
+    "snapshot-log": [
+      {
+        "timestamp-ms": 1795180471278,
+        "snapshot-id": 6157830328123120096
+      },
+      {
+        "timestamp-ms": 1795180481593,
+        "snapshot-id": 5441468408702465798
+      }
+    ],
+    "metadata-log": [
+      {
+        "timestamp-ms": 1795180469845,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00000-cf5711b8-b544-4988-b647-5a3ae8b15b81.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180471340,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00001-2a3b99a4-40a6-43d6-a305-64fb98c4eeb2.metadata.json"
+      }
+    ]
+  }
+}

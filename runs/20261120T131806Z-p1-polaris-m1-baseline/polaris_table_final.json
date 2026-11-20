@@ -1,0 +1,936 @@
+{
+  "catalog_config": {
+    "defaults": {
+      "default-base-location": "s3://cdclab/polaris-warehouse"
+    },
+    "overrides": {
+      "namespace-separator": "%1F",
+      "prefix": "cdclab_polaris"
+    },
+    "endpoints": [
+      "GET /v1/{prefix}/namespaces",
+      "GET /v1/{prefix}/namespaces/{namespace}",
+      "HEAD /v1/{prefix}/namespaces/{namespace}",
+      "POST /v1/{prefix}/namespaces",
+      "POST /v1/{prefix}/namespaces/{namespace}/properties",
+      "DELETE /v1/{prefix}/namespaces/{namespace}",
+      "GET /v1/{prefix}/namespaces/{namespace}/tables",
+      "GET /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "HEAD /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "DELETE /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+      "POST /v1/{prefix}/tables/rename",
+      "POST /v1/{prefix}/namespaces/{namespace}/register",
+      "POST /v1/{prefix}/namespaces/{namespace}/tables/{table}/metrics",
+      "POST /v1/{prefix}/transactions/commit",
+      "GET /v1/{prefix}/namespaces/{namespace}/tables/{table}/credentials",
+      "GET /v1/{prefix}/namespaces/{namespace}/views",
+      "GET /v1/{prefix}/namespaces/{namespace}/views/{view}",
+      "HEAD /v1/{prefix}/namespaces/{namespace}/views/{view}",
+      "POST /v1/{prefix}/namespaces/{namespace}/views",
+      "POST /v1/{prefix}/namespaces/{namespace}/views/{view}",
+      "DELETE /v1/{prefix}/namespaces/{namespace}/views/{view}",
+      "POST /v1/{prefix}/views/rename",
+      "POST /v1/{prefix}/namespaces/{namespace}/register-view",
+      "GET polaris/v1/{prefix}/namespaces/{namespace}/generic-tables",
+      "POST polaris/v1/{prefix}/namespaces/{namespace}/generic-tables",
+      "DELETE polaris/v1/{prefix}/namespaces/{namespace}/generic-tables/{generic-table}",
+      "GET polaris/v1/{prefix}/namespaces/{namespace}/generic-tables/{generic-table}",
+      "GET /polaris/v1/{prefix}/namespaces/{namespace}/policies",
+      "POST /polaris/v1/{prefix}/namespaces/{namespace}/policies",
+      "GET /polaris/v1/{prefix}/namespaces/{namespace}/policies/{policy-name}",
+      "PUT /polaris/v1/{prefix}/namespaces/{namespace}/policies/{policy-name}",
+      "DELETE /polaris/v1/{prefix}/namespaces/{namespace}/policies/{policy-name}",
+      "PUT /polaris/v1/{prefix}/namespaces/{namespace}/policies/{policy-name}/mappings",
+      "POST /polaris/v1/{prefix}/namespaces/{namespace}/policies/{policy-name}/mappings",
+      "GET /polaris/v1/{prefix}/applicable-policies",
+      "POST /api/openlineage/v1/lineage",
+      "POST /api/openlineage/v1/lineage/batch"
+    ]
+  },
+  "table_url": "http://127.0.0.1:18183/api/catalog/v1/cdclab_polaris/namespaces/public/tables/orders",
+  "metadata_location": "s3://cdclab/polaris-warehouse/public/orders/metadata/00021-b995c06b-87c3-4211-b52c-28a2014b00ff.metadata.json",
+  "config": {
+    "s3.path-style-access": "true",
+    "s3.access-key-id": "<redacted>",
+    "s3.secret-access-key": "<redacted>",
+    "s3.session-token": "<redacted>",
+    "client.refresh-credentials-endpoint": "v1/cdclab_polaris/namespaces/public/tables/orders/credentials",
+    "s3.endpoint": "http://silo.localhost:19000",
+    "s3.session-token-expires-at-ms": "<redacted>",
+    "client.region": "local-01"
+  },
+  "storage_credentials": [
+    {
+      "prefix": "s3://cdclab/polaris-warehouse/public/orders",
+      "config": {
+        "s3.access-key-id": "<redacted>",
+        "s3.secret-access-key": "<redacted>",
+        "s3.session-token": "<redacted>",
+        "s3.session-token-expires-at-ms": "<redacted>"
+      }
+    }
+  ],
+  "metadata": {
+    "format-version": 2,
+    "table-uuid": "8ecd1664-e96a-4803-afbc-998f079101ca",
+    "location": "s3://cdclab/polaris-warehouse/public/orders",
+    "last-sequence-number": 23,
+    "last-updated-ms": 1795180927427,
+    "last-column-id": 7,
+    "current-schema-id": 0,
+    "schemas": [
+      {
+        "type": "struct",
+        "schema-id": 0,
+        "identifier-field-ids": [
+          1
+        ],
+        "fields": [
+          {
+            "id": 1,
+            "name": "id",
+            "required": true,
+            "type": "long"
+          },
+          {
+            "id": 2,
+            "name": "status",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "id": 3,
+            "name": "amount",
+            "required": true,
+            "type": "decimal(38, 9)"
+          },
+          {
+            "id": 4,
+            "name": "updated_at",
+            "required": true,
+            "type": "timestamptz"
+          },
+          {
+            "id": 5,
+            "name": "note",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "id": 6,
+            "name": "payload",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "id": 7,
+            "name": "discount",
+            "required": false,
+            "type": "decimal(38, 9)"
+          }
+        ]
+      }
+    ],
+    "default-spec-id": 0,
+    "partition-specs": [
+      {
+        "spec-id": 0,
+        "fields": []
+      }
+    ],
+    "last-partition-id": 999,
+    "default-sort-order-id": 0,
+    "sort-orders": [
+      {
+        "order-id": 0,
+        "fields": []
+      }
+    ],
+    "properties": {
+      "pg2iceberg.log-ends": "{\"default\":1811}",
+      "created-at": "2026-11-20T13:18:44.552682028Z",
+      "write.parquet.compression-codec": "zstd"
+    },
+    "current-snapshot-id": 2116351348497739831,
+    "refs": {
+      "main": {
+        "snapshot-id": 2116351348497739831,
+        "type": "branch"
+      }
+    },
+    "snapshots": [
+      {
+        "sequence-number": 1,
+        "snapshot-id": 6456525858722752094,
+        "timestamp-ms": 1795180725573,
+        "summary": {
+          "operation": "append",
+          "added-records": "10000",
+          "total-files-size": "2562777",
+          "total-delete-files": "0",
+          "total-position-deletes": "0",
+          "total-records": "10000",
+          "total-equality-deletes": "0",
+          "added-data-files": "1",
+          "added-files-size": "2562777",
+          "total-data-files": "1"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-6456525858722752094-0-01a1f91c-0541-74f3-a796-2078ca1517bb.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 2,
+        "snapshot-id": 4851387260086297270,
+        "parent-snapshot-id": 6456525858722752094,
+        "timestamp-ms": 1795180725573,
+        "summary": {
+          "operation": "append",
+          "total-equality-deletes": "0",
+          "total-position-deletes": "0",
+          "added-records": "10000",
+          "added-data-files": "1",
+          "total-data-files": "2",
+          "added-files-size": "1364368",
+          "total-records": "20000",
+          "total-delete-files": "0",
+          "total-files-size": "3927145"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-4851387260086297270-0-01a1f91c-0545-7a41-8937-ae0c358828fd.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 3,
+        "snapshot-id": 6266762752989805106,
+        "parent-snapshot-id": 4851387260086297270,
+        "timestamp-ms": 1795180725573,
+        "summary": {
+          "operation": "append",
+          "total-delete-files": "0",
+          "total-records": "25000",
+          "added-files-size": "680626",
+          "added-records": "5000",
+          "total-files-size": "4607771",
+          "total-equality-deletes": "0",
+          "total-data-files": "3",
+          "total-position-deletes": "0",
+          "added-data-files": "1"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-6266762752989805106-0-01a1f91c-0545-7a41-8937-ae1511c17787.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 4,
+        "snapshot-id": 7455652691527543887,
+        "parent-snapshot-id": 6266762752989805106,
+        "timestamp-ms": 1795180735774,
+        "summary": {
+          "operation": "append",
+          "pg2iceberg.log-group": "default",
+          "total-position-deletes": "0",
+          "total-equality-deletes": "0",
+          "total-files-size": "4611330",
+          "total-delete-files": "0",
+          "pg2iceberg.log-ends": "{\"default\":2}",
+          "added-files-size": "3559",
+          "pg2iceberg.log-end": "2",
+          "added-data-files": "1",
+          "total-data-files": "4",
+          "pg2iceberg.log-start": "0",
+          "added-records": "1",
+          "total-records": "25001"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-7455652691527543887-0-01a1f91c-2d10-7c81-bbcd-5760cdd107d2.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 5,
+        "snapshot-id": 3489336315535299174,
+        "parent-snapshot-id": 7455652691527543887,
+        "timestamp-ms": 1795180745877,
+        "summary": {
+          "operation": "append",
+          "pg2iceberg.log-ends": "{\"default\":92}",
+          "added-files-size": "383167",
+          "total-equality-deletes": "66",
+          "pg2iceberg.log-end": "92",
+          "total-records": "25074",
+          "total-data-files": "5",
+          "pg2iceberg.log-group": "default",
+          "added-records": "73",
+          "total-delete-files": "1",
+          "total-position-deletes": "0",
+          "added-equality-deletes": "66",
+          "pg2iceberg.log-start": "2",
+          "added-delete-files": "1",
+          "added-equality-delete-files": "1",
+          "added-data-files": "1",
+          "total-files-size": "4994497"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-3489336315535299174-0-01a1f91c-5485-7480-8bb6-d87b1c10fada.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 6,
+        "snapshot-id": 8149867539207188572,
+        "parent-snapshot-id": 3489336315535299174,
+        "timestamp-ms": 1795180755971,
+        "summary": {
+          "operation": "append",
+          "pg2iceberg.log-ends": "{\"default\":193}",
+          "added-files-size": "384250",
+          "added-records": "80",
+          "total-equality-deletes": "145",
+          "total-position-deletes": "0",
+          "pg2iceberg.log-start": "92",
+          "total-data-files": "6",
+          "total-delete-files": "2",
+          "added-equality-deletes": "79",
+          "total-files-size": "5378747",
+          "added-delete-files": "1",
+          "pg2iceberg.log-group": "default",
+          "added-data-files": "1",
+          "added-equality-delete-files": "1",
+          "pg2iceberg.log-end": "193",
+          "total-records": "25154"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-8149867539207188572-0-01a1f91c-7bf5-75c0-8ba5-ca4f10984091.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 7,
+        "snapshot-id": 8418663948348632939,
+        "parent-snapshot-id": 8149867539207188572,
+        "timestamp-ms": 1795180766072,
+        "summary": {
+          "operation": "append",
+          "pg2iceberg.log-start": "193",
+          "added-equality-deletes": "79",
+          "total-data-files": "7",
+          "added-records": "82",
+          "total-delete-files": "3",
+          "added-data-files": "1",
+          "added-delete-files": "1",
+          "total-position-deletes": "0",
+          "added-equality-delete-files": "1",
+          "total-equality-deletes": "224",
+          "pg2iceberg.log-end": "294",
+          "total-records": "25236",
+          "total-files-size": "5750900",
+          "pg2iceberg.log-group": "default",
+          "pg2iceberg.log-ends": "{\"default\":294}",
+          "added-files-size": "372153"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-8418663948348632939-0-01a1f91c-a369-7381-b7a8-0ed5f3d52c57.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 8,
+        "snapshot-id": 3258504049028800820,
+        "parent-snapshot-id": 8418663948348632939,
+        "timestamp-ms": 1795180776163,
+        "summary": {
+          "operation": "append",
+          "total-files-size": "6147993",
+          "pg2iceberg.log-end": "395",
+          "pg2iceberg.log-start": "294",
+          "total-position-deletes": "0",
+          "added-equality-deletes": "80",
+          "pg2iceberg.log-ends": "{\"default\":395}",
+          "pg2iceberg.log-group": "default",
+          "added-data-files": "1",
+          "added-records": "86",
+          "added-equality-delete-files": "1",
+          "added-delete-files": "1",
+          "added-files-size": "397093",
+          "total-delete-files": "4",
+          "total-equality-deletes": "304",
+          "total-data-files": "8",
+          "total-records": "25322"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-3258504049028800820-0-01a1f91c-cad0-7b93-8eca-91b0b22849ea.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 9,
+        "snapshot-id": 13080116953515023,
+        "parent-snapshot-id": 3258504049028800820,
+        "timestamp-ms": 1795180786249,
+        "summary": {
+          "operation": "append",
+          "total-files-size": "6594212",
+          "pg2iceberg.log-group": "default",
+          "added-equality-deletes": "82",
+          "pg2iceberg.log-end": "495",
+          "added-data-files": "1",
+          "added-equality-delete-files": "1",
+          "total-data-files": "9",
+          "added-delete-files": "1",
+          "total-delete-files": "5",
+          "total-records": "25405",
+          "added-records": "83",
+          "added-files-size": "446219",
+          "pg2iceberg.log-ends": "{\"default\":495}",
+          "total-position-deletes": "0",
+          "total-equality-deletes": "386",
+          "pg2iceberg.log-start": "395"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-13080116953515023-0-01a1f91c-f237-7ee2-a7b4-645c6e8337aa.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 10,
+        "snapshot-id": 7228654023869729173,
+        "parent-snapshot-id": 13080116953515023,
+        "timestamp-ms": 1795180796341,
+        "summary": {
+          "operation": "append",
+          "added-files-size": "347228",
+          "total-records": "25487",
+          "total-files-size": "6941440",
+          "pg2iceberg.log-start": "495",
+          "added-equality-deletes": "84",
+          "pg2iceberg.log-ends": "{\"default\":596}",
+          "total-data-files": "10",
+          "added-records": "82",
+          "added-equality-delete-files": "1",
+          "added-data-files": "1",
+          "total-delete-files": "6",
+          "added-delete-files": "1",
+          "total-equality-deletes": "470",
+          "pg2iceberg.log-group": "default",
+          "total-position-deletes": "0",
+          "pg2iceberg.log-end": "596"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-7228654023869729173-0-01a1f91d-19a7-74c0-a1f1-9172826aa4ed.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 11,
+        "snapshot-id": 5630319359534042064,
+        "parent-snapshot-id": 7228654023869729173,
+        "timestamp-ms": 1795180806424,
+        "summary": {
+          "operation": "append",
+          "pg2iceberg.log-end": "696",
+          "added-files-size": "371171",
+          "added-equality-deletes": "82",
+          "added-equality-delete-files": "1",
+          "pg2iceberg.log-ends": "{\"default\":696}",
+          "added-delete-files": "1",
+          "total-files-size": "7312611",
+          "pg2iceberg.log-start": "596",
+          "added-data-files": "1",
+          "total-records": "25561",
+          "total-equality-deletes": "552",
+          "total-position-deletes": "0",
+          "added-records": "74",
+          "total-delete-files": "7",
+          "pg2iceberg.log-group": "default",
+          "total-data-files": "11"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-5630319359534042064-0-01a1f91d-410a-7523-8c6c-b1b5f79dc7cd.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 12,
+        "snapshot-id": 5292902022132550817,
+        "parent-snapshot-id": 5630319359534042064,
+        "timestamp-ms": 1795180816515,
+        "summary": {
+          "operation": "append",
+          "added-records": "81",
+          "pg2iceberg.log-ends": "{\"default\":797}",
+          "pg2iceberg.log-end": "797",
+          "added-equality-deletes": "79",
+          "total-delete-files": "8",
+          "total-equality-deletes": "631",
+          "pg2iceberg.log-start": "696",
+          "added-files-size": "384329",
+          "total-data-files": "12",
+          "pg2iceberg.log-group": "default",
+          "total-position-deletes": "0",
+          "added-data-files": "1",
+          "total-records": "25642",
+          "added-equality-delete-files": "1",
+          "added-delete-files": "1",
+          "total-files-size": "7696940"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-5292902022132550817-0-01a1f91d-6872-7d83-8fd0-1af63b7df72d.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 13,
+        "snapshot-id": 8404686011327865676,
+        "parent-snapshot-id": 5292902022132550817,
+        "timestamp-ms": 1795180826600,
+        "summary": {
+          "operation": "append",
+          "added-records": "82",
+          "pg2iceberg.log-group": "default",
+          "pg2iceberg.log-ends": "{\"default\":897}",
+          "total-delete-files": "9",
+          "pg2iceberg.log-start": "797",
+          "pg2iceberg.log-end": "897",
+          "added-equality-delete-files": "1",
+          "added-data-files": "1",
+          "added-equality-deletes": "77",
+          "added-delete-files": "1",
+          "total-records": "25724",
+          "added-files-size": "372172",
+          "total-files-size": "8069112",
+          "total-position-deletes": "0",
+          "total-equality-deletes": "708",
+          "total-data-files": "13"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-8404686011327865676-0-01a1f91d-8fd8-7893-bcc0-05ddb96c2ced.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 14,
+        "snapshot-id": 5323384883780313701,
+        "parent-snapshot-id": 8404686011327865676,
+        "timestamp-ms": 1795180836680,
+        "summary": {
+          "operation": "append",
+          "added-equality-delete-files": "1",
+          "added-delete-files": "1",
+          "added-records": "78",
+          "pg2iceberg.log-group": "default",
+          "pg2iceberg.log-end": "998",
+          "total-records": "25802",
+          "total-files-size": "8366628",
+          "pg2iceberg.log-start": "897",
+          "added-files-size": "297516",
+          "added-equality-deletes": "79",
+          "total-equality-deletes": "787",
+          "total-position-deletes": "0",
+          "total-delete-files": "10",
+          "added-data-files": "1",
+          "pg2iceberg.log-ends": "{\"default\":998}",
+          "total-data-files": "14"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-5323384883780313701-0-01a1f91d-b737-7360-848d-fb16525b0b4d.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 15,
+        "snapshot-id": 1108328451867215600,
+        "parent-snapshot-id": 5323384883780313701,
+        "timestamp-ms": 1795180846773,
+        "summary": {
+          "operation": "append",
+          "pg2iceberg.log-group": "default",
+          "total-position-deletes": "0",
+          "added-records": "77",
+          "added-files-size": "334439",
+          "total-delete-files": "11",
+          "pg2iceberg.log-start": "998",
+          "pg2iceberg.log-ends": "{\"default\":1098}",
+          "added-data-files": "1",
+          "added-delete-files": "1",
+          "total-files-size": "8701067",
+          "total-equality-deletes": "865",
+          "total-data-files": "15",
+          "added-equality-delete-files": "1",
+          "total-records": "25879",
+          "added-equality-deletes": "78",
+          "pg2iceberg.log-end": "1098"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-1108328451867215600-0-01a1f91d-dea2-7f01-afe8-8dd13246c786.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 16,
+        "snapshot-id": 5872305191212772169,
+        "parent-snapshot-id": 1108328451867215600,
+        "timestamp-ms": 1795180856860,
+        "summary": {
+          "operation": "append",
+          "added-equality-delete-files": "1",
+          "added-files-size": "360446",
+          "added-records": "86",
+          "total-records": "25965",
+          "pg2iceberg.log-ends": "{\"default\":1199}",
+          "pg2iceberg.log-start": "1098",
+          "added-delete-files": "1",
+          "added-equality-deletes": "74",
+          "added-data-files": "1",
+          "total-delete-files": "12",
+          "total-position-deletes": "0",
+          "total-data-files": "16",
+          "total-files-size": "9061513",
+          "pg2iceberg.log-group": "default",
+          "total-equality-deletes": "939",
+          "pg2iceberg.log-end": "1199"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-5872305191212772169-0-01a1f91e-060d-7ef1-a0f5-afd950ecc34f.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 17,
+        "snapshot-id": 7889233066556584987,
+        "parent-snapshot-id": 5872305191212772169,
+        "timestamp-ms": 1795180866943,
+        "summary": {
+          "operation": "append",
+          "added-equality-deletes": "89",
+          "added-files-size": "335221",
+          "pg2iceberg.log-group": "default",
+          "added-records": "84",
+          "total-equality-deletes": "1028",
+          "total-data-files": "17",
+          "total-delete-files": "13",
+          "pg2iceberg.log-end": "1299",
+          "total-position-deletes": "0",
+          "total-files-size": "9396734",
+          "total-records": "26049",
+          "pg2iceberg.log-start": "1199",
+          "pg2iceberg.log-ends": "{\"default\":1299}",
+          "added-delete-files": "1",
+          "added-data-files": "1",
+          "added-equality-delete-files": "1"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-7889233066556584987-0-01a1f91e-2d6c-7813-bcec-402692bbff5f.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 18,
+        "snapshot-id": 7461941836359195086,
+        "parent-snapshot-id": 7889233066556584987,
+        "timestamp-ms": 1795180877035,
+        "summary": {
+          "operation": "append",
+          "total-delete-files": "14",
+          "added-equality-delete-files": "1",
+          "pg2iceberg.log-group": "default",
+          "added-files-size": "384822",
+          "pg2iceberg.log-ends": "{\"default\":1400}",
+          "added-data-files": "1",
+          "pg2iceberg.log-start": "1299",
+          "added-records": "85",
+          "total-records": "26134",
+          "total-data-files": "18",
+          "total-equality-deletes": "1108",
+          "total-files-size": "9781556",
+          "added-delete-files": "1",
+          "pg2iceberg.log-end": "1400",
+          "total-position-deletes": "0",
+          "added-equality-deletes": "80"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-7461941836359195086-0-01a1f91e-54dc-78e3-89e2-4bfd54cfbecc.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 19,
+        "snapshot-id": 7224347326139233356,
+        "parent-snapshot-id": 7461941836359195086,
+        "timestamp-ms": 1795180887117,
+        "summary": {
+          "operation": "append",
+          "pg2iceberg.log-ends": "{\"default\":1500}",
+          "total-data-files": "19",
+          "added-equality-deletes": "79",
+          "total-files-size": "10067272",
+          "added-files-size": "285716",
+          "total-records": "26217",
+          "pg2iceberg.log-end": "1500",
+          "total-equality-deletes": "1187",
+          "added-delete-files": "1",
+          "pg2iceberg.log-group": "default",
+          "total-position-deletes": "0",
+          "added-equality-delete-files": "1",
+          "pg2iceberg.log-start": "1400",
+          "added-data-files": "1",
+          "total-delete-files": "15",
+          "added-records": "83"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-7224347326139233356-0-01a1f91e-7c3c-7c03-8b3f-983cc04ffc63.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 20,
+        "snapshot-id": 3710995041907589123,
+        "parent-snapshot-id": 7224347326139233356,
+        "timestamp-ms": 1795180897185,
+        "summary": {
+          "operation": "append",
+          "total-position-deletes": "0",
+          "pg2iceberg.log-end": "1601",
+          "added-equality-deletes": "83",
+          "total-delete-files": "16",
+          "total-files-size": "10502003",
+          "pg2iceberg.log-ends": "{\"default\":1601}",
+          "added-files-size": "434731",
+          "added-data-files": "1",
+          "pg2iceberg.log-start": "1500",
+          "added-delete-files": "1",
+          "total-data-files": "20",
+          "total-equality-deletes": "1270",
+          "added-records": "88",
+          "total-records": "26305",
+          "pg2iceberg.log-group": "default",
+          "added-equality-delete-files": "1"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-3710995041907589123-0-01a1f91e-a392-7873-a74e-7cce9bc08bee.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 21,
+        "snapshot-id": 5851015813437335806,
+        "parent-snapshot-id": 3710995041907589123,
+        "timestamp-ms": 1795180907264,
+        "summary": {
+          "operation": "append",
+          "pg2iceberg.log-end": "1701",
+          "added-delete-files": "1",
+          "pg2iceberg.log-start": "1601",
+          "added-records": "83",
+          "added-equality-delete-files": "1",
+          "total-files-size": "10837056",
+          "total-data-files": "21",
+          "total-delete-files": "17",
+          "pg2iceberg.log-ends": "{\"default\":1701}",
+          "total-position-deletes": "0",
+          "added-equality-deletes": "89",
+          "pg2iceberg.log-group": "default",
+          "total-equality-deletes": "1359",
+          "total-records": "26388",
+          "added-data-files": "1",
+          "added-files-size": "335053"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-5851015813437335806-0-01a1f91e-caf1-7a03-82a7-b3005f460f99.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 22,
+        "snapshot-id": 5535721015150762449,
+        "parent-snapshot-id": 5851015813437335806,
+        "timestamp-ms": 1795180917341,
+        "summary": {
+          "operation": "append",
+          "added-equality-delete-files": "1",
+          "added-files-size": "335515",
+          "total-equality-deletes": "1438",
+          "pg2iceberg.log-end": "1802",
+          "total-delete-files": "18",
+          "added-delete-files": "1",
+          "added-equality-deletes": "79",
+          "pg2iceberg.log-group": "default",
+          "total-data-files": "22",
+          "total-records": "26476",
+          "total-position-deletes": "0",
+          "total-files-size": "11172571",
+          "added-data-files": "1",
+          "pg2iceberg.log-start": "1701",
+          "pg2iceberg.log-ends": "{\"default\":1802}",
+          "added-records": "88"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-5535721015150762449-0-01a1f91e-f24c-7e70-9bf9-b0bf5d3e9314.avro",
+        "schema-id": 0
+      },
+      {
+        "sequence-number": 23,
+        "snapshot-id": 2116351348497739831,
+        "parent-snapshot-id": 5535721015150762449,
+        "timestamp-ms": 1795180927416,
+        "summary": {
+          "operation": "append",
+          "pg2iceberg.log-end": "1811",
+          "total-equality-deletes": "1444",
+          "added-records": "7",
+          "total-data-files": "23",
+          "pg2iceberg.log-group": "default",
+          "added-equality-deletes": "6",
+          "added-files-size": "41716",
+          "pg2iceberg.log-start": "1802",
+          "total-records": "26483",
+          "added-data-files": "1",
+          "total-files-size": "11214287",
+          "total-position-deletes": "0",
+          "total-delete-files": "19",
+          "pg2iceberg.log-ends": "{\"default\":1811}",
+          "added-equality-delete-files": "1",
+          "added-delete-files": "1"
+        },
+        "manifest-list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-2116351348497739831-0-01a1f91f-19a4-7ef2-a093-1a765a21fe2a.avro",
+        "schema-id": 0
+      }
+    ],
+    "statistics": [],
+    "partition-statistics": [],
+    "snapshot-log": [
+      {
+        "timestamp-ms": 1795180725573,
+        "snapshot-id": 6266762752989805106
+      },
+      {
+        "timestamp-ms": 1795180735774,
+        "snapshot-id": 7455652691527543887
+      },
+      {
+        "timestamp-ms": 1795180745877,
+        "snapshot-id": 3489336315535299174
+      },
+      {
+        "timestamp-ms": 1795180755971,
+        "snapshot-id": 8149867539207188572
+      },
+      {
+        "timestamp-ms": 1795180766072,
+        "snapshot-id": 8418663948348632939
+      },
+      {
+        "timestamp-ms": 1795180776163,
+        "snapshot-id": 3258504049028800820
+      },
+      {
+        "timestamp-ms": 1795180786249,
+        "snapshot-id": 13080116953515023
+      },
+      {
+        "timestamp-ms": 1795180796341,
+        "snapshot-id": 7228654023869729173
+      },
+      {
+        "timestamp-ms": 1795180806424,
+        "snapshot-id": 5630319359534042064
+      },
+      {
+        "timestamp-ms": 1795180816515,
+        "snapshot-id": 5292902022132550817
+      },
+      {
+        "timestamp-ms": 1795180826600,
+        "snapshot-id": 8404686011327865676
+      },
+      {
+        "timestamp-ms": 1795180836680,
+        "snapshot-id": 5323384883780313701
+      },
+      {
+        "timestamp-ms": 1795180846773,
+        "snapshot-id": 1108328451867215600
+      },
+      {
+        "timestamp-ms": 1795180856860,
+        "snapshot-id": 5872305191212772169
+      },
+      {
+        "timestamp-ms": 1795180866943,
+        "snapshot-id": 7889233066556584987
+      },
+      {
+        "timestamp-ms": 1795180877035,
+        "snapshot-id": 7461941836359195086
+      },
+      {
+        "timestamp-ms": 1795180887117,
+        "snapshot-id": 7224347326139233356
+      },
+      {
+        "timestamp-ms": 1795180897185,
+        "snapshot-id": 3710995041907589123
+      },
+      {
+        "timestamp-ms": 1795180907264,
+        "snapshot-id": 5851015813437335806
+      },
+      {
+        "timestamp-ms": 1795180917341,
+        "snapshot-id": 5535721015150762449
+      },
+      {
+        "timestamp-ms": 1795180927416,
+        "snapshot-id": 2116351348497739831
+      }
+    ],
+    "metadata-log": [
+      {
+        "timestamp-ms": 1795180724575,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00000-cd3589fa-9812-4c0e-9575-02cb5a30ba45.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180725663,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00001-cff06a9e-437b-4811-a65a-684e4b2bbfde.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180735788,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00002-73cd5d93-1354-446c-b588-a0f5925ba386.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180745889,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00003-a6eb9557-f26f-42c4-94ef-94e24f425242.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180755982,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00004-faf5e669-285e-43e8-b6cf-d1effd293c0f.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180766082,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00005-0bbd5f5a-9ee0-42ba-acb1-bc47cf98ca26.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180776174,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00006-daf28157-b258-45f5-bf9c-fe15467659e7.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180786261,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00007-bad151e1-45f6-49ab-9475-4f69f7c6d54d.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180796353,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00008-c13ba27e-3b27-4148-bd8e-26c742baaba7.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180806433,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00009-052f2d65-1994-4d2f-9d57-135751240b28.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180816527,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00010-f0b3b26c-a0c7-40e3-95d5-7d960cf93392.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180826610,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00011-af5d8c48-caf9-44df-8a90-8141dcc9773b.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180836689,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00012-2c16c95a-857d-4e11-b433-4f253ab56836.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180846784,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00013-a1e2dbea-da72-481e-aac1-cd9276342b2a.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180856870,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00014-5f7591f5-029d-41bc-9001-f02cc9bd5e3c.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180866953,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00015-c1601aab-9e07-4481-9f3b-6cae1c0bbfdb.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180877043,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00016-c1d6f1f8-391c-4545-9235-dd7b77e63d48.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180887125,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00017-6e860c3c-de1e-4cb1-b37c-f84a80f3a2d9.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180897194,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00018-67682053-d71d-4fad-ae9a-9a50004f984c.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180907273,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00019-bef640a8-8470-4bbd-8a0a-a7886b16ef97.metadata.json"
+      },
+      {
+        "timestamp-ms": 1795180917350,
+        "metadata-file": "s3://cdclab/polaris-warehouse/public/orders/metadata/00020-5351aec1-8aa8-4749-a8f3-296f0995224c.metadata.json"
+      }
+    ]
+  }
+}

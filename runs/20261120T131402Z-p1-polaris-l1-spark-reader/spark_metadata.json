@@ -1,0 +1,634 @@
+{
+  "versions": {
+    "spark_version": "3.5.9",
+    "scala_version": "2.12.18",
+    "java_version": "17.0.19",
+    "iceberg_version": "1.12.0",
+    "iceberg_git_commit_short": "212aa89",
+    "python_version": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]"
+  },
+  "catalog_config": {
+    "catalog_name": "cdclab_polaris",
+    "catalog_uri": "http://polaris:8181/api/catalog",
+    "warehouse": "cdclab_polaris",
+    "namespace": "public",
+    "table": "orders",
+    "access_delegation": "vended-credentials"
+  },
+  "requested_snapshot_id": 5441468408702465798,
+  "spark_current_snapshot_id": 5441468408702465798,
+  "requested_snapshot_found": true,
+  "requested_snapshot_record": {
+    "committed_at": "2026-11-20T13:14:41.593000+00:00",
+    "snapshot_id": 5441468408702465798,
+    "parent_id": 6157830328123120096,
+    "operation": "append",
+    "manifest_list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-5441468408702465798-0-01a1f918-4bed-7743-a546-f8c0b0571f5d.avro",
+    "summary": {
+      "pg2iceberg.log-ends": "{\"default\":8}",
+      "total-equality-deletes": "6",
+      "added-data-files": "1",
+      "added-equality-delete-files": "1",
+      "added-records": "4",
+      "pg2iceberg.log-group": "default",
+      "added-delete-files": "1",
+      "total-records": "34",
+      "pg2iceberg.log-start": "0",
+      "pg2iceberg.log-end": "8",
+      "total-position-deletes": "0",
+      "total-delete-files": "1",
+      "added-equality-deletes": "6",
+      "added-files-size": "41782",
+      "total-files-size": "171386",
+      "total-data-files": "2"
+    }
+  },
+  "row_count": 28,
+  "spark_schema": {
+    "type": "struct",
+    "fields": [
+      {
+        "name": "id",
+        "type": "long",
+        "nullable": false,
+        "metadata": {}
+      },
+      {
+        "name": "status",
+        "type": "string",
+        "nullable": false,
+        "metadata": {}
+      },
+      {
+        "name": "amount",
+        "type": "decimal(38,9)",
+        "nullable": false,
+        "metadata": {}
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp",
+        "nullable": false,
+        "metadata": {}
+      },
+      {
+        "name": "note",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "payload",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "discount",
+        "type": "decimal(38,9)",
+        "nullable": true,
+        "metadata": {}
+      }
+    ]
+  },
+  "snapshots": [
+    {
+      "committed_at": "2026-11-20T13:14:31.278000+00:00",
+      "snapshot_id": 6157830328123120096,
+      "parent_id": null,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-6157830328123120096-0-01a1f918-23d7-7f81-9a55-cb12558c3a7b.avro",
+      "summary": {
+        "total-equality-deletes": "0",
+        "added-data-files": "1",
+        "added-records": "30",
+        "total-position-deletes": "0",
+        "added-files-size": "129604",
+        "total-delete-files": "0",
+        "total-files-size": "129604",
+        "total-data-files": "1",
+        "total-records": "30"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T13:14:41.593000+00:00",
+      "snapshot_id": 5441468408702465798,
+      "parent_id": 6157830328123120096,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/polaris-warehouse/public/orders/metadata/snap-5441468408702465798-0-01a1f918-4bed-7743-a546-f8c0b0571f5d.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":8}",
+        "total-equality-deletes": "6",
+        "added-data-files": "1",
+        "added-equality-delete-files": "1",
+        "added-records": "4",
+        "pg2iceberg.log-group": "default",
+        "added-delete-files": "1",
+        "total-records": "34",
+        "pg2iceberg.log-start": "0",
+        "pg2iceberg.log-end": "8",
+        "total-position-deletes": "0",
+        "total-delete-files": "1",
+        "added-equality-deletes": "6",
+        "added-files-size": "41782",
+        "total-files-size": "171386",
+        "total-data-files": "2"
+      }
+    }
+  ],
+  "files": [
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/polaris-warehouse/public/orders/data/data-3f47b2ce476a4ff7b5dbd5fd5ac60f6d.parquet",
+      "file_format": "PARQUET",
+      "spec_id": 0,
+      "record_count": 30,
+      "file_size_in_bytes": 129604,
+      "column_sizes": {},
+      "value_counts": {},
+      "null_value_counts": {},
+      "nan_value_counts": {},
+      "lower_bounds": {},
+      "upper_bounds": {},
+      "key_metadata": null,
+      "split_offsets": null,
+      "equality_ids": null,
+      "sort_order_id": null,
+      "first_row_id": null,
+      "referenced_data_file": null,
+      "content_offset": null,
+      "content_size_in_bytes": null,
+      "readable_metrics": {
+        "amount": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "discount": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "id": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "note": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "payload": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "status": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "updated_at": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        }
+      }
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/polaris-warehouse/public/orders/data/data-07bf52de561f4d0cacaaaf951b4c7560.parquet",
+      "file_format": "PARQUET",
+      "spec_id": 0,
+      "record_count": 4,
+      "file_size_in_bytes": 41162,
+      "column_sizes": {},
+      "value_counts": {},
+      "null_value_counts": {},
+      "nan_value_counts": {},
+      "lower_bounds": {},
+      "upper_bounds": {},
+      "key_metadata": null,
+      "split_offsets": null,
+      "equality_ids": null,
+      "sort_order_id": null,
+      "first_row_id": null,
+      "referenced_data_file": null,
+      "content_offset": null,
+      "content_size_in_bytes": null,
+      "readable_metrics": {
+        "amount": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "discount": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "id": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "note": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "payload": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "status": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "updated_at": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        }
+      }
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/polaris-warehouse/public/orders/data/eq-delete-446a104abe984582bfa5cf745380c10b.parquet",
+      "file_format": "PARQUET",
+      "spec_id": 0,
+      "record_count": 6,
+      "file_size_in_bytes": 620,
+      "column_sizes": {},
+      "value_counts": {},
+      "null_value_counts": {},
+      "nan_value_counts": {},
+      "lower_bounds": {},
+      "upper_bounds": {},
+      "key_metadata": null,
+      "split_offsets": null,
+      "equality_ids": [
+        1
+      ],
+      "sort_order_id": null,
+      "first_row_id": null,
+      "referenced_data_file": null,
+      "content_offset": null,
+      "content_size_in_bytes": null,
+      "readable_metrics": {
+        "amount": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "discount": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "id": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "note": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "payload": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "status": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "updated_at": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        }
+      }
+    }
+  ],
+  "all_delete_files": [
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/polaris-warehouse/public/orders/data/eq-delete-446a104abe984582bfa5cf745380c10b.parquet",
+      "file_format": "PARQUET",
+      "spec_id": 0,
+      "record_count": 6,
+      "file_size_in_bytes": 620,
+      "column_sizes": {},
+      "value_counts": {},
+      "null_value_counts": {},
+      "nan_value_counts": {},
+      "lower_bounds": {},
+      "upper_bounds": {},
+      "key_metadata": null,
+      "split_offsets": null,
+      "equality_ids": [
+        1
+      ],
+      "sort_order_id": null,
+      "first_row_id": null,
+      "referenced_data_file": null,
+      "content_offset": null,
+      "content_size_in_bytes": null,
+      "readable_metrics": {
+        "amount": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "discount": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "id": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "note": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "payload": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "status": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        },
+        "updated_at": {
+          "column_size": null,
+          "value_count": null,
+          "null_value_count": null,
+          "nan_value_count": null,
+          "lower_bound": null,
+          "upper_bound": null
+        }
+      }
+    }
+  ],
+  "manifests": [
+    {
+      "content": 0,
+      "path": "s3://cdclab/polaris-warehouse/public/orders/metadata/01a1f918-23d7-7f81-9a55-cb12558c3a7b-m0.avro",
+      "length": 3816,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6157830328123120096,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0,
+      "added_delete_files_count": 0,
+      "existing_delete_files_count": 0,
+      "deleted_delete_files_count": 0,
+      "partition_summaries": []
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/polaris-warehouse/public/orders/metadata/01a1f918-4bed-7743-a546-f8c0b0571f5d-m0.avro",
+      "length": 3816,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5441468408702465798,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0,
+      "added_delete_files_count": 0,
+      "existing_delete_files_count": 0,
+      "deleted_delete_files_count": 0,
+      "partition_summaries": []
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/polaris-warehouse/public/orders/metadata/01a1f918-4bed-7743-a546-f8c0b0571f5d-m1.avro",
+      "length": 3826,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5441468408702465798,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0,
+      "added_delete_files_count": 1,
+      "existing_delete_files_count": 0,
+      "deleted_delete_files_count": 0,
+      "partition_summaries": []
+    }
+  ],
+  "describe_extended": [
+    {
+      "col_name": "id",
+      "data_type": "bigint",
+      "comment": null
+    },
+    {
+      "col_name": "status",
+      "data_type": "string",
+      "comment": null
+    },
+    {
+      "col_name": "amount",
+      "data_type": "decimal(38,9)",
+      "comment": null
+    },
+    {
+      "col_name": "updated_at",
+      "data_type": "timestamp",
+      "comment": null
+    },
+    {
+      "col_name": "note",
+      "data_type": "string",
+      "comment": null
+    },
+    {
+      "col_name": "payload",
+      "data_type": "string",
+      "comment": null
+    },
+    {
+      "col_name": "discount",
+      "data_type": "decimal(38,9)",
+      "comment": null
+    },
+    {
+      "col_name": "",
+      "data_type": "",
+      "comment": ""
+    },
+    {
+      "col_name": "# Metadata Columns",
+      "data_type": "",
+      "comment": ""
+    },
+    {
+      "col_name": "_spec_id",
+      "data_type": "int",
+      "comment": ""
+    },
+    {
+      "col_name": "_partition",
+      "data_type": "struct<>",
+      "comment": ""
+    },
+    {
+      "col_name": "_file",
+      "data_type": "string",
+      "comment": ""
+    },
+    {
+      "col_name": "_pos",
+      "data_type": "bigint",
+      "comment": ""
+    },
+    {
+      "col_name": "_deleted",
+      "data_type": "boolean",
+      "comment": ""
+    },
+    {
+      "col_name": "_row_id",
+      "data_type": "bigint",
+      "comment": ""
+    },
+    {
+      "col_name": "_last_updated_sequence_number",
+      "data_type": "bigint",
+      "comment": ""
+    },
+    {
+      "col_name": "",
+      "data_type": "",
+      "comment": ""
+    },
+    {
+      "col_name": "# Detailed Table Information",
+      "data_type": "",
+      "comment": ""
+    },
+    {
+      "col_name": "Name",
+      "data_type": "cdclab_polaris.public.orders",
+      "comment": ""
+    },
+    {
+      "col_name": "Type",
+      "data_type": "MANAGED",
+      "comment": ""
+    },
+    {
+      "col_name": "Location",
+      "data_type": "s3://cdclab/polaris-warehouse/public/orders",
+      "comment": ""
+    },
+    {
+      "col_name": "Provider",
+      "data_type": "iceberg",
+      "comment": ""
+    },
+    {
+      "col_name": "Table Properties",
+      "data_type": "[created-at=2026-11-20T13:14:29.821286617Z,current-snapshot-id=5441468408702465798,format=iceberg/parquet,format-version=2,identifier-fields=[id],pg2iceberg.log-ends={\"default\":8},write.parquet.compression-codec=zstd]",
+      "comment": ""
+    }
+  ],
+  "explain_formatted": "== Physical Plan ==\nAdaptiveSparkPlan (4)\n+- Sort (3)\n   +- Exchange (2)\n      +- BatchScan cdclab_polaris.public.orders (1)\n\n\n(1) BatchScan cdclab_polaris.public.orders\nOutput [7]: [id#257L, status#258, amount#259, updated_at#260, note#261, payload#262, discount#263]\ncdclab_polaris.public.orders (branch=null) [filters=, groupedBy=]\n\n(2) Exchange\nInput [7]: [id#257L, status#258, amount#259, updated_at#260, note#261, payload#262, discount#263]\nArguments: rangepartitioning(id#257L ASC NULLS FIRST, 200), ENSURE_REQUIREMENTS, [plan_id=77]\n\n(3) Sort\nInput [7]: [id#257L, status#258, amount#259, updated_at#260, note#261, payload#262, discount#263]\nArguments: [id#257L ASC NULLS FIRST], true, 0\n\n(4) AdaptiveSparkPlan\nOutput [7]: [id#257L, status#258, amount#259, updated_at#260, note#261, payload#262, discount#263]\nArguments: isFinalPlan=false\n\n",
+  "explain_extended": "== Parsed Logical Plan ==\n'Sort ['id ASC NULLS FIRST], true\n+- 'Project ['id, 'status, 'amount, 'updated_at, 'note, 'payload, 'discount]\n   +- 'RelationTimeTravel 'UnresolvedRelation [cdclab_polaris, public, orders], [], false, 5441468408702465798\n\n== Analyzed Logical Plan ==\nid: bigint, status: string, amount: decimal(38,9), updated_at: timestamp, note: string, payload: string, discount: decimal(38,9)\nSort [id#283L ASC NULLS FIRST], true\n+- Project [id#283L, status#284, amount#285, updated_at#286, note#287, payload#288, discount#289]\n   +- SubqueryAlias cdclab_polaris.public.orders\n      +- RelationV2[id#283L, status#284, amount#285, updated_at#286, note#287, payload#288, discount#289] cdclab_polaris.public.orders cdclab_polaris.public.orders\n\n== Optimized Logical Plan ==\nSort [id#283L ASC NULLS FIRST], true\n+- RelationV2[id#283L, status#284, amount#285, updated_at#286, note#287, payload#288, discount#289] cdclab_polaris.public.orders\n\n== Physical Plan ==\nAdaptiveSparkPlan isFinalPlan=false\n+- Sort [id#283L ASC NULLS FIRST], true, 0\n   +- Exchange rangepartitioning(id#283L ASC NULLS FIRST, 200), ENSURE_REQUIREMENTS, [plan_id=93]\n      +- BatchScan cdclab_polaris.public.orders[id#283L, status#284, amount#285, updated_at#286, note#287, payload#288, discount#289] cdclab_polaris.public.orders (branch=null) [filters=, groupedBy=] RuntimeFilters: []\n",
+  "iceberg_scan_details": {
+    "scan_nodes": [],
+    "parquet_vectorization_conf": "default (true)"
+  }
+}

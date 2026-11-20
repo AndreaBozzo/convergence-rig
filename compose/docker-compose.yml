@@ -340,12 +340,112 @@ services:
     networks:
       - cdclab_net
 
+  polaris-db:
+    image: postgres:17-bookworm@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423
+    profiles: ["polaris"]
+    environment:
+      POSTGRES_USER: ${POLARIS_DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${POLARIS_DB_PASSWORD:-cdclab_polaris_pass}
+      POSTGRES_DB: ${POLARIS_DB_NAME:-polaris}
+    volumes:
+      - polaris_db_data:/var/lib/postgresql/data
+      - ./polaris/init-schema.sql:/docker-entrypoint-initdb.d/01-init-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POLARIS_DB_USER:-postgres} -d ${POLARIS_DB_NAME:-polaris}"]
+      interval: 2s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+    networks:
+      - cdclab_net
+
+  polaris-bootstrap:
+    image: apache/polaris-admin-tool:1.9.0@sha256:d6adc43ecbfea820006b304a2a71dda82d7c9b7b69beec58fe0b33e038884143
+    profiles: ["polaris"]
+    restart: "no"
+    environment:
+      POLARIS_PERSISTENCE_TYPE: relational-jdbc
+      QUARKUS_DATASOURCE_DB_KIND: postgresql
+      QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://polaris-db:5432/${POLARIS_DB_NAME:-polaris}?currentSchema=polaris_schema
+      QUARKUS_DATASOURCE_USERNAME: ${POLARIS_DB_USER:-postgres}
+      QUARKUS_DATASOURCE_PASSWORD: ${POLARIS_DB_PASSWORD:-cdclab_polaris_pass}
+    command:
+      - "bootstrap"
+      - "--realm=${POLARIS_REALM:-POLARIS}"
+      - "--credential=${POLARIS_REALM:-POLARIS},${POLARIS_ROOT_CLIENT_ID:-root},${POLARIS_ROOT_CLIENT_SECRET:-cdclab_polaris_root_secret}"
+    depends_on:
+      polaris-db:
+        condition: service_healthy
+    networks:
+      - cdclab_net
+
+  polaris:
+    image: apache/polaris:1.9.0@sha256:5dabc353c16c7c4acc9de4087b63d85bbf0a40986aa86bd7f393219919834dcd
+    profiles: ["polaris"]
+    environment:
+      POLARIS_PERSISTENCE_TYPE: relational-jdbc
+      QUARKUS_DATASOURCE_DB_KIND: postgresql
+      QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://polaris-db:5432/${POLARIS_DB_NAME:-polaris}?currentSchema=polaris_schema
+      QUARKUS_DATASOURCE_USERNAME: ${POLARIS_DB_USER:-postgres}
+      QUARKUS_DATASOURCE_PASSWORD: ${POLARIS_DB_PASSWORD:-cdclab_polaris_pass}
+      POLARIS_REALM_CONTEXT_REALMS: ${POLARIS_REALM:-POLARIS}
+      AWS_ACCESS_KEY_ID: ${SILO_ROOT_USER:-cdclab-silo-user}
+      AWS_SECRET_ACCESS_KEY: ${SILO_ROOT_PASSWORD:-cdclab-silo-pass}
+      AWS_REGION: ${SILO_REGION:-local-01}
+    ports:
+      - "127.0.0.1:${POLARIS_PORT:-18183}:8181"
+      - "127.0.0.1:${POLARIS_MGMT_PORT:-18184}:8182"
+    depends_on:
+      polaris-bootstrap:
+        condition: service_completed_successfully
+      polaris-db:
+        condition: service_healthy
+      silo:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://127.0.0.1:8182/q/health/ready >/dev/null"]
+      interval: 2s
+      timeout: 10s
+      retries: 30
+      start_period: 5s
+    networks:
+      - cdclab_net
+
+  pg2iceberg-polaris:
+    image: polynyadev/pg2iceberg:0.12.0@sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b
+    profiles: ["polaris-connector"]
+    command: ["run", "--config", "/etc/pg2iceberg/config.yaml"]
+    environment:
+      PG_SOURCE_USER: ${PG_SOURCE_USER:-postgres}
+      PG_SOURCE_PASSWORD: ${PG_SOURCE_PASSWORD:-cdclab_pg_pass}
+      PG_SOURCE_DB: ${PG_SOURCE_DB:-cdclab}
+      POLARIS_CATALOG: ${POLARIS_CATALOG:-cdclab_polaris}
+      POLARIS_WRITER_CLIENT_ID: ${POLARIS_WRITER_CLIENT_ID:-root}
+      POLARIS_WRITER_CLIENT_SECRET: ${POLARIS_WRITER_CLIENT_SECRET:-cdclab_polaris_root_secret}
+      LAKEKEEPER_NAMESPACE: ${LAKEKEEPER_NAMESPACE:-public}
+      SILO_REGION: ${SILO_REGION:-local-01}
+      PG2ICEBERG_LOG_FORMAT: json
+    ports:
+      - "127.0.0.1:${PG2ICEBERG_POLARIS_METRICS_PORT:-19091}:9090"
+    volumes:
+      - ./pg2iceberg.polaris.yaml:/etc/pg2iceberg/config.yaml:ro
+    depends_on:
+      pg-source:
+        condition: service_healthy
+      polaris:
+        condition: service_healthy
+      silo:
+        condition: service_healthy
+    networks:
+      - cdclab_net
+
 volumes:
   pg_source_data:
   lakekeeper_db_data:
   silo_data:
   openfga_db_data:
   lakekeeper_authz_db_data:
+  polaris_db_data:
 
 networks:
   cdclab_net:
