@@ -1,0 +1,195 @@
+{
+  "captured_at_utc": "2026-11-20T11:55:40.537107Z",
+  "lakekeeper_image": "quay.io/lakekeeper/catalog:v0.15.1@sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54",
+  "warehouse_id": "01a1f8cf-e893-7726-bf07-d56f371e528f",
+  "api_probes": {
+    "info": {
+      "method": "GET",
+      "url": "http://127.0.0.1:18181/management/v1/info",
+      "status": 200,
+      "body": {
+        "version": "0.15.1",
+        "lakekeeper-version": "0.15.1",
+        "bootstrapped": true,
+        "server-id": "01a1f8cf-d7d9-7745-bc5b-8850cd740cce",
+        "default-project-id": "00000000-0000-0000-0000-000000000000",
+        "authz-backend": "allow-all",
+        "aws-system-identities-enabled": false,
+        "azure-system-identities-enabled": false,
+        "gcp-system-identities-enabled": false,
+        "queues": [
+          "soft_deletion",
+          "tabular_purge",
+          "task_log_cleanup"
+        ],
+        "managed-role-providers": [],
+        "license-status": {
+          "issuer": null,
+          "audience": "lakekeeper-core",
+          "license-type": "Apache-2.0",
+          "valid": true
+        }
+      }
+    },
+    "warehouse_detail": {
+      "method": "GET",
+      "url": "http://127.0.0.1:18181/management/v1/warehouse/01a1f8cf-e893-7726-bf07-d56f371e528f",
+      "status": 200,
+      "body": {
+        "id": "01a1f8cf-e893-7726-bf07-d56f371e528f",
+        "warehouse-id": "01a1f8cf-e893-7726-bf07-d56f371e528f",
+        "name": "cdclab",
+        "project-id": "00000000-0000-0000-0000-000000000000",
+        "storage-profile": {
+          "type": "s3",
+          "bucket": "cdclab",
+          "key-prefix": "warehouse",
+          "assume-role-arn": null,
+          "endpoint": "http://silo.localhost:19000/",
+          "region": "local-01",
+          "path-style-access": true,
+          "sts-role-arn": null,
+          "sts-endpoint": "http://silo.localhost:19000/",
+          "sts-enabled": true,
+          "sts-token-validity-seconds": 3600,
+          "sts-session-tags": {},
+          "sts-session-policy-principal": null,
+          "flavor": "s3-compat",
+          "allow-alternative-protocols": null,
+          "remote-signing-url-style": "auto",
+          "push-s3-delete-disabled": true,
+          "aws-kms-key-arn": null,
+          "remote-signing-enabled": true,
+          "legacy-md5-behavior": null,
+          "storage-layout": null
+        },
+        "storage-credential-type": {
+          "type": "s3",
+          "credential-type": "access-key"
+        },
+        "delete-profile": {
+          "type": "hard"
+        },
+        "status": "active",
+        "protected": false,
+        "managed-by": "self-managed",
+        "allowed-format-versions": [
+          1,
+          2,
+          3
+        ],
+        "updated-at": null
+      }
+    },
+    "queue_soft_deletion": {
+      "method": "GET",
+      "url": "http://127.0.0.1:18181/management/v1/warehouse/01a1f8cf-e893-7726-bf07-d56f371e528f/task-queue/soft_deletion/config",
+      "status": 200,
+      "body": {
+        "queue-config": {
+          "queue-name": "soft_deletion"
+        },
+        "max-seconds-since-last-heartbeat": null
+      }
+    },
+    "queue_tabular_purge": {
+      "method": "GET",
+      "url": "http://127.0.0.1:18181/management/v1/warehouse/01a1f8cf-e893-7726-bf07-d56f371e528f/task-queue/tabular_purge/config",
+      "status": 200,
+      "body": {
+        "queue-config": {
+          "queue-name": "tabular_purge"
+        },
+        "max-seconds-since-last-heartbeat": null
+      }
+    },
+    "queue_task_log_cleanup": {
+      "method": "GET",
+      "url": "http://127.0.0.1:18181/management/v1/project/task-queue/task_log_cleanup/config",
+      "status": 200,
+      "body": {
+        "queue-config": {
+          "queue-name": "task_log_cleanup"
+        },
+        "max-seconds-since-last-heartbeat": null
+      }
+    },
+    "queue_remove_orphan_files": {
+      "method": "GET",
+      "url": "http://127.0.0.1:18181/management/v1/warehouse/01a1f8cf-e893-7726-bf07-d56f371e528f/task-queue/remove_orphan_files/config",
+      "status": 404,
+      "body": {
+        "error": {
+          "message": "Queue 'remove_orphan_files' not found! Existing queues: [soft_deletion, tabular_purge, task_log_cleanup]",
+          "type": "QueueNotFound",
+          "code": 404,
+          "stack": [
+            "Error ID: 01a1f8cf-f23d-71ce-b536-f48b57d14da3"
+          ]
+        }
+      }
+    },
+    "queue_expire_snapshots": {
+      "method": "GET",
+      "url": "http://127.0.0.1:18181/management/v1/warehouse/01a1f8cf-e893-7726-bf07-d56f371e528f/task-queue/expire_snapshots/config",
+      "status": 404,
+      "body": {
+        "error": {
+          "message": "Queue 'expire_snapshots' not found! Existing queues: [soft_deletion, tabular_purge, task_log_cleanup]",
+          "type": "QueueNotFound",
+          "code": 404,
+          "stack": [
+            "Error ID: 01a1f8cf-f241-7426-b38b-f9856638fd47"
+          ]
+        }
+      }
+    },
+    "queue_optimize": {
+      "method": "GET",
+      "url": "http://127.0.0.1:18181/management/v1/warehouse/01a1f8cf-e893-7726-bf07-d56f371e528f/task-queue/optimize/config",
+      "status": 404,
+      "body": {
+        "error": {
+          "message": "Queue 'optimize' not found! Existing queues: [soft_deletion, tabular_purge, task_log_cleanup]",
+          "type": "QueueNotFound",
+          "code": 404,
+          "stack": [
+            "Error ID: 01a1f8cf-f246-728e-b894-9b903ed32ce5"
+          ]
+        }
+      }
+    },
+    "task_list": {
+      "method": "POST",
+      "url": "http://127.0.0.1:18181/management/v1/warehouse/01a1f8cf-e893-7726-bf07-d56f371e528f/task/list",
+      "status": 200,
+      "body": {
+        "tasks": [],
+        "next-page-token": null
+      }
+    }
+  },
+  "openapi_task_queue_paths": [
+    "/management/v1/project/task-queue/task_log_cleanup/config",
+    "/management/v1/warehouse/{warehouse_id}/task-queue/soft_deletion/config",
+    "/management/v1/warehouse/{warehouse_id}/task-queue/tabular_purge/config"
+  ],
+  "openapi_maintenance_paths": [
+    "/management/v1/project/task-queue/task_log_cleanup/config",
+    "/management/v1/project/task/by-id/{task_id}",
+    "/management/v1/project/task/control",
+    "/management/v1/project/task/list",
+    "/management/v1/server/maintenance-mode",
+    "/management/v1/warehouse/{warehouse_id}/delete-profile",
+    "/management/v1/warehouse/{warehouse_id}/deleted-tabulars",
+    "/management/v1/warehouse/{warehouse_id}/deleted-tabulars/undrop",
+    "/management/v1/warehouse/{warehouse_id}/task-queue/soft_deletion/config",
+    "/management/v1/warehouse/{warehouse_id}/task-queue/tabular_purge/config",
+    "/management/v1/warehouse/{warehouse_id}/task/by-id/{task_id}",
+    "/management/v1/warehouse/{warehouse_id}/task/control",
+    "/management/v1/warehouse/{warehouse_id}/task/list"
+  ],
+  "has_orphan_removal_queue": false,
+  "has_expire_snapshots_queue": false,
+  "has_optimize_queue": false
+}

@@ -1,0 +1,118 @@
+{
+  "snapshot_id": 7011018000075816914,
+  "source_read_opened_utc": "2026-11-20T12:01:33.134169Z",
+  "checked_at_utc": "2026-11-20T12:01:36.270606Z",
+  "passed": true,
+  "schema_check": {
+    "passed": true,
+    "schema_id": 0,
+    "format_version": 2,
+    "identifier_field_ids": [
+      1
+    ],
+    "mismatches": [],
+    "actual_fields": [
+      {
+        "id": 1,
+        "name": "id",
+        "required": true,
+        "type": "long"
+      },
+      {
+        "id": 2,
+        "name": "status",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "id": 3,
+        "name": "amount",
+        "required": true,
+        "type": "decimal(38, 9)"
+      },
+      {
+        "id": 4,
+        "name": "updated_at",
+        "required": true,
+        "type": "timestamptz"
+      },
+      {
+        "id": 5,
+        "name": "note",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "id": 6,
+        "name": "payload",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "id": 7,
+        "name": "discount",
+        "required": false,
+        "type": "decimal(38, 9)"
+      }
+    ],
+    "expected_fields": [
+      {
+        "name": "id",
+        "type": "long",
+        "required": true
+      },
+      {
+        "name": "status",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "amount",
+        "type": "decimal(38, 9)",
+        "required": true
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamptz",
+        "required": true
+      },
+      {
+        "name": "note",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "payload",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "discount",
+        "type": "decimal(38, 9)",
+        "required": false
+      }
+    ]
+  },
+  "row_comparison": {
+    "passed": true,
+    "source_row_count": 25039,
+    "lake_row_count": 25039,
+    "matched_id_count": 25039,
+    "exact_match_row_count": 25039,
+    "source_only_count": 0,
+    "source_only_examples": [],
+    "lake_only_count": 0,
+    "lake_only_examples": [],
+    "duplicate_lake_id_count": 0,
+    "duplicate_lake_extra_row_count": 0,
+    "duplicate_lake_examples": [],
+    "duplicate_source_id_count": 0,
+    "duplicate_source_examples": [],
+    "value_mismatch_row_count": 0,
+    "value_mismatch_column_counts": {},
+    "value_mismatch_examples": [],
+    "batches_read_source": 13,
+    "batches_read_lake": 13,
+    "diff_duration_ms": 3104.96
+  }
+}

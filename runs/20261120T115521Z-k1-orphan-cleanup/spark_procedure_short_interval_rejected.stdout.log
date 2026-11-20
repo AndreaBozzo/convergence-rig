@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/opt/cdclab/scripts/orphan_cleanup.py", line 422, in <module>
+    main()
+  File "/opt/cdclab/scripts/orphan_cleanup.py", line 247, in main
+    rows = spark.sql(sql).collect()
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/sql/session.py", line 1631, in sql
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+  File "/opt/spark/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 185, in deco
+pyspark.errors.exceptions.captured.IllegalArgumentException: Cannot remove orphan files with an interval less than 24 hours. Executing this procedure with a short interval may corrupt the table if other operations are happening at the same time. If you are absolutely confident that no concurrent operations will be affected by removing orphan files with such a short interval, you can use the Action API to remove orphan files with an arbitrary interval.

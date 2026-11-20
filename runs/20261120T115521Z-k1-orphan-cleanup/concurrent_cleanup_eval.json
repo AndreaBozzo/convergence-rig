@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "spark_deleted_count": 0,
+  "spark_deleted_uris": [],
+  "removed_live_file_count": 0,
+  "removed_live_files": [],
+  "removed_staging_file_count": 0,
+  "removed_staging_files": [],
+  "new_objects_created_under_table": 62,
+  "writes_committed_during_cleanup": 258,
+  "snapshots_before_count": 16,
+  "snapshots_after_count": 22,
+  "new_snapshots_count": 6,
+  "new_snapshot_ids": [
+    3131624557416920984,
+    8361944929704196721,
+    2057238665877012324,
+    7791773014635647344,
+    3442790642684608392,
+    5693626852845823612
+  ]
+}

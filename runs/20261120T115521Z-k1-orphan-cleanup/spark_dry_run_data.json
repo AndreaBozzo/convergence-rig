@@ -1,0 +1,67 @@
+{
+  "mode": "action_remove_orphans",
+  "ok": true,
+  "error": null,
+  "action": "SparkActions.get(spark).deleteOrphanFiles(cdclab.public.orders).olderThan(1795175967092 /* 2026-11-20 11:59:27.092420 UTC */).location('s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data').usePrefixListing(true).deleteWith(Stream.builder() /* dry-run no-op */).execute()",
+  "parameters": {
+    "table": "public.orders",
+    "older_than": "2026-11-20 11:59:27.092420",
+    "older_than_ms": 1795175967092,
+    "location": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data",
+    "dry_run": true,
+    "prefix_mismatch_mode": null,
+    "prefix_listing": true
+  },
+  "started_at_utc": "2026-11-20T12:00:25.599228Z",
+  "completed_at_utc": "2026-11-20T12:00:31.405844Z",
+  "duration_ms": 5806.58,
+  "versions": {
+    "spark_version": "3.5.9",
+    "scala_version": "2.12.18",
+    "java_version": "17.0.19",
+    "iceberg_version": "1.12.0",
+    "iceberg_git_commit_short": "212aa89",
+    "python_version": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]"
+  },
+  "orphan_file_count": 2,
+  "orphan_file_locations": [
+    "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-45152af81527429485eac5c38813f7af.parquet",
+    "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-9389f49e10e74559a415444887b07c88.parquet"
+  ],
+  "snapshots_before": [
+    1895277456749654872,
+    6770050103393138445,
+    1490720213233758676,
+    2285633047193896826,
+    8360846756828656611,
+    8019672291667929726,
+    7905923164678480383,
+    4594634485966814454,
+    5054641179469194713,
+    9119584028560589027,
+    888354165254086707,
+    5765541178597986317,
+    7780085774613373443,
+    8680207201428873414,
+    7052196278962171124,
+    7011018000075816914
+  ],
+  "snapshots_after": [
+    1895277456749654872,
+    6770050103393138445,
+    1490720213233758676,
+    2285633047193896826,
+    8360846756828656611,
+    8019672291667929726,
+    7905923164678480383,
+    4594634485966814454,
+    5054641179469194713,
+    9119584028560589027,
+    888354165254086707,
+    5765541178597986317,
+    7780085774613373443,
+    8680207201428873414,
+    7052196278962171124,
+    7011018000075816914
+  ]
+}

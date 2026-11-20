@@ -1,0 +1,3255 @@
+{
+  "mode": "inspect",
+  "ok": true,
+  "duration_ms": 8368.1,
+  "versions": {
+    "spark_version": "3.5.9",
+    "scala_version": "2.12.18",
+    "java_version": "17.0.19",
+    "iceberg_version": "1.12.0",
+    "iceberg_git_commit_short": "212aa89",
+    "python_version": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]"
+  },
+  "catalog_config": {
+    "catalog_name": "cdclab",
+    "catalog_uri": "http://lakekeeper:8181/catalog",
+    "warehouse": "cdclab",
+    "namespace": "public",
+    "table": "orders",
+    "access_delegation": "vended-credentials"
+  },
+  "captured_at_utc": "2026-11-20T12:01:21.035297Z",
+  "full_table": "cdclab.public.orders",
+  "current_snapshot_id": 7011018000075816914,
+  "snapshot_count": 16,
+  "metadata_log_entries": [
+    {
+      "timestamp": "2026-11-20T11:55:44.649000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00000-01a1f8d0-0489-73d4-8d8c-a6e0228e5736.gz.metadata.json",
+      "latest_snapshot_id": null,
+      "latest_schema_id": null,
+      "latest_sequence_number": null
+    },
+    {
+      "timestamp": "2026-11-20T11:55:45.029000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00001-01a1f8d0-0605-7505-8f9e-f9156d46a08e.gz.metadata.json",
+      "latest_snapshot_id": 6770050103393138445,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 3
+    },
+    {
+      "timestamp": "2026-11-20T11:55:55.136000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00002-01a1f8d0-2d80-742d-be37-a921c5786d04.gz.metadata.json",
+      "latest_snapshot_id": 2285633047193896826,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 4
+    },
+    {
+      "timestamp": "2026-11-20T11:56:05.262000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00003-01a1f8d0-550e-73bd-bb1f-5c3f841f1b12.gz.metadata.json",
+      "latest_snapshot_id": 8360846756828656611,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 5
+    },
+    {
+      "timestamp": "2026-11-20T11:56:15.395000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00004-01a1f8d0-7ca3-7356-a681-48a879333aa8.gz.metadata.json",
+      "latest_snapshot_id": 8019672291667929726,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 6
+    },
+    {
+      "timestamp": "2026-11-20T11:56:25.568000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00005-01a1f8d0-a460-75ab-a603-68ff34fe8fdf.gz.metadata.json",
+      "latest_snapshot_id": 7905923164678480383,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 7
+    },
+    {
+      "timestamp": "2026-11-20T11:56:35.695000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00006-01a1f8d0-cbef-70c0-b124-7147afb84db7.gz.metadata.json",
+      "latest_snapshot_id": 4594634485966814454,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 8
+    },
+    {
+      "timestamp": "2026-11-20T11:56:45.795000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00007-01a1f8d0-f363-733a-92b6-9250cc7edf6b.gz.metadata.json",
+      "latest_snapshot_id": 5054641179469194713,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 9
+    },
+    {
+      "timestamp": "2026-11-20T11:56:55.893000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00008-01a1f8d1-1ad5-774d-be85-d9266ff9ae65.gz.metadata.json",
+      "latest_snapshot_id": 9119584028560589027,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 10
+    },
+    {
+      "timestamp": "2026-11-20T11:58:19.142000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00009-01a1f8d2-6006-7097-8e1a-c4b4e03cf487.gz.metadata.json",
+      "latest_snapshot_id": 888354165254086707,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 11
+    },
+    {
+      "timestamp": "2026-11-20T11:58:19.287000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00010-01a1f8d2-6097-73e2-a9c6-eeb05470b68b.gz.metadata.json",
+      "latest_snapshot_id": 5765541178597986317,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 12
+    },
+    {
+      "timestamp": "2026-11-20T11:58:29.445000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00011-01a1f8d2-8845-7722-96fd-b2057c89cfed.gz.metadata.json",
+      "latest_snapshot_id": 7780085774613373443,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 13
+    },
+    {
+      "timestamp": "2026-11-20T11:58:39.551000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00012-01a1f8d2-afbf-709d-8778-b48ea25f67da.gz.metadata.json",
+      "latest_snapshot_id": 8680207201428873414,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 14
+    },
+    {
+      "timestamp": "2026-11-20T11:58:49.691000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00013-01a1f8d2-d75b-74b9-a1da-d832c81e4c1d.gz.metadata.json",
+      "latest_snapshot_id": 7052196278962171124,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 15
+    },
+    {
+      "timestamp": "2026-11-20T11:58:59.787000+00:00",
+      "file": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00014-01a1f8d2-fecb-7732-8227-de8bc8002d03.gz.metadata.json",
+      "latest_snapshot_id": 7011018000075816914,
+      "latest_schema_id": 0,
+      "latest_sequence_number": 16
+    }
+  ],
+  "snapshots": [
+    {
+      "committed_at": "2026-11-20T11:55:44.994000+00:00",
+      "snapshot_id": 1895277456749654872,
+      "parent_id": null,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-1895277456749654872-0-01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb.avro",
+      "summary": {
+        "total-equality-deletes": "0",
+        "added-data-files": "1",
+        "added-records": "10000",
+        "total-position-deletes": "0",
+        "total-delete-files": "0",
+        "added-files-size": "2562777",
+        "total-files-size": "2562777",
+        "total-data-files": "1",
+        "total-records": "10000"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:55:44.995000+00:00",
+      "snapshot_id": 1490720213233758676,
+      "parent_id": 1895277456749654872,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-1490720213233758676-0-01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8.avro",
+      "summary": {
+        "added-data-files": "1",
+        "total-equality-deletes": "0",
+        "added-records": "10000",
+        "total-position-deletes": "0",
+        "added-files-size": "1364368",
+        "total-delete-files": "0",
+        "total-files-size": "3927145",
+        "total-data-files": "2",
+        "total-records": "20000"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:55:44.995000+00:00",
+      "snapshot_id": 6770050103393138445,
+      "parent_id": 1490720213233758676,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-6770050103393138445-0-01a1f8d0-05e3-70a2-aa42-0da12ddda95e.avro",
+      "summary": {
+        "total-equality-deletes": "0",
+        "added-data-files": "1",
+        "added-records": "5000",
+        "total-position-deletes": "0",
+        "total-delete-files": "0",
+        "added-files-size": "680626",
+        "total-files-size": "4607771",
+        "total-records": "25000",
+        "total-data-files": "3"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:55:55.118000+00:00",
+      "snapshot_id": 2285633047193896826,
+      "parent_id": 6770050103393138445,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-2285633047193896826-0-01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":2}",
+        "added-data-files": "1",
+        "total-equality-deletes": "0",
+        "added-records": "1",
+        "pg2iceberg.log-group": "default",
+        "total-records": "25001",
+        "pg2iceberg.log-start": "0",
+        "pg2iceberg.log-end": "2",
+        "total-position-deletes": "0",
+        "added-files-size": "3482",
+        "total-delete-files": "0",
+        "total-files-size": "4611253",
+        "total-data-files": "4"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:56:05.247000+00:00",
+      "snapshot_id": 8360846756828656611,
+      "parent_id": 2285633047193896826,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-8360846756828656611-0-01a1f8d0-54ee-7563-a3cf-057ea4adb6e3.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":81}",
+        "added-data-files": "1",
+        "total-equality-deletes": "57",
+        "added-equality-delete-files": "1",
+        "added-records": "66",
+        "pg2iceberg.log-group": "default",
+        "added-delete-files": "1",
+        "total-records": "25067",
+        "pg2iceberg.log-start": "2",
+        "pg2iceberg.log-end": "81",
+        "total-position-deletes": "0",
+        "added-equality-deletes": "57",
+        "added-files-size": "332852",
+        "total-delete-files": "1",
+        "total-files-size": "4944105",
+        "total-data-files": "5"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:56:15.377000+00:00",
+      "snapshot_id": 8019672291667929726,
+      "parent_id": 8360846756828656611,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-8019672291667929726-0-01a1f8d0-7c77-7f02-827c-06ae9529545d.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":182}",
+        "added-data-files": "1",
+        "total-equality-deletes": "137",
+        "added-equality-delete-files": "1",
+        "added-records": "77",
+        "pg2iceberg.log-group": "default",
+        "added-delete-files": "1",
+        "total-records": "25144",
+        "pg2iceberg.log-start": "81",
+        "pg2iceberg.log-end": "182",
+        "total-position-deletes": "0",
+        "added-files-size": "371556",
+        "added-equality-deletes": "80",
+        "total-delete-files": "2",
+        "total-files-size": "5315661",
+        "total-data-files": "6"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:56:25.552000+00:00",
+      "snapshot_id": 7905923164678480383,
+      "parent_id": 8019672291667929726,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7905923164678480383-0-01a1f8d0-a432-7991-9b52-a3edc2232513.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":282}",
+        "added-data-files": "1",
+        "total-equality-deletes": "214",
+        "added-equality-delete-files": "1",
+        "added-records": "82",
+        "pg2iceberg.log-group": "default",
+        "added-delete-files": "1",
+        "total-records": "25226",
+        "pg2iceberg.log-start": "182",
+        "pg2iceberg.log-end": "282",
+        "total-position-deletes": "0",
+        "total-delete-files": "3",
+        "added-files-size": "384497",
+        "added-equality-deletes": "77",
+        "total-files-size": "5700158",
+        "total-data-files": "7"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:56:35.681000+00:00",
+      "snapshot_id": 4594634485966814454,
+      "parent_id": 7905923164678480383,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-4594634485966814454-0-01a1f8d0-cbce-7042-87b7-f33f571fc8ce.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":383}",
+        "added-data-files": "1",
+        "total-equality-deletes": "294",
+        "added-equality-delete-files": "1",
+        "added-records": "86",
+        "pg2iceberg.log-group": "default",
+        "added-delete-files": "1",
+        "total-records": "25312",
+        "pg2iceberg.log-start": "282",
+        "pg2iceberg.log-end": "383",
+        "total-position-deletes": "0",
+        "added-files-size": "397092",
+        "added-equality-deletes": "80",
+        "total-delete-files": "4",
+        "total-files-size": "6097250",
+        "total-data-files": "8"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:56:45.787000+00:00",
+      "snapshot_id": 5054641179469194713,
+      "parent_id": 4594634485966814454,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-5054641179469194713-0-01a1f8d0-f34b-7ec2-b06c-c208564c23f1.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":483}",
+        "added-data-files": "1",
+        "total-equality-deletes": "375",
+        "added-equality-delete-files": "1",
+        "added-records": "81",
+        "pg2iceberg.log-group": "default",
+        "added-delete-files": "1",
+        "total-records": "25393",
+        "pg2iceberg.log-start": "383",
+        "pg2iceberg.log-end": "483",
+        "total-position-deletes": "0",
+        "total-delete-files": "5",
+        "added-equality-deletes": "81",
+        "added-files-size": "408889",
+        "total-files-size": "6506139",
+        "total-data-files": "9"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:56:55.884000+00:00",
+      "snapshot_id": 9119584028560589027,
+      "parent_id": 5054641179469194713,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-9119584028560589027-0-01a1f8d1-1ab5-7241-b6ed-02eec04499ed.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":584}",
+        "added-data-files": "1",
+        "total-equality-deletes": "460",
+        "added-records": "86",
+        "added-equality-delete-files": "1",
+        "pg2iceberg.log-group": "default",
+        "added-delete-files": "1",
+        "total-records": "25479",
+        "pg2iceberg.log-start": "483",
+        "pg2iceberg.log-end": "584",
+        "total-position-deletes": "0",
+        "total-delete-files": "6",
+        "added-equality-deletes": "85",
+        "added-files-size": "397095",
+        "total-files-size": "6903234",
+        "total-data-files": "10"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:58:19.127000+00:00",
+      "snapshot_id": 888354165254086707,
+      "parent_id": 9119584028560589027,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-888354165254086707-0-01a1f8d2-5fd8-7a82-9220-03434b4f4df2.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":746}",
+        "added-data-files": "1",
+        "total-equality-deletes": "586",
+        "added-records": "119",
+        "added-equality-delete-files": "1",
+        "pg2iceberg.log-group": "default",
+        "added-delete-files": "1",
+        "total-records": "25598",
+        "pg2iceberg.log-start": "584",
+        "pg2iceberg.log-end": "746",
+        "total-position-deletes": "0",
+        "added-equality-deletes": "126",
+        "total-delete-files": "7",
+        "added-files-size": "562008",
+        "total-files-size": "7465242",
+        "total-data-files": "11"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:58:19.275000+00:00",
+      "snapshot_id": 5765541178597986317,
+      "parent_id": 888354165254086707,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-5765541178597986317-0-01a1f8d2-6073-7720-a331-5cb40ad1a988.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":1406}",
+        "added-data-files": "1",
+        "total-equality-deletes": "1024",
+        "added-equality-delete-files": "1",
+        "added-records": "448",
+        "pg2iceberg.log-group": "default",
+        "added-delete-files": "1",
+        "total-records": "26046",
+        "pg2iceberg.log-start": "746",
+        "pg2iceberg.log-end": "1406",
+        "total-position-deletes": "0",
+        "added-equality-deletes": "438",
+        "added-files-size": "1132896",
+        "total-delete-files": "8",
+        "total-files-size": "8598138",
+        "total-data-files": "12"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:58:29.421000+00:00",
+      "snapshot_id": 7780085774613373443,
+      "parent_id": 5765541178597986317,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7780085774613373443-0-01a1f8d2-8815-7370-a94e-349f67e75420.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":1527}",
+        "added-data-files": "1",
+        "total-equality-deletes": "1121",
+        "added-equality-delete-files": "1",
+        "added-records": "102",
+        "pg2iceberg.log-group": "default",
+        "added-delete-files": "1",
+        "total-records": "26148",
+        "pg2iceberg.log-start": "1406",
+        "pg2iceberg.log-end": "1527",
+        "total-position-deletes": "0",
+        "total-delete-files": "9",
+        "added-equality-deletes": "97",
+        "added-files-size": "362229",
+        "total-files-size": "8960367",
+        "total-data-files": "13"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:58:39.537000+00:00",
+      "snapshot_id": 8680207201428873414,
+      "parent_id": 7780085774613373443,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-8680207201428873414-0-01a1f8d2-af9f-7a03-aac3-fe4c1a6fee35.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":1628}",
+        "total-equality-deletes": "1206",
+        "added-data-files": "1",
+        "added-records": "84",
+        "added-equality-delete-files": "1",
+        "pg2iceberg.log-group": "default",
+        "added-delete-files": "1",
+        "total-records": "26232",
+        "pg2iceberg.log-start": "1527",
+        "pg2iceberg.log-end": "1628",
+        "total-position-deletes": "0",
+        "total-delete-files": "10",
+        "added-equality-deletes": "85",
+        "added-files-size": "384935",
+        "total-files-size": "9345302",
+        "total-data-files": "14"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:58:49.669000+00:00",
+      "snapshot_id": 7052196278962171124,
+      "parent_id": 8680207201428873414,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7052196278962171124-0-01a1f8d2-d725-7bf3-81cb-26c98c57e464.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":1729}",
+        "total-equality-deletes": "1294",
+        "added-data-files": "1",
+        "added-records": "90",
+        "added-equality-delete-files": "1",
+        "pg2iceberg.log-group": "default",
+        "added-delete-files": "1",
+        "total-records": "26322",
+        "pg2iceberg.log-start": "1628",
+        "pg2iceberg.log-end": "1729",
+        "total-position-deletes": "0",
+        "added-equality-deletes": "88",
+        "added-files-size": "348162",
+        "total-delete-files": "11",
+        "total-files-size": "9693464",
+        "total-data-files": "15"
+      }
+    },
+    {
+      "committed_at": "2026-11-20T11:58:59.775000+00:00",
+      "snapshot_id": 7011018000075816914,
+      "parent_id": 7052196278962171124,
+      "operation": "append",
+      "manifest_list": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7011018000075816914-0-01a1f8d2-feaa-7781-919c-ae6bfc70862b.avro",
+      "summary": {
+        "pg2iceberg.log-ends": "{\"default\":1812}",
+        "total-equality-deletes": "1356",
+        "added-data-files": "1",
+        "added-records": "71",
+        "added-equality-delete-files": "1",
+        "pg2iceberg.log-group": "default",
+        "added-delete-files": "1",
+        "total-records": "26393",
+        "pg2iceberg.log-start": "1729",
+        "pg2iceberg.log-end": "1812",
+        "total-position-deletes": "0",
+        "added-files-size": "308795",
+        "total-delete-files": "12",
+        "added-equality-deletes": "62",
+        "total-files-size": "10002259",
+        "total-data-files": "16"
+      }
+    }
+  ],
+  "all_manifests": [
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+      "length": 3829,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 2285633047193896826,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 888354165254086707,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 888354165254086707,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5765541178597986317,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5765541178597986317,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-8815-7370-a94e-349f67e75420-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7780085774613373443,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-8815-7370-a94e-349f67e75420-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7780085774613373443,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-af9f-7a03-aac3-fe4c1a6fee35-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8680207201428873414,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-af9f-7a03-aac3-fe4c1a6fee35-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8680207201428873414,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-d725-7bf3-81cb-26c98c57e464-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7052196278962171124,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-d725-7bf3-81cb-26c98c57e464-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7052196278962171124,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-feaa-7781-919c-ae6bfc70862b-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7011018000075816914,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-feaa-7781-919c-ae6bfc70862b-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7011018000075816914,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+      "length": 3829,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 2285633047193896826,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+      "length": 3829,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 2285633047193896826,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 888354165254086707,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 888354165254086707,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5765541178597986317,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5765541178597986317,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-8815-7370-a94e-349f67e75420-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7780085774613373443,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-8815-7370-a94e-349f67e75420-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7780085774613373443,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-af9f-7a03-aac3-fe4c1a6fee35-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8680207201428873414,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-af9f-7a03-aac3-fe4c1a6fee35-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8680207201428873414,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-d725-7bf3-81cb-26c98c57e464-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7052196278962171124,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-d725-7bf3-81cb-26c98c57e464-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7052196278962171124,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+      "length": 3829,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 2285633047193896826,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+      "length": 3829,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 2285633047193896826,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+      "length": 3829,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 2285633047193896826,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+      "length": 3829,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 2285633047193896826,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 888354165254086707,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 888354165254086707,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5765541178597986317,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5765541178597986317,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-8815-7370-a94e-349f67e75420-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7780085774613373443,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-8815-7370-a94e-349f67e75420-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7780085774613373443,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+      "length": 3829,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 2285633047193896826,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+      "length": 3829,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 2285633047193896826,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 888354165254086707,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 888354165254086707,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+      "length": 3829,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 2285633047193896826,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+      "length": 3829,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 2285633047193896826,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+      "length": 3829,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 2285633047193896826,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 888354165254086707,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 888354165254086707,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5765541178597986317,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5765541178597986317,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-8815-7370-a94e-349f67e75420-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7780085774613373443,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-8815-7370-a94e-349f67e75420-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7780085774613373443,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-af9f-7a03-aac3-fe4c1a6fee35-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8680207201428873414,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-af9f-7a03-aac3-fe4c1a6fee35-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8680207201428873414,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1895277456749654872,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 1490720213233758676,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 6770050103393138445,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+      "length": 3829,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 2285633047193896826,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8360846756828656611,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 8019672291667929726,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 7905923164678480383,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 4594634485966814454,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5054641179469194713,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m0.avro",
+      "length": 3832,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 9119584028560589027,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m0.avro",
+      "length": 3831,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 888354165254086707,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m1.avro",
+      "length": 3841,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 888354165254086707,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 0,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m0.avro",
+      "length": 3833,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5765541178597986317,
+      "added_data_files_count": 1,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    },
+    {
+      "content": 1,
+      "path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m1.avro",
+      "length": 3842,
+      "partition_spec_id": 0,
+      "added_snapshot_id": 5765541178597986317,
+      "added_data_files_count": 0,
+      "existing_data_files_count": 0,
+      "deleted_data_files_count": 0
+    }
+  ],
+  "all_data_files": [
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-7a02a0a5675d46a58cf9679a46b106c3.parquet",
+      "file_format": "PARQUET",
+      "record_count": 81,
+      "file_size_in_bytes": 407585
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-58f6436bd60846a79b7fe222e4cb533a.parquet",
+      "file_format": "PARQUET",
+      "record_count": 119,
+      "file_size_in_bytes": 560309
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-7877f9bd2b3b437f905053bdbcc82345.parquet",
+      "file_format": "PARQUET",
+      "record_count": 1,
+      "file_size_in_bytes": 3482
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-24cf8a008f8d4317b5802d8e31427b81.parquet",
+      "file_format": "PARQUET",
+      "record_count": 5000,
+      "file_size_in_bytes": 680626
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-17221ca1a96e42dca1addec9893463dd.parquet",
+      "file_format": "PARQUET",
+      "record_count": 86,
+      "file_size_in_bytes": 395759
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-59a70f3fa36d43fcb0c5c5d0c8324442.parquet",
+      "file_format": "PARQUET",
+      "record_count": 10000,
+      "file_size_in_bytes": 2562777
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-d3251efda7484e85a90da41763f7c626.parquet",
+      "file_format": "PARQUET",
+      "record_count": 448,
+      "file_size_in_bytes": 1128318
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-0054313f7287429c813102e3f27336b9.parquet",
+      "file_format": "PARQUET",
+      "record_count": 84,
+      "file_size_in_bytes": 383599
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-d6d8336ec33248cb863fbdd91c6298a3.parquet",
+      "file_format": "PARQUET",
+      "record_count": 90,
+      "file_size_in_bytes": 346802
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-1df1f8640d67418fa2d09f418077e52f.parquet",
+      "file_format": "PARQUET",
+      "record_count": 102,
+      "file_size_in_bytes": 360783
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-23560258629e436494dae7130a9ee705.parquet",
+      "file_format": "PARQUET",
+      "record_count": 10000,
+      "file_size_in_bytes": 1364368
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-81ce51eefc8a48fe8bacf2be67efa36a.parquet",
+      "file_format": "PARQUET",
+      "record_count": 82,
+      "file_size_in_bytes": 383232
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-0cd5021a9cd24d01bff546eb6df9c8fa.parquet",
+      "file_format": "PARQUET",
+      "record_count": 86,
+      "file_size_in_bytes": 395803
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-3582479629074f548f8be9c29c3cfd0f.parquet",
+      "file_format": "PARQUET",
+      "record_count": 71,
+      "file_size_in_bytes": 307679
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-7bf705909bca46dc9fa5fd181ba96408.parquet",
+      "file_format": "PARQUET",
+      "record_count": 77,
+      "file_size_in_bytes": 370267
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-13fe5b75cca2448aaad5b4aed008e4f1.parquet",
+      "file_format": "PARQUET",
+      "record_count": 66,
+      "file_size_in_bytes": 331776
+    }
+  ],
+  "all_delete_files": [
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-eaa58e861c894d48806d5bf891895d51.parquet",
+      "file_format": "PARQUET",
+      "record_count": 80,
+      "file_size_in_bytes": 1289,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-773df9c742ee4088b254be1ac582b51a.parquet",
+      "file_format": "PARQUET",
+      "record_count": 77,
+      "file_size_in_bytes": 1265,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-1918bc990cbb43a9ba01942ad35f988e.parquet",
+      "file_format": "PARQUET",
+      "record_count": 80,
+      "file_size_in_bytes": 1289,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-6d3c8c88ce6147b4a970799ef97a8fe3.parquet",
+      "file_format": "PARQUET",
+      "record_count": 438,
+      "file_size_in_bytes": 4578,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-50f31ab94cd142b285ca8f24203b096b.parquet",
+      "file_format": "PARQUET",
+      "record_count": 85,
+      "file_size_in_bytes": 1336,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-d7d03aa22460434ca371931ca1a9a077.parquet",
+      "file_format": "PARQUET",
+      "record_count": 57,
+      "file_size_in_bytes": 1076,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-6630541cb30d403e93ac2e52ffeda798.parquet",
+      "file_format": "PARQUET",
+      "record_count": 62,
+      "file_size_in_bytes": 1116,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-eff514c60fd24019b66cedcfe3af1fdc.parquet",
+      "file_format": "PARQUET",
+      "record_count": 81,
+      "file_size_in_bytes": 1304,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-cb2cbfe9a3ca486aaa894e3ff154fb00.parquet",
+      "file_format": "PARQUET",
+      "record_count": 85,
+      "file_size_in_bytes": 1336,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-eec2b4542fef4e01802dd3a410b1eb35.parquet",
+      "file_format": "PARQUET",
+      "record_count": 88,
+      "file_size_in_bytes": 1360,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-3b6091ef6df1422194723460988ab168.parquet",
+      "file_format": "PARQUET",
+      "record_count": 126,
+      "file_size_in_bytes": 1699,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-90889409ff264cb69104dc97870ad827.parquet",
+      "file_format": "PARQUET",
+      "record_count": 97,
+      "file_size_in_bytes": 1446,
+      "equality_ids": [
+        1
+      ]
+    }
+  ],
+  "current_files": [
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-59a70f3fa36d43fcb0c5c5d0c8324442.parquet",
+      "file_format": "PARQUET",
+      "record_count": 10000,
+      "file_size_in_bytes": 2562777,
+      "equality_ids": null
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-23560258629e436494dae7130a9ee705.parquet",
+      "file_format": "PARQUET",
+      "record_count": 10000,
+      "file_size_in_bytes": 1364368,
+      "equality_ids": null
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-24cf8a008f8d4317b5802d8e31427b81.parquet",
+      "file_format": "PARQUET",
+      "record_count": 5000,
+      "file_size_in_bytes": 680626,
+      "equality_ids": null
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-7877f9bd2b3b437f905053bdbcc82345.parquet",
+      "file_format": "PARQUET",
+      "record_count": 1,
+      "file_size_in_bytes": 3482,
+      "equality_ids": null
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-13fe5b75cca2448aaad5b4aed008e4f1.parquet",
+      "file_format": "PARQUET",
+      "record_count": 66,
+      "file_size_in_bytes": 331776,
+      "equality_ids": null
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-d7d03aa22460434ca371931ca1a9a077.parquet",
+      "file_format": "PARQUET",
+      "record_count": 57,
+      "file_size_in_bytes": 1076,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-7bf705909bca46dc9fa5fd181ba96408.parquet",
+      "file_format": "PARQUET",
+      "record_count": 77,
+      "file_size_in_bytes": 370267,
+      "equality_ids": null
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-eaa58e861c894d48806d5bf891895d51.parquet",
+      "file_format": "PARQUET",
+      "record_count": 80,
+      "file_size_in_bytes": 1289,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-81ce51eefc8a48fe8bacf2be67efa36a.parquet",
+      "file_format": "PARQUET",
+      "record_count": 82,
+      "file_size_in_bytes": 383232,
+      "equality_ids": null
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-773df9c742ee4088b254be1ac582b51a.parquet",
+      "file_format": "PARQUET",
+      "record_count": 77,
+      "file_size_in_bytes": 1265,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-0cd5021a9cd24d01bff546eb6df9c8fa.parquet",
+      "file_format": "PARQUET",
+      "record_count": 86,
+      "file_size_in_bytes": 395803,
+      "equality_ids": null
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-1918bc990cbb43a9ba01942ad35f988e.parquet",
+      "file_format": "PARQUET",
+      "record_count": 80,
+      "file_size_in_bytes": 1289,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-7a02a0a5675d46a58cf9679a46b106c3.parquet",
+      "file_format": "PARQUET",
+      "record_count": 81,
+      "file_size_in_bytes": 407585,
+      "equality_ids": null
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-eff514c60fd24019b66cedcfe3af1fdc.parquet",
+      "file_format": "PARQUET",
+      "record_count": 81,
+      "file_size_in_bytes": 1304,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-17221ca1a96e42dca1addec9893463dd.parquet",
+      "file_format": "PARQUET",
+      "record_count": 86,
+      "file_size_in_bytes": 395759,
+      "equality_ids": null
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-cb2cbfe9a3ca486aaa894e3ff154fb00.parquet",
+      "file_format": "PARQUET",
+      "record_count": 85,
+      "file_size_in_bytes": 1336,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-58f6436bd60846a79b7fe222e4cb533a.parquet",
+      "file_format": "PARQUET",
+      "record_count": 119,
+      "file_size_in_bytes": 560309,
+      "equality_ids": null
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-3b6091ef6df1422194723460988ab168.parquet",
+      "file_format": "PARQUET",
+      "record_count": 126,
+      "file_size_in_bytes": 1699,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-d3251efda7484e85a90da41763f7c626.parquet",
+      "file_format": "PARQUET",
+      "record_count": 448,
+      "file_size_in_bytes": 1128318,
+      "equality_ids": null
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-6d3c8c88ce6147b4a970799ef97a8fe3.parquet",
+      "file_format": "PARQUET",
+      "record_count": 438,
+      "file_size_in_bytes": 4578,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-1df1f8640d67418fa2d09f418077e52f.parquet",
+      "file_format": "PARQUET",
+      "record_count": 102,
+      "file_size_in_bytes": 360783,
+      "equality_ids": null
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-90889409ff264cb69104dc97870ad827.parquet",
+      "file_format": "PARQUET",
+      "record_count": 97,
+      "file_size_in_bytes": 1446,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-0054313f7287429c813102e3f27336b9.parquet",
+      "file_format": "PARQUET",
+      "record_count": 84,
+      "file_size_in_bytes": 383599,
+      "equality_ids": null
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-50f31ab94cd142b285ca8f24203b096b.parquet",
+      "file_format": "PARQUET",
+      "record_count": 85,
+      "file_size_in_bytes": 1336,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-d6d8336ec33248cb863fbdd91c6298a3.parquet",
+      "file_format": "PARQUET",
+      "record_count": 90,
+      "file_size_in_bytes": 346802,
+      "equality_ids": null
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-eec2b4542fef4e01802dd3a410b1eb35.parquet",
+      "file_format": "PARQUET",
+      "record_count": 88,
+      "file_size_in_bytes": 1360,
+      "equality_ids": [
+        1
+      ]
+    },
+    {
+      "content": 0,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-3582479629074f548f8be9c29c3cfd0f.parquet",
+      "file_format": "PARQUET",
+      "record_count": 71,
+      "file_size_in_bytes": 307679,
+      "equality_ids": null
+    },
+    {
+      "content": 2,
+      "file_path": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-6630541cb30d403e93ac2e52ffeda798.parquet",
+      "file_format": "PARQUET",
+      "record_count": 62,
+      "file_size_in_bytes": 1116,
+      "equality_ids": [
+        1
+      ]
+    }
+  ],
+  "describe_extended": [
+    {
+      "col_name": "id",
+      "data_type": "bigint",
+      "comment": null
+    },
+    {
+      "col_name": "status",
+      "data_type": "string",
+      "comment": null
+    },
+    {
+      "col_name": "amount",
+      "data_type": "decimal(38,9)",
+      "comment": null
+    },
+    {
+      "col_name": "updated_at",
+      "data_type": "timestamp",
+      "comment": null
+    },
+    {
+      "col_name": "note",
+      "data_type": "string",
+      "comment": null
+    },
+    {
+      "col_name": "payload",
+      "data_type": "string",
+      "comment": null
+    },
+    {
+      "col_name": "discount",
+      "data_type": "decimal(38,9)",
+      "comment": null
+    },
+    {
+      "col_name": "",
+      "data_type": "",
+      "comment": ""
+    },
+    {
+      "col_name": "# Metadata Columns",
+      "data_type": "",
+      "comment": ""
+    },
+    {
+      "col_name": "_spec_id",
+      "data_type": "int",
+      "comment": ""
+    },
+    {
+      "col_name": "_partition",
+      "data_type": "struct<>",
+      "comment": ""
+    },
+    {
+      "col_name": "_file",
+      "data_type": "string",
+      "comment": ""
+    },
+    {
+      "col_name": "_pos",
+      "data_type": "bigint",
+      "comment": ""
+    },
+    {
+      "col_name": "_deleted",
+      "data_type": "boolean",
+      "comment": ""
+    },
+    {
+      "col_name": "_row_id",
+      "data_type": "bigint",
+      "comment": ""
+    },
+    {
+      "col_name": "_last_updated_sequence_number",
+      "data_type": "bigint",
+      "comment": ""
+    },
+    {
+      "col_name": "",
+      "data_type": "",
+      "comment": ""
+    },
+    {
+      "col_name": "# Detailed Table Information",
+      "data_type": "",
+      "comment": ""
+    },
+    {
+      "col_name": "Name",
+      "data_type": "cdclab.public.orders",
+      "comment": ""
+    },
+    {
+      "col_name": "Type",
+      "data_type": "MANAGED",
+      "comment": ""
+    },
+    {
+      "col_name": "Location",
+      "data_type": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b",
+      "comment": ""
+    },
+    {
+      "col_name": "Provider",
+      "data_type": "iceberg",
+      "comment": ""
+    },
+    {
+      "col_name": "Table Properties",
+      "data_type": "[current-snapshot-id=7011018000075816914,format=iceberg/parquet,format-version=2,identifier-fields=[id],pg2iceberg.log-ends={\"default\":1812}]",
+      "comment": ""
+    }
+  ]
+}

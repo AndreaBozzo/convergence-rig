@@ -1,0 +1,23 @@
+{
+  "before_unreferenced_count": 2,
+  "before_unreferenced_uris": [
+    "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-45152af81527429485eac5c38813f7af.parquet",
+    "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-9389f49e10e74559a415444887b07c88.parquet"
+  ],
+  "removed_total_under_table": 2,
+  "removed_unreferenced_count": 2,
+  "removed_unreferenced_uris": [
+    "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-45152af81527429485eac5c38813f7af.parquet",
+    "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-9389f49e10e74559a415444887b07c88.parquet"
+  ],
+  "removed_referenced_count": 0,
+  "removed_referenced_uris": [],
+  "removed_staging_count": 0,
+  "removed_staging_uris": [],
+  "remaining_unreferenced_count": 0,
+  "remaining_unreferenced_uris": [],
+  "added_under_table_count": 0,
+  "added_under_table_uris": [],
+  "reclaimed_bytes": 358700,
+  "exact_orphan_removal_passed": true
+}

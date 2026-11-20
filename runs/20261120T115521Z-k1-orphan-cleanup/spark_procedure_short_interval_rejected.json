@@ -1,0 +1,46 @@
+{
+  "mode": "remove_orphans",
+  "ok": false,
+  "error": "IllegalArgumentException: Cannot remove orphan files with an interval less than 24 hours. Executing this procedure with a short interval may corrupt the table if other operations are happening at the same time. If you are absolutely confident that no concurrent operations will be affected by removing orphan files with such a short interval, you can use the Action API to remove orphan files with an arbitrary interval.",
+  "sql": "CALL cdclab.system.remove_orphan_files(table => 'public.orders', older_than => TIMESTAMP '2026-11-20 11:59:27.092420', dry_run => true, prefix_listing => true)",
+  "parameters": {
+    "table": "public.orders",
+    "older_than": "2026-11-20 11:59:27.092420",
+    "location": null,
+    "dry_run": true,
+    "prefix_mismatch_mode": null,
+    "prefix_listing": true
+  },
+  "started_at_utc": "2026-11-20T11:59:40.162915Z",
+  "completed_at_utc": "2026-11-20T11:59:40.443871Z",
+  "duration_ms": 275.48,
+  "versions": {
+    "spark_version": "3.5.9",
+    "scala_version": "2.12.18",
+    "java_version": "17.0.19",
+    "iceberg_version": "1.12.0",
+    "iceberg_git_commit_short": "212aa89",
+    "python_version": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]"
+  },
+  "orphan_file_count": 0,
+  "orphan_file_locations": [],
+  "snapshots_before": [
+    1895277456749654872,
+    6770050103393138445,
+    1490720213233758676,
+    2285633047193896826,
+    8360846756828656611,
+    8019672291667929726,
+    7905923164678480383,
+    4594634485966814454,
+    5054641179469194713,
+    9119584028560589027,
+    888354165254086707,
+    5765541178597986317,
+    7780085774613373443,
+    8680207201428873414,
+    7052196278962171124,
+    7011018000075816914
+  ],
+  "snapshots_after": []
+}

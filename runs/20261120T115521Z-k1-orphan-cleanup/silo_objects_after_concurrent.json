@@ -1,0 +1,1486 @@
+[
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-0054313f7287429c813102e3f27336b9.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-0054313f7287429c813102e3f27336b9.parquet",
+    "size": 383599,
+    "last_modified": "2026-11-20T11:58:39.509Z",
+    "etag": "68f1988ec4a5f1bb86e136c500315af3"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-0cd5021a9cd24d01bff546eb6df9c8fa.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-0cd5021a9cd24d01bff546eb6df9c8fa.parquet",
+    "size": 395803,
+    "last_modified": "2026-11-20T11:56:35.652Z",
+    "etag": "dd044aa764c77dbbd72a5334522df20f"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-13fe5b75cca2448aaad5b4aed008e4f1.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-13fe5b75cca2448aaad5b4aed008e4f1.parquet",
+    "size": 331776,
+    "last_modified": "2026-11-20T11:56:05.222Z",
+    "etag": "ded53b4a3311cd49ebf7f4beb3a9650d"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-17221ca1a96e42dca1addec9893463dd.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-17221ca1a96e42dca1addec9893463dd.parquet",
+    "size": 395759,
+    "last_modified": "2026-11-20T11:56:55.848Z",
+    "etag": "d8d3a223a81e531c39a000208a0cec54"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-1df1f8640d67418fa2d09f418077e52f.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-1df1f8640d67418fa2d09f418077e52f.parquet",
+    "size": 360783,
+    "last_modified": "2026-11-20T11:58:29.385Z",
+    "etag": "fbbde0544dec1ddc04d99c4cb5514731"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-23560258629e436494dae7130a9ee705.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-23560258629e436494dae7130a9ee705.parquet",
+    "size": 1364368,
+    "last_modified": "2026-11-20T11:55:44.934Z",
+    "etag": "31d157c3f988ced4b769c289b8a15925"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-24cf8a008f8d4317b5802d8e31427b81.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-24cf8a008f8d4317b5802d8e31427b81.parquet",
+    "size": 680626,
+    "last_modified": "2026-11-20T11:55:44.97Z",
+    "etag": "ee64bf94c8331560f18e40d4c5352f58"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-3582479629074f548f8be9c29c3cfd0f.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-3582479629074f548f8be9c29c3cfd0f.parquet",
+    "size": 307679,
+    "last_modified": "2026-11-20T11:58:59.743Z",
+    "etag": "4c56608d32ecb04ae3b43827242beae5"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-58f6436bd60846a79b7fe222e4cb533a.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-58f6436bd60846a79b7fe222e4cb533a.parquet",
+    "size": 560309,
+    "last_modified": "2026-11-20T11:58:19.078Z",
+    "etag": "4cf2b8f0bc57c6be4a3e20310b832dde"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-59a70f3fa36d43fcb0c5c5d0c8324442.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-59a70f3fa36d43fcb0c5c5d0c8324442.parquet",
+    "size": 2562777,
+    "last_modified": "2026-11-20T11:55:44.85Z",
+    "etag": "7bc2d24bdd69cbd4da13026eaf7ef3e9"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-64ce210a96c84a6daf10d5ec2b1a89ae.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-64ce210a96c84a6daf10d5ec2b1a89ae.parquet",
+    "size": 105336,
+    "last_modified": "2026-11-20T12:01:39.913Z",
+    "etag": "4593a4dac36254435e23c7c02b84cd54"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-688a147b078a4ba59403ebf5ada4753a.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-688a147b078a4ba59403ebf5ada4753a.parquet",
+    "size": 336164,
+    "last_modified": "2026-11-20T12:02:00.151Z",
+    "etag": "6be80fe42147a12637b68545c0766f4e"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-7877f9bd2b3b437f905053bdbcc82345.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-7877f9bd2b3b437f905053bdbcc82345.parquet",
+    "size": 3482,
+    "last_modified": "2026-11-20T11:55:55.09Z",
+    "etag": "3947b138234abb79750ce3687b07838a"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-7a02a0a5675d46a58cf9679a46b106c3.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-7a02a0a5675d46a58cf9679a46b106c3.parquet",
+    "size": 407585,
+    "last_modified": "2026-11-20T11:56:45.761Z",
+    "etag": "218e86559b65e2012a9a31b7bba1fffa"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-7bf705909bca46dc9fa5fd181ba96408.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-7bf705909bca46dc9fa5fd181ba96408.parquet",
+    "size": 370267,
+    "last_modified": "2026-11-20T11:56:15.337Z",
+    "etag": "17ed6373f61fa78b72416a068972317e"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-8069cd66d6194c5b9efbdb0493f022d1.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-8069cd66d6194c5b9efbdb0493f022d1.parquet",
+    "size": 348025,
+    "last_modified": "2026-11-20T12:02:10.334Z",
+    "etag": "2894ec0e2a2046a2054fdc3e2979cc40"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-81ce51eefc8a48fe8bacf2be67efa36a.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-81ce51eefc8a48fe8bacf2be67efa36a.parquet",
+    "size": 383232,
+    "last_modified": "2026-11-20T11:56:25.504Z",
+    "etag": "2940c8e6c46af77820aad19a08ab2a2c"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-846de0cd24f8441f9f25916110a796c7.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-846de0cd24f8441f9f25916110a796c7.parquet",
+    "size": 396993,
+    "last_modified": "2026-11-20T12:02:20.468Z",
+    "etag": "02503ba18ad35159137bff772298fb96"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-a8ed3e31734740fdbad8c238e5213f7e.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-a8ed3e31734740fdbad8c238e5213f7e.parquet",
+    "size": 295597,
+    "last_modified": "2026-11-20T12:02:30.684Z",
+    "etag": "79d9d83450a24d119444f57c6d4f3254"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-b9fc71149dea48e7b3255d2924050f45.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-b9fc71149dea48e7b3255d2924050f45.parquet",
+    "size": 359762,
+    "last_modified": "2026-11-20T12:01:50.042Z",
+    "etag": "e84845ca4d2ce68e98e1fa8ed13eb00b"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-d3251efda7484e85a90da41763f7c626.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-d3251efda7484e85a90da41763f7c626.parquet",
+    "size": 1128318,
+    "last_modified": "2026-11-20T11:58:19.241Z",
+    "etag": "14573b4dd9772116f99697b4c895122d"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-d6d8336ec33248cb863fbdd91c6298a3.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/data-d6d8336ec33248cb863fbdd91c6298a3.parquet",
+    "size": 346802,
+    "last_modified": "2026-11-20T11:58:49.619Z",
+    "etag": "68f09180014d1673220968aae4a70308"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-1918bc990cbb43a9ba01942ad35f988e.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-1918bc990cbb43a9ba01942ad35f988e.parquet",
+    "size": 1289,
+    "last_modified": "2026-11-20T11:56:35.647Z",
+    "etag": "cccc206ea9f0d6ea7826b722b3709179"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-3b6091ef6df1422194723460988ab168.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-3b6091ef6df1422194723460988ab168.parquet",
+    "size": 1699,
+    "last_modified": "2026-11-20T11:58:19.071Z",
+    "etag": "23e1a8e7cd7b49b7725eb40444bb0382"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-3ce27e5f96f046a1abd6c6fc29b684e4.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-3ce27e5f96f046a1abd6c6fc29b684e4.parquet",
+    "size": 1375,
+    "last_modified": "2026-11-20T12:02:20.457Z",
+    "etag": "abaade71c80efdff9f801c86f215c2f8"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-3e4c74aa83234efd8dd1219f07b779b6.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-3e4c74aa83234efd8dd1219f07b779b6.parquet",
+    "size": 1320,
+    "last_modified": "2026-11-20T12:02:00.142Z",
+    "etag": "cb300fe8daa50a38829af96aaff5e110"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-431bc13b03324f41bd8b95b551d4ff86.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-431bc13b03324f41bd8b95b551d4ff86.parquet",
+    "size": 1281,
+    "last_modified": "2026-11-20T12:02:10.323Z",
+    "etag": "5490a03eb2246c8d663932cf96af77ba"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-50f31ab94cd142b285ca8f24203b096b.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-50f31ab94cd142b285ca8f24203b096b.parquet",
+    "size": 1336,
+    "last_modified": "2026-11-20T11:58:39.499Z",
+    "etag": "9f8fdacd65a88e41c6e97b16300e89a0"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-6630541cb30d403e93ac2e52ffeda798.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-6630541cb30d403e93ac2e52ffeda798.parquet",
+    "size": 1116,
+    "last_modified": "2026-11-20T11:58:59.738Z",
+    "etag": "95a3b457452657683c43778842ce6ab2"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-6d3c8c88ce6147b4a970799ef97a8fe3.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-6d3c8c88ce6147b4a970799ef97a8fe3.parquet",
+    "size": 4578,
+    "last_modified": "2026-11-20T11:58:19.234Z",
+    "etag": "b0b71914dbaa1a886cb3d6ab9cf7f153"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-75c3b214b9134dc5b8c2fb5e45c2a004.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-75c3b214b9134dc5b8c2fb5e45c2a004.parquet",
+    "size": 1265,
+    "last_modified": "2026-11-20T12:01:50.036Z",
+    "etag": "1af3a5199de70d07ff12705d8a679494"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-773df9c742ee4088b254be1ac582b51a.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-773df9c742ee4088b254be1ac582b51a.parquet",
+    "size": 1265,
+    "last_modified": "2026-11-20T11:56:25.498Z",
+    "etag": "7d49b3ec60259ee837c9c6a1039163a9"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-83fba32a456d42ee9a014a72dfd3bbf7.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-83fba32a456d42ee9a014a72dfd3bbf7.parquet",
+    "size": 762,
+    "last_modified": "2026-11-20T12:01:39.912Z",
+    "etag": "d6b952aa6607d6e045eedb07404ac94d"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-90889409ff264cb69104dc97870ad827.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-90889409ff264cb69104dc97870ad827.parquet",
+    "size": 1446,
+    "last_modified": "2026-11-20T11:58:29.382Z",
+    "etag": "91330353677ec4ff9e5d16faa657106f"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-950f3162ce7b41cd8c8c75468394da61.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-950f3162ce7b41cd8c8c75468394da61.parquet",
+    "size": 1100,
+    "last_modified": "2026-11-20T12:02:30.655Z",
+    "etag": "8ca12ec8aa67be3ce87b6bc25b52306f"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-cb2cbfe9a3ca486aaa894e3ff154fb00.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-cb2cbfe9a3ca486aaa894e3ff154fb00.parquet",
+    "size": 1336,
+    "last_modified": "2026-11-20T11:56:55.841Z",
+    "etag": "89e10ab557ce3a75d8e68fdf13a8590b"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-d7d03aa22460434ca371931ca1a9a077.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-d7d03aa22460434ca371931ca1a9a077.parquet",
+    "size": 1076,
+    "last_modified": "2026-11-20T11:56:05.216Z",
+    "etag": "ca95cbae09536717a2486f70b8bb8af0"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-eaa58e861c894d48806d5bf891895d51.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-eaa58e861c894d48806d5bf891895d51.parquet",
+    "size": 1289,
+    "last_modified": "2026-11-20T11:56:15.327Z",
+    "etag": "0b6bd66c707c359501bd799c79c44545"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-eec2b4542fef4e01802dd3a410b1eb35.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-eec2b4542fef4e01802dd3a410b1eb35.parquet",
+    "size": 1360,
+    "last_modified": "2026-11-20T11:58:49.602Z",
+    "etag": "e7e6e8f8190c98f34e1ffc4a2fbcb972"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-eff514c60fd24019b66cedcfe3af1fdc.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/data/eq-delete-eff514c60fd24019b66cedcfe3af1fdc.parquet",
+    "size": 1304,
+    "last_modified": "2026-11-20T11:56:45.756Z",
+    "etag": "c208d4e781612a1b1fc241923cd89469"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00000-01a1f8d0-0489-73d4-8d8c-a6e0228e5736.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00000-01a1f8d0-0489-73d4-8d8c-a6e0228e5736.gz.metadata.json",
+    "size": 396,
+    "last_modified": "2026-11-20T11:55:44.679Z",
+    "etag": "e21d108ca59b62469b0228c1c4233e99"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00001-01a1f8d0-0605-7505-8f9e-f9156d46a08e.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00001-01a1f8d0-0605-7505-8f9e-f9156d46a08e.gz.metadata.json",
+    "size": 839,
+    "last_modified": "2026-11-20T11:55:45.032Z",
+    "etag": "f79feabeff99b046a7541eb0dfacd656"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00002-01a1f8d0-2d80-742d-be37-a921c5786d04.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00002-01a1f8d0-2d80-742d-be37-a921c5786d04.gz.metadata.json",
+    "size": 1023,
+    "last_modified": "2026-11-20T11:55:55.14Z",
+    "etag": "f353990306a0aa0bea7fa8fec450eefb"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00003-01a1f8d0-550e-73bd-bb1f-5c3f841f1b12.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00003-01a1f8d0-550e-73bd-bb1f-5c3f841f1b12.gz.metadata.json",
+    "size": 1183,
+    "last_modified": "2026-11-20T11:56:05.265Z",
+    "etag": "0b58f8d3a259ff3cb9d5836eb32d0b16"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00004-01a1f8d0-7ca3-7356-a681-48a879333aa8.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00004-01a1f8d0-7ca3-7356-a681-48a879333aa8.gz.metadata.json",
+    "size": 1335,
+    "last_modified": "2026-11-20T11:56:15.406Z",
+    "etag": "cb33b4c8138e423a5a47572dfe503027"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00005-01a1f8d0-a460-75ab-a603-68ff34fe8fdf.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00005-01a1f8d0-a460-75ab-a603-68ff34fe8fdf.gz.metadata.json",
+    "size": 1483,
+    "last_modified": "2026-11-20T11:56:25.572Z",
+    "etag": "a5db3d58b20d234e71d705b2b7972eec"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00006-01a1f8d0-cbef-70c0-b124-7147afb84db7.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00006-01a1f8d0-cbef-70c0-b124-7147afb84db7.gz.metadata.json",
+    "size": 1644,
+    "last_modified": "2026-11-20T11:56:35.697Z",
+    "etag": "dbf5d077a1dc7b1d974824bd523e5592"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00007-01a1f8d0-f363-733a-92b6-9250cc7edf6b.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00007-01a1f8d0-f363-733a-92b6-9250cc7edf6b.gz.metadata.json",
+    "size": 1786,
+    "last_modified": "2026-11-20T11:56:45.798Z",
+    "etag": "e4d59317f6975c343c3ac07cc95e99fd"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00008-01a1f8d1-1ad5-774d-be85-d9266ff9ae65.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00008-01a1f8d1-1ad5-774d-be85-d9266ff9ae65.gz.metadata.json",
+    "size": 1947,
+    "last_modified": "2026-11-20T11:56:55.897Z",
+    "etag": "22098be66a1c6604d779f381cc0fbc45"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00009-01a1f8d2-6006-7097-8e1a-c4b4e03cf487.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00009-01a1f8d2-6006-7097-8e1a-c4b4e03cf487.gz.metadata.json",
+    "size": 2094,
+    "last_modified": "2026-11-20T11:58:19.15Z",
+    "etag": "cc8293ed01e35d10a0c809f4d8d05ea5"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00010-01a1f8d2-6097-73e2-a9c6-eeb05470b68b.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00010-01a1f8d2-6097-73e2-a9c6-eeb05470b68b.gz.metadata.json",
+    "size": 2246,
+    "last_modified": "2026-11-20T11:58:19.289Z",
+    "etag": "7f778a508817aedc1e52cf0ce47345db"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00011-01a1f8d2-8845-7722-96fd-b2057c89cfed.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00011-01a1f8d2-8845-7722-96fd-b2057c89cfed.gz.metadata.json",
+    "size": 2412,
+    "last_modified": "2026-11-20T11:58:29.449Z",
+    "etag": "23f3671d4c5d3eda5740848bead8fbaa"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00012-01a1f8d2-afbf-709d-8778-b48ea25f67da.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00012-01a1f8d2-afbf-709d-8778-b48ea25f67da.gz.metadata.json",
+    "size": 2531,
+    "last_modified": "2026-11-20T11:58:39.561Z",
+    "etag": "1e28f7dd9ac6cd269292fe1426b7ff75"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00013-01a1f8d2-d75b-74b9-a1da-d832c81e4c1d.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00013-01a1f8d2-d75b-74b9-a1da-d832c81e4c1d.gz.metadata.json",
+    "size": 2683,
+    "last_modified": "2026-11-20T11:58:49.694Z",
+    "etag": "08a272b83b00a1255407d6148bbaa02f"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00014-01a1f8d2-fecb-7732-8227-de8bc8002d03.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00014-01a1f8d2-fecb-7732-8227-de8bc8002d03.gz.metadata.json",
+    "size": 2851,
+    "last_modified": "2026-11-20T11:58:59.79Z",
+    "etag": "7f528a959d9a7c131ada28ac9ae1b65d"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00015-01a1f8d5-707f-7421-a455-50701dd046c0.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00015-01a1f8d5-707f-7421-a455-50701dd046c0.gz.metadata.json",
+    "size": 2993,
+    "last_modified": "2026-11-20T12:01:39.973Z",
+    "etag": "539d8742ea4c3a6ed97dc6769b19a818"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00016-01a1f8d5-980a-7613-9023-2931d102b813.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00016-01a1f8d5-980a-7613-9023-2931d102b813.gz.metadata.json",
+    "size": 3155,
+    "last_modified": "2026-11-20T12:01:50.093Z",
+    "etag": "91ea3819e5717ce3d4e7cd64a99befaf"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00017-01a1f8d5-bf9a-7295-a696-d174b749d460.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00017-01a1f8d5-bf9a-7295-a696-d174b749d460.gz.metadata.json",
+    "size": 3305,
+    "last_modified": "2026-11-20T12:02:00.221Z",
+    "etag": "3db2a2031f519add645855d0795c3e7d"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00018-01a1f8d5-e752-7626-9d3a-26b98aa3de43.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00018-01a1f8d5-e752-7626-9d3a-26b98aa3de43.gz.metadata.json",
+    "size": 3447,
+    "last_modified": "2026-11-20T12:02:10.39Z",
+    "etag": "b0e57c1441027dcb0290e7b06f4fb6db"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00019-01a1f8d6-0ef6-730c-873b-a6b7a281715c.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00019-01a1f8d6-0ef6-730c-873b-a6b7a281715c.gz.metadata.json",
+    "size": 3609,
+    "last_modified": "2026-11-20T12:02:20.539Z",
+    "etag": "fb15d96b72657cad5f6141d72115b9ea"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00020-01a1f8d6-3725-74a7-9357-b890ce285a5f.gz.metadata.json",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/00020-01a1f8d6-3725-74a7-9357-b890ce285a5f.gz.metadata.json",
+    "size": 3750,
+    "last_modified": "2026-11-20T12:02:30.829Z",
+    "etag": "35043edcd1bf2e86a09673bf0ca8845a"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb-m0.avro",
+    "size": 3833,
+    "last_modified": "2026-11-20T11:55:45Z",
+    "etag": "0d6d0b8bd316986db8d51bc355577169"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8-m0.avro",
+    "size": 3833,
+    "last_modified": "2026-11-20T11:55:44.999Z",
+    "etag": "2f0ae04bfaa9ef3681bfd65fc74ba818"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-05e3-70a2-aa42-0da12ddda95e-m0.avro",
+    "size": 3832,
+    "last_modified": "2026-11-20T11:55:45.002Z",
+    "etag": "71fb1b6bdbf5250c134cee45ecb59cfd"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2-m0.avro",
+    "size": 3829,
+    "last_modified": "2026-11-20T11:55:55.108Z",
+    "etag": "e7170de99fe9b2f4465008a1e95bf722"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m0.avro",
+    "size": 3832,
+    "last_modified": "2026-11-20T11:56:05.233Z",
+    "etag": "d3be97f6634f2ae83bcc4485e13a7551"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-54ee-7563-a3cf-057ea4adb6e3-m1.avro",
+    "size": 3841,
+    "last_modified": "2026-11-20T11:56:05.238Z",
+    "etag": "0bc5c18478a98a58e04c5bce61dd7c64"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m0.avro",
+    "size": 3832,
+    "last_modified": "2026-11-20T11:56:15.358Z",
+    "etag": "07c3b3cee921a8de4048db91dadea3ed"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-7c77-7f02-827c-06ae9529545d-m1.avro",
+    "size": 3842,
+    "last_modified": "2026-11-20T11:56:15.365Z",
+    "etag": "0b032e436f35bf6971516b5d4e600d8a"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m0.avro",
+    "size": 3832,
+    "last_modified": "2026-11-20T11:56:25.528Z",
+    "etag": "3d42b8e7348c754fde19291cc0a5f8b6"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-a432-7991-9b52-a3edc2232513-m1.avro",
+    "size": 3842,
+    "last_modified": "2026-11-20T11:56:25.539Z",
+    "etag": "fa241db9a98d0bbf8b219e7ea4b136a3"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m0.avro",
+    "size": 3831,
+    "last_modified": "2026-11-20T11:56:35.666Z",
+    "etag": "38d98e08f124262f3c7c1d664f15606b"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-cbce-7042-87b7-f33f571fc8ce-m1.avro",
+    "size": 3841,
+    "last_modified": "2026-11-20T11:56:35.672Z",
+    "etag": "56d4eabcd236a27b9ba016428ee1ab5b"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m0.avro",
+    "size": 3832,
+    "last_modified": "2026-11-20T11:56:45.775Z",
+    "etag": "22ddedf33f567c19f8177f62fdb9dacc"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d0-f34b-7ec2-b06c-c208564c23f1-m1.avro",
+    "size": 3842,
+    "last_modified": "2026-11-20T11:56:45.78Z",
+    "etag": "9c163b6b3303347bf759093b86db5e8f"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m0.avro",
+    "size": 3832,
+    "last_modified": "2026-11-20T11:56:55.866Z",
+    "etag": "c98c1537b11e116f1542adb07091759b"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d1-1ab5-7241-b6ed-02eec04499ed-m1.avro",
+    "size": 3842,
+    "last_modified": "2026-11-20T11:56:55.874Z",
+    "etag": "ca6a60df0418f6c3678e12ea96249fdc"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m0.avro",
+    "size": 3831,
+    "last_modified": "2026-11-20T11:58:19.102Z",
+    "etag": "493a9447a56decebbf05d12a6ead9489"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-5fd8-7a82-9220-03434b4f4df2-m1.avro",
+    "size": 3841,
+    "last_modified": "2026-11-20T11:58:19.109Z",
+    "etag": "e5b5626f53ad584f21978ce07eb61abd"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m0.avro",
+    "size": 3833,
+    "last_modified": "2026-11-20T11:58:19.254Z",
+    "etag": "3cf2606270fba5ddcb40b58c18f76163"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-6073-7720-a331-5cb40ad1a988-m1.avro",
+    "size": 3842,
+    "last_modified": "2026-11-20T11:58:19.262Z",
+    "etag": "dc2b2d07ed8ab24c286bec3020bee1d1"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-8815-7370-a94e-349f67e75420-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-8815-7370-a94e-349f67e75420-m0.avro",
+    "size": 3832,
+    "last_modified": "2026-11-20T11:58:29.402Z",
+    "etag": "5beb84572d05020c0a6f2ed074fb2310"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-8815-7370-a94e-349f67e75420-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-8815-7370-a94e-349f67e75420-m1.avro",
+    "size": 3842,
+    "last_modified": "2026-11-20T11:58:29.41Z",
+    "etag": "514ecca2cf2766d9d542e29efc7257b9"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-af9f-7a03-aac3-fe4c1a6fee35-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-af9f-7a03-aac3-fe4c1a6fee35-m0.avro",
+    "size": 3832,
+    "last_modified": "2026-11-20T11:58:39.524Z",
+    "etag": "4ff649d053b8b95d891c6ae221355f6a"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-af9f-7a03-aac3-fe4c1a6fee35-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-af9f-7a03-aac3-fe4c1a6fee35-m1.avro",
+    "size": 3842,
+    "last_modified": "2026-11-20T11:58:39.529Z",
+    "etag": "77fbfbd8c94fc01cfac4f3edb2b93b1e"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-d725-7bf3-81cb-26c98c57e464-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-d725-7bf3-81cb-26c98c57e464-m0.avro",
+    "size": 3832,
+    "last_modified": "2026-11-20T11:58:49.64Z",
+    "etag": "078e6b902d5baccbbffca884ca2eeeb3"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-d725-7bf3-81cb-26c98c57e464-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-d725-7bf3-81cb-26c98c57e464-m1.avro",
+    "size": 3842,
+    "last_modified": "2026-11-20T11:58:49.652Z",
+    "etag": "1efe7558b90f5fce286377ae36a3b754"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-feaa-7781-919c-ae6bfc70862b-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-feaa-7781-919c-ae6bfc70862b-m0.avro",
+    "size": 3832,
+    "last_modified": "2026-11-20T11:58:59.758Z",
+    "etag": "da763ac363e10c08a56dcfa9f8860f46"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-feaa-7781-919c-ae6bfc70862b-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d2-feaa-7781-919c-ae6bfc70862b-m1.avro",
+    "size": 3841,
+    "last_modified": "2026-11-20T11:58:59.765Z",
+    "etag": "5b038bf3a39b92d79930f84307606346"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-7056-7a01-bfdd-7822b26b7091-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-7056-7a01-bfdd-7822b26b7091-m0.avro",
+    "size": 3830,
+    "last_modified": "2026-11-20T12:01:39.938Z",
+    "etag": "5a166a07c68f095153da106ad139a18e"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-7056-7a01-bfdd-7822b26b7091-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-7056-7a01-bfdd-7822b26b7091-m1.avro",
+    "size": 3840,
+    "last_modified": "2026-11-20T12:01:39.946Z",
+    "etag": "5f7662b5dd4216dad79b2c9331cb0469"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-97e4-7e03-af40-72fa991a75be-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-97e4-7e03-af40-72fa991a75be-m0.avro",
+    "size": 3832,
+    "last_modified": "2026-11-20T12:01:50.058Z",
+    "etag": "01d99f531cc7424ef6841308100ec307"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-97e4-7e03-af40-72fa991a75be-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-97e4-7e03-af40-72fa991a75be-m1.avro",
+    "size": 3842,
+    "last_modified": "2026-11-20T12:01:50.064Z",
+    "etag": "ba60f3b599e4b9d0f4159c327715f172"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-bf74-7150-8743-e67dcf11d785-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-bf74-7150-8743-e67dcf11d785-m0.avro",
+    "size": 3831,
+    "last_modified": "2026-11-20T12:02:00.187Z",
+    "etag": "914f3247860cc4db1f7452cd9372f3d5"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-bf74-7150-8743-e67dcf11d785-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-bf74-7150-8743-e67dcf11d785-m1.avro",
+    "size": 3841,
+    "last_modified": "2026-11-20T12:02:00.195Z",
+    "etag": "2da312e8a9b0672332d7942cc84bb686"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-e72e-78c3-8957-d141ded72b04-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-e72e-78c3-8957-d141ded72b04-m0.avro",
+    "size": 3832,
+    "last_modified": "2026-11-20T12:02:10.357Z",
+    "etag": "14395c0f759a0923e8e70dc5eb59c17a"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-e72e-78c3-8957-d141ded72b04-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d5-e72e-78c3-8957-d141ded72b04-m1.avro",
+    "size": 3842,
+    "last_modified": "2026-11-20T12:02:10.366Z",
+    "etag": "1cffeac9ce6727f94ae3ef9edab88159"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d6-0ec6-7e22-bb9e-fc0784fc1c22-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d6-0ec6-7e22-bb9e-fc0784fc1c22-m0.avro",
+    "size": 3831,
+    "last_modified": "2026-11-20T12:02:20.493Z",
+    "etag": "a97eb2cc0350ee176344d7013cb6ad31"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d6-0ec6-7e22-bb9e-fc0784fc1c22-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d6-0ec6-7e22-bb9e-fc0784fc1c22-m1.avro",
+    "size": 3841,
+    "last_modified": "2026-11-20T12:02:20.502Z",
+    "etag": "9d1baaa7b6872e84cfe982782441a575"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d6-36b1-7911-8c24-550f1fa37eea-m0.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d6-36b1-7911-8c24-550f1fa37eea-m0.avro",
+    "size": 3832,
+    "last_modified": "2026-11-20T12:02:30.711Z",
+    "etag": "e31c576470a1aa103056fd979f690211"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d6-36b1-7911-8c24-550f1fa37eea-m1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/01a1f8d6-36b1-7911-8c24-550f1fa37eea-m1.avro",
+    "size": 3841,
+    "last_modified": "2026-11-20T12:02:30.761Z",
+    "etag": "887bbca6f7db0271a62b4c87f9cc7499"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-1490720213233758676-0-01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-1490720213233758676-0-01a1f8d0-05e3-70a2-aa42-0d99c9ea14c8.avro",
+    "size": 1772,
+    "last_modified": "2026-11-20T11:55:45.007Z",
+    "etag": "7b293dc24161d604e43c72fd7f39aca0"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-1895277456749654872-0-01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-1895277456749654872-0-01a1f8d0-05dd-7643-bb23-b9d53a4f6ddb.avro",
+    "size": 1617,
+    "last_modified": "2026-11-20T11:55:45.007Z",
+    "etag": "5f4fdee9c94a2bba2e4a088a861b2343"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-2057238665877012324-0-01a1f8d5-bf74-7150-8743-e67dcf11d785.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-2057238665877012324-0-01a1f8d5-bf74-7150-8743-e67dcf11d785.avro",
+    "size": 6239,
+    "last_modified": "2026-11-20T12:02:00.2Z",
+    "etag": "81d89d66ae02783bca1bb47637c205d1"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-2285633047193896826-0-01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-2285633047193896826-0-01a1f8d0-2d5f-72e1-b6a2-48e9816db8b2.avro",
+    "size": 2050,
+    "last_modified": "2026-11-20T11:55:55.115Z",
+    "etag": "5418a118fea6734d73e8edcd5dfb7c79"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-3131624557416920984-0-01a1f8d5-7056-7a01-bfdd-7822b26b7091.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-3131624557416920984-0-01a1f8d5-7056-7a01-bfdd-7822b26b7091.avro",
+    "size": 5681,
+    "last_modified": "2026-11-20T12:01:39.952Z",
+    "etag": "3a1a22b9de0eb76c11e173591ab81d3c"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-3442790642684608392-0-01a1f8d6-0ec6-7e22-bb9e-fc0784fc1c22.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-3442790642684608392-0-01a1f8d6-0ec6-7e22-bb9e-fc0784fc1c22.avro",
+    "size": 6797,
+    "last_modified": "2026-11-20T12:02:20.511Z",
+    "etag": "158df8ab80a4c86ef789636246f31af7"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-4594634485966814454-0-01a1f8d0-cbce-7042-87b7-f33f571fc8ce.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-4594634485966814454-0-01a1f8d0-cbce-7042-87b7-f33f571fc8ce.avro",
+    "size": 3167,
+    "last_modified": "2026-11-20T11:56:35.677Z",
+    "etag": "370e8ad062e16e053eaaa68421d0551c"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-5054641179469194713-0-01a1f8d0-f34b-7ec2-b06c-c208564c23f1.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-5054641179469194713-0-01a1f8d0-f34b-7ec2-b06c-c208564c23f1.avro",
+    "size": 3447,
+    "last_modified": "2026-11-20T11:56:45.784Z",
+    "etag": "0ec77627f31738323ac468df28868940"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-5693626852845823612-0-01a1f8d6-36b1-7911-8c24-550f1fa37eea.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-5693626852845823612-0-01a1f8d6-36b1-7911-8c24-550f1fa37eea.avro",
+    "size": 7076,
+    "last_modified": "2026-11-20T12:02:30.783Z",
+    "etag": "474dfbbf0dc13ec64aaf1cf7dbb85964"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-5765541178597986317-0-01a1f8d2-6073-7720-a331-5cb40ad1a988.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-5765541178597986317-0-01a1f8d2-6073-7720-a331-5cb40ad1a988.avro",
+    "size": 4285,
+    "last_modified": "2026-11-20T11:58:19.271Z",
+    "etag": "fa98cf0684972ac21cf0aac05d749822"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-6770050103393138445-0-01a1f8d0-05e3-70a2-aa42-0da12ddda95e.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-6770050103393138445-0-01a1f8d0-05e3-70a2-aa42-0da12ddda95e.avro",
+    "size": 1912,
+    "last_modified": "2026-11-20T11:55:45.007Z",
+    "etag": "dfda45baf4bf9b481a5634950f1c982a"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7011018000075816914-0-01a1f8d2-feaa-7781-919c-ae6bfc70862b.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7011018000075816914-0-01a1f8d2-feaa-7781-919c-ae6bfc70862b.avro",
+    "size": 5405,
+    "last_modified": "2026-11-20T11:58:59.771Z",
+    "etag": "17526bcf188418e63ce15f4559f94f31"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7052196278962171124-0-01a1f8d2-d725-7bf3-81cb-26c98c57e464.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7052196278962171124-0-01a1f8d2-d725-7bf3-81cb-26c98c57e464.avro",
+    "size": 5126,
+    "last_modified": "2026-11-20T11:58:49.661Z",
+    "etag": "20a293cb9a42d8af6d1f092e6c34fef3"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7780085774613373443-0-01a1f8d2-8815-7370-a94e-349f67e75420.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7780085774613373443-0-01a1f8d2-8815-7370-a94e-349f67e75420.avro",
+    "size": 4566,
+    "last_modified": "2026-11-20T11:58:29.418Z",
+    "etag": "38e9147fd826f1cb9623b929a7b85427"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7791773014635647344-0-01a1f8d5-e72e-78c3-8957-d141ded72b04.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7791773014635647344-0-01a1f8d5-e72e-78c3-8957-d141ded72b04.avro",
+    "size": 6519,
+    "last_modified": "2026-11-20T12:02:10.372Z",
+    "etag": "ede4dbb5fb40f2c0eb7d2a8325c041de"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7905923164678480383-0-01a1f8d0-a432-7991-9b52-a3edc2232513.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-7905923164678480383-0-01a1f8d0-a432-7991-9b52-a3edc2232513.avro",
+    "size": 2889,
+    "last_modified": "2026-11-20T11:56:25.548Z",
+    "etag": "6213b0bb53c71d324b9648a48805d04a"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-8019672291667929726-0-01a1f8d0-7c77-7f02-827c-06ae9529545d.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-8019672291667929726-0-01a1f8d0-7c77-7f02-827c-06ae9529545d.avro",
+    "size": 2609,
+    "last_modified": "2026-11-20T11:56:15.372Z",
+    "etag": "376892746f4767a17c6fb8b9176deb97"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-8360846756828656611-0-01a1f8d0-54ee-7563-a3cf-057ea4adb6e3.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-8360846756828656611-0-01a1f8d0-54ee-7563-a3cf-057ea4adb6e3.avro",
+    "size": 2329,
+    "last_modified": "2026-11-20T11:56:05.243Z",
+    "etag": "f408c5faa7cdb95a788ea9c49805e853"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-8361944929704196721-0-01a1f8d5-97e4-7e03-af40-72fa991a75be.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-8361944929704196721-0-01a1f8d5-97e4-7e03-af40-72fa991a75be.avro",
+    "size": 5961,
+    "last_modified": "2026-11-20T12:01:50.07Z",
+    "etag": "1f51bcea071056de11ee911aef572884"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-8680207201428873414-0-01a1f8d2-af9f-7a03-aac3-fe4c1a6fee35.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-8680207201428873414-0-01a1f8d2-af9f-7a03-aac3-fe4c1a6fee35.avro",
+    "size": 4846,
+    "last_modified": "2026-11-20T11:58:39.533Z",
+    "etag": "4e4c25566ec18c0ed36d99991226b0fc"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-888354165254086707-0-01a1f8d2-5fd8-7a82-9220-03434b4f4df2.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-888354165254086707-0-01a1f8d2-5fd8-7a82-9220-03434b4f4df2.avro",
+    "size": 4005,
+    "last_modified": "2026-11-20T11:58:19.117Z",
+    "etag": "2dabe4a503b537e89e54c5ba236d65d2"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-9119584028560589027-0-01a1f8d1-1ab5-7241-b6ed-02eec04499ed.avro",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/metadata/snap-9119584028560589027-0-01a1f8d1-1ab5-7241-b6ed-02eec04499ed.avro",
+    "size": 3728,
+    "last_modified": "2026-11-20T11:56:55.88Z",
+    "etag": "932ed1ab62eacce8b97172f1d030bfa6"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/027ca4d9235f454fa8b87dd0741121ae.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/027ca4d9235f454fa8b87dd0741121ae.parquet",
+    "size": 30388,
+    "last_modified": "2026-11-20T11:56:21.108Z",
+    "etag": "5393df7d164c6e8677e06b0872cc9560"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/07b4c6029b714081b5d43437b0914e55.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/07b4c6029b714081b5d43437b0914e55.parquet",
+    "size": 92788,
+    "last_modified": "2026-11-20T11:56:29.115Z",
+    "etag": "ae26aee78d6aa1260ec6e13e4246a6de"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/09f506720c4d404e8ff4ebef60974e01.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/09f506720c4d404e8ff4ebef60974e01.parquet",
+    "size": 43122,
+    "last_modified": "2026-11-20T11:58:49.008Z",
+    "etag": "104e21ebca17fbfabfe840cf2aa89184"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/0ba2b8fd75ec47169bfe6413857bc925.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/0ba2b8fd75ec47169bfe6413857bc925.parquet",
+    "size": 42948,
+    "last_modified": "2026-11-20T11:58:20.989Z",
+    "etag": "a880c8610d3b053a0e2ce8223eac24ca"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/0d63e33ebefa4f0987fbc484a21bc7cb.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/0d63e33ebefa4f0987fbc484a21bc7cb.parquet",
+    "size": 92639,
+    "last_modified": "2026-11-20T11:57:09.143Z",
+    "etag": "16eaea71250a46b94e02a596d90b782a"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/0e9eb50a6fd14e2bb0c0d8db76cb1c08.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/0e9eb50a6fd14e2bb0c0d8db76cb1c08.parquet",
+    "size": 3949,
+    "last_modified": "2026-11-20T11:55:47.08Z",
+    "etag": "7f1f0c8515ab75100875bdd4e43784c6"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/108adc4d6e614acc938be0b0a49a0d31.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/108adc4d6e614acc938be0b0a49a0d31.parquet",
+    "size": 92307,
+    "last_modified": "2026-11-20T11:56:27.113Z",
+    "etag": "d938a1a28e68aa7a5db8c2691d633da1"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/11ce866927fe4dfe900bb777c2546497.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/11ce866927fe4dfe900bb777c2546497.parquet",
+    "size": 67597,
+    "last_modified": "2026-11-20T11:58:38.999Z",
+    "etag": "06656da6174a18c9423ec32de1696914"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/149516fa9bfe489187ec2269df5ce902.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/149516fa9bfe489187ec2269df5ce902.parquet",
+    "size": 42756,
+    "last_modified": "2026-11-20T11:56:13.1Z",
+    "etag": "b1ece0f6652d3865c640cf77fde59e00"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/14dd4956a0c1415fb2bbf08f654b698e.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/14dd4956a0c1415fb2bbf08f654b698e.parquet",
+    "size": 5602,
+    "last_modified": "2026-11-20T11:58:45.004Z",
+    "etag": "57cc6d5d9e9d6f3333120c7ef3befcad"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/16971ae2e2bb4cba947c2b72aa27da07.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/16971ae2e2bb4cba947c2b72aa27da07.parquet",
+    "size": 92661,
+    "last_modified": "2026-11-20T11:58:34.999Z",
+    "etag": "0c3df0b03094f5b4484ae46a07917319"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/1788b8e940704424b2204bc3bfc28e88.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/1788b8e940704424b2204bc3bfc28e88.parquet",
+    "size": 104831,
+    "last_modified": "2026-11-20T11:56:39.121Z",
+    "etag": "e0f43fd97f9f59cd6fd71e2e692c28fb"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/18b5e665ab7b43538694fd345d804e5f.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/18b5e665ab7b43538694fd345d804e5f.parquet",
+    "size": 55449,
+    "last_modified": "2026-11-20T12:02:21.286Z",
+    "etag": "a7e54fdbd93ae91c77886c2767010350"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/19fe3c25ace64897b060a3be333701c1.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/19fe3c25ace64897b060a3be333701c1.parquet",
+    "size": 30610,
+    "last_modified": "2026-11-20T12:02:09.252Z",
+    "etag": "0dfcf1eaafb28c312c165d4f8af59c5f"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/1b9fcfd609c64fb1b883911ba5be651e.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/1b9fcfd609c64fb1b883911ba5be651e.parquet",
+    "size": 30678,
+    "last_modified": "2026-11-20T11:58:26.993Z",
+    "etag": "6c86720704b93ffacf744799a628acf6"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/25675754f76744948129e6b982bed080.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/25675754f76744948129e6b982bed080.parquet",
+    "size": 30436,
+    "last_modified": "2026-11-20T11:56:53.132Z",
+    "etag": "56e17f6f5a96a9f720b9cb7770f42c0f"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/263ddc74c439420d84ee47434905b9d8.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/263ddc74c439420d84ee47434905b9d8.parquet",
+    "size": 42703,
+    "last_modified": "2026-11-20T11:58:41Z",
+    "etag": "674150f4ec4d74f777be93cff3a5b527"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/276da446a03340f7b20925c3943632f6.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/276da446a03340f7b20925c3943632f6.parquet",
+    "size": 80562,
+    "last_modified": "2026-11-20T12:01:41.224Z",
+    "etag": "8c61197b2506a3af6c3b8b198211b3a3"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/2edb424262c94305b6e39133f03cee55.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/2edb424262c94305b6e39133f03cee55.parquet",
+    "size": 17848,
+    "last_modified": "2026-11-20T11:58:36.998Z",
+    "etag": "594cbeda67736a1d8b4d7fe89fd5774a"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/32fc7c8bd8b147efae3bf79fe51f456f.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/32fc7c8bd8b147efae3bf79fe51f456f.parquet",
+    "size": 30992,
+    "last_modified": "2026-11-20T12:01:51.232Z",
+    "etag": "d889d67d58e7e61365fef59ddbabceb9"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/396083f14bd34b56a611012b39c07878.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/396083f14bd34b56a611012b39c07878.parquet",
+    "size": 31054,
+    "last_modified": "2026-11-20T12:02:23.29Z",
+    "etag": "9234bd259a9ef2a97ce96e19b89d0893"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/3cbaa2fef6fd46829919d17295c286fa.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/3cbaa2fef6fd46829919d17295c286fa.parquet",
+    "size": 92652,
+    "last_modified": "2026-11-20T11:58:53.01Z",
+    "etag": "b740df00e6ca74f3f91932e50bab67dd"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/3ce388d7b24e49edb76d4414ac384630.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/3ce388d7b24e49edb76d4414ac384630.parquet",
+    "size": 42882,
+    "last_modified": "2026-11-20T11:56:19.109Z",
+    "etag": "e03e87c0b5765b1ef2ec8cbaafec8c99"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/46c11ed855804fd88254ac45f664c58d.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/46c11ed855804fd88254ac45f664c58d.parquet",
+    "size": 80195,
+    "last_modified": "2026-11-20T12:02:19.288Z",
+    "etag": "3c7ec715e9032b21208b1d8f7e562183"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/499ab15d179c4ad5a8e6a19c41a4f5cd.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/499ab15d179c4ad5a8e6a19c41a4f5cd.parquet",
+    "size": 43178,
+    "last_modified": "2026-11-20T11:58:43.006Z",
+    "etag": "df2e8fa2bf719775533dba232e9c5f6b"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/4a5492664e4c40e4a95547bd5b88e902.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/4a5492664e4c40e4a95547bd5b88e902.parquet",
+    "size": 42803,
+    "last_modified": "2026-11-20T11:58:28.995Z",
+    "etag": "382fe357e2369eebd9f234b54be0ae38"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/4f96f39fface4a91ac172b037f58fc17.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/4f96f39fface4a91ac172b037f58fc17.parquet",
+    "size": 55760,
+    "last_modified": "2026-11-20T12:01:57.242Z",
+    "etag": "7c7cf964377126df63195a4378846800"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/50f7c82573a84422a1f64ae3db51b13e.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/50f7c82573a84422a1f64ae3db51b13e.parquet",
+    "size": 67754,
+    "last_modified": "2026-11-20T11:58:12.983Z",
+    "etag": "cf9bbe114d2fc245ea53e8ccf42c0952"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/5224c9bb32d646b0a94034e5894ddc21.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/5224c9bb32d646b0a94034e5894ddc21.parquet",
+    "size": 80350,
+    "last_modified": "2026-11-20T11:56:25.113Z",
+    "etag": "c7f025a118c9156eb80825d9a908f267"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/54192b3e3aa2483499a87adaa422722e.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/54192b3e3aa2483499a87adaa422722e.parquet",
+    "size": 80405,
+    "last_modified": "2026-11-20T11:56:35.117Z",
+    "etag": "c439506890d4fdb426df26f91aba86df"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/5593b71ab50b4ae0a38c8f6bd3fc180a.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/5593b71ab50b4ae0a38c8f6bd3fc180a.parquet",
+    "size": 42593,
+    "last_modified": "2026-11-20T11:57:01.139Z",
+    "etag": "7988e1dde835e23a897e5d8831373fdf"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/57e502d7928240ac8cdfb63d47d527ce.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/57e502d7928240ac8cdfb63d47d527ce.parquet",
+    "size": 43132,
+    "last_modified": "2026-11-20T11:56:01.09Z",
+    "etag": "4fcaf8ab0fd9facecfc92e982006ed74"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/5bcdb14c3bd94f428045f83e1500897f.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/5bcdb14c3bd94f428045f83e1500897f.parquet",
+    "size": 93542,
+    "last_modified": "2026-11-20T12:02:07.253Z",
+    "etag": "37bd1d3de0ead9cac3f35e0c0f3f8002"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/5cff2f4f0b464b5d8c441b9c49757a01.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/5cff2f4f0b464b5d8c441b9c49757a01.parquet",
+    "size": 104913,
+    "last_modified": "2026-11-20T11:57:07.144Z",
+    "etag": "dcf268171ddbb698bfa274736a04c1a3"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/5dc1ad235fd5466f83c96110ab5d4aab.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/5dc1ad235fd5466f83c96110ab5d4aab.parquet",
+    "size": 30470,
+    "last_modified": "2026-11-20T11:56:37.119Z",
+    "etag": "a687709cfda3c1bbb78b682af9210f5c"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/5fef69aa5fa44c5e98c94f256b029398.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/5fef69aa5fa44c5e98c94f256b029398.parquet",
+    "size": 42760,
+    "last_modified": "2026-11-20T11:58:31.001Z",
+    "etag": "9283fd1b694b79f6be591f570bcc02f9"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/60f0fe20b9ba48ad9719f407abe443ad.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/60f0fe20b9ba48ad9719f407abe443ad.parquet",
+    "size": 30280,
+    "last_modified": "2026-11-20T11:58:14.985Z",
+    "etag": "b62d01a2a6832bd4c5700d6834b21c06"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/61d8c2a900214581892e1e1b7d3305ea.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/61d8c2a900214581892e1e1b7d3305ea.parquet",
+    "size": 55774,
+    "last_modified": "2026-11-20T12:01:47.228Z",
+    "etag": "18152ab7755eb8be34a33022d070de55"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/62fccd7616474fc88c07d2d63883463f.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/62fccd7616474fc88c07d2d63883463f.parquet",
+    "size": 29792,
+    "last_modified": "2026-11-20T12:02:27.296Z",
+    "etag": "b716802c615893c28b7db58baf42ebe7"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/69a3595f58134b16bf25de4678d5b9d3.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/69a3595f58134b16bf25de4678d5b9d3.parquet",
+    "size": 42759,
+    "last_modified": "2026-11-20T11:56:23.111Z",
+    "etag": "6733b247d19e69fe4d894ab60329724b"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/6ff54ebeb0de4adfb59b6db3594f8271.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/6ff54ebeb0de4adfb59b6db3594f8271.parquet",
+    "size": 67583,
+    "last_modified": "2026-11-20T11:56:03.093Z",
+    "etag": "5e8837a0f3e28430cc4551bd1826c175"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/7477dc0bd369454a9df509fe7562d523.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/7477dc0bd369454a9df509fe7562d523.parquet",
+    "size": 92181,
+    "last_modified": "2026-11-20T11:56:07.097Z",
+    "etag": "a545ae008be86146a95e18d04304d2d5"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/778ba74215664863941f2374ea61ef9e.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/778ba74215664863941f2374ea61ef9e.parquet",
+    "size": 55453,
+    "last_modified": "2026-11-20T11:56:17.105Z",
+    "etag": "feeecf523b27d1748fc8265be212ea88"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/78d1f3433cb248f2a7cb1aabb41c162c.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/78d1f3433cb248f2a7cb1aabb41c162c.parquet",
+    "size": 42937,
+    "last_modified": "2026-11-20T11:56:45.125Z",
+    "etag": "2d7b9e41838057a0eb55c2de75a3b2c3"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/79fc20a9d00341bf9400dbc5b7ce5792.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/79fc20a9d00341bf9400dbc5b7ce5792.parquet",
+    "size": 68611,
+    "last_modified": "2026-11-20T12:02:05.248Z",
+    "etag": "a7d76cf73d9487f5b93fde3d9a349b44"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/7ed42d69c1bc49a2a9137216f72c6df6.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/7ed42d69c1bc49a2a9137216f72c6df6.parquet",
+    "size": 43446,
+    "last_modified": "2026-11-20T12:01:53.235Z",
+    "etag": "0332c115a28627242b31dbb916f30e4e"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/7ff8aed4cc794f789a1589c14c266a3f.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/7ff8aed4cc794f789a1589c14c266a3f.parquet",
+    "size": 67797,
+    "last_modified": "2026-11-20T11:57:11.145Z",
+    "etag": "bae837ad0fb8272ba53648a599a8a3a2"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/873feede9e14474886dbdfd1a8addb01.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/873feede9e14474886dbdfd1a8addb01.parquet",
+    "size": 30309,
+    "last_modified": "2026-11-20T11:56:57.134Z",
+    "etag": "434eff3d6ad824c76bcb319b0915b427"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/897cc84b44814b62a6542ca64b2bbaef.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/897cc84b44814b62a6542ca64b2bbaef.parquet",
+    "size": 55421,
+    "last_modified": "2026-11-20T11:58:47.005Z",
+    "etag": "c535ef84a7e5469403a72137ac06f313"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/89a6373153db4c2187ee4f354591c46b.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/89a6373153db4c2187ee4f354591c46b.parquet",
+    "size": 43589,
+    "last_modified": "2026-11-20T12:02:01.247Z",
+    "etag": "09876bc38d38fb456cfce4332cea599e"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/8aab5f7da45b4457b44999a85ec848c5.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/8aab5f7da45b4457b44999a85ec848c5.parquet",
+    "size": 18156,
+    "last_modified": "2026-11-20T11:56:59.136Z",
+    "etag": "6bc258000b7d1171eda554abe4f4b334"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/8cd93c94642c497493d905b1acd153bd.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/8cd93c94642c497493d905b1acd153bd.parquet",
+    "size": 30832,
+    "last_modified": "2026-11-20T12:01:45.225Z",
+    "etag": "0fc034e58a3f8e6f8a5b7c7ac5f32681"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/983ab58f54694a7e921d9a18487288c0.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/983ab58f54694a7e921d9a18487288c0.parquet",
+    "size": 3366,
+    "last_modified": "2026-11-20T11:58:59.014Z",
+    "etag": "c3f891ef8659077b5920fea655430837"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/9cbea78ff15540fcaa47e0ca338b8195.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/9cbea78ff15540fcaa47e0ca338b8195.parquet",
+    "size": 80015,
+    "last_modified": "2026-11-20T11:56:43.124Z",
+    "etag": "ddfc43b55abeadef766a5ca32943d6e4"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/a0a51b8169dd4a5f8d4799375c5c70f5.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/a0a51b8169dd4a5f8d4799375c5c70f5.parquet",
+    "size": 18349,
+    "last_modified": "2026-11-20T11:58:24.993Z",
+    "etag": "872e95814b97c08dbd0c413a65782623"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/a5d532ed3a3840339fc4b6852f364c05.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/a5d532ed3a3840339fc4b6852f364c05.parquet",
+    "size": 142179,
+    "last_modified": "2026-11-20T12:02:15.292Z",
+    "etag": "a9b916dc62692613c83cfcf701123618"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/a821ec60ae07406393937f73d400e6b8.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/a821ec60ae07406393937f73d400e6b8.parquet",
+    "size": 80370,
+    "last_modified": "2026-11-20T11:56:09.098Z",
+    "etag": "f29fc3c75c1ce1bba22b1ff49a8d0465"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/a8d4f9f44dc44c6ca01fa9a9d828e26b.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/a8d4f9f44dc44c6ca01fa9a9d828e26b.parquet",
+    "size": 30393,
+    "last_modified": "2026-11-20T11:56:41.122Z",
+    "etag": "0cf7837f32c796668db36cb0e1ef28b7"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/aa8ddef0ba3c4418adbcd914ef4e228f.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/aa8ddef0ba3c4418adbcd914ef4e228f.parquet",
+    "size": 80433,
+    "last_modified": "2026-11-20T11:58:16.987Z",
+    "etag": "70330970052869519601c542536f1a8a"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/aa9c1ce1774d4340997d4e8163f07d7e.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/aa9c1ce1774d4340997d4e8163f07d7e.parquet",
+    "size": 43747,
+    "last_modified": "2026-11-20T11:58:32.998Z",
+    "etag": "6123ca9c7f91475c762a1c22f3fd2ec1"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/acceecb4c5b548978813665a44a0b3e7.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/acceecb4c5b548978813665a44a0b3e7.parquet",
+    "size": 92218,
+    "last_modified": "2026-11-20T11:57:05.142Z",
+    "etag": "387d9d7f7135c8ad416ae4b325f7d607"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/af68b6d2b57549d98862dbffb1edcc8b.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/af68b6d2b57549d98862dbffb1edcc8b.parquet",
+    "size": 55664,
+    "last_modified": "2026-11-20T12:02:25.288Z",
+    "etag": "6e4032d44847ce372377118105fe7c13"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/b0dd62dc1866457e97a2bd946a774e06.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/b0dd62dc1866457e97a2bd946a774e06.parquet",
+    "size": 1260168,
+    "last_modified": "2026-11-20T11:58:10.998Z",
+    "etag": "7d07f6dfea60fc95a280acacfa5a666c"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/b526176593e345f5bb9540727b6f7ed4.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/b526176593e345f5bb9540727b6f7ed4.parquet",
+    "size": 30891,
+    "last_modified": "2026-11-20T12:02:11.259Z",
+    "etag": "298d6330d57b5c4a599d7cd4354cd3c6"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/b5e3301f4a874266a6254fa561535eae.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/b5e3301f4a874266a6254fa561535eae.parquet",
+    "size": 80247,
+    "last_modified": "2026-11-20T12:01:49.233Z",
+    "etag": "92e0dc4690d34755dbcde7cae6d0a198"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/bd43354a8b3047e88ba5132a586ff2a9.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/bd43354a8b3047e88ba5132a586ff2a9.parquet",
+    "size": 43382,
+    "last_modified": "2026-11-20T12:02:03.246Z",
+    "etag": "8aa16d8507d8dfd8d8465de758769ac4"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/c0137a5994e84556a2f2b275bd477b73.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/c0137a5994e84556a2f2b275bd477b73.parquet",
+    "size": 18154,
+    "last_modified": "2026-11-20T11:56:15.104Z",
+    "etag": "47766fb4114f1850cc8987c2dcce993e"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/c3453359c1fd41799973ff82e8681b72.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/c3453359c1fd41799973ff82e8681b72.parquet",
+    "size": 18632,
+    "last_modified": "2026-11-20T12:01:59.244Z",
+    "etag": "995f188dee40319ffe8489b3226049ab"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/c7464d6cd932431e8b991d00f8452970.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/c7464d6cd932431e8b991d00f8452970.parquet",
+    "size": 55945,
+    "last_modified": "2026-11-20T12:01:55.243Z",
+    "etag": "f376f81a8dae742f413ec477f4275505"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/c78431bad757463798fff04471eea640.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/c78431bad757463798fff04471eea640.parquet",
+    "size": 42850,
+    "last_modified": "2026-11-20T11:56:47.127Z",
+    "etag": "1dbd1f4ad598daaeb7e68b33a1612c88"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/c8bb3244e69d4032ab5ef2172f45b77e.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/c8bb3244e69d4032ab5ef2172f45b77e.parquet",
+    "size": 105309,
+    "last_modified": "2026-11-20T12:01:43.229Z",
+    "etag": "92dcc28538013afee7b07645d35eff2f"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/ceb34c104d7c4bd1b10d4ce697a05bd1.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/ceb34c104d7c4bd1b10d4ce697a05bd1.parquet",
+    "size": 18040,
+    "last_modified": "2026-11-20T11:56:51.13Z",
+    "etag": "ba545ecbe038bb7d8e78f6a6db8935da"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/d1f998eee93e41b58ea24fa3901873b1.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/d1f998eee93e41b58ea24fa3901873b1.parquet",
+    "size": 55464,
+    "last_modified": "2026-11-20T11:58:55.012Z",
+    "etag": "103380cdff25943099d6fb7ea03e9078"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/d4413c7cf3eb4174aff5a8dcf33979e1.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/d4413c7cf3eb4174aff5a8dcf33979e1.parquet",
+    "size": 67541,
+    "last_modified": "2026-11-20T11:55:59.09Z",
+    "etag": "2958930679e4a283081e233e18dc84f4"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/d54a184deef6490393dd2cc97359c3e3.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/d54a184deef6490393dd2cc97359c3e3.parquet",
+    "size": 30393,
+    "last_modified": "2026-11-20T11:58:22.991Z",
+    "etag": "179b39df9c8ec6786b1324d43a48f5a3"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/d6c9d918a4494ed3a2989c12f7c49d31.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/d6c9d918a4494ed3a2989c12f7c49d31.parquet",
+    "size": 92417,
+    "last_modified": "2026-11-20T11:56:33.118Z",
+    "etag": "8e207259ebe75c26723cea3a3475048f"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/e0faf67ec4ee45aaa0e8b5a3de25ec9f.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/e0faf67ec4ee45aaa0e8b5a3de25ec9f.parquet",
+    "size": 42810,
+    "last_modified": "2026-11-20T11:58:57.013Z",
+    "etag": "867632afc036c73b4bcf53ae141430db"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/e108eb11055b4c138c122d9b7150518d.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/e108eb11055b4c138c122d9b7150518d.parquet",
+    "size": 55642,
+    "last_modified": "2026-11-20T11:56:31.118Z",
+    "etag": "8cc875b4742f392118ba3bf741ff071d"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/e299f5de0d7e40a48cf13c26d60dde6f.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/e299f5de0d7e40a48cf13c26d60dde6f.parquet",
+    "size": 18677,
+    "last_modified": "2026-11-20T12:02:13.259Z",
+    "etag": "da6e49d3948f62a24ce900878d83ebdf"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/e55f81e7a8c0471c9a7df135c354f5cd.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/e55f81e7a8c0471c9a7df135c354f5cd.parquet",
+    "size": 31062,
+    "last_modified": "2026-11-20T12:01:39.234Z",
+    "etag": "b827335c2cea857bcfd8046ab467ca19"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/e8dd6b9c845d4aaba34be64594ba51b5.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/e8dd6b9c845d4aaba34be64594ba51b5.parquet",
+    "size": 92882,
+    "last_modified": "2026-11-20T11:58:51.007Z",
+    "etag": "a04dbceb46531de5693ba5b829a1ae68"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/eab57675fb46412595161e39c9f8ec98.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/eab57675fb46412595161e39c9f8ec98.parquet",
+    "size": 6202,
+    "last_modified": "2026-11-20T12:02:17.266Z",
+    "etag": "0931268d2d668ff52c4ae2bd8c6d8ded"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/f2c2fdc03f514162a83184a8b4d488d9.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/f2c2fdc03f514162a83184a8b4d488d9.parquet",
+    "size": 55464,
+    "last_modified": "2026-11-20T11:56:49.128Z",
+    "etag": "69c52881656cfa9973a62cd1234e4001"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/f6ffa01526ea470ba2050ca9cd76d33e.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/f6ffa01526ea470ba2050ca9cd76d33e.parquet",
+    "size": 41377,
+    "last_modified": "2026-11-20T12:01:37.204Z",
+    "etag": "c67002a82a97fe65d49e7ec11b56c034"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/f74278c5aa4546d4a6c412ac616c6c20.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/f74278c5aa4546d4a6c412ac616c6c20.parquet",
+    "size": 42729,
+    "last_modified": "2026-11-20T11:56:55.133Z",
+    "etag": "1fc48729679d902b8f75bf0c506e5c32"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/f879836c320643019dd60e2b7a6b19c5.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/f879836c320643019dd60e2b7a6b19c5.parquet",
+    "size": 55499,
+    "last_modified": "2026-11-20T11:58:18.988Z",
+    "etag": "96e13c59604c917aec5c117e20571891"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/f984e3914be94b77a68c5508d958ab69.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/f984e3914be94b77a68c5508d958ab69.parquet",
+    "size": 42790,
+    "last_modified": "2026-11-20T11:57:03.138Z",
+    "etag": "f101f9249d7db24ec05f0e181a8d8a13"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/faf14bf9fbba4a1cb4d52f8d09ce5dcf.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/faf14bf9fbba4a1cb4d52f8d09ce5dcf.parquet",
+    "size": 67471,
+    "last_modified": "2026-11-20T11:56:05.094Z",
+    "etag": "4e3e427f959a45dea9c5d46d8be5690a"
+  },
+  {
+    "key": "warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/fceca41a36674b44adba3be2c17a5ecd.parquet",
+    "s3_uri": "s3://cdclab/warehouse/01a1f8d0-0489-73d4-8d8c-a6df8db4ed3b/staged/fceca41a36674b44adba3be2c17a5ecd.parquet",
+    "size": 67376,
+    "last_modified": "2026-11-20T11:56:11.098Z",
+    "etag": "d1b2bba29856ee9405d53d6ee4a0e808"
+  }
+]
