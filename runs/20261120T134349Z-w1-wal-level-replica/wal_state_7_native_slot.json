@@ -1,0 +1,47 @@
+{
+  "slot": "w1_native_probe",
+  "create_ms": 440.12,
+  "state_with_native_slot": {
+    "captured_at_utc": "2026-11-20T13:46:58.361121Z",
+    "wal_level": "replica",
+    "effective_wal_level": "logical",
+    "pg_settings": [
+      {
+        "name": "effective_wal_level",
+        "setting": "logical",
+        "context": "internal",
+        "short_desc": "Shows effective WAL level."
+      },
+      {
+        "name": "wal_level",
+        "setting": "replica",
+        "context": "postmaster",
+        "short_desc": "Sets the level of information written to the WAL."
+      }
+    ],
+    "slots": [
+      {
+        "slot_name": "w1_native_probe",
+        "plugin": "pgoutput",
+        "slot_type": "logical",
+        "active": false,
+        "wal_status": "reserved",
+        "restart_lsn": "0/01F500B8",
+        "confirmed_flush_lsn": "0/01F500F0"
+      }
+    ],
+    "logical_slot_count": 1
+  },
+  "fallback_after_drop": {
+    "wanted": "replica",
+    "reached": true,
+    "elapsed_ms": 0.0,
+    "checkpoint_forced": false,
+    "samples": [
+      {
+        "t_s": 0.0,
+        "value": "replica"
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{"timestamp":"2026-11-20T13:45:05.565139Z","level":"INFO","message":"reading config","path":"/etc/pg2iceberg/config.yaml","target":"pg2iceberg::config"}
+{"timestamp":"2026-11-20T13:45:05.663679Z","level":"INFO","message":"connecting to source PG","slot":"pg2iceberg_slot","publication":"pg2iceberg_pub","tls":"Disable","target":"pg2iceberg"}
+{"timestamp":"2026-11-20T13:45:05.671260Z","level":"INFO","message":"slot does not exist; would be created on first run","slot":"pg2iceberg_slot","target":"pg2iceberg"}
+OK: PG replication-mode connection established
+
+--- stderr ---
+ Container cdclab-pg2iceberg-run-9e5174ab2680 Creating 
+ Container cdclab-pg2iceberg-run-9e5174ab2680 Created 

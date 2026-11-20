@@ -1,0 +1,63 @@
+{
+  "tag": "v0.12.0",
+  "expected_commit": "01c2e172eb5e7be82c60b77f20cb089354c06ce6",
+  "checkout_head": "01c2e172eb5e7be82c60b77f20cb089354c06ce6",
+  "quotes": [
+    {
+      "file": "crates/pg2iceberg/src/init.rs",
+      "first_line": 97,
+      "last_line": 107,
+      "found_expected_text": true,
+      "expected_text": "SHOW wal_level",
+      "text": "    let wal_level: String = one(\"SHOW wal_level\".into()).await?.get(0);\n    checks.push(Check {\n        what: format!(\"wal_level is {wal_level}\"),\n        fix: (wal_level != \"logical\").then(|| {\n            \"set wal_level = logical and restart Postgres (RDS / Aurora: \\\n             rds.logical_replication = 1 in the parameter group; Cloud SQL: the \\\n             cloudsql.logical_decoding flag)\"\n                .into()\n        }),\n    });\n"
+    },
+    {
+      "file": "crates/pg2iceberg/src/init.rs",
+      "first_line": 333,
+      "last_line": 350,
+      "found_expected_text": true,
+      "expected_text": "eprintln!(\"\u2717 {} \u2014 {fix}\"",
+      "text": "\n/// Summary on stderr.\nfn report(inspection: &Inspection, output: &str) {\n    for check in &inspection.checks {\n        match &check.fix {\n            None => eprintln!(\"\u2713 {}\", check.what),\n            Some(fix) => eprintln!(\"\u2717 {} \u2014 {fix}\", check.what),\n        }\n    }\n    eprintln!(\n        \"{} table(s) to replicate, {} left out\",\n        inspection.tables.len(),\n        inspection.skipped.len()\n    );\n    for (name, why) in &inspection.skipped {\n        eprintln!(\"  {name}: {why}\");\n    }\n    if output != \"-\" {"
+    },
+    {
+      "file": "crates/pg2iceberg/src/init.rs",
+      "first_line": 1,
+      "last_line": 5,
+      "found_expected_text": true,
+      "expected_text": "pg2iceberg init",
+      "text": "//! `pg2iceberg init`: inspect the source database and write a config for\n//! it \u2014 every table pg2iceberg can replicate, the settings the\n//! environment gives, secrets as `${VAR}` references \u2014 after checking\n//! what replication needs of the database.\n"
+    },
+    {
+      "file": "crates/pg2iceberg/src/main.rs",
+      "first_line": 148,
+      "last_line": 157,
+      "found_expected_text": true,
+      "expected_text": "Command::Init",
+      "text": "        Command::Init { output, force } => {\n            if config.is_some() {\n                anyhow::bail!(\"init reads the environment, not a config file: drop --config\");\n            }\n            init::run(&config::process_env, &output, force).await\n        }\n        Command::ConnectPg => connect_pg(&source(config)?).await,\n        Command::ConnectIceberg => connect_iceberg(&Config::load(config.as_deref())?).await,\n        Command::MigrateCoord => migrate_coord(&source(config)?).await,\n        Command::Run => {"
+    },
+    {
+      "file": "crates/pg2iceberg/src/config.rs",
+      "first_line": 936,
+      "last_line": 950,
+      "found_expected_text": true,
+      "expected_text": "wal_level=logical",
+      "text": "        Ok(())\n    }\n\n    /// Reject anything but logical replication up front, so every\n    /// subcommand fails fast with a pointer instead of half-starting.\n    fn validate_mode(&self) -> Result<()> {\n        match self.source.mode.as_str() {\n            \"\" | \"logical\" => Ok(()),\n            \"query\" => anyhow::bail!(\n                \"source.mode \\\"query\\\" is no longer supported: pg2iceberg only replicates \\\n                 via logical replication. Set source.mode to \\\"logical\\\" (or remove it) and \\\n                 enable wal_level=logical on the source\"\n            ),\n            other => anyhow::bail!(\"unknown source.mode {other:?}; expected \\\"logical\\\"\"),\n        }"
+    },
+    {
+      "file": "crates/pg2iceberg-pg/src/prod/client.rs",
+      "first_line": 305,
+      "last_line": 314,
+      "found_expected_text": true,
+      "expected_text": "CREATE_REPLICATION_SLOT",
+      "text": "    async fn create_slot(&self, slot: &str) -> Result<Lsn> {\n        // `NOEXPORT_SNAPSHOT` keeps creation simple \u2014 no transactional\n        // snapshot is exposed to the caller. If we later need\n        // initial-snapshot consistency we'll switch to `USE_SNAPSHOT`\n        // inside a `BEGIN ... ` and add a separate API.\n        let q = format!(\n            \"CREATE_REPLICATION_SLOT {} LOGICAL pgoutput NOEXPORT_SNAPSHOT\",\n            quote_ident(slot)\n        );\n        let rows = self"
+    },
+    {
+      "file": "crates/pg2iceberg-validate/src/runtime.rs",
+      "first_line": 531,
+      "last_line": 545,
+      "found_expected_text": true,
+      "expected_text": "create_slot",
+      "text": "    let mut pub_table_idents: Vec<TableIdent> = lc.schemas.iter().map(|s| s.pg_ident()).collect();\n    if lc.meta_namespace.is_some() {\n        pub_table_idents.push(markers_table_ident.clone());\n    }\n    if slot_was_fresh {\n        if let Err(e) = lc\n            .pg\n            .create_publication(&lc.publication_name, &pub_table_idents)\n            .await\n        {\n            tracing::warn!(error = %e, \"create_publication failed; assuming it exists\");\n        }\n        let cp = lc.pg.create_slot(&lc.slot_name).await?;\n        tracing::info!(slot = %lc.slot_name, ?cp, \"replication slot created\");\n        // Bootstrap the tamper-detection baseline. PG sets the new"
+    }
+  ]
+}

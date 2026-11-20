@@ -1,0 +1,16 @@
+# pg2iceberg configuration for database "cdclab", written by `pg2iceberg init`.
+#
+# `pg2iceberg run` reads it from the current directory. Environment
+# variables override it, and ${VAR} reads one: secrets stay there.
+
+source:
+  postgres_url: ${POSTGRES_URL}
+
+sink:
+  # catalog_uri: http://localhost:8181  # your Iceberg REST catalog
+  # namespace: analytics  # one Iceberg namespace for every table; default: each table's Postgres schema
+
+# Every table with a primary key, as of now. Without `tables:`, pg2iceberg
+# replicates every such table when it starts, including ones created later.
+tables:
+  - name: public.orders  # ~0 rows

@@ -1,0 +1,21 @@
+{
+  "captured_at_utc": "2026-11-20T13:44:51.876237Z",
+  "wal_level": "replica",
+  "effective_wal_level": "replica",
+  "pg_settings": [
+    {
+      "name": "effective_wal_level",
+      "setting": "replica",
+      "context": "internal",
+      "short_desc": "Shows effective WAL level."
+    },
+    {
+      "name": "wal_level",
+      "setting": "replica",
+      "context": "postmaster",
+      "short_desc": "Sets the level of information written to the WAL."
+    }
+  ],
+  "slots": [],
+  "logical_slot_count": 0
+}

@@ -12,7 +12,7 @@ services:
       POSTGRES_DB: ${PG_SOURCE_DB:-cdclab}
     command:
       - -c
-      - wal_level=logical
+      - wal_level=${PG_SOURCE_WAL_LEVEL:-logical}
       - -c
       - max_replication_slots=16
       - -c

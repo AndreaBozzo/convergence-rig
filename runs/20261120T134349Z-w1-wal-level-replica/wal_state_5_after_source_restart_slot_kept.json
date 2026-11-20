@@ -1,0 +1,31 @@
+{
+  "captured_at_utc": "2026-11-20T13:46:56.176997Z",
+  "wal_level": "replica",
+  "effective_wal_level": "logical",
+  "pg_settings": [
+    {
+      "name": "effective_wal_level",
+      "setting": "logical",
+      "context": "internal",
+      "short_desc": "Shows effective WAL level."
+    },
+    {
+      "name": "wal_level",
+      "setting": "replica",
+      "context": "postmaster",
+      "short_desc": "Sets the level of information written to the WAL."
+    }
+  ],
+  "slots": [
+    {
+      "slot_name": "pg2iceberg_slot",
+      "plugin": "pgoutput",
+      "slot_type": "logical",
+      "active": false,
+      "wal_status": "reserved",
+      "restart_lsn": "0/01EC1760",
+      "confirmed_flush_lsn": "0/01F4FD70"
+    }
+  ],
+  "logical_slot_count": 1
+}

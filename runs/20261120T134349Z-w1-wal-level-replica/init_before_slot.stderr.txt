@@ -1,0 +1,9 @@
+ Container cdclab-pg2iceberg-run-257199cd72e2 Creating 
+ Container cdclab-pg2iceberg-run-257199cd72e2 Created 
+✗ wal_level is replica — set wal_level = logical and restart Postgres (RDS / Aurora: rds.logical_replication = 1 in the parameter group; Cloud SQL: the cloudsql.logical_decoding flag)
+✓ role postgres can replicate
+✓ 16 replication slot(s) free for pg2iceberg_slot
+✓ pg2iceberg can keep its state in schema _pg2iceberg
+✓ pg2iceberg can create publication pg2iceberg_pub
+1 table(s) to replicate, 0 left out
+fix what's marked ✗ before starting pg2iceberg

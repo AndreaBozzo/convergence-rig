@@ -1,0 +1,1311 @@
+{
+  "milestone": "W1",
+  "label": "w1-wal-level-replica",
+  "outcome": "accepted and converged",
+  "passed": true,
+  "completed_at_utc": "2026-11-20T13:47:02.408024Z",
+  "parameters": {
+    "wal_level_env": "PG_SOURCE_WAL_LEVEL=replica",
+    "seed_rows": 2500,
+    "toast_rows": 50,
+    "duration_s": 60.0,
+    "rate_ops_s": 10.0,
+    "rng_seed": 20261119,
+    "batch_size": 2000,
+    "convergence_timeout_s": 180.0
+  },
+  "host": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "python_version": "3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "config": {
+    "compose_project": "cdclab",
+    "pg_source_host": "127.0.0.1",
+    "pg_source_port": 15432,
+    "pg_source_db": "cdclab",
+    "lakekeeper_base_url": "http://127.0.0.1:18181",
+    "lakekeeper_catalog_url": "http://127.0.0.1:18181/catalog",
+    "lakekeeper_warehouse": "cdclab",
+    "lakekeeper_namespace": "public",
+    "silo_port": 19000,
+    "silo_advertised_endpoint": "http://silo.localhost:19000",
+    "silo_bucket": "cdclab",
+    "silo_region": "local-01",
+    "pg2iceberg_metrics_port": 19090
+  },
+  "commands_executed": [
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector down -v --remove-orphans",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml up -d --wait",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector up -d pg2iceberg",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector stop pg2iceberg",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml restart pg-source",
+    "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector --profile spark --profile authz --profile polaris --profile polaris-connector down -v --remove-orphans"
+  ],
+  "container_digests": [
+    {
+      "service": "lakekeeper",
+      "container_name": "cdclab-lakekeeper-1",
+      "image_ref": "quay.io/lakekeeper/catalog:v0.15.1@sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54",
+      "image_id": "sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54",
+      "repo_digests": [
+        "quay.io/lakekeeper/catalog@sha256:ca3487f3b781c2a916f64e9eff3e97709b60bab6f473cdaa065f995d02b15b54"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "lakekeeper-db",
+      "container_name": "cdclab-lakekeeper-db-1",
+      "image_ref": "postgres:17-bookworm@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "image_id": "sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423",
+      "repo_digests": [
+        "postgres@sha256:8d174ddfb292f26b6ec8d97f55d944ccab547fa8bfe9e4fd3c24afdc819ee423"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "pg-source",
+      "container_name": "cdclab-pg-source-1",
+      "image_ref": "cdclab/postgres:19.0",
+      "image_id": "sha256:8702cad789b7630a1ac0650b8358197bc79844aa302731392175f98cd8225a05",
+      "repo_digests": [
+        "cdclab/postgres@sha256:8702cad789b7630a1ac0650b8358197bc79844aa302731392175f98cd8225a05"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "pg2iceberg",
+      "container_name": "cdclab-pg2iceberg-1",
+      "image_ref": "polynyadev/pg2iceberg:0.12.0@sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b",
+      "image_id": "sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b",
+      "repo_digests": [
+        "polynyadev/pg2iceberg@sha256:4d76b19dedfdb36adf6b01978bb1c9460d178ab83603fe9c7efadd01b61d3b6b"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    },
+    {
+      "service": "silo",
+      "container_name": "cdclab-silo-1",
+      "image_ref": "pgsty/silo:RELEASE.2026-09-03T13-18-01Z@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "image_id": "sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30",
+      "repo_digests": [
+        "pgsty/silo@sha256:885275e0f42acfdf80304c577d2e46c2c3978a276619d60b9eedd7486f104b30"
+      ],
+      "architecture": "amd64",
+      "os": "linux"
+    }
+  ],
+  "reader_versions": {
+    "duckdb": "2.0.0",
+    "extensions": [
+      {
+        "name": "httpfs",
+        "loaded": true,
+        "installed": true,
+        "version": "77392a7207",
+        "install_mode": "REPOSITORY"
+      },
+      {
+        "name": "iceberg",
+        "loaded": true,
+        "installed": true,
+        "version": "4c0c0874c4",
+        "install_mode": "REPOSITORY"
+      },
+      {
+        "name": "parquet",
+        "loaded": true,
+        "installed": true,
+        "version": "v2.0.0",
+        "install_mode": "STATICALLY_LINKED"
+      }
+    ]
+  },
+  "resources_after_pre_clean": {
+    "containers": [],
+    "volumes": [],
+    "networks": []
+  },
+  "classification": {
+    "outcome": "accepted and converged",
+    "clean_start": true,
+    "wal_level_stayed_replica": true,
+    "effective_wal_level_after_slot": "logical",
+    "effective_wal_level_raised_by_slot": true,
+    "init_preflight_flags_replica_before_slot": true,
+    "init_preflight_still_flags_after_slot": true,
+    "init_preflight_contradicts_running_connector": true
+  },
+  "states": {
+    "fresh_before_seed": {
+      "captured_at_utc": "2026-11-20T13:44:51.876237Z",
+      "wal_level": "replica",
+      "effective_wal_level": "replica",
+      "pg_settings": [
+        {
+          "name": "effective_wal_level",
+          "setting": "replica",
+          "context": "internal",
+          "short_desc": "Shows effective WAL level."
+        },
+        {
+          "name": "wal_level",
+          "setting": "replica",
+          "context": "postmaster",
+          "short_desc": "Sets the level of information written to the WAL."
+        }
+      ],
+      "slots": [],
+      "logical_slot_count": 0
+    },
+    "before_first_slot": {
+      "captured_at_utc": "2026-11-20T13:44:52.852956Z",
+      "wal_level": "replica",
+      "effective_wal_level": "replica",
+      "pg_settings": [
+        {
+          "name": "effective_wal_level",
+          "setting": "replica",
+          "context": "internal",
+          "short_desc": "Shows effective WAL level."
+        },
+        {
+          "name": "wal_level",
+          "setting": "replica",
+          "context": "postmaster",
+          "short_desc": "Sets the level of information written to the WAL."
+        }
+      ],
+      "slots": [],
+      "logical_slot_count": 0
+    },
+    "after_preflight_no_slot": {
+      "captured_at_utc": "2026-11-20T13:45:07.752254Z",
+      "wal_level": "replica",
+      "effective_wal_level": "replica",
+      "pg_settings": [
+        {
+          "name": "effective_wal_level",
+          "setting": "replica",
+          "context": "internal",
+          "short_desc": "Shows effective WAL level."
+        },
+        {
+          "name": "wal_level",
+          "setting": "replica",
+          "context": "postmaster",
+          "short_desc": "Sets the level of information written to the WAL."
+        }
+      ],
+      "slots": [],
+      "logical_slot_count": 0
+    },
+    "after_slot_connector_running": {
+      "captured_at_utc": "2026-11-20T13:45:24.645195Z",
+      "wal_level": "replica",
+      "effective_wal_level": "logical",
+      "pg_settings": [
+        {
+          "name": "effective_wal_level",
+          "setting": "logical",
+          "context": "internal",
+          "short_desc": "Shows effective WAL level."
+        },
+        {
+          "name": "wal_level",
+          "setting": "replica",
+          "context": "postmaster",
+          "short_desc": "Sets the level of information written to the WAL."
+        }
+      ],
+      "slots": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "active": true,
+          "wal_status": "reserved",
+          "restart_lsn": "0/01D8C1D8",
+          "confirmed_flush_lsn": "0/01D8C628"
+        }
+      ],
+      "logical_slot_count": 1
+    }
+  },
+  "preflight_before_slot": {
+    "label": "before_slot",
+    "cmd": "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector run --rm --no-deps -T -e POSTGRES_URL=postgres://postgres:<redacted>@pg-source:5432/cdclab?sslmode=disable pg2iceberg init --output -",
+    "returncode": 0,
+    "checks": [
+      {
+        "ok": false,
+        "what": "wal_level is replica",
+        "fix": "set wal_level = logical and restart Postgres (RDS / Aurora: rds.logical_replication = 1 in the parameter group; Cloud SQL: the cloudsql.logical_decoding flag)"
+      },
+      {
+        "ok": true,
+        "what": "role postgres can replicate",
+        "fix": null
+      },
+      {
+        "ok": true,
+        "what": "16 replication slot(s) free for pg2iceberg_slot",
+        "fix": null
+      },
+      {
+        "ok": true,
+        "what": "pg2iceberg can keep its state in schema _pg2iceberg",
+        "fix": null
+      },
+      {
+        "ok": true,
+        "what": "pg2iceberg can create publication pg2iceberg_pub",
+        "fix": null
+      }
+    ],
+    "stderr_file": "init_before_slot.stderr.txt",
+    "stdout_file": "init_before_slot.stdout.yaml"
+  },
+  "connect_pg_before_slot": {
+    "label": "before_slot",
+    "cmd": "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector run --rm --no-deps -T pg2iceberg connect-pg --config /etc/pg2iceberg/config.yaml",
+    "returncode": 0,
+    "stdout": "{\"timestamp\":\"2026-11-20T13:45:05.565139Z\",\"level\":\"INFO\",\"message\":\"reading config\",\"path\":\"/etc/pg2iceberg/config.yaml\",\"target\":\"pg2iceberg::config\"}\n{\"timestamp\":\"2026-11-20T13:45:05.663679Z\",\"level\":\"INFO\",\"message\":\"connecting to source PG\",\"slot\":\"pg2iceberg_slot\",\"publication\":\"pg2iceberg_pub\",\"tls\":\"Disable\",\"target\":\"pg2iceberg\"}\n{\"timestamp\":\"2026-11-20T13:45:05.671260Z\",\"level\":\"INFO\",\"message\":\"slot does not exist; would be created on first run\",\"slot\":\"pg2iceberg_slot\",\"target\":\"pg2iceberg\"}\nOK: PG replication-mode connection established",
+    "stderr_tail": [
+      "Container cdclab-pg2iceberg-run-9e5174ab2680 Creating ",
+      " Container cdclab-pg2iceberg-run-9e5174ab2680 Created"
+    ]
+  },
+  "preflight_after_slot": {
+    "label": "after_slot",
+    "cmd": "docker compose -p cdclab --env-file compose/.env -f compose/docker-compose.yml --profile connector run --rm --no-deps -T -e POSTGRES_URL=postgres://postgres:<redacted>@pg-source:5432/cdclab?sslmode=disable pg2iceberg init --output -",
+    "returncode": 0,
+    "checks": [
+      {
+        "ok": false,
+        "what": "wal_level is replica",
+        "fix": "set wal_level = logical and restart Postgres (RDS / Aurora: rds.logical_replication = 1 in the parameter group; Cloud SQL: the cloudsql.logical_decoding flag)"
+      },
+      {
+        "ok": true,
+        "what": "role postgres can replicate",
+        "fix": null
+      },
+      {
+        "ok": true,
+        "what": "replication slot pg2iceberg_slot exists: pg2iceberg resumes from it",
+        "fix": null
+      },
+      {
+        "ok": true,
+        "what": "pg2iceberg can keep its state in schema _pg2iceberg",
+        "fix": null
+      },
+      {
+        "ok": true,
+        "what": "publication pg2iceberg_pub exists",
+        "fix": null
+      }
+    ],
+    "stderr_file": "init_after_slot.stderr.txt",
+    "stdout_file": "init_after_slot.stdout.yaml"
+  },
+  "run_started": true,
+  "start_error": null,
+  "initial_snapshot": {
+    "elapsed_ms": 3244.55,
+    "healthz_status": 200,
+    "snapshot_logged_complete": true,
+    "current_snapshot_id": 7975195443181698706,
+    "snapshot_info": {
+      "snapshot_id": 7975195443181698706,
+      "parent_snapshot_id": null,
+      "sequence_number": 1,
+      "timestamp_ms": 1795182315576,
+      "schema_id": 0,
+      "pg2iceberg_log_start": null,
+      "pg2iceberg_log_end": null,
+      "pg2iceberg_log_ends": null,
+      "pg2iceberg_log_group": null,
+      "summary": {
+        "operation": "append",
+        "total-records": "2500",
+        "total-equality-deletes": "0",
+        "added-records": "2500",
+        "total-data-files": "1",
+        "total-delete-files": "0",
+        "total-position-deletes": "0",
+        "total-files-size": "948095",
+        "added-data-files": "1",
+        "added-files-size": "948095"
+      }
+    },
+    "pipeline_positions": {
+      "captured_at_utc": "2026-11-20T13:45:21.479131Z",
+      "current_wal_lsn": "0/01D8CD98",
+      "replication_slots": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "temporary": false,
+          "active": true,
+          "active_pid": 335,
+          "restart_lsn": "0/01D8C1D8",
+          "confirmed_flush_lsn": "0/01D8C628",
+          "wal_gap_bytes_confirmed_flush": 1904,
+          "wal_gap_bytes_restart": 3008
+        }
+      ],
+      "table_sizes": {
+        "heap_bytes": 466944,
+        "table_and_toast_bytes": 1335296,
+        "indexes_bytes": 73728,
+        "total_relation_bytes": 1409024,
+        "toast_relation_bytes": 835584,
+        "replica_identity": "d"
+      },
+      "coordinator_tables": [
+        "consumer",
+        "flushed_lsn",
+        "lock",
+        "log_index",
+        "log_seq",
+        "marker_emissions",
+        "mat_cursor",
+        "pending_markers",
+        "pipeline_meta",
+        "replicated_lsn",
+        "snapshot_progress",
+        "table_epoch",
+        "tables"
+      ],
+      "coordinator_state": {
+        "replicated_lsn": [
+          {
+            "id": 1,
+            "lsn": 30985368,
+            "updated_at": "2026-11-20T13:45:19.825988+00:00"
+          }
+        ],
+        "flushed_lsn": [
+          {
+            "id": 1,
+            "lsn": 30983720,
+            "updated_at": "2026-11-20T13:45:15.812701+00:00"
+          }
+        ],
+        "mat_cursor": [
+          {
+            "group_name": "default",
+            "table_name": "public.orders",
+            "last_offset": -1,
+            "last_committed": "2026-11-20T13:45:15.089047+00:00"
+          },
+          {
+            "group_name": "default#snapshot-lsn",
+            "table_name": "public.orders",
+            "last_offset": 30983720,
+            "last_committed": "2026-11-20T13:45:15.262922+00:00"
+          }
+        ],
+        "snapshot_progress": [],
+        "log_seq": [],
+        "pipeline_meta": [
+          {
+            "id": 1,
+            "system_identifier": 7710249043672498202,
+            "updated_at": "2026-11-20T13:45:14.411454+00:00"
+          }
+        ],
+        "table_epoch": [
+          {
+            "table_name": "public.orders",
+            "epoch": 2
+          }
+        ],
+        "log_index_row_count": 0
+      }
+    }
+  },
+  "seed": {
+    "seed_rows": 2500,
+    "rng_seed": 20261119,
+    "edge_row_count": 12,
+    "toast_row_count": 50,
+    "toast_id_range": [
+      13,
+      62
+    ],
+    "mutable_row_count": 2438,
+    "seed_duration_ms": 453.88,
+    "toast_verification": {
+      "total_rows": 2500,
+      "note_toasted_rows": 50,
+      "payload_toasted_rows": 50,
+      "both_toasted_rows": 50,
+      "max_note_bytes": 6167,
+      "max_payload_bytes": 6251,
+      "heap_bytes": 589824,
+      "table_and_toast_bytes": 1458176,
+      "indexes_bytes": 73728,
+      "total_relation_bytes": 1531904,
+      "toast_relation_bytes": 835584
+    }
+  },
+  "warmup_marker": {
+    "visible": true,
+    "visibility_ms": 7321.43,
+    "snapshot_id": 5356738230827631663,
+    "polls": 8,
+    "errors": []
+  },
+  "workload": {
+    "rng_seed": 20261119,
+    "offered_rate_ops_s": 10.0,
+    "planned_duration_s": 60.0,
+    "actual_duration_s": 59.91,
+    "window_start_utc": "2026-11-20T13:45:38.795102Z",
+    "window_end_utc": "2026-11-20T13:46:38.704866Z",
+    "planned_ops": 600,
+    "attempted_ops": 600,
+    "completed_ops": 600,
+    "error_count": 0,
+    "timeout_count": 0,
+    "sample_errors": [],
+    "achieved_throughput_ops_s": 10.015,
+    "op_counts": {
+      "update_normal": 240,
+      "update_toast_unchanged": 104,
+      "update_toast_changed": 84,
+      "insert": 94,
+      "delete": 78
+    },
+    "affected_rows_by_op": {
+      "update_normal": 240,
+      "update_toast_unchanged": 104,
+      "update_toast_changed": 84,
+      "insert": 94,
+      "delete": 78
+    },
+    "total_affected_rows": 600,
+    "toast_exercise": {
+      "unchanged_toast_updates": 104,
+      "changed_toast_updates": 84,
+      "distinct_toast_ids_unchanged_updated": 45,
+      "distinct_toast_ids_changed_updated": 39
+    },
+    "arrival_schedule": {
+      "miss_threshold_ms": 250.0,
+      "missed_schedule_count": 0,
+      "missed_schedule_pct": 0.0,
+      "harness_missed_arrival_count": 0,
+      "harness_missed_arrival_pct": 0.0,
+      "backpressure_delayed_count": 18,
+      "schedule_valid": true
+    },
+    "latency_sched_to_complete_ms": {
+      "count": 600,
+      "min_ms": 3.852,
+      "mean_ms": 17.994,
+      "p50_ms": 7.095,
+      "p95_ms": 73.437,
+      "p99_ms": 195.556,
+      "max_ms": 273.634
+    },
+    "latency_exec_ms": {
+      "count": 600,
+      "min_ms": 3.495,
+      "mean_ms": 14.819,
+      "p50_ms": 6.461,
+      "p95_ms": 61.801,
+      "p99_ms": 102.952,
+      "max_ms": 176.809
+    },
+    "latency_queue_delay_ms": {
+      "count": 600,
+      "min_ms": 0.006,
+      "mean_ms": 3.175,
+      "p50_ms": 0.791,
+      "p95_ms": 1.162,
+      "p99_ms": 103.112,
+      "max_ms": 187.738
+    },
+    "latency_harness_dispatch_lag_ms": {
+      "count": 600,
+      "min_ms": 0.006,
+      "mean_ms": 0.975,
+      "p50_ms": 0.772,
+      "p95_ms": 1.039,
+      "p99_ms": 1.366,
+      "max_ms": 187.738
+    },
+    "latency_backpressure_delay_ms": {
+      "count": 600,
+      "min_ms": 0.0,
+      "mean_ms": 2.2,
+      "p50_ms": 0.0,
+      "p95_ms": 0.0,
+      "p99_ms": 95.556,
+      "max_ms": 173.634
+    },
+    "steady_state_probes": {
+      "probe_interval_s": 20.0,
+      "poll_interval_s": 0.5,
+      "probe_count": 2,
+      "visible_count": 2,
+      "reader_error_count": 0,
+      "visibility_lag_ms": {
+        "count": 2,
+        "min_ms": 9321.83,
+        "mean_ms": 9335.015,
+        "p50_ms": 9335.015,
+        "p95_ms": 9346.882,
+        "p99_ms": 9347.936,
+        "max_ms": 9348.2
+      },
+      "probes": [
+        {
+          "probe_seq": 1,
+          "marker_id": 900000001,
+          "scheduled_offset_s": 10.0,
+          "commit_offset_s": 10.126,
+          "commit_utc": "2026-11-20T13:45:48.921228Z",
+          "visible": true,
+          "visibility_ms": 9321.83,
+          "observed_utc": "2026-11-20T13:45:58.243062Z",
+          "snapshot_id": 8731488127083260914,
+          "polls": 9,
+          "duckdb_checks": 2,
+          "poll_interval_s": 0.5,
+          "reader_errors": [],
+          "snapshot_info": {
+            "snapshot_id": 8731488127083260914,
+            "parent_snapshot_id": 8122928971765619305,
+            "sequence_number": 4,
+            "timestamp_ms": 1795182356384,
+            "schema_id": 0,
+            "pg2iceberg_log_start": "73",
+            "pg2iceberg_log_end": "174",
+            "pg2iceberg_log_ends": "{\"default\":174}",
+            "pg2iceberg_log_group": "default",
+            "summary": {
+              "operation": "append",
+              "pg2iceberg.log-end": "174",
+              "total-data-files": "4",
+              "total-files-size": "1469278",
+              "added-equality-deletes": "72",
+              "total-records": "2635",
+              "added-data-files": "1",
+              "added-files-size": "272033",
+              "total-position-deletes": "0",
+              "added-delete-files": "1",
+              "added-records": "73",
+              "added-equality-delete-files": "1",
+              "pg2iceberg.log-ends": "{\"default\":174}",
+              "total-equality-deletes": "136",
+              "pg2iceberg.log-start": "73",
+              "pg2iceberg.log-group": "default",
+              "total-delete-files": "2"
+            }
+          },
+          "pg_positions_at_commit": {
+            "current_wal_lsn": "0/01E0A348",
+            "replication_slots": [
+              {
+                "slot_name": "pg2iceberg_slot",
+                "plugin": "pgoutput",
+                "slot_type": "logical",
+                "temporary": false,
+                "active": true,
+                "active_pid": 335,
+                "restart_lsn": "0/01DE0960",
+                "confirmed_flush_lsn": "0/01DF3588",
+                "wal_gap_bytes_confirmed_flush": 93944,
+                "wal_gap_bytes_restart": 170784
+              }
+            ]
+          }
+        },
+        {
+          "probe_seq": 2,
+          "marker_id": 900000002,
+          "scheduled_offset_s": 30.0,
+          "commit_offset_s": 30.025,
+          "commit_utc": "2026-11-20T13:46:08.819671Z",
+          "visible": true,
+          "visibility_ms": 9348.2,
+          "observed_utc": "2026-11-20T13:46:18.167873Z",
+          "snapshot_id": 8291919898466591093,
+          "polls": 13,
+          "duckdb_checks": 2,
+          "poll_interval_s": 0.5,
+          "reader_errors": [],
+          "snapshot_info": {
+            "snapshot_id": 8291919898466591093,
+            "parent_snapshot_id": 1586240269623768094,
+            "sequence_number": 6,
+            "timestamp_ms": 1795182376597,
+            "schema_id": 0,
+            "pg2iceberg_log_start": "274",
+            "pg2iceberg_log_end": "375",
+            "pg2iceberg_log_ends": "{\"default\":375}",
+            "pg2iceberg_log_group": "default",
+            "summary": {
+              "operation": "append",
+              "pg2iceberg.log-group": "default",
+              "pg2iceberg.log-end": "375",
+              "added-equality-deletes": "76",
+              "added-records": "85",
+              "total-equality-deletes": "288",
+              "added-equality-delete-files": "1",
+              "added-data-files": "1",
+              "added-files-size": "335089",
+              "total-data-files": "6",
+              "added-delete-files": "1",
+              "total-delete-files": "4",
+              "pg2iceberg.log-ends": "{\"default\":375}",
+              "total-position-deletes": "0",
+              "pg2iceberg.log-start": "274",
+              "total-files-size": "2114612",
+              "total-records": "2804"
+            }
+          },
+          "pg_positions_at_commit": {
+            "current_wal_lsn": "0/01E731B0",
+            "replication_slots": [
+              {
+                "slot_name": "pg2iceberg_slot",
+                "plugin": "pgoutput",
+                "slot_type": "logical",
+                "temporary": false,
+                "active": true,
+                "active_pid": 335,
+                "restart_lsn": "0/01E0F6E0",
+                "confirmed_flush_lsn": "0/01E4B760",
+                "wal_gap_bytes_confirmed_flush": 162384,
+                "wal_gap_bytes_restart": 408272
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "toast_after_workload": {
+    "total_rows": 2519,
+    "note_toasted_rows": 54,
+    "payload_toasted_rows": 54,
+    "both_toasted_rows": 54,
+    "max_note_bytes": 6175,
+    "max_payload_bytes": 6259,
+    "heap_bytes": 491520,
+    "table_and_toast_bytes": 2383872,
+    "indexes_bytes": 73728,
+    "total_relation_bytes": 2457600,
+    "toast_relation_bytes": 1859584
+  },
+  "final_marker_commit_utc": "2026-11-20T13:46:38.811117Z",
+  "convergence": {
+    "outcome": "converged",
+    "passed": true,
+    "final_marker_id": 900999999,
+    "first_marker_snapshot_id": 7078516548557146521,
+    "first_marker_observed_utc": "2026-11-20T13:46:49.096729Z",
+    "final_marker_visibility_ms": 10285.61,
+    "verified_snapshot_id": 7078516548557146521,
+    "verified_at_utc": "2026-11-20T13:46:52.915560Z",
+    "final_marker_to_verified_match_ms": 14104.44,
+    "diff_duration_ms": 1580.72,
+    "batch_size": 2000,
+    "poll_interval_s": 1.0,
+    "polls": 7,
+    "reader_errors": [],
+    "snapshot_attempts": [
+      {
+        "snapshot_id": 7078516548557146521,
+        "source_read_opened_utc": "2026-11-20T13:46:51.311051Z",
+        "checked_at_utc": "2026-11-20T13:46:52.915440Z",
+        "passed": true,
+        "schema_check": {
+          "passed": true,
+          "schema_id": 0,
+          "format_version": 2,
+          "identifier_field_ids": [
+            1
+          ],
+          "mismatches": [],
+          "actual_fields": [
+            {
+              "id": 1,
+              "name": "id",
+              "required": true,
+              "type": "long"
+            },
+            {
+              "id": 2,
+              "name": "status",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "id": 3,
+              "name": "amount",
+              "required": true,
+              "type": "decimal(38, 9)"
+            },
+            {
+              "id": 4,
+              "name": "updated_at",
+              "required": true,
+              "type": "timestamptz"
+            },
+            {
+              "id": 5,
+              "name": "note",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "id": 6,
+              "name": "payload",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "id": 7,
+              "name": "discount",
+              "required": false,
+              "type": "decimal(38, 9)"
+            }
+          ],
+          "expected_fields": [
+            {
+              "name": "id",
+              "type": "long",
+              "required": true
+            },
+            {
+              "name": "status",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "amount",
+              "type": "decimal(38, 9)",
+              "required": true
+            },
+            {
+              "name": "updated_at",
+              "type": "timestamptz",
+              "required": true
+            },
+            {
+              "name": "note",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "payload",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "discount",
+              "type": "decimal(38, 9)",
+              "required": false
+            }
+          ]
+        },
+        "row_comparison": {
+          "passed": true,
+          "source_row_count": 2520,
+          "lake_row_count": 2520,
+          "matched_id_count": 2520,
+          "exact_match_row_count": 2520,
+          "source_only_count": 0,
+          "source_only_examples": [],
+          "lake_only_count": 0,
+          "lake_only_examples": [],
+          "duplicate_lake_id_count": 0,
+          "duplicate_lake_extra_row_count": 0,
+          "duplicate_lake_examples": [],
+          "duplicate_source_id_count": 0,
+          "duplicate_source_examples": [],
+          "value_mismatch_row_count": 0,
+          "value_mismatch_column_counts": {},
+          "value_mismatch_examples": [],
+          "batches_read_source": 2,
+          "batches_read_lake": 2,
+          "diff_duration_ms": 1580.72
+        },
+        "snapshot_info": {
+          "snapshot_id": 7078516548557146521,
+          "parent_snapshot_id": 6938724386881160369,
+          "sequence_number": 9,
+          "timestamp_ms": 1795182406879,
+          "schema_id": 0,
+          "pg2iceberg_log_start": "575",
+          "pg2iceberg_log_end": "605",
+          "pg2iceberg_log_ends": "{\"default\":605}",
+          "pg2iceberg_log_group": "default",
+          "summary": {
+            "operation": "append",
+            "added-records": "23",
+            "total-delete-files": "7",
+            "total-equality-deletes": "455",
+            "pg2iceberg.log-start": "575",
+            "total-position-deletes": "0",
+            "added-data-files": "1",
+            "pg2iceberg.log-ends": "{\"default\":605}",
+            "pg2iceberg.log-end": "605",
+            "added-files-size": "117890",
+            "total-records": "2975",
+            "added-delete-files": "1",
+            "total-files-size": "2912788",
+            "added-equality-deletes": "24",
+            "pg2iceberg.log-group": "default",
+            "total-data-files": "9",
+            "added-equality-delete-files": "1"
+          }
+        }
+      }
+    ]
+  },
+  "pg2iceberg_log_levels": {
+    "error": 0,
+    "warn": 1,
+    "lines": 14
+  },
+  "source_restart": {
+    "wal_level_setting_still_replica": true,
+    "state": {
+      "captured_at_utc": "2026-11-20T13:46:56.176997Z",
+      "wal_level": "replica",
+      "effective_wal_level": "logical",
+      "pg_settings": [
+        {
+          "name": "effective_wal_level",
+          "setting": "logical",
+          "context": "internal",
+          "short_desc": "Shows effective WAL level."
+        },
+        {
+          "name": "wal_level",
+          "setting": "replica",
+          "context": "postmaster",
+          "short_desc": "Sets the level of information written to the WAL."
+        }
+      ],
+      "slots": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "active": false,
+          "wal_status": "reserved",
+          "restart_lsn": "0/01EC1760",
+          "confirmed_flush_lsn": "0/01F4FD70"
+        }
+      ],
+      "logical_slot_count": 1
+    }
+  },
+  "slot_drop": {
+    "slot_dropped": "pg2iceberg_slot",
+    "fallback": {
+      "wanted": "replica",
+      "reached": true,
+      "elapsed_ms": 0.0,
+      "checkpoint_forced": false,
+      "samples": [
+        {
+          "t_s": 0.0,
+          "value": "replica"
+        }
+      ]
+    },
+    "state": {
+      "captured_at_utc": "2026-11-20T13:46:57.540853Z",
+      "wal_level": "replica",
+      "effective_wal_level": "replica",
+      "pg_settings": [
+        {
+          "name": "effective_wal_level",
+          "setting": "replica",
+          "context": "internal",
+          "short_desc": "Shows effective WAL level."
+        },
+        {
+          "name": "wal_level",
+          "setting": "replica",
+          "context": "postmaster",
+          "short_desc": "Sets the level of information written to the WAL."
+        }
+      ],
+      "slots": [],
+      "logical_slot_count": 0
+    }
+  },
+  "native_slot": {
+    "slot": "w1_native_probe",
+    "create_ms": 440.12,
+    "state_with_native_slot": {
+      "captured_at_utc": "2026-11-20T13:46:58.361121Z",
+      "wal_level": "replica",
+      "effective_wal_level": "logical",
+      "pg_settings": [
+        {
+          "name": "effective_wal_level",
+          "setting": "logical",
+          "context": "internal",
+          "short_desc": "Shows effective WAL level."
+        },
+        {
+          "name": "wal_level",
+          "setting": "replica",
+          "context": "postmaster",
+          "short_desc": "Sets the level of information written to the WAL."
+        }
+      ],
+      "slots": [
+        {
+          "slot_name": "w1_native_probe",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "active": false,
+          "wal_status": "reserved",
+          "restart_lsn": "0/01F500B8",
+          "confirmed_flush_lsn": "0/01F500F0"
+        }
+      ],
+      "logical_slot_count": 1
+    },
+    "fallback_after_drop": {
+      "wanted": "replica",
+      "reached": true,
+      "elapsed_ms": 0.0,
+      "checkpoint_forced": false,
+      "samples": [
+        {
+          "t_s": 0.0,
+          "value": "replica"
+        }
+      ]
+    }
+  },
+  "pipeline_positions": {
+    "before_slot": {
+      "captured_at_utc": "2026-11-20T13:44:52.946364Z",
+      "current_wal_lsn": "0/01D0E000",
+      "replication_slots": [],
+      "table_sizes": {
+        "heap_bytes": 589824,
+        "table_and_toast_bytes": 1458176,
+        "indexes_bytes": 73728,
+        "total_relation_bytes": 1531904,
+        "toast_relation_bytes": 835584,
+        "replica_identity": "d"
+      },
+      "coordinator_tables": [],
+      "coordinator_state": {}
+    },
+    "window_start": {
+      "captured_at_utc": "2026-11-20T13:45:38.794380Z",
+      "current_wal_lsn": "0/01DE0BC8",
+      "replication_slots": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "temporary": false,
+          "active": true,
+          "active_pid": 335,
+          "restart_lsn": "0/01D8CD60",
+          "confirmed_flush_lsn": "0/01DE0328",
+          "wal_gap_bytes_confirmed_flush": 2208,
+          "wal_gap_bytes_restart": 343656
+        }
+      ],
+      "table_sizes": {
+        "heap_bytes": 466944,
+        "table_and_toast_bytes": 1335296,
+        "indexes_bytes": 73728,
+        "total_relation_bytes": 1409024,
+        "toast_relation_bytes": 835584,
+        "replica_identity": "d"
+      },
+      "coordinator_tables": [
+        "consumer",
+        "flushed_lsn",
+        "lock",
+        "log_index",
+        "log_seq",
+        "marker_emissions",
+        "mat_cursor",
+        "pending_markers",
+        "pipeline_meta",
+        "replicated_lsn",
+        "snapshot_progress",
+        "table_epoch",
+        "tables"
+      ],
+      "coordinator_state": {
+        "replicated_lsn": [
+          {
+            "id": 1,
+            "lsn": 31329024,
+            "updated_at": "2026-11-20T13:45:37.850416+00:00"
+          }
+        ],
+        "flushed_lsn": [
+          {
+            "id": 1,
+            "lsn": 31327016,
+            "updated_at": "2026-11-20T13:45:35.841190+00:00"
+          }
+        ],
+        "mat_cursor": [
+          {
+            "group_name": "default#snapshot-lsn",
+            "table_name": "public.orders",
+            "last_offset": 30983720,
+            "last_committed": "2026-11-20T13:45:15.262922+00:00"
+          },
+          {
+            "group_name": "default",
+            "table_name": "public.orders",
+            "last_offset": 2,
+            "last_committed": "2026-11-20T13:45:36.168651+00:00"
+          }
+        ],
+        "snapshot_progress": [],
+        "log_seq": [
+          {
+            "table_name": "public.orders",
+            "next_offset": 2
+          }
+        ],
+        "pipeline_meta": [
+          {
+            "id": 1,
+            "system_identifier": 7710249043672498202,
+            "updated_at": "2026-11-20T13:45:14.411454+00:00"
+          }
+        ],
+        "table_epoch": [
+          {
+            "table_name": "public.orders",
+            "epoch": 3
+          }
+        ],
+        "log_index_row_count": 1
+      }
+    },
+    "window_end": {
+      "captured_at_utc": "2026-11-20T13:46:38.765434Z",
+      "current_wal_lsn": "0/01F4E470",
+      "replication_slots": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "temporary": false,
+          "active": true,
+          "active_pid": 335,
+          "restart_lsn": "0/01EC1760",
+          "confirmed_flush_lsn": "0/01F23130",
+          "wal_gap_bytes_confirmed_flush": 176960,
+          "wal_gap_bytes_restart": 576784
+        }
+      ],
+      "table_sizes": {
+        "heap_bytes": 491520,
+        "table_and_toast_bytes": 2383872,
+        "indexes_bytes": 73728,
+        "total_relation_bytes": 2457600,
+        "toast_relation_bytes": 1859584,
+        "replica_identity": "d"
+      },
+      "coordinator_tables": [
+        "consumer",
+        "flushed_lsn",
+        "lock",
+        "log_index",
+        "log_seq",
+        "marker_emissions",
+        "mat_cursor",
+        "pending_markers",
+        "pipeline_meta",
+        "replicated_lsn",
+        "snapshot_progress",
+        "table_epoch",
+        "tables"
+      ],
+      "coordinator_state": {
+        "replicated_lsn": [
+          {
+            "id": 1,
+            "lsn": 32781416,
+            "updated_at": "2026-11-20T13:46:37.909639+00:00"
+          }
+        ],
+        "flushed_lsn": [
+          {
+            "id": 1,
+            "lsn": 32649520,
+            "updated_at": "2026-11-20T13:46:35.884222+00:00"
+          }
+        ],
+        "mat_cursor": [
+          {
+            "group_name": "default#snapshot-lsn",
+            "table_name": "public.orders",
+            "last_offset": 30983720,
+            "last_committed": "2026-11-20T13:45:15.262922+00:00"
+          },
+          {
+            "group_name": "default",
+            "table_name": "public.orders",
+            "last_offset": 575,
+            "last_committed": "2026-11-20T13:46:36.815188+00:00"
+          }
+        ],
+        "snapshot_progress": [],
+        "log_seq": [
+          {
+            "table_name": "public.orders",
+            "next_offset": 595
+          }
+        ],
+        "pipeline_meta": [
+          {
+            "id": 1,
+            "system_identifier": 7710249043672498202,
+            "updated_at": "2026-11-20T13:45:14.411454+00:00"
+          }
+        ],
+        "table_epoch": [
+          {
+            "table_name": "public.orders",
+            "epoch": 9
+          }
+        ],
+        "log_index_row_count": 31
+      }
+    },
+    "final": {
+      "captured_at_utc": "2026-11-20T13:46:52.956085Z",
+      "current_wal_lsn": "0/01F4FCA8",
+      "replication_slots": [
+        {
+          "slot_name": "pg2iceberg_slot",
+          "plugin": "pgoutput",
+          "slot_type": "logical",
+          "temporary": false,
+          "active": true,
+          "active_pid": 335,
+          "restart_lsn": "0/01EC1760",
+          "confirmed_flush_lsn": "0/01F4F5C8",
+          "wal_gap_bytes_confirmed_flush": 1760,
+          "wal_gap_bytes_restart": 582984
+        }
+      ],
+      "table_sizes": {
+        "heap_bytes": 491520,
+        "table_and_toast_bytes": 2383872,
+        "indexes_bytes": 73728,
+        "total_relation_bytes": 2457600,
+        "toast_relation_bytes": 1859584,
+        "replica_identity": "d"
+      },
+      "coordinator_tables": [
+        "consumer",
+        "flushed_lsn",
+        "lock",
+        "log_index",
+        "log_seq",
+        "marker_emissions",
+        "mat_cursor",
+        "pending_markers",
+        "pipeline_meta",
+        "replicated_lsn",
+        "snapshot_progress",
+        "table_epoch",
+        "tables"
+      ],
+      "coordinator_state": {
+        "replicated_lsn": [
+          {
+            "id": 1,
+            "lsn": 32832480,
+            "updated_at": "2026-11-20T13:46:51.909093+00:00"
+          }
+        ],
+        "flushed_lsn": [
+          {
+            "id": 1,
+            "lsn": 32830920,
+            "updated_at": "2026-11-20T13:46:45.889417+00:00"
+          }
+        ],
+        "mat_cursor": [
+          {
+            "group_name": "default#snapshot-lsn",
+            "table_name": "public.orders",
+            "last_offset": 30983720,
+            "last_committed": "2026-11-20T13:45:15.262922+00:00"
+          },
+          {
+            "group_name": "default",
+            "table_name": "public.orders",
+            "last_offset": 605,
+            "last_committed": "2026-11-20T13:46:46.907371+00:00"
+          }
+        ],
+        "snapshot_progress": [],
+        "log_seq": [
+          {
+            "table_name": "public.orders",
+            "next_offset": 605
+          }
+        ],
+        "pipeline_meta": [
+          {
+            "id": 1,
+            "system_identifier": 7710249043672498202,
+            "updated_at": "2026-11-20T13:45:14.411454+00:00"
+          }
+        ],
+        "table_epoch": [
+          {
+            "table_name": "public.orders",
+            "epoch": 10
+          }
+        ],
+        "log_index_row_count": 32
+      }
+    }
+  },
+  "upstream_source": {
+    "tag": "v0.12.0",
+    "commit": "01c2e172eb5e7be82c60b77f20cb089354c06ce6",
+    "expected_commit": "01c2e172eb5e7be82c60b77f20cb089354c06ce6"
+  },
+  "cleanup": {
+    "skipped_keep_up": false,
+    "resources_after_cleanup": {
+      "containers": [],
+      "volumes": [],
+      "networks": []
+    },
+    "all_project_resources_removed": true,
+    "non_project_containers_unchanged": true,
+    "non_project_count_before": 14,
+    "non_project_count_after": 14
+  }
+}
