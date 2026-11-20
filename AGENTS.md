@@ -49,6 +49,10 @@ the contract. Where this file and the plan disagree, this file wins.
 - Read upstream docs and source with your URL-reading tool, or with
   `curl`/`gh` inside the sandbox. Do not set `BypassSandbox` for network
   fetches; the safety monitor denies that and headless mode cannot ask.
+- Run one Docker command per tool call. Do not chain `docker compose`
+  commands with `;` or `&&`: the monitor denied a chained down/up/logs
+  call in P1. Shell syntax is Windows PowerShell 5.1: no `&&`, no `<<`
+  heredocs; write multi-line scripts to a file and run the file.
 - A denied call is not the end of the session. Try a different tool or a
   sandboxed form of the same step. If nothing works, write
   `reports/BLOCKED.md` with the denied call and stop. Never end a session
