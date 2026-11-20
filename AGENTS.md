@@ -7,15 +7,17 @@ the contract. Where this file and the plan disagree, this file wins.
 
 - Work the milestones in order: M0, M1, M2, M3, then the follow-up
   milestones L1, L2, L3 ("Follow-up milestones" in the plan), then R1 and C1
-  ("Second round"). One milestone per session unless the launcher prompt
+  ("Second round"), then K1, K2, P1, W1 and D1 ("Third round"). One milestone per session unless the launcher prompt
   says otherwise. R1 uses its own Compose project `p2irepro`; the Docker
   rules below apply to it as they do to `cdclab`.
 - Keep the evidence of failed attempts. If a run fails because of a harness
   bug, keep its run directory or summarise it in the report before
   removing it, and say what was fixed.
-- Out of scope: Databricks, ADLS or any other external environment, "Other
-  OSS worth testing" and "Parked experiments". Do not start them. You may
-  list ideas for them at the end of a report.
+- Out of scope: ADLS or any other external environment, and "Other OSS worth
+  testing" and "Parked experiments" beyond what the third round names (P1
+  takes Polaris, W1 the first parked item). Databricks only in D1, only with
+  the credentials it names, only inside its one schema, and never echo or
+  commit the token. You may list ideas for the rest at the end of a report.
 - L milestones must not change the M0-M3 harness behaviour or rewrite their
   evidence. Add new modules, Compose profiles and tests instead; if a shared
   module must change, keep `uv run pytest -q` green and say why in the report.
@@ -25,10 +27,11 @@ the contract. Where this file and the plan disagree, this file wins.
 
 ## Hard limits
 
-- Local only. Never add a git remote, push, open issues or pull requests, or
-  post anywhere. Suspected upstream problems go to `drafts/` as Markdown.
-- No paid services, no cloud accounts, no credentials beyond the synthetic
-  lab ones. Synthetic data only.
+- Commit locally only. The repository has a public remote that the maintainer
+  pushes; never push, change remotes, open issues or pull requests, or post
+  anywhere. Suspected upstream problems go to `drafts/` as Markdown.
+- No paid services and no cloud accounts or credentials beyond the synthetic
+  lab ones, except the Databricks Free Edition credentials D1 names. Synthetic data only.
 - Docker: one Compose project named `cdclab` (plus `p2irepro` for R1), every published port bound to
   `127.0.0.1` and configurable through `compose/.env`. Only create, stop or
   remove containers, volumes and networks of that project

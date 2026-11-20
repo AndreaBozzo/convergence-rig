@@ -176,3 +176,55 @@ Goal: repeat the M3 protocol with automatic compaction on, the way a production 
 5. Generate the C1 table and the comparison from raw runs with one documented command, as M3 does.
 
 **Pass:** six valid runs with explicit outcomes and evidence that compaction ran in each; the comparison with M3 is reproducible from raw files. A mismatch or a pg2iceberg error is a result: preserve it and draft a local reproduction.
+
+## Third round (K1, K2, P1, W1, D1)
+
+These deepen the Lakekeeper evaluation: what it costs to operate (K1, K2), whether it earns its place against another catalog (P1), and one parked PostgreSQL 19 question (W1). D1 tests Databricks only if credentials are provided. All reuse the M0-M3 stack, fixture, verifier and evidence rules, and must not change M0-M3, L1-L3, R1 or C1 behaviour or evidence.
+
+### K1 · Orphan files after a catalog outage
+
+Goal: show whether the 2 orphan files per outage that L3 found can be removed safely with Lakekeeper or standard Iceberg tooling.
+
+1. From the pinned Lakekeeper v0.15.1 docs and API, find what it offers for table maintenance (orphan file removal, snapshot expiry, soft deletion, task queues). If it has no orphan removal, use Spark's `remove_orphan_files` procedure through the Lakekeeper catalog (the L1 Spark image), with vended or static credentials as L1 does.
+2. Reproduce the L3 outage on the 25,000-row fixture with a connector restart, so orphans exist. List every object under the table's prefix and classify it: referenced by any snapshot's metadata, staging, or unreferenced.
+3. Run the cleanup with an `older_than` that covers the orphans. Show it removes exactly the unreferenced files, leaves every referenced and staging object, and that the exact comparison still matches afterwards. Run it a second time while pg2iceberg is writing, with the default retention, and show no live file is removed.
+
+**Pass:** before/after object listings with each object classified, the exact comparison passing after cleanup, and the concurrent run showing no live file removed, in `reports/K1.md`. A removed live file is a result: preserve it.
+
+### K2 · Catalog metadata restore drill
+
+Goal: answer the L3 design note with a real drill. What happens to CDC convergence when the catalog database is restored from a backup taken earlier in the run?
+
+1. Under the M1 workload (25,000-row fixture, 10 ops/s), take a `pg_dump` of the Lakekeeper catalog database at a recorded time T, let pg2iceberg commit at least 3 more snapshots, then stop Lakekeeper, restore the dump into a fresh catalog database and start Lakekeeper again. Record the snapshot IDs before and after the restore, pg2iceberg's own state (`_pg2iceberg` coordinator tables, slot positions), and what object storage holds.
+2. Keep the workload running and report what pg2iceberg does: errors, conflicts, re-commits, or silent continuation. Then stop writes, commit the final marker and run the exact comparison with a deadline. The outcome is one of the defined ones; `mismatch at deadline` is a valid result, with the missing or extra keys listed.
+3. If the restore leaves the table behind pg2iceberg's acknowledged position, state which rows are lost from Iceberg while PostgreSQL still holds them, and test one documented recovery (for example a pg2iceberg resnapshot or a re-register) if pg2iceberg 0.12.0 offers one. Do not invent an undocumented procedure.
+4. Write the operations owner list the L3 notes asked for, filled in from this drill: what must be backed up together (catalog database, object storage, pg2iceberg coordinator state) and in what order.
+
+**Pass:** an explicit outcome with the before/after positions and the evidence in `reports/K2.md`. A loss is a result: preserve it and draft a local note in `drafts/`.
+
+### P1 · Same checks with Apache Polaris
+
+Goal: decide whether Lakekeeper earns its place against Apache Polaris for this setup, keeping writer, storage and readers constant.
+
+1. Add Polaris (latest release, pinned by digest, its own catalog database) behind a Compose profile, with the same object storage. Configure a catalog equivalent to the Lakekeeper warehouse, with credential vending if Polaris supports it for this storage.
+2. Repeat on Polaris: the M1 baseline (one run, 25,000 rows), the L1 two-reader check, and the L2 scoped-access checks (reader denied on the restricted table, vended credentials refused on its files, commit refused). Use Polaris's own access model; record what maps and what does not.
+3. Report side by side with Lakekeeper: convergence outcome, each check, setup steps and lines of config, startup time, memory at idle and under the workload, and anything that needed a workaround.
+
+**Pass:** each check evidenced on Polaris or explicitly reported as not supported with the documentation reference, and the comparison table in `reports/P1.md`. Lakekeeper's own results must not be re-run or changed.
+
+### W1 · Start CDC with `wal_level=replica`
+
+Run the parked experiment as written under "Parked experiments" (first item), on a fresh PostgreSQL 19.0 source from the lab's image. Record `wal_level` and `effective_wal_level` before and after the first logical slot exists, and what pg2iceberg 0.12.0's preflight does. If pg2iceberg refuses, show native slot creation working on an equivalent fresh instance and quote the preflight code at the pinned commit.
+
+**Pass:** the outcome with the exact settings, the preflight behaviour and the source reference in `reports/W1.md`; a local draft in `drafts/` only if pg2iceberg rejects a configuration that PostgreSQL 19 supports.
+
+### D1 · Databricks Free Edition, only with credentials
+
+Run D1 only if `compose/.env.local` defines `DATABRICKS_HOST`, `DATABRICKS_TOKEN` and `DATABRICKS_CATALOG`. If any is missing, write `reports/D1.md` saying D1 was skipped for missing credentials, and stop. Never print, log or commit the token, and never write it to any file except where it already is.
+
+1. Work only inside the given catalog, in one schema named `convergence_rig`. Create nothing else and change no workspace or metastore setting; if a step needs one (for example enabling external data access), stop and report it.
+2. Feasibility first: from the host, load Unity Catalog's Iceberg REST configuration (`/api/2.1/unity-catalog/iceberg-rest`) with the token, and record what the workspace allows (credential vending, write access for external engines to managed Iceberg tables).
+3. If external writes are allowed, run pg2iceberg 0.12.0 against Unity Catalog's Iceberg REST endpoint with the M1 workload on the 2,500-row fixture for 60 s, then verify the exact comparison by reading the table back with DuckDB through the same endpoint. If only reads are allowed, create a small managed Iceberg table in Databricks with synthetic rows and verify that DuckDB and Spark read it exactly through the endpoint.
+4. Drop the schema at the end and confirm it is gone.
+
+**Pass:** the feasibility answers and either an exact comparison or a precise statement of what blocked it, in `reports/D1.md`, with no credential in any committed file.
