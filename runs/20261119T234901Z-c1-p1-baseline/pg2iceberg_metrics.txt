@@ -1,0 +1,610 @@
+# HELP pg2iceberg_blob_bytes_total Bytes uploaded (put) to and downloaded (get) from the object store.
+# TYPE pg2iceberg_blob_bytes_total counter
+pg2iceberg_blob_bytes_total{op="get"} 6781713996
+pg2iceberg_blob_bytes_total{op="put"} 1459041582
+# HELP pg2iceberg_blob_request_duration_seconds How long an object store request took, by operation.
+# TYPE pg2iceberg_blob_request_duration_seconds histogram
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="0.005"} 138
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="0.01"} 139
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="0.025"} 153
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="0.05"} 160
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="0.1"} 168
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="0.25"} 220
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="0.5"} 226
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="1"} 226
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="2.5"} 226
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="5"} 226
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="10"} 226
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="30"} 226
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="60"} 226
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="120"} 226
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="300"} 226
+pg2iceberg_blob_request_duration_seconds_bucket{op="get",le="+Inf"} 226
+pg2iceberg_blob_request_duration_seconds_sum{op="get"} 11.938871000000004
+pg2iceberg_blob_request_duration_seconds_count{op="get"} 226
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="0.005"} 20
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="0.01"} 112
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="0.025"} 155
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="0.05"} 157
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="0.1"} 157
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="0.25"} 164
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="0.5"} 171
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="1"} 172
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="2.5"} 172
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="5"} 172
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="10"} 172
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="30"} 172
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="60"} 172
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="120"} 172
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="300"} 172
+pg2iceberg_blob_request_duration_seconds_bucket{op="put",le="+Inf"} 172
+pg2iceberg_blob_request_duration_seconds_sum{op="put"} 6.528102999999997
+pg2iceberg_blob_request_duration_seconds_count{op="put"} 172
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="0.005"} 0
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="0.01"} 0
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="0.025"} 1
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="0.05"} 1
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="0.1"} 1
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="0.25"} 1
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="0.5"} 1
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="1"} 1
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="2.5"} 1
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="5"} 1
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="10"} 1
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="30"} 1
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="60"} 1
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="120"} 1
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="300"} 1
+pg2iceberg_blob_request_duration_seconds_bucket{op="register_table",le="+Inf"} 1
+pg2iceberg_blob_request_duration_seconds_sum{op="register_table"} 0.015626
+pg2iceberg_blob_request_duration_seconds_count{op="register_table"} 1
+# HELP pg2iceberg_build_info Always 1; the labels name the running build.
+# TYPE pg2iceberg_build_info gauge
+pg2iceberg_build_info{revision="01c2e172eb5e7be82c60b77f20cb089354c06ce6",version="0.0.0"} 1
+# HELP pg2iceberg_catalog_request_duration_seconds How long an Iceberg catalog request took, by operation.
+# TYPE pg2iceberg_catalog_request_duration_seconds histogram
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="0.005"} 0
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="0.01"} 0
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="0.025"} 0
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="0.05"} 15
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="0.1"} 15
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="0.25"} 15
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="0.5"} 16
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="1"} 16
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="2.5"} 16
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="5"} 16
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="10"} 16
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="30"} 16
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="60"} 16
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="120"} 16
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="300"} 16
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_compaction",le="+Inf"} 16
+pg2iceberg_catalog_request_duration_seconds_sum{op="commit_compaction"} 0.9625870000000001
+pg2iceberg_catalog_request_duration_seconds_count{op="commit_compaction"} 16
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="0.005"} 0
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="0.01"} 0
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="0.025"} 0
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="0.05"} 18
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="0.1"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="0.25"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="0.5"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="1"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="2.5"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="5"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="10"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="30"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="60"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="120"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="300"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="commit_snapshots",le="+Inf"} 19
+pg2iceberg_catalog_request_duration_seconds_sum{op="commit_snapshots"} 0.7296069999999998
+pg2iceberg_catalog_request_duration_seconds_count{op="commit_snapshots"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="0.005"} 0
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="0.01"} 0
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="0.025"} 0
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="0.05"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="0.1"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="0.25"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="0.5"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="1"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="2.5"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="5"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="10"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="30"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="60"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="120"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="300"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="create_table",le="+Inf"} 1
+pg2iceberg_catalog_request_duration_seconds_sum{op="create_table"} 0.038276
+pg2iceberg_catalog_request_duration_seconds_count{op="create_table"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="0.005"} 0
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="0.01"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="0.025"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="0.05"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="0.1"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="0.25"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="0.5"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="1"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="2.5"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="5"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="10"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="30"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="60"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="120"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="300"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="ensure_namespace",le="+Inf"} 1
+pg2iceberg_catalog_request_duration_seconds_sum{op="ensure_namespace"} 0.008183
+pg2iceberg_catalog_request_duration_seconds_count{op="ensure_namespace"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="0.005"} 1
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="0.01"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="0.025"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="0.05"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="0.1"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="0.25"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="0.5"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="1"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="2.5"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="5"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="10"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="30"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="60"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="120"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="300"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="load_table",le="+Inf"} 2
+pg2iceberg_catalog_request_duration_seconds_sum{op="load_table"} 0.008113
+pg2iceberg_catalog_request_duration_seconds_count{op="load_table"} 2
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="0.005"} 0
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="0.01"} 12
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="0.025"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="0.05"} 19
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="0.1"} 20
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="0.25"} 20
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="0.5"} 20
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="1"} 20
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="2.5"} 20
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="5"} 20
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="10"} 20
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="30"} 20
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="60"} 20
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="120"} 20
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="300"} 20
+pg2iceberg_catalog_request_duration_seconds_bucket{op="snapshots",le="+Inf"} 20
+pg2iceberg_catalog_request_duration_seconds_sum{op="snapshots"} 0.26365500000000003
+pg2iceberg_catalog_request_duration_seconds_count{op="snapshots"} 20
+# HELP pg2iceberg_compaction_duration_seconds How long a compaction of one table took.
+# TYPE pg2iceberg_compaction_duration_seconds histogram
+pg2iceberg_compaction_duration_seconds_bucket{le="0.005"} 0
+pg2iceberg_compaction_duration_seconds_bucket{le="0.01"} 0
+pg2iceberg_compaction_duration_seconds_bucket{le="0.025"} 0
+pg2iceberg_compaction_duration_seconds_bucket{le="0.05"} 0
+pg2iceberg_compaction_duration_seconds_bucket{le="0.1"} 7
+pg2iceberg_compaction_duration_seconds_bucket{le="0.25"} 7
+pg2iceberg_compaction_duration_seconds_bucket{le="0.5"} 13
+pg2iceberg_compaction_duration_seconds_bucket{le="1"} 14
+pg2iceberg_compaction_duration_seconds_bucket{le="2.5"} 16
+pg2iceberg_compaction_duration_seconds_bucket{le="5"} 16
+pg2iceberg_compaction_duration_seconds_bucket{le="10"} 16
+pg2iceberg_compaction_duration_seconds_bucket{le="30"} 16
+pg2iceberg_compaction_duration_seconds_bucket{le="60"} 16
+pg2iceberg_compaction_duration_seconds_bucket{le="120"} 16
+pg2iceberg_compaction_duration_seconds_bucket{le="300"} 16
+pg2iceberg_compaction_duration_seconds_bucket{le="+Inf"} 16
+pg2iceberg_compaction_duration_seconds_sum 6.620566999999999
+pg2iceberg_compaction_duration_seconds_count 16
+# HELP pg2iceberg_compaction_files_rewritten_total Data and delete files compaction replaced.
+# TYPE pg2iceberg_compaction_files_rewritten_total counter
+pg2iceberg_compaction_files_rewritten_total{table="public.orders"} 72
+# HELP pg2iceberg_compaction_runs_total Compactions of a table that rewrote files, or failed (outcome rewritten, failed).
+# TYPE pg2iceberg_compaction_runs_total counter
+pg2iceberg_compaction_runs_total{outcome="rewritten",table="public.orders"} 16
+# HELP pg2iceberg_coord_request_duration_seconds How long a coordinator request took, by operation.
+# TYPE pg2iceberg_coord_request_duration_seconds histogram
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="0.005"} 35
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="0.01"} 35
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="0.025"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="0.05"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="0.1"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="0.25"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="0.5"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="1"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="2.5"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="5"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="10"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="30"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="60"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="120"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="300"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="bump_table_epoch",le="+Inf"} 36
+pg2iceberg_coord_request_duration_seconds_sum{op="bump_table_epoch"} 0.077094
+pg2iceberg_coord_request_duration_seconds_count{op="bump_table_epoch"} 36
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="0.005"} 98
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="0.01"} 100
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="0.025"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="0.05"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="0.1"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="0.25"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="0.5"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="1"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="2.5"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="5"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="10"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="30"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="60"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="120"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="300"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="claim_offsets",le="+Inf"} 103
+pg2iceberg_coord_request_duration_seconds_sum{op="claim_offsets"} 0.3275020000000002
+pg2iceberg_coord_request_duration_seconds_count{op="claim_offsets"} 103
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="0.005"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="0.01"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="0.025"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="0.05"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="0.1"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="0.25"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="0.5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="1"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="2.5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="10"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="30"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="60"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="120"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="300"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="clear_snapshot_progress",le="+Inf"} 1
+pg2iceberg_coord_request_duration_seconds_sum{op="clear_snapshot_progress"} 0.000505
+pg2iceberg_coord_request_duration_seconds_count{op="clear_snapshot_progress"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="0.005"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="0.01"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="0.025"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="0.05"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="0.1"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="0.25"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="0.5"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="1"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="2.5"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="5"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="10"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="30"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="60"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="120"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="300"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="ensure_cursor",le="+Inf"} 2
+pg2iceberg_coord_request_duration_seconds_sum{op="ensure_cursor"} 0.004797
+pg2iceberg_coord_request_duration_seconds_count{op="ensure_cursor"} 2
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="0.005"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="0.01"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="0.025"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="0.05"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="0.1"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="0.25"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="0.5"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="1"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="2.5"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="5"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="10"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="30"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="60"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="120"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="300"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="flushed_lsn",le="+Inf"} 8
+pg2iceberg_coord_request_duration_seconds_sum{op="flushed_lsn"} 0.004252
+pg2iceberg_coord_request_duration_seconds_count{op="flushed_lsn"} 8
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="0.005"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="0.01"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="0.025"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="0.05"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="0.1"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="0.25"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="0.5"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="1"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="2.5"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="5"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="10"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="30"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="60"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="120"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="300"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="get_cursor",le="+Inf"} 27
+pg2iceberg_coord_request_duration_seconds_sum{op="get_cursor"} 0.00903
+pg2iceberg_coord_request_duration_seconds_count{op="get_cursor"} 27
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="0.005"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="0.01"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="0.025"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="0.05"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="0.1"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="0.25"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="0.5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="1"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="2.5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="10"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="30"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="60"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="120"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="300"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="mark_table_snapshot_complete",le="+Inf"} 1
+pg2iceberg_coord_request_duration_seconds_sum{op="mark_table_snapshot_complete"} 0.001247
+pg2iceberg_coord_request_duration_seconds_count{op="mark_table_snapshot_complete"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="0.005"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="0.01"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="0.025"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="0.05"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="0.1"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="0.25"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="0.5"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="1"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="2.5"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="5"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="10"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="30"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="60"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="120"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="300"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="read_log",le="+Inf"} 43
+pg2iceberg_coord_request_duration_seconds_sum{op="read_log"} 0.022652
+pg2iceberg_coord_request_duration_seconds_count{op="read_log"} 43
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="0.005"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="0.01"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="0.025"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="0.05"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="0.1"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="0.25"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="0.5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="1"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="2.5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="10"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="30"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="60"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="120"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="300"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="replicated_lsn",le="+Inf"} 1
+pg2iceberg_coord_request_duration_seconds_sum{op="replicated_lsn"} 0.000416
+pg2iceberg_coord_request_duration_seconds_count{op="replicated_lsn"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="0.005"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="0.01"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="0.025"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="0.05"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="0.1"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="0.25"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="0.5"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="1"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="2.5"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="5"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="10"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="30"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="60"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="120"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="300"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_cursor",le="+Inf"} 19
+pg2iceberg_coord_request_duration_seconds_sum{op="set_cursor"} 0.033841
+pg2iceberg_coord_request_duration_seconds_count{op="set_cursor"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="0.005"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="0.01"} 21
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="0.025"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="0.05"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="0.1"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="0.25"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="0.5"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="1"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="2.5"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="5"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="10"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="30"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="60"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="120"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="300"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_flushed_lsn",le="+Inf"} 22
+pg2iceberg_coord_request_duration_seconds_sum{op="set_flushed_lsn"} 0.08687499999999998
+pg2iceberg_coord_request_duration_seconds_count{op="set_flushed_lsn"} 22
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="0.005"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="0.01"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="0.025"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="0.05"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="0.1"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="0.25"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="0.5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="1"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="2.5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="10"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="30"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="60"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="120"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="300"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="set_pipeline_system_identifier",le="+Inf"} 1
+pg2iceberg_coord_request_duration_seconds_sum{op="set_pipeline_system_identifier"} 0.004078
+pg2iceberg_coord_request_duration_seconds_count{op="set_pipeline_system_identifier"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="0.005"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="0.01"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="0.025"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="0.05"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="0.1"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="0.25"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="0.5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="1"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="2.5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="5"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="10"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="30"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="60"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="120"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="300"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="snapshot_progress",le="+Inf"} 1
+pg2iceberg_coord_request_duration_seconds_sum{op="snapshot_progress"} 0.000494
+pg2iceberg_coord_request_duration_seconds_count{op="snapshot_progress"} 1
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="0.005"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="0.01"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="0.025"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="0.05"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="0.1"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="0.25"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="0.5"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="1"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="2.5"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="5"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="10"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="30"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="60"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="120"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="300"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_epochs",le="+Inf"} 19
+pg2iceberg_coord_request_duration_seconds_sum{op="table_epochs"} 0.008409999999999999
+pg2iceberg_coord_request_duration_seconds_count{op="table_epochs"} 19
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="0.005"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="0.01"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="0.025"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="0.05"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="0.1"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="0.25"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="0.5"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="1"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="2.5"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="5"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="10"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="30"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="60"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="120"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="300"} 3
+pg2iceberg_coord_request_duration_seconds_bucket{op="table_state",le="+Inf"} 3
+pg2iceberg_coord_request_duration_seconds_sum{op="table_state"} 0.0023569999999999997
+pg2iceberg_coord_request_duration_seconds_count{op="table_state"} 3
+# HELP pg2iceberg_last_success_timestamp_seconds When a stage last completed (flush, ack, materialize, watch), in Unix seconds.
+# TYPE pg2iceberg_last_success_timestamp_seconds gauge
+pg2iceberg_last_success_timestamp_seconds{stage="ack"} 1795132370.3723
+pg2iceberg_last_success_timestamp_seconds{stage="flush"} 1795132376.399775
+pg2iceberg_last_success_timestamp_seconds{stage="materialize"} 1795132374.540654
+pg2iceberg_last_success_timestamp_seconds{stage="watch"} 1795132350.282459
+# HELP pg2iceberg_materializer_backlog_rows Rows staged but not yet materialized.
+# TYPE pg2iceberg_materializer_backlog_rows gauge
+pg2iceberg_materializer_backlog_rows{table="public.orders"} 80
+# HELP pg2iceberg_materializer_bytes_written_total Bytes of data and delete files the materializer's commits added.
+# TYPE pg2iceberg_materializer_bytes_written_total counter
+pg2iceberg_materializer_bytes_written_total{table="public.orders"} 350495115
+# HELP pg2iceberg_materializer_commit_duration_seconds How long an Iceberg commit of materialized rows took.
+# TYPE pg2iceberg_materializer_commit_duration_seconds histogram
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="0.005"} 0
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="0.01"} 0
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="0.025"} 0
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="0.05"} 18
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="0.1"} 19
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="0.25"} 19
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="0.5"} 19
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="1"} 19
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="2.5"} 19
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="5"} 19
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="10"} 19
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="30"} 19
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="60"} 19
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="120"} 19
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="300"} 19
+pg2iceberg_materializer_commit_duration_seconds_bucket{le="+Inf"} 19
+pg2iceberg_materializer_commit_duration_seconds_sum 0.7695019999999999
+pg2iceberg_materializer_commit_duration_seconds_count 19
+# HELP pg2iceberg_materializer_commits_total Iceberg commits of materialized rows.
+# TYPE pg2iceberg_materializer_commits_total counter
+pg2iceberg_materializer_commits_total{table="public.orders"} 19
+# HELP pg2iceberg_materializer_cycle_duration_seconds How long a materializer cycle over every assigned table took.
+# TYPE pg2iceberg_materializer_cycle_duration_seconds histogram
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="0.005"} 1
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="0.01"} 1
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="0.025"} 1
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="0.05"} 2
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="0.1"} 2
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="0.25"} 2
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="0.5"} 4
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="1"} 19
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="2.5"} 19
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="5"} 19
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="10"} 19
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="30"} 19
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="60"} 19
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="120"} 19
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="300"} 19
+pg2iceberg_materializer_cycle_duration_seconds_bucket{le="+Inf"} 19
+pg2iceberg_materializer_cycle_duration_seconds_sum 13.084989
+pg2iceberg_materializer_cycle_duration_seconds_count 19
+# HELP pg2iceberg_materializer_cycle_total Times the materializer looked for staged rows to commit to a table.
+# TYPE pg2iceberg_materializer_cycle_total counter
+pg2iceberg_materializer_cycle_total{table="public.orders"} 19
+# HELP pg2iceberg_materializer_files_written_total Files the materializer's commits added, by kind (data, delete).
+# TYPE pg2iceberg_materializer_files_written_total counter
+pg2iceberg_materializer_files_written_total{kind="data",table="public.orders"} 43
+pg2iceberg_materializer_files_written_total{kind="delete",table="public.orders"} 17
+# HELP pg2iceberg_materializer_pk_index_bytes Memory the table's primary-key index takes, about; at most sink.pk_index_memory.
+# TYPE pg2iceberg_materializer_pk_index_bytes gauge
+pg2iceberg_materializer_pk_index_bytes{table="public.orders"} 11010648
+# HELP pg2iceberg_materializer_pk_index_evicted_files Data files whose keys the table's primary-key index evicted to keep to its budget.
+# TYPE pg2iceberg_materializer_pk_index_evicted_files gauge
+pg2iceberg_materializer_pk_index_evicted_files{table="public.orders"} 0
+# HELP pg2iceberg_materializer_rows_total Rows the materializer wrote to Iceberg, deletes included: each key once per step it changed in.
+# TYPE pg2iceberg_materializer_rows_total counter
+pg2iceberg_materializer_rows_total{table="public.orders"} 251809
+# HELP pg2iceberg_materializer_source_commit_timestamp_seconds Source commit time of the newest change materialized, in Unix seconds; with a backlog, time() minus it is how stale the table is.
+# TYPE pg2iceberg_materializer_source_commit_timestamp_seconds gauge
+pg2iceberg_materializer_source_commit_timestamp_seconds{table="public.orders"} 1795132361.686987
+# HELP pg2iceberg_phase 1 for what the process is doing (starting, snapshotting, running, stopping), 0 for the rest.
+# TYPE pg2iceberg_phase gauge
+pg2iceberg_phase{phase="running"} 1
+pg2iceberg_phase{phase="snapshotting"} 0
+pg2iceberg_phase{phase="starting"} 0
+pg2iceberg_phase{phase="stopping"} 0
+# HELP pg2iceberg_pipeline_changes_total Row changes received from the replication stream, by operation (insert, update, delete, truncate).
+# TYPE pg2iceberg_pipeline_changes_total counter
+pg2iceberg_pipeline_changes_total{op="delete",table="public.orders"} 273
+pg2iceberg_pipeline_changes_total{op="insert",table="public.orders"} 267
+pg2iceberg_pipeline_changes_total{op="update",table="public.orders"} 1270
+# HELP pg2iceberg_pipeline_flush_total Flushes that staged changes (or advanced the flushed LSN) and recorded them in the coordinator.
+# TYPE pg2iceberg_pipeline_flush_total counter
+pg2iceberg_pipeline_flush_total 102
+# HELP pg2iceberg_pipeline_flushed_lsn Highest source LSN staged and recorded in the coordinator.
+# TYPE pg2iceberg_pipeline_flushed_lsn gauge
+pg2iceberg_pipeline_flushed_lsn 434904064
+# HELP pg2iceberg_pipeline_rows_staged_total Rows staged as Parquet in the object store, snapshot rows included.
+# TYPE pg2iceberg_pipeline_rows_staged_total counter
+pg2iceberg_pipeline_rows_staged_total{table="public.orders"} 1810
+# HELP pg2iceberg_pipeline_staged_bytes_total Bytes of staged Parquet uploaded.
+# TYPE pg2iceberg_pipeline_staged_bytes_total counter
+pg2iceberg_pipeline_staged_bytes_total{table="public.orders"} 4528891
+# HELP pg2iceberg_pipeline_transactions_total Source transactions received from the replication stream.
+# TYPE pg2iceberg_pipeline_transactions_total counter
+pg2iceberg_pipeline_transactions_total 1810
+# HELP pg2iceberg_replication_buffered_messages Decoded replication messages waiting for the main loop; near 1000 the main loop is the bottleneck.
+# TYPE pg2iceberg_replication_buffered_messages gauge
+pg2iceberg_replication_buffered_messages 0
+# HELP pg2iceberg_replication_lag_bytes WAL the source has written past the replication slot's confirmed position, in bytes.
+# TYPE pg2iceberg_replication_lag_bytes gauge
+pg2iceberg_replication_lag_bytes 385240
+# HELP pg2iceberg_slot_ack_lag_bytes WAL staged but not yet acked to the replication slot, in bytes: the next ack's to make.
+# TYPE pg2iceberg_slot_ack_lag_bytes gauge
+pg2iceberg_slot_ack_lag_bytes 287152
+# HELP pg2iceberg_slot_retained_wal_bytes WAL the replication slot keeps the source from removing (its WAL position minus the slot's restart_lsn), in bytes.
+# TYPE pg2iceberg_slot_retained_wal_bytes gauge
+pg2iceberg_slot_retained_wal_bytes 757736
+# HELP pg2iceberg_slot_wal_status 1 for the replication slot's wal_status (reserved, extended, unreserved, lost), 0 for the rest.
+# TYPE pg2iceberg_slot_wal_status gauge
+pg2iceberg_slot_wal_status{status="extended"} 0
+pg2iceberg_slot_wal_status{status="lost"} 0
+pg2iceberg_slot_wal_status{status="reserved"} 1
+pg2iceberg_slot_wal_status{status="unreserved"} 0
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1795132376.9548404
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 20.01
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 4006371328
+# HELP process_threads Number of OS threads in the process.
+# TYPE process_threads gauge
+process_threads 10
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 3313963008
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 30
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1048576

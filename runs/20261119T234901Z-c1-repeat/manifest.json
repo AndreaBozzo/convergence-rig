@@ -1,0 +1,53 @@
+{
+  "milestone": "C1",
+  "label": "c1",
+  "compaction_config": "pg2iceberg.compaction.yaml",
+  "n_pairs": 3,
+  "orders": [
+    "baseline-first",
+    "repack-first",
+    "baseline-first"
+  ],
+  "base_rng_seed": 20261119,
+  "distinct_pair_seeds": true,
+  "with_plain_repack_control": false,
+  "m3_reference_manifest": "runs/20261119T200004Z-m3-repeat/manifest.json",
+  "parameters": {
+    "seed_rows": 250000,
+    "toast_rows": 25000,
+    "duration_s": 180.0,
+    "rate_ops_s": 10.0,
+    "batch_size": 2000,
+    "probe_interval_s": 20.0,
+    "probe_poll_interval_s": 0.5,
+    "repack_delay_s": 30.0,
+    "repack_sample_interval_s": 0.05
+  },
+  "pairs": [
+    {
+      "pair_index": 1,
+      "order": "baseline-first",
+      "rng_seed": 20261119,
+      "pair_dir": "runs/20261119T235651Z-c1-p1-pair",
+      "baseline_run_dir": "runs/20261119T234901Z-c1-p1-baseline",
+      "repack_run_dir": "runs/20261119T235258Z-c1-p1-repack"
+    },
+    {
+      "pair_index": 2,
+      "order": "repack-first",
+      "rng_seed": 20261120,
+      "pair_dir": "runs/20261120T000438Z-c1-p2-pair",
+      "baseline_run_dir": "runs/20261120T000044Z-c1-p2-baseline",
+      "repack_run_dir": "runs/20261119T235651Z-c1-p2-repack"
+    },
+    {
+      "pair_index": 3,
+      "order": "baseline-first",
+      "rng_seed": 20261121,
+      "pair_dir": "runs/20261120T001224Z-c1-p3-pair",
+      "baseline_run_dir": "runs/20261120T000438Z-c1-p3-baseline",
+      "repack_run_dir": "runs/20261120T000831Z-c1-p3-repack"
+    }
+  ],
+  "plain_repack_control": null
+}

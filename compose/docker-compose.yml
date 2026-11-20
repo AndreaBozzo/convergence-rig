@@ -134,7 +134,7 @@ services:
     ports:
       - "127.0.0.1:${PG2ICEBERG_METRICS_PORT:-19090}:9090"
     volumes:
-      - ./pg2iceberg.yaml:/etc/pg2iceberg/config.yaml:ro
+      - ./${PG2ICEBERG_CONFIG_FILE:-pg2iceberg.yaml}:/etc/pg2iceberg/config.yaml:ro
     depends_on:
       pg-source:
         condition: service_healthy

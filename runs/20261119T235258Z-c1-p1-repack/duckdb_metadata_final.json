@@ -1,0 +1,98 @@
+[
+  {
+    "manifest_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/metadata/01a1f63d-1e36-7281-b984-c90e8ab596ac-m0.avro",
+    "manifest_sequence_number": 51,
+    "manifest_content": "DATA",
+    "status": "EXISTING",
+    "content": "DATA",
+    "file_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/data/compact/compact-b9ffd1ad6092402b9027f82f951461b5.parquet",
+    "file_format": "PARQUET",
+    "record_count": 233809,
+    "data_sequence_number": 48,
+    "file_sequence_number": 49
+  },
+  {
+    "manifest_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/metadata/01a1f63d-1e36-7281-b984-c90e8ab596ac-m0.avro",
+    "manifest_sequence_number": 51,
+    "manifest_content": "DATA",
+    "status": "EXISTING",
+    "content": "DATA",
+    "file_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/data/compact/compact-accec0cd7c4b4fce8c6ff8005a25bbbb.parquet",
+    "file_format": "PARQUET",
+    "record_count": 10862,
+    "data_sequence_number": 48,
+    "file_sequence_number": 49
+  },
+  {
+    "manifest_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/metadata/01a1f63c-f6f4-7973-b2d2-91d8aca97d2c-m1.avro",
+    "manifest_sequence_number": 50,
+    "manifest_content": "DELETE",
+    "status": "ADDED",
+    "content": "EQUALITY_DELETES",
+    "file_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/data/eq-delete-3ee1fb9ca6814fa69bf7e65149328632.parquet",
+    "file_format": "PARQUET",
+    "record_count": 90,
+    "data_sequence_number": 50,
+    "file_sequence_number": 50
+  },
+  {
+    "manifest_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/metadata/01a1f63d-20eb-7d51-84a2-4accb2df4a0f-m1.avro",
+    "manifest_sequence_number": 52,
+    "manifest_content": "DELETE",
+    "status": "ADDED",
+    "content": "EQUALITY_DELETES",
+    "file_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/data/eq-delete-3eb8478a39dc4dc39544c9f2eb21b1db.parquet",
+    "file_format": "PARQUET",
+    "record_count": 98,
+    "data_sequence_number": 52,
+    "file_sequence_number": 52
+  },
+  {
+    "manifest_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/metadata/01a1f63d-4ba7-7b52-8eb3-c9c98a2f4d89-m1.avro",
+    "manifest_sequence_number": 54,
+    "manifest_content": "DELETE",
+    "status": "ADDED",
+    "content": "EQUALITY_DELETES",
+    "file_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/data/eq-delete-f05e20d9f4924694be191d45b0524dab.parquet",
+    "file_format": "PARQUET",
+    "record_count": 88,
+    "data_sequence_number": 54,
+    "file_sequence_number": 54
+  },
+  {
+    "manifest_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/metadata/01a1f63d-7554-7ba1-9168-6d2fca2e2037-m1.avro",
+    "manifest_sequence_number": 56,
+    "manifest_content": "DELETE",
+    "status": "ADDED",
+    "content": "EQUALITY_DELETES",
+    "file_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/data/eq-delete-5f4209735e7f4909a150d167e5feba7a.parquet",
+    "file_format": "PARQUET",
+    "record_count": 108,
+    "data_sequence_number": 56,
+    "file_sequence_number": 56
+  },
+  {
+    "manifest_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/metadata/01a1f63d-9f35-72b1-8001-0fea7dbff745-m1.avro",
+    "manifest_sequence_number": 58,
+    "manifest_content": "DELETE",
+    "status": "ADDED",
+    "content": "EQUALITY_DELETES",
+    "file_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/data/eq-delete-3806f6ddf29d42709026d447cbb282d9.parquet",
+    "file_format": "PARQUET",
+    "record_count": 77,
+    "data_sequence_number": 58,
+    "file_sequence_number": 58
+  },
+  {
+    "manifest_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/metadata/01a1f63d-c676-7cb1-94b6-f2a5c083a6d6-m0.avro",
+    "manifest_sequence_number": 59,
+    "manifest_content": "DATA",
+    "status": "ADDED",
+    "content": "DATA",
+    "file_path": "s3://cdclab/warehouse/01a1f63a-9e92-70b2-ae68-c8d1cbc4321d/data/compact/compact-c31d9e3995764350acc115192fb9bfd8.parquet",
+    "file_format": "PARQUET",
+    "record_count": 5752,
+    "data_sequence_number": 58,
+    "file_sequence_number": 59
+  }
+]

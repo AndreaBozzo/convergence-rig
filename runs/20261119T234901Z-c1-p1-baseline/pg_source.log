@@ -1,0 +1,54 @@
+pg-source-1  | The files belonging to this database system will be owned by user "postgres".
+pg-source-1  | This user must also own the server process.
+pg-source-1  | 
+pg-source-1  | The database cluster will be initialized with locale "en_US.UTF-8".
+pg-source-1  | The default text search configuration will be set to "english".
+pg-source-1  | 
+pg-source-1  | Data page checksums are enabled.
+pg-source-1  | 
+pg-source-1  | fixing permissions on existing directory /var/lib/postgresql/19/data ... ok
+pg-source-1  | creating subdirectories ... ok
+pg-source-1  | selecting dynamic shared memory implementation ... posix
+pg-source-1  | selecting default "max_connections" ... 100
+pg-source-1  | selecting default "shared_buffers" ... 128MB
+pg-source-1  | selecting default time zone ... Etc/UTC
+pg-source-1  | creating configuration files ... ok
+pg-source-1  | running bootstrap script ... ok
+pg-source-1  | performing post-bootstrap initialization ... ok
+pg-source-1  | syncing data to disk ... ok
+pg-source-1  | 
+pg-source-1  | Success. You can now start the database server using:
+pg-source-1  | 
+pg-source-1  |     pg_ctl -D /var/lib/postgresql/19/data -l logfile start
+pg-source-1  | 
+pg-source-1  | waiting for server to start....2026-11-19 23:49:07.286 UTC [39] LOG:  starting PostgreSQL 19.0 on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+pg-source-1  | 2026-11-19 23:49:07.288 UTC [39] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+pg-source-1  | 2026-11-19 23:49:07.299 UTC [44] LOG:  database system was shut down at 2026-11-19 23:49:06 UTC
+pg-source-1  | 2026-11-19 23:49:07.303 UTC [39] LOG:  database system is ready to accept connections
+pg-source-1  |  done
+pg-source-1  | server started
+pg-source-1  | CREATE DATABASE
+pg-source-1  | waiting for server to shut down....2026-11-19 23:49:07.442 UTC [39] LOG:  received fast shutdown request
+pg-source-1  | 2026-11-19 23:49:07.448 UTC [39] LOG:  aborting any active transactions
+pg-source-1  | 2026-11-19 23:49:07.449 UTC [39] LOG:  background worker "logical replication launcher" (PID 47) exited with exit code 1
+pg-source-1  | 2026-11-19 23:49:07.450 UTC [42] LOG:  shutting down
+pg-source-1  | 2026-11-19 23:49:07.460 UTC [42] LOG:  checkpoint starting: shutdown fast
+pg-source-1  | 2026-11-19 23:49:07.579 UTC [42] LOG:  checkpoint complete: shutdown fast: wrote 948 buffers (5.8%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.039 s, sync=0.062 s, total=0.129 s; sync files=303, longest=0.017 s, average=0.001 s; distance=4394 kB, estimate=4394 kB; lsn=0/01BA1A98, redo lsn=0/01BA1A98
+pg-source-1  | 2026-11-19 23:49:07.587 UTC [39] LOG:  database system is shut down
+pg-source-1  |  done
+pg-source-1  | server stopped
+pg-source-1  | 2026-11-19 23:49:07.666 UTC [1] LOG:  starting PostgreSQL 19.0 on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+pg-source-1  | 2026-11-19 23:49:07.666 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+pg-source-1  | 2026-11-19 23:49:07.666 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+pg-source-1  | 2026-11-19 23:49:07.671 UTC [1] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+pg-source-1  | 2026-11-19 23:49:07.679 UTC [70] LOG:  database system was shut down at 2026-11-19 23:49:07 UTC
+pg-source-1  | 2026-11-19 23:49:07.693 UTC [1] LOG:  database system is ready to accept connections
+pg-source-1  | 2026-11-19 23:49:26.437 UTC [179] LOG:  logical decoding found consistent point at 0/19690D80
+pg-source-1  | 2026-11-19 23:49:26.437 UTC [179] DETAIL:  There are no running transactions.
+pg-source-1  | 2026-11-19 23:49:26.437 UTC [179] STATEMENT:  CREATE_REPLICATION_SLOT "pg2iceberg_slot" LOGICAL pgoutput NOEXPORT_SNAPSHOT
+pg-source-1  | 2026-11-19 23:49:30.257 UTC [200] LOG:  starting logical decoding for slot "pg2iceberg_slot"
+pg-source-1  | 2026-11-19 23:49:30.257 UTC [200] DETAIL:  Streaming transactions committing after 0/19690DB8, reading WAL from 0/19690D80.
+pg-source-1  | 2026-11-19 23:49:30.257 UTC [200] STATEMENT:  START_REPLICATION SLOT "pg2iceberg_slot" LOGICAL 0/196911D0 ("proto_version" '1', "publication_names" '"pg2iceberg_pub"')
+pg-source-1  | 2026-11-19 23:49:30.257 UTC [200] LOG:  logical decoding found consistent point at 0/19690D80
+pg-source-1  | 2026-11-19 23:49:30.257 UTC [200] DETAIL:  There are no running transactions.
+pg-source-1  | 2026-11-19 23:49:30.257 UTC [200] STATEMENT:  START_REPLICATION SLOT "pg2iceberg_slot" LOGICAL 0/196911D0 ("proto_version" '1', "publication_names" '"pg2iceberg_pub"')
