@@ -42,3 +42,39 @@ Before committing a materializer cycle against an Iceberg table, compare the tab
 1. If `iceberg_log_end > mat_cursor`: keep the existing fast-forward behavior.
 2. If `iceberg_log_end < mat_cursor`: treat it as catalog metadata rollback / split-brain. Fail the cycle loudly with an explicit `ERROR` (including `table`, `mat_cursor`, `iceberg_log_end`, and `current_snapshot_id`) instead of committing a gapped snapshot that forks the table timeline and permanently drops `(iceberg_log_end, mat_cursor]`.
 3. Optionally document a safe replay or recovery flag when `_pg2iceberg.log_index` and staged Parquet files still cover `(iceberg_log_end, mat_cursor]`, or instruct operators to halt writers, re-register the newer `metadata.json` from object storage if un-forked, or run `pg2iceberg cleanup` + catalog table drop + `pg2iceberg snapshot`.
+
+## Minimal reproduction
+
+`repro/pg2iceberg-catalog-restore/` in this repository reproduces it in about one minute, with 35 rows and no lab code (Docker Compose, `curl`, POSIX `sh`). It backs up Lakekeeper's catalog database after the first snapshots, applies four more transactions, waits for two more snapshots, restores the dump while pg2iceberg keeps running, writes one more change, and compares the snapshot log ranges.
+
+```sh
+./repro.sh down
+./repro.sh                      # polynyadev/pg2iceberg:0.12.0
+./repro.sh down
+P2I_VERSION=main ./repro.sh     # polynyadev/pg2iceberg:sha-4344888 (main at 4344888eb6)
+```
+
+Both images print the same final line and exit with code 1 (output of three clean runs per image in `reports/R2.md`):
+
+```text
+RESULT: gap in the applied log range after the catalog restore: yes; verify reported diffs (exit 1); pg2iceberg warnings or errors since the restore: 0
+```
+
+The step before it lists the snapshots, for example `gaps=(6,29]`: the restored snapshot ends at log offset 6, `_pg2iceberg.mat_cursor` stays at 29, and the next commit has `pg2iceberg.log-start=29`. `pg2iceberg verify` reports `pg_only=15`, `iceberg_only=3` and `mismatched=5`. `P2I_CONTROL=1 ./repro.sh` skips the restore and prints `gap ... no; verify reported no diffs (exit 0)`.
+
+## Behaviour on main (`4344888eb6`, 2026-11-17)
+
+Main still skips silently. It records the end of the applied log per consumer group in the table property `pg2iceberg.log-ends` (and in each snapshot's summary), and reads it in `Materializer::begin_unit` (`crates/pg2iceberg-logical/src/materializer.rs`) before it folds a unit:
+
+```rust
+let applied = self.sync_file_index(ident).await?;
+if let Some(&end) = applied.get(&self.unit_group(unit)) {
+    if end > start {
+        return Err(MaterializerError::AlreadyApplied { end });
+    }
+}
+```
+
+`AlreadyApplied` moves the cursor forward to `end` (`apply_table`). Nothing handles `end < start`, which is the rolled-back catalog: the unit starts at the cursor and commits on top of the restored snapshot. The other guard, `log_continues`, compares the cursor with the first staged log entry (`LogGap`), so it catches a truncated log but not a table that is behind its cursor. `docs/architecture/materializer.md` says the same: "if a commit already applied past it, it moves the cursor there and goes on from the end."
+
+Suggested change, as above: when the recorded `pg2iceberg.log-end` for the group is less than the cursor, fail the cycle with an error that names the table, the cursor and the recorded end. In the K2 drill on 0.12.0 the staged log and `_pg2iceberg.log_index` still held the skipped range, so replaying from the recorded end may also be possible; R2 did not check that on main.

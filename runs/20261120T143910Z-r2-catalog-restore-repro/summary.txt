@@ -1,0 +1,7 @@
+0.12.0-run1 start=2026-11-20T14:39:16Z exit=1 RESULT: gap in the applied log range after the catalog restore: yes; verify reported diffs (exit 1); pg2iceberg warnings or errors since the restore: 0
+0.12.0-run2 start=2026-11-20T14:40:21Z exit=1 RESULT: gap in the applied log range after the catalog restore: yes; verify reported diffs (exit 1); pg2iceberg warnings or errors since the restore: 0
+0.12.0-run3 start=2026-11-20T14:41:39Z exit=1 RESULT: gap in the applied log range after the catalog restore: yes; verify reported diffs (exit 1); pg2iceberg warnings or errors since the restore: 0
+main-run1 start=2026-11-20T14:42:54Z exit=1 RESULT: gap in the applied log range after the catalog restore: yes; verify reported diffs (exit 1); pg2iceberg warnings or errors since the restore: 0
+main-run2 start=2026-11-20T14:43:59Z exit=1 RESULT: gap in the applied log range after the catalog restore: yes; verify reported diffs (exit 1); pg2iceberg warnings or errors since the restore: 0
+main-run3 start=2026-11-20T14:45:02Z exit=1 RESULT: gap in the applied log range after the catalog restore: yes; verify reported diffs (exit 1); pg2iceberg warnings or errors since the restore: 0
+done

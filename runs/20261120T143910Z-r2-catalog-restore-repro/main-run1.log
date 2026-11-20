@@ -1,0 +1,190 @@
+[2026-11-20T14:42:54Z] pg2iceberg image: polynyadev/pg2iceberg:sha-4344888@sha256:964f0be1f4d038947d5a85905dbbc04733292d20cdcc33eb2224e1dcb663cd68
+[2026-11-20T14:42:55Z] Step 1: start and bootstrap
+[2026-11-20T14:42:55Z] Starting base services (pg-source, lakekeeper-db, silo, lakekeeper-migrate, lakekeeper)...
+ Network p2irestore_p2irestore_net Creating 
+ Network p2irestore_p2irestore_net Creating 
+ Volume p2irestore_lakekeeper_db_data Creating 
+ Volume p2irestore_lakekeeper_db_data Creating 
+ Volume p2irestore_pg_source_data Creating 
+ Volume p2irestore_pg_source_data Creating 
+ Volume p2irestore_silo_data Creating 
+ Volume p2irestore_silo_data Creating 
+ Volume p2irestore_pg_source_data Created 
+ Volume p2irestore_pg_source_data Created 
+ Volume p2irestore_lakekeeper_db_data Created 
+ Volume p2irestore_lakekeeper_db_data Created 
+ Volume p2irestore_silo_data Created 
+ Volume p2irestore_silo_data Created 
+ Network p2irestore_p2irestore_net Created 
+ Network p2irestore_p2irestore_net Created 
+ Container p2irestore-silo-1 Creating 
+ Container p2irestore-pg-source-1 Creating 
+ Container p2irestore-lakekeeper-db-1 Creating 
+ Container p2irestore-silo-1 Created 
+ Container p2irestore-lakekeeper-db-1 Created 
+ Container p2irestore-lakekeeper-migrate-1 Creating 
+ Container p2irestore-pg-source-1 Created 
+ Container p2irestore-lakekeeper-migrate-1 Created 
+ Container p2irestore-lakekeeper-1 Creating 
+ Container p2irestore-lakekeeper-1 Created 
+ Container p2irestore-pg-source-1 Starting 
+ Container p2irestore-silo-1 Starting 
+ Container p2irestore-lakekeeper-db-1 Starting 
+ Container p2irestore-pg-source-1 Started 
+ Container p2irestore-silo-1 Started 
+ Container p2irestore-silo-1 Waiting 
+ Container p2irestore-lakekeeper-db-1 Started 
+ Container p2irestore-lakekeeper-db-1 Waiting 
+ Container p2irestore-silo-1 Healthy 
+ Container p2irestore-lakekeeper-db-1 Healthy 
+ Container p2irestore-lakekeeper-migrate-1 Starting 
+ Container p2irestore-lakekeeper-migrate-1 Started 
+ Container p2irestore-lakekeeper-migrate-1 Waiting 
+ Container p2irestore-lakekeeper-migrate-1 Exited 
+ Container p2irestore-lakekeeper-1 Starting 
+ Container p2irestore-lakekeeper-1 Started 
+ Container p2irestore-lakekeeper-migrate-1 Waiting 
+ Container p2irestore-lakekeeper-1 Waiting 
+ Container p2irestore-pg-source-1 Waiting 
+ Container p2irestore-lakekeeper-db-1 Waiting 
+ Container p2irestore-silo-1 Waiting 
+ Container p2irestore-lakekeeper-migrate-1 Exited 
+ Container p2irestore-lakekeeper-db-1 Healthy 
+ Container p2irestore-pg-source-1 Healthy 
+ Container p2irestore-silo-1 Healthy 
+ Container p2irestore-lakekeeper-1 Healthy 
+[2026-11-20T14:43:05Z] Creating S3 bucket 'repro' in Silo (idempotent)...
+Bucket created successfully `local/repro`.
+[2026-11-20T14:43:06Z] Bootstrapping Lakekeeper at http://127.0.0.1:38181 (idempotent)...
+[2026-11-20T14:43:06Z] Lakekeeper bootstrapped.
+[2026-11-20T14:43:06Z] Creating Lakekeeper warehouse 'repro' pointing at http://silo:9000 (idempotent)...
+[2026-11-20T14:43:06Z] Warehouse 'repro' ready (prefix=01a1f969-3e4c-77d4-babd-da330b623300).
+[2026-11-20T14:43:06Z] Step 2: create public.items (primary key) with 30 rows
+CREATE TABLE
+INSERT 0 30
+[2026-11-20T14:43:07Z] Step 3: start pg2iceberg and wait for the first snapshot
+ Container p2irestore-pg-source-1 Running 
+ Container p2irestore-lakekeeper-db-1 Running 
+ Container p2irestore-silo-1 Running 
+ Container p2irestore-lakekeeper-1 Running 
+ Container p2irestore-pg2iceberg-1 Creating 
+ Container p2irestore-pg2iceberg-1 Created 
+ Container p2irestore-silo-1 Waiting 
+ Container p2irestore-pg-source-1 Waiting 
+ Container p2irestore-lakekeeper-db-1 Waiting 
+ Container p2irestore-silo-1 Healthy 
+ Container p2irestore-pg-source-1 Healthy 
+ Container p2irestore-lakekeeper-db-1 Healthy 
+ Container p2irestore-lakekeeper-migrate-1 Starting 
+ Container p2irestore-lakekeeper-migrate-1 Started 
+ Container p2irestore-lakekeeper-migrate-1 Waiting 
+ Container p2irestore-lakekeeper-migrate-1 Exited 
+ Container p2irestore-lakekeeper-1 Waiting 
+ Container p2irestore-lakekeeper-1 Healthy 
+ Container p2irestore-pg2iceberg-1 Starting 
+ Container p2irestore-pg2iceberg-1 Started 
+[2026-11-20T14:43:09Z] --- after the first snapshot: 1 snapshots, current-snapshot-id=775123470706736923
+[2026-11-20T14:43:09Z]     seq  snapshot-id  parent  log-start  log-end
+    1 775123470706736923 - - -
+[2026-11-20T14:43:09Z]     table properties: none
+[2026-11-20T14:43:09Z]     _pg2iceberg.mat_cursor: -1
+[2026-11-20T14:43:09Z] Step 4: one small change, so the backup holds a snapshot with a log range
+INSERT 0 5
+[2026-11-20T14:43:21Z] --- before the backup: 2 snapshots, current-snapshot-id=9189639419119219837
+[2026-11-20T14:43:21Z]     seq  snapshot-id  parent  log-start  log-end
+    1 775123470706736923 - - -
+    2 9189639419119219837 775123470706736923 0 6
+[2026-11-20T14:43:21Z]     table properties: "properties":{"pg2iceberg.log-ends":"{\"default\":6}"}
+[2026-11-20T14:43:22Z]     _pg2iceberg.mat_cursor: 6
+[2026-11-20T14:43:22Z] Step 5: pg_dump of the Lakekeeper catalog database (inside lakekeeper-db)
+152898 /tmp/lakekeeper.sql
+[2026-11-20T14:43:22Z] --- right after the backup: 2 snapshots, current-snapshot-id=9189639419119219837
+[2026-11-20T14:43:23Z]     seq  snapshot-id  parent  log-start  log-end
+    1 775123470706736923 - - -
+    2 9189639419119219837 775123470706736923 0 6
+[2026-11-20T14:43:23Z]     table properties: "properties":{"pg2iceberg.log-ends":"{\"default\":6}"}
+[2026-11-20T14:43:23Z]     _pg2iceberg.mat_cursor: 6
+[2026-11-20T14:43:23Z] Backup holds snapshot 9189639419119219837 (snapshots=2, log-end=6)
+[2026-11-20T14:43:23Z] Step 6: insert, update and delete rows in several transactions; wait for two more snapshots
+INSERT 0 10
+UPDATE 5
+DELETE 3
+INSERT 0 5
+[2026-11-20T14:43:38Z] --- before the restore: 4 snapshots, current-snapshot-id=1506959264377006724
+[2026-11-20T14:43:38Z]     seq  snapshot-id  parent  log-start  log-end
+    1 775123470706736923 - - -
+    2 9189639419119219837 775123470706736923 0 6
+    3 3446799553358272290 9189639419119219837 6 21
+    4 1506959264377006724 3446799553358272290 21 29
+[2026-11-20T14:43:38Z]     table properties: "properties":{"pg2iceberg.log-ends":"{\"default\":29}"}
+[2026-11-20T14:43:38Z]     _pg2iceberg.mat_cursor: 29
+[2026-11-20T14:43:39Z] Step 7: stop Lakekeeper, restore the dump into a fresh catalog database, start Lakekeeper
+ Container p2irestore-lakekeeper-1 Stopping 
+ Container p2irestore-lakekeeper-1 Stopped 
+DROP DATABASE
+CREATE DATABASE
+ Container p2irestore-silo-1 Waiting 
+ Container p2irestore-lakekeeper-db-1 Waiting 
+ Container p2irestore-silo-1 Healthy 
+ Container p2irestore-lakekeeper-db-1 Healthy 
+ Container p2irestore-lakekeeper-migrate-1 Starting 
+ Container p2irestore-lakekeeper-migrate-1 Started 
+ Container p2irestore-lakekeeper-migrate-1 Waiting 
+ Container p2irestore-lakekeeper-migrate-1 Exited 
+ Container p2irestore-lakekeeper-1 Starting 
+ Container p2irestore-lakekeeper-1 Started 
+[2026-11-20T14:43:42Z] Restore window: 2026-11-20T14:43:39Z to 2026-11-20T14:43:42Z
+[2026-11-20T14:43:43Z] --- after the restore: 2 snapshots, current-snapshot-id=9189639419119219837
+[2026-11-20T14:43:43Z]     seq  snapshot-id  parent  log-start  log-end
+    1 775123470706736923 - - -
+    2 9189639419119219837 775123470706736923 0 6
+[2026-11-20T14:43:43Z]     table properties: "properties":{"pg2iceberg.log-ends":"{\"default\":6}"}
+[2026-11-20T14:43:43Z]     _pg2iceberg.mat_cursor: 29
+[2026-11-20T14:43:43Z] Catalog rolled back: snapshot 1506959264377006724 (log-end 29) -> 9189639419119219837 (log-end 6); mat_cursor stays 29
+[2026-11-20T14:43:43Z] Step 8: one more change in a single transaction; wait for the next snapshot
+BEGIN
+INSERT 0 1
+UPDATE 1
+COMMIT
+[2026-11-20T14:43:54Z] --- after the post-restore change: 3 snapshots, current-snapshot-id=2050420814055374905
+[2026-11-20T14:43:54Z]     seq  snapshot-id  parent  log-start  log-end
+    1 775123470706736923 - - -
+    2 9189639419119219837 775123470706736923 0 6
+    3 2050420814055374905 9189639419119219837 29 31
+[2026-11-20T14:43:54Z]     table properties: "properties":{"pg2iceberg.log-ends":"{\"default\":31}"}
+[2026-11-20T14:43:54Z]     _pg2iceberg.mat_cursor: 31
+[2026-11-20T14:43:55Z] Step 9: pg2iceberg warnings and errors since the restore began
+[2026-11-20T14:43:55Z] (none)
+[2026-11-20T14:43:55Z] pg2iceberg status: running exit_code=0
+[2026-11-20T14:43:55Z] Step 10: pg2iceberg verify against PostgreSQL
+ Container p2irestore-pg2iceberg-run-ada2432964da Creating 
+ Container p2irestore-pg2iceberg-run-ada2432964da Created 
+{"timestamp":"2026-11-20T14:43:56.222793Z","level":"INFO","message":"reading config","path":"/etc/pg2iceberg/config.yaml","target":"pg2iceberg::config"}
+{"timestamp":"2026-11-20T14:43:56.240636Z","level":"INFO","message":"Using Static credential provider","target":"object_store::aws::builder"}
+{"timestamp":"2026-11-20T14:43:56.246992Z","level":"INFO","message":"vended-credentials S3 router built (per-table object stores)","tables":1,"target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302096Z","level":"WARN","message":"verify: diff detected","table":"public.items","pg_only":15,"iceberg_only":3,"mismatched":5,"target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302114Z","level":"WARN","message":"pg_only","table":"public.items","r":"{ColumnName(\"body\"): Text(\"after-backup-101\"), ColumnName(\"id\"): Int8(101), ColumnName(\"rev\"): Int4(0)}","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302120Z","level":"WARN","message":"pg_only","table":"public.items","r":"{ColumnName(\"body\"): Text(\"after-backup-102\"), ColumnName(\"id\"): Int8(102), ColumnName(\"rev\"): Int4(0)}","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302122Z","level":"WARN","message":"pg_only","table":"public.items","r":"{ColumnName(\"body\"): Text(\"after-backup-103\"), ColumnName(\"id\"): Int8(103), ColumnName(\"rev\"): Int4(0)}","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302124Z","level":"WARN","message":"pg_only","table":"public.items","r":"{ColumnName(\"body\"): Text(\"after-backup-104\"), ColumnName(\"id\"): Int8(104), ColumnName(\"rev\"): Int4(0)}","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302125Z","level":"WARN","message":"pg_only","table":"public.items","r":"{ColumnName(\"body\"): Text(\"after-backup-105\"), ColumnName(\"id\"): Int8(105), ColumnName(\"rev\"): Int4(0)}","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302127Z","level":"WARN","message":"iceberg_only","table":"public.items","r":"{ColumnName(\"body\"): Text(\"initial-6\"), ColumnName(\"id\"): Int8(6), ColumnName(\"rev\"): Int4(0)}","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302128Z","level":"WARN","message":"iceberg_only","table":"public.items","r":"{ColumnName(\"body\"): Text(\"initial-7\"), ColumnName(\"id\"): Int8(7), ColumnName(\"rev\"): Int4(0)}","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302130Z","level":"WARN","message":"iceberg_only","table":"public.items","r":"{ColumnName(\"body\"): Text(\"initial-8\"), ColumnName(\"id\"): Int8(8), ColumnName(\"rev\"): Int4(0)}","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302131Z","level":"WARN","message":"mismatched","table":"public.items","pg_r":"{ColumnName(\"body\"): Text(\"initial-1\"), ColumnName(\"id\"): Int8(1), ColumnName(\"rev\"): Int4(1)}","ice_r":"{ColumnName(\"body\"): Text(\"initial-1\"), ColumnName(\"id\"): Int8(1), ColumnName(\"rev\"): Int4(0)}","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302134Z","level":"WARN","message":"mismatched","table":"public.items","pg_r":"{ColumnName(\"body\"): Text(\"initial-2\"), ColumnName(\"id\"): Int8(2), ColumnName(\"rev\"): Int4(1)}","ice_r":"{ColumnName(\"body\"): Text(\"initial-2\"), ColumnName(\"id\"): Int8(2), ColumnName(\"rev\"): Int4(0)}","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302136Z","level":"WARN","message":"mismatched","table":"public.items","pg_r":"{ColumnName(\"body\"): Text(\"initial-3\"), ColumnName(\"id\"): Int8(3), ColumnName(\"rev\"): Int4(1)}","ice_r":"{ColumnName(\"body\"): Text(\"initial-3\"), ColumnName(\"id\"): Int8(3), ColumnName(\"rev\"): Int4(0)}","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302138Z","level":"WARN","message":"mismatched","table":"public.items","pg_r":"{ColumnName(\"body\"): Text(\"initial-4\"), ColumnName(\"id\"): Int8(4), ColumnName(\"rev\"): Int4(1)}","ice_r":"{ColumnName(\"body\"): Text(\"initial-4\"), ColumnName(\"id\"): Int8(4), ColumnName(\"rev\"): Int4(0)}","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T14:43:56.302140Z","level":"WARN","message":"mismatched","table":"public.items","pg_r":"{ColumnName(\"body\"): Text(\"initial-5\"), ColumnName(\"id\"): Int8(5), ColumnName(\"rev\"): Int4(1)}","ice_r":"{ColumnName(\"body\"): Text(\"initial-5\"), ColumnName(\"id\"): Int8(5), ColumnName(\"rev\"): Int4(0)}","target":"pg2iceberg::run"}
+Error: verify: 23 total row-level diffs across all tables
+
+[2026-11-20T14:43:56Z] pg2iceberg verify exit code: 1
+[2026-11-20T14:43:56Z] Step 11: applied log range per snapshot
+    1 775123470706736923 - - -
+    2 9189639419119219837 775123470706736923 0 6
+    3 2050420814055374905 9189639419119219837 29 31
+[2026-11-20T14:43:56Z] Detected: gaps=(6,29] overlaps=none
+[2026-11-20T14:43:57Z] DETAIL: backup log-end=6; before restore log-end=29, mat_cursor=29; post-restore snapshot committed=yes; gaps=(6,29] overlaps=none
+DETAIL: verify: {"timestamp":"2026-11-20T14:43:56.302096Z","level":"WARN","message":"verify: diff detected","table":"public.items","pg_only":15,"iceberg_only":3,"mismatched":5,"target":"pg2iceberg::run"}
+DETAIL: verify: Error: verify: 23 total row-level diffs across all tables
+RESULT: gap in the applied log range after the catalog restore: yes; verify reported diffs (exit 1); pg2iceberg warnings or errors since the restore: 0

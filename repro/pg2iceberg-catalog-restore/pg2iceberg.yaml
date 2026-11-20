@@ -1,0 +1,29 @@
+# Minimal pg2iceberg configuration for reproducing the skip after a catalog restore.
+# Synthetic local credentials only. The same file is read by 0.12.0 and by main.
+tables:
+  - name: public.items
+
+source:
+  mode: logical
+  postgres_url: "postgres://postgres:repro_pg_pass@pg-source:5432/repro?sslmode=disable"
+  logical:
+    publication_name: pg2iceberg_pub
+    slot_name: pg2iceberg_slot
+
+sink:
+  catalog_uri: "http://lakekeeper:8181/catalog"
+  catalog_auth: none
+  credential_mode: vended
+  warehouse: "repro"
+  namespace: "public"
+  s3_region: "local-01"
+  flush_interval: 2s
+  flush_rows: 100
+  materializer_interval: 8s
+  materializer_batch_rows: 1000
+  target_file_size: 0
+
+state:
+  coordinator_schema: _pg2iceberg
+
+metrics_addr: ":9090"
