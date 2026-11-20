@@ -230,3 +230,17 @@ Run D1 only if `compose/.env.local` defines `DATABRICKS_HOST`, `DATABRICKS_TOKEN
 4. Drop every table you created except one: leave a single small synthetic table named `orders_demo` (at most 1,000 rows, the same columns as the lab fixture) in schema `convergence_rig`, readable from the Databricks UI, for a demo. List what was dropped and what was kept. The catalog name `convergence-rig` contains a hyphen: quote it with backticks in SQL.
 
 **Pass:** the feasibility answers and either an exact comparison or a precise statement of what blocked it, in `reports/D1.md`, with no credential in any committed file.
+
+## Fourth round (R2)
+
+### R2 · Minimal upstream reproduction of the silent skip after a catalog restore
+
+Goal: a reproduction a pg2iceberg maintainer can run in a few minutes, showing that after the catalog database is restored from an earlier backup, pg2iceberg commits on top of the older snapshot and permanently skips the changes in between, with no error. K2 found this in the lab (`reports/K2.md`).
+
+1. Create `repro/pg2iceberg-catalog-restore/` in the same shape as `repro/pg2iceberg-catalog-outage/` (R1): its own `docker-compose.yml`, `pg2iceberg.yaml`, `README.md` and one POSIX `repro.sh`, Compose project `p2irestore`, ports on `127.0.0.1` and different from `cdclab` and `p2irepro`, only public images pinned by digest (official `postgres` 17, Lakekeeper `v0.15.1` with its catalog database, Silo from the R1 compose, pg2iceberg). No Python, no lab modules.
+2. `repro.sh` prints each step with a UTC timestamp: start and bootstrap; create a small table with a primary key and insert rows; wait for the first snapshot; `pg_dump` the Lakekeeper catalog database; insert, update and delete rows in several transactions and wait until pg2iceberg has committed at least two more snapshots; stop Lakekeeper, restore the dump into a fresh catalog database, start Lakekeeper; make one more change and wait for the next snapshot; then print the snapshot list with each snapshot's `pg2iceberg.log-start` and `pg2iceberg.log-end`, pg2iceberg's errors and warnings (`docker logs`), and the result of `pg2iceberg verify`. End with one line `RESULT: ...` naming whether a gap in the applied log range exists and whether `verify` reports diffs, with a non-zero script exit when the silent skip reproduces.
+3. Run it against two pg2iceberg images, both pinned by digest: `polynyadev/pg2iceberg:0.12.0` and `polynyadev/pg2iceberg:sha-4344888` (current main, which records `pg2iceberg.log-ends` in table properties). Select the image with an environment variable. Three clean runs per image (`repro.sh down` between runs).
+4. If main behaves differently (refuses, errors, or re-applies the skipped range), that is the result: report exactly what it does, quoting the source at that commit (`upstream/` holds 0.12.0; fetch main's source the same way into `upstream/pg2iceberg-4344888/`, gitignored, with `git clone` and checkout, not by inspecting images).
+5. Update `drafts/pg2iceberg-catalog-rollback-silent-skip.md` so its reproduction points at the folder with the exact RESULT output, and states the behaviour on main.
+
+**Pass:** three of three runs per image with the same RESULT line, image digests, exact commands and outputs in `reports/R2.md`.
