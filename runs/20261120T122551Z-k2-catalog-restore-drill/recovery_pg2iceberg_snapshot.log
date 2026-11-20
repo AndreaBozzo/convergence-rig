@@ -1,0 +1,14 @@
+{"timestamp":"2026-11-20T12:31:02.257374Z","level":"INFO","message":"reading config","path":"/etc/pg2iceberg/config.yaml","target":"pg2iceberg::config"}
+{"timestamp":"2026-11-20T12:31:02.262755Z","level":"INFO","message":"serving /metrics, /healthz and /readyz","addr":"0.0.0.0:9090","target":"pg2iceberg::telemetry"}
+{"timestamp":"2026-11-20T12:31:02.284863Z","level":"WARN","message":"vended-router: table not yet in catalog at startup; will be registered lazily once `materializer.register_table` creates it","ident":"public.orders","target":"pg2iceberg_iceberg::prod::vended","span":{"name":"snapshot"},"spans":[{"name":"snapshot"}]}
+{"timestamp":"2026-11-20T12:31:02.284911Z","level":"INFO","message":"vended-credentials S3 router built (per-table object stores)","tables":1,"target":"pg2iceberg::run","span":{"name":"snapshot"},"spans":[{"name":"snapshot"}]}
+{"timestamp":"2026-11-20T12:31:02.303820Z","level":"INFO","message":"NOTICE: column \"flushable_lsn\" of relation \"log_index\" already exists, skipping","log.target":"tokio_postgres::connection","log.module_path":"tokio_postgres::connection","log.file":"/usr/local/cargo/git/checkouts/rust-postgres-c2560d49ee2b8b43/31acf55/tokio-postgres/src/connection.rs","log.line":358,"target":"tokio_postgres::connection"}
+{"timestamp":"2026-11-20T12:31:02.336593Z","level":"INFO","message":"discovering schema from PG","table":"public.orders","target":"pg2iceberg::setup","span":{"name":"snapshot"},"spans":[{"name":"snapshot"}]}
+{"timestamp":"2026-11-20T12:31:02.362295Z","level":"INFO","message":"replication slot created (WAL pinned for later Run)","slot":"pg2iceberg_slot","consistent_point":"Lsn(43530240)","target":"pg2iceberg::run","span":{"name":"snapshot"},"spans":[{"name":"snapshot"}]}
+{"timestamp":"2026-11-20T12:31:02.407621Z","level":"INFO","message":"Using Static credential provider","target":"object_store::aws::builder","span":{"op":"register_table","otel.kind":"client","otel.name":"object_store.register_table","store":"object_store","name":"request"},"spans":[{"name":"snapshot"},{"op":"register_table","otel.kind":"client","otel.name":"object_store.register_table","store":"object_store","name":"request"}]}
+{"timestamp":"2026-11-20T12:31:02.415934Z","level":"INFO","message":"vended-router: table registered","ident":"public.orders","target":"pg2iceberg_iceberg::prod::vended","span":{"op":"register_table","otel.kind":"client","otel.name":"object_store.register_table","store":"object_store","name":"request"},"spans":[{"name":"snapshot"},{"op":"register_table","otel.kind":"client","otel.name":"object_store.register_table","store":"object_store","name":"request"}]}
+OK: snapshot complete at LSN Lsn(43531008)
+
+--- STDERR ---
+ Container cdclab-pg2iceberg-run-ef4d47094de4 Creating 
+ Container cdclab-pg2iceberg-run-ef4d47094de4 Created 

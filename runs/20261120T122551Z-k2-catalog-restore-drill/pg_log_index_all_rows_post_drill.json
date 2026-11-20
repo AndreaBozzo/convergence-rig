@@ -1,0 +1,922 @@
+[
+  {
+    "table_name": "public.orders",
+    "end_offset": 2,
+    "start_offset": 0,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/53a8926339774f81bb1c06e0fd5b192d.parquet",
+    "record_count": 2,
+    "byte_size": 3943,
+    "flushable_lsn": 36939704,
+    "created_at": "2026-11-20T12:26:13.407912+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 4,
+    "start_offset": 2,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/7aac524a7b334f429c2041e6d39338d9.parquet",
+    "record_count": 2,
+    "byte_size": 3356,
+    "flushable_lsn": 36942520,
+    "created_at": "2026-11-20T12:26:21.398402+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 23,
+    "start_offset": 4,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/dd41607e06f3486c9f38867fb6a6e174.parquet",
+    "record_count": 19,
+    "byte_size": 80021,
+    "flushable_lsn": 37013624,
+    "created_at": "2026-11-20T12:26:23.430746+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 44,
+    "start_offset": 23,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/ae7ae261206c482a8cc0519e44e2079e.parquet",
+    "record_count": 21,
+    "byte_size": 55639,
+    "flushable_lsn": 37077272,
+    "created_at": "2026-11-20T12:26:25.404773+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 64,
+    "start_offset": 44,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/f2ed994da5384efbbf7628993f13c99d.parquet",
+    "record_count": 20,
+    "byte_size": 55183,
+    "flushable_lsn": 37212544,
+    "created_at": "2026-11-20T12:26:27.401387+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 84,
+    "start_offset": 64,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/f031e5a5a1844a479054e0039585c925.parquet",
+    "record_count": 20,
+    "byte_size": 67507,
+    "flushable_lsn": 37289104,
+    "created_at": "2026-11-20T12:26:29.407458+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 105,
+    "start_offset": 84,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/bf05c13b2fde4d7bb6a5866dc94a424d.parquet",
+    "record_count": 21,
+    "byte_size": 104732,
+    "flushable_lsn": 37379728,
+    "created_at": "2026-11-20T12:26:31.413807+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 125,
+    "start_offset": 105,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/3b2f9c5ba93c4b0786ff77459d9a5718.parquet",
+    "record_count": 20,
+    "byte_size": 67695,
+    "flushable_lsn": 37456784,
+    "created_at": "2026-11-20T12:26:33.414240+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 145,
+    "start_offset": 125,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/e1ea656443374c67896a40b5e674a83d.parquet",
+    "record_count": 20,
+    "byte_size": 67410,
+    "flushable_lsn": 37505288,
+    "created_at": "2026-11-20T12:26:35.405080+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 165,
+    "start_offset": 145,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/bccfad4d3cc64734bad951cd2919c232.parquet",
+    "record_count": 20,
+    "byte_size": 30488,
+    "flushable_lsn": 37539944,
+    "created_at": "2026-11-20T12:26:37.405243+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 185,
+    "start_offset": 165,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/d9096e70ffbf4f1e971a48e8a583e741.parquet",
+    "record_count": 20,
+    "byte_size": 30500,
+    "flushable_lsn": 37575056,
+    "created_at": "2026-11-20T12:26:39.426082+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 205,
+    "start_offset": 185,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/d78b6ccdcd774704abe6112339c17343.parquet",
+    "record_count": 20,
+    "byte_size": 42954,
+    "flushable_lsn": 37624576,
+    "created_at": "2026-11-20T12:26:41.429060+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 225,
+    "start_offset": 205,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/47d4429d2fdc4a14aca98bc391eb749a.parquet",
+    "record_count": 20,
+    "byte_size": 67661,
+    "flushable_lsn": 37702440,
+    "created_at": "2026-11-20T12:26:43.437945+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 245,
+    "start_offset": 225,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/ae2c2bb5ccb54e36bff08d1ca19ecf9b.parquet",
+    "record_count": 20,
+    "byte_size": 5556,
+    "flushable_lsn": 37708960,
+    "created_at": "2026-11-20T12:26:45.479603+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 265,
+    "start_offset": 245,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/e63770e11c3d4bd4a191f565040f8db0.parquet",
+    "record_count": 20,
+    "byte_size": 55254,
+    "flushable_lsn": 38111560,
+    "created_at": "2026-11-20T12:26:47.424206+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 285,
+    "start_offset": 265,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/ac67b1ba98284a159cefba7090974fcb.parquet",
+    "record_count": 20,
+    "byte_size": 105012,
+    "flushable_lsn": 38202688,
+    "created_at": "2026-11-20T12:26:49.427893+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 306,
+    "start_offset": 285,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/f11834f2f96d47bbb29089417664a8c1.parquet",
+    "record_count": 21,
+    "byte_size": 67790,
+    "flushable_lsn": 38280104,
+    "created_at": "2026-11-20T12:26:51.433216+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 326,
+    "start_offset": 306,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/4a4152716233457aab77d2ac61f9f5f8.parquet",
+    "record_count": 20,
+    "byte_size": 80172,
+    "flushable_lsn": 38371160,
+    "created_at": "2026-11-20T12:26:53.431146+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 346,
+    "start_offset": 326,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/2a4a3389f7be4d629c0d049fb366109f.parquet",
+    "record_count": 20,
+    "byte_size": 67804,
+    "flushable_lsn": 38447976,
+    "created_at": "2026-11-20T12:26:55.438966+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 367,
+    "start_offset": 346,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/ef78a08dfc7e46dbaad0f8eb2a813377.parquet",
+    "record_count": 21,
+    "byte_size": 117470,
+    "flushable_lsn": 38581232,
+    "created_at": "2026-11-20T12:26:57.437908+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 386,
+    "start_offset": 367,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/63bdf235b53a4bf99d0065e0186dd4ce.parquet",
+    "record_count": 19,
+    "byte_size": 43006,
+    "flushable_lsn": 38630304,
+    "created_at": "2026-11-20T12:26:59.454757+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 407,
+    "start_offset": 386,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/88fb9893424c4720909c8290ac318e61.parquet",
+    "record_count": 21,
+    "byte_size": 43016,
+    "flushable_lsn": 38678920,
+    "created_at": "2026-11-20T12:27:01.455881+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 427,
+    "start_offset": 407,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/1e13352c884343e0a76c6bc67755590f.parquet",
+    "record_count": 20,
+    "byte_size": 104784,
+    "flushable_lsn": 38770160,
+    "created_at": "2026-11-20T12:27:03.451275+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 447,
+    "start_offset": 427,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/8befa77f17104446be899bb0832c4f37.parquet",
+    "record_count": 20,
+    "byte_size": 30339,
+    "flushable_lsn": 38804456,
+    "created_at": "2026-11-20T12:27:05.453366+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 467,
+    "start_offset": 447,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/f9f5df6227f14c69b71ae713b8c7c072.parquet",
+    "record_count": 20,
+    "byte_size": 67744,
+    "flushable_lsn": 38881512,
+    "created_at": "2026-11-20T12:27:07.451167+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 487,
+    "start_offset": 467,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/bef46301ee2245a3a79d20ae1b3d69e8.parquet",
+    "record_count": 20,
+    "byte_size": 55397,
+    "flushable_lsn": 38944744,
+    "created_at": "2026-11-20T12:27:09.453832+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 507,
+    "start_offset": 487,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/f8b810401b50497ebc0c1a6716f296d7.parquet",
+    "record_count": 20,
+    "byte_size": 42877,
+    "flushable_lsn": 38994432,
+    "created_at": "2026-11-20T12:27:11.486283+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 528,
+    "start_offset": 507,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/f65586aaf73947a4a22d774d639c99fb.parquet",
+    "record_count": 21,
+    "byte_size": 43002,
+    "flushable_lsn": 39043832,
+    "created_at": "2026-11-20T12:27:13.455069+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 548,
+    "start_offset": 528,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/af2db8f1c426441e8046846e3c68f765.parquet",
+    "record_count": 20,
+    "byte_size": 17887,
+    "flushable_lsn": 39063984,
+    "created_at": "2026-11-20T12:27:15.457137+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 568,
+    "start_offset": 548,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/ac9cdd33cd794079b9825917644c76b7.parquet",
+    "record_count": 20,
+    "byte_size": 30622,
+    "flushable_lsn": 39099200,
+    "created_at": "2026-11-20T12:27:17.501729+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 588,
+    "start_offset": 568,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/0afd2c5f7ca341ddb79402d8ebeee082.parquet",
+    "record_count": 20,
+    "byte_size": 42526,
+    "flushable_lsn": 39147456,
+    "created_at": "2026-11-20T12:27:19.489275+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 608,
+    "start_offset": 588,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/67f32974e21a4a8492134b3a33a30bdd.parquet",
+    "record_count": 20,
+    "byte_size": 30381,
+    "flushable_lsn": 39182072,
+    "created_at": "2026-11-20T12:27:21.477052+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 628,
+    "start_offset": 608,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/90e4b742e8044cf68eb84529e6d58b46.parquet",
+    "record_count": 20,
+    "byte_size": 18102,
+    "flushable_lsn": 39202968,
+    "created_at": "2026-11-20T12:27:23.475861+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 647,
+    "start_offset": 628,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/3fd73625b0c64d6eb87306b83b7f9ab9.parquet",
+    "record_count": 19,
+    "byte_size": 54915,
+    "flushable_lsn": 39297008,
+    "created_at": "2026-11-20T12:27:25.488866+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 668,
+    "start_offset": 647,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/acec018386b641998ef95f8157cd8bf4.parquet",
+    "record_count": 21,
+    "byte_size": 30455,
+    "flushable_lsn": 39372664,
+    "created_at": "2026-11-20T12:27:27.482063+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 688,
+    "start_offset": 668,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/48e247c02f2740068e6b13ee2d419306.parquet",
+    "record_count": 20,
+    "byte_size": 129385,
+    "flushable_lsn": 39491200,
+    "created_at": "2026-11-20T12:27:29.487811+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 709,
+    "start_offset": 688,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/d4b046a8cd4a4eae97006115ba2688f2.parquet",
+    "record_count": 21,
+    "byte_size": 80336,
+    "flushable_lsn": 39554304,
+    "created_at": "2026-11-20T12:27:31.477900+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 729,
+    "start_offset": 709,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/b9a9bc451702486998542f6f6b10d994.parquet",
+    "record_count": 20,
+    "byte_size": 80086,
+    "flushable_lsn": 39645888,
+    "created_at": "2026-11-20T12:27:33.486910+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 749,
+    "start_offset": 729,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/0f996c56ada4483ca7d258dfab8f0170.parquet",
+    "record_count": 20,
+    "byte_size": 80148,
+    "flushable_lsn": 39725512,
+    "created_at": "2026-11-20T12:27:35.491629+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 769,
+    "start_offset": 749,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/405e597f2ebc489d9a3b4f86e400cac5.parquet",
+    "record_count": 20,
+    "byte_size": 55257,
+    "flushable_lsn": 39788080,
+    "created_at": "2026-11-20T12:27:37.483799+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 789,
+    "start_offset": 769,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/c380802b493d4e73b5d6260a55ae516d.parquet",
+    "record_count": 20,
+    "byte_size": 55379,
+    "flushable_lsn": 39851320,
+    "created_at": "2026-11-20T12:27:39.488007+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 809,
+    "start_offset": 789,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/fe6ae8e4dead423faa496b3baf622f72.parquet",
+    "record_count": 20,
+    "byte_size": 30156,
+    "flushable_lsn": 39886208,
+    "created_at": "2026-11-20T12:27:41.490509+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 828,
+    "start_offset": 809,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/d5d14f13b48e4feb95c48ef32b754532.parquet",
+    "record_count": 19,
+    "byte_size": 55637,
+    "flushable_lsn": 39948808,
+    "created_at": "2026-11-20T12:27:43.527052+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 849,
+    "start_offset": 828,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/be2db3f4f6224e78b9366477172e1391.parquet",
+    "record_count": 21,
+    "byte_size": 55667,
+    "flushable_lsn": 39997408,
+    "created_at": "2026-11-20T12:27:45.492856+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 869,
+    "start_offset": 849,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/90b26715891b42ea8fefbcf2a5966dc9.parquet",
+    "record_count": 20,
+    "byte_size": 42735,
+    "flushable_lsn": 40045984,
+    "created_at": "2026-11-20T12:27:47.500582+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 889,
+    "start_offset": 869,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/df8cbddf985d4c8b95c9bb633dce0909.parquet",
+    "record_count": 20,
+    "byte_size": 67600,
+    "flushable_lsn": 40122616,
+    "created_at": "2026-11-20T12:27:49.498982+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 909,
+    "start_offset": 889,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/f8946ed6190a438fa9f30302859b4fac.parquet",
+    "record_count": 20,
+    "byte_size": 55045,
+    "flushable_lsn": 40157240,
+    "created_at": "2026-11-20T12:27:51.615190+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 930,
+    "start_offset": 909,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/a6d7940267c1416aa0745312287bdf6c.parquet",
+    "record_count": 21,
+    "byte_size": 43219,
+    "flushable_lsn": 40206688,
+    "created_at": "2026-11-20T12:27:53.500807+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 950,
+    "start_offset": 930,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/f967392c1adc4382a37c90df3222cfea.parquet",
+    "record_count": 20,
+    "byte_size": 42433,
+    "flushable_lsn": 40254368,
+    "created_at": "2026-11-20T12:27:55.501973+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 970,
+    "start_offset": 950,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/16622cab0c054c80b537232e0646018b.parquet",
+    "record_count": 20,
+    "byte_size": 17934,
+    "flushable_lsn": 40274736,
+    "created_at": "2026-11-20T12:27:57.501491+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 990,
+    "start_offset": 970,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/5994b9bf6630423fb0edb4549b89759c.parquet",
+    "record_count": 20,
+    "byte_size": 18244,
+    "flushable_lsn": 40295416,
+    "created_at": "2026-11-20T12:27:59.501503+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1010,
+    "start_offset": 990,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/42da1fb47ec14d05aedc2f09d5169582.parquet",
+    "record_count": 20,
+    "byte_size": 5631,
+    "flushable_lsn": 40302184,
+    "created_at": "2026-11-20T12:28:01.502969+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1030,
+    "start_offset": 1010,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/05a48d7da0c14bdd9b65354749e9ef25.parquet",
+    "record_count": 20,
+    "byte_size": 117302,
+    "flushable_lsn": 40407744,
+    "created_at": "2026-11-20T12:28:03.506987+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1050,
+    "start_offset": 1030,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/85a751ad559e4650854698a524024917.parquet",
+    "record_count": 20,
+    "byte_size": 55428,
+    "flushable_lsn": 40470608,
+    "created_at": "2026-11-20T12:28:05.541814+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1070,
+    "start_offset": 1050,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/fa8311f8bb6e4cba8da1861afbf29d1f.parquet",
+    "record_count": 20,
+    "byte_size": 67728,
+    "flushable_lsn": 40546848,
+    "created_at": "2026-11-20T12:28:07.504756+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1090,
+    "start_offset": 1070,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/92161dffc1a24e89bae3f01a9b3d574c.parquet",
+    "record_count": 20,
+    "byte_size": 42866,
+    "flushable_lsn": 40596080,
+    "created_at": "2026-11-20T12:28:09.512760+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1111,
+    "start_offset": 1090,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/727800aa57354a3285d6ce5b5c88a785.parquet",
+    "record_count": 21,
+    "byte_size": 55269,
+    "flushable_lsn": 40658568,
+    "created_at": "2026-11-20T12:28:11.539117+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1130,
+    "start_offset": 1111,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/49fbf82a5df34aae8a6ff838ad7fee85.parquet",
+    "record_count": 19,
+    "byte_size": 42767,
+    "flushable_lsn": 40707304,
+    "created_at": "2026-11-20T12:28:13.574959+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1151,
+    "start_offset": 1130,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/281ca59c3def4a9b889fdef85012046e.parquet",
+    "record_count": 21,
+    "byte_size": 31046,
+    "flushable_lsn": 40741856,
+    "created_at": "2026-11-20T12:28:15.516284+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1171,
+    "start_offset": 1151,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/489d942e22424442a02ceb74363d7179.parquet",
+    "record_count": 20,
+    "byte_size": 42890,
+    "flushable_lsn": 40790840,
+    "created_at": "2026-11-20T12:28:17.516418+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1191,
+    "start_offset": 1171,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/cdb49ca2bd9946449356304bf3f3a6b5.parquet",
+    "record_count": 20,
+    "byte_size": 42741,
+    "flushable_lsn": 40839512,
+    "created_at": "2026-11-20T12:28:19.518331+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1211,
+    "start_offset": 1191,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/b4b141fea8524d5da82448cc345906d9.parquet",
+    "record_count": 20,
+    "byte_size": 80075,
+    "flushable_lsn": 40901984,
+    "created_at": "2026-11-20T12:28:21.534100+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1231,
+    "start_offset": 1211,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/56547203224040b0b29f44d70e4f729a.parquet",
+    "record_count": 20,
+    "byte_size": 55159,
+    "flushable_lsn": 40965240,
+    "created_at": "2026-11-20T12:28:23.523670+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1251,
+    "start_offset": 1231,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/0effd9b3c1894a269603ff3be3772e3d.parquet",
+    "record_count": 20,
+    "byte_size": 67591,
+    "flushable_lsn": 41174960,
+    "created_at": "2026-11-20T12:28:25.524089+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1271,
+    "start_offset": 1251,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/7f997d8371b34a328e7e1a836759e75e.parquet",
+    "record_count": 20,
+    "byte_size": 43070,
+    "flushable_lsn": 41223784,
+    "created_at": "2026-11-20T12:28:27.522958+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1291,
+    "start_offset": 1271,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/29d4a34446134f08a4adee87d3bcb646.parquet",
+    "record_count": 20,
+    "byte_size": 43039,
+    "flushable_lsn": 41273016,
+    "created_at": "2026-11-20T12:28:29.551249+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1312,
+    "start_offset": 1291,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/6eee442faae141f09e98ae5c6bb892d2.parquet",
+    "record_count": 21,
+    "byte_size": 30803,
+    "flushable_lsn": 41308448,
+    "created_at": "2026-11-20T12:28:31.531733+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1330,
+    "start_offset": 1312,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/c7ca0c2825ca4aacb271593ec4af3513.parquet",
+    "record_count": 18,
+    "byte_size": 67859,
+    "flushable_lsn": 41356760,
+    "created_at": "2026-11-20T12:28:33.555520+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1353,
+    "start_offset": 1330,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/0a8ac5936e434a7487dd22e51ab595a5.parquet",
+    "record_count": 23,
+    "byte_size": 55622,
+    "flushable_lsn": 41421304,
+    "created_at": "2026-11-20T12:28:35.531821+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1372,
+    "start_offset": 1353,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/77561937c28f4a9b9d3abaa3bb37b793.parquet",
+    "record_count": 19,
+    "byte_size": 55076,
+    "flushable_lsn": 41483824,
+    "created_at": "2026-11-20T12:28:37.537674+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1393,
+    "start_offset": 1372,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/ce880359916d46b69697ebd84b893191.parquet",
+    "record_count": 21,
+    "byte_size": 55572,
+    "flushable_lsn": 41519320,
+    "created_at": "2026-11-20T12:28:39.538294+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1412,
+    "start_offset": 1393,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/9a9d1d819b8f42899364bcb542ba7dfe.parquet",
+    "record_count": 19,
+    "byte_size": 79843,
+    "flushable_lsn": 41609880,
+    "created_at": "2026-11-20T12:28:41.595913+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1433,
+    "start_offset": 1412,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/07178d927501425493f73eb29bba9fa2.parquet",
+    "record_count": 21,
+    "byte_size": 68181,
+    "flushable_lsn": 41658704,
+    "created_at": "2026-11-20T12:28:43.543193+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1452,
+    "start_offset": 1433,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/0ea36409d7d14f4dba53de6b908b7268.parquet",
+    "record_count": 19,
+    "byte_size": 17818,
+    "flushable_lsn": 41678912,
+    "created_at": "2026-11-20T12:28:45.566325+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1473,
+    "start_offset": 1452,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/26a1dd65034a4a89b90364a4bc50b0f5.parquet",
+    "record_count": 21,
+    "byte_size": 43103,
+    "flushable_lsn": 41727984,
+    "created_at": "2026-11-20T12:28:47.542816+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1493,
+    "start_offset": 1473,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/8f596e3958c04469af25594ab7566fee.parquet",
+    "record_count": 20,
+    "byte_size": 5872,
+    "flushable_lsn": 41735040,
+    "created_at": "2026-11-20T12:28:49.576543+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1512,
+    "start_offset": 1493,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/27778901168d4feeb9bd3815ba0f145b.parquet",
+    "record_count": 19,
+    "byte_size": 30349,
+    "flushable_lsn": 41769712,
+    "created_at": "2026-11-20T12:28:51.601228+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1533,
+    "start_offset": 1512,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/73568617b794498097b8df68722e25cb.parquet",
+    "record_count": 21,
+    "byte_size": 67776,
+    "flushable_lsn": 41847600,
+    "created_at": "2026-11-20T12:28:53.597096+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1554,
+    "start_offset": 1533,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/80bf8f7429b84a4186e6c2696ee54289.parquet",
+    "record_count": 21,
+    "byte_size": 18275,
+    "flushable_lsn": 41868896,
+    "created_at": "2026-11-20T12:28:55.579627+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1574,
+    "start_offset": 1554,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/4ef31bc680e44c9e9253a601340b73c9.parquet",
+    "record_count": 20,
+    "byte_size": 105418,
+    "flushable_lsn": 41959744,
+    "created_at": "2026-11-20T12:28:57.582022+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1594,
+    "start_offset": 1574,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/8a848c63b3114c7bb49a6fd3e5223b6b.parquet",
+    "record_count": 20,
+    "byte_size": 67833,
+    "flushable_lsn": 42036904,
+    "created_at": "2026-11-20T12:28:59.585235+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1614,
+    "start_offset": 1594,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/237ad5443472446c9b66e077d30899cc.parquet",
+    "record_count": 20,
+    "byte_size": 42751,
+    "flushable_lsn": 42057352,
+    "created_at": "2026-11-20T12:29:01.585009+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1634,
+    "start_offset": 1614,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/b72ce044a90f46b884dbf8a05aad3015.parquet",
+    "record_count": 20,
+    "byte_size": 30425,
+    "flushable_lsn": 42092696,
+    "created_at": "2026-11-20T12:29:03.587731+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1654,
+    "start_offset": 1634,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/14030e52317041b5b60a139edea8d60c.parquet",
+    "record_count": 20,
+    "byte_size": 42518,
+    "flushable_lsn": 42140808,
+    "created_at": "2026-11-20T12:29:05.587656+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1674,
+    "start_offset": 1654,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/165c5d9689284754977d7eed0c9f7a6d.parquet",
+    "record_count": 20,
+    "byte_size": 43251,
+    "flushable_lsn": 42190696,
+    "created_at": "2026-11-20T12:29:07.587670+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1694,
+    "start_offset": 1674,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/3d0815f69163442a8c6657c27b7848da.parquet",
+    "record_count": 20,
+    "byte_size": 30373,
+    "flushable_lsn": 42225600,
+    "created_at": "2026-11-20T12:29:09.586166+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1713,
+    "start_offset": 1694,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/a84ef519d578414b99066471ea416aef.parquet",
+    "record_count": 19,
+    "byte_size": 43445,
+    "flushable_lsn": 42274352,
+    "created_at": "2026-11-20T12:29:11.691667+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1734,
+    "start_offset": 1713,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/23e898ed6541415c989d0b3deee8565c.parquet",
+    "record_count": 21,
+    "byte_size": 80458,
+    "flushable_lsn": 42337608,
+    "created_at": "2026-11-20T12:29:13.597005+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1754,
+    "start_offset": 1734,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/953ea469cbec4127807667618028badd.parquet",
+    "record_count": 20,
+    "byte_size": 80533,
+    "flushable_lsn": 42428648,
+    "created_at": "2026-11-20T12:29:15.597535+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1773,
+    "start_offset": 1754,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/289f7d141f134cd5b1cc330ac033fb88.parquet",
+    "record_count": 19,
+    "byte_size": 80097,
+    "flushable_lsn": 42519392,
+    "created_at": "2026-11-20T12:29:17.618119+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1794,
+    "start_offset": 1773,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/ef9c1b98409b40b4bc3676cf9ad0a7cd.parquet",
+    "record_count": 21,
+    "byte_size": 30659,
+    "flushable_lsn": 42554144,
+    "created_at": "2026-11-20T12:29:19.596168+00:00"
+  },
+  {
+    "table_name": "public.orders",
+    "end_offset": 1811,
+    "start_offset": 1794,
+    "s3_path": "s3://cdclab/warehouse/01a1f8eb-dac5-7381-a561-8bdf97dadb01/staged/6eac57b45a2a415b835aea4eab3b636d.parquet",
+    "record_count": 17,
+    "byte_size": 42562,
+    "flushable_lsn": 42631464,
+    "created_at": "2026-11-20T12:29:21.642936+00:00"
+  }
+]

@@ -1,0 +1,4674 @@
+{
+  "snapshot_id": 6963599049208604272,
+  "source_read_opened_utc": "2026-11-20T12:30:57.110875Z",
+  "checked_at_utc": "2026-11-20T12:30:59.556107Z",
+  "passed": false,
+  "schema_check": {
+    "passed": true,
+    "schema_id": 0,
+    "format_version": 2,
+    "identifier_field_ids": [
+      1
+    ],
+    "mismatches": [],
+    "actual_fields": [
+      {
+        "id": 1,
+        "name": "id",
+        "required": true,
+        "type": "long"
+      },
+      {
+        "id": 2,
+        "name": "status",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "id": 3,
+        "name": "amount",
+        "required": true,
+        "type": "decimal(38, 9)"
+      },
+      {
+        "id": 4,
+        "name": "updated_at",
+        "required": true,
+        "type": "timestamptz"
+      },
+      {
+        "id": 5,
+        "name": "note",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "id": 6,
+        "name": "payload",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "id": 7,
+        "name": "discount",
+        "required": false,
+        "type": "decimal(38, 9)"
+      }
+    ],
+    "expected_fields": [
+      {
+        "name": "id",
+        "type": "long",
+        "required": true
+      },
+      {
+        "name": "status",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "amount",
+        "type": "decimal(38, 9)",
+        "required": true
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamptz",
+        "required": true
+      },
+      {
+        "name": "note",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "payload",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "discount",
+        "type": "decimal(38, 9)",
+        "required": false
+      }
+    ]
+  },
+  "row_comparison": {
+    "passed": false,
+    "source_row_count": 25039,
+    "lake_row_count": 25048,
+    "matched_id_count": 25000,
+    "exact_match_row_count": 24878,
+    "source_only_count": 39,
+    "source_only_examples": [
+      {
+        "id": 900000003,
+        "source_row": {
+          "id": 900000003,
+          "status": "marker_probe_003",
+          "amount": "0.000000001",
+          "updated_at": "2026-11-20T12:27:11.241824+00:00",
+          "note": "steady-state probe 3",
+          "payload": "{\"marker\": true, \"status\": \"marker_probe_003\", \"marker_id\": 900000003}",
+          "discount": null
+        }
+      },
+      {
+        "id": 1000000060,
+        "source_row": {
+          "id": 1000000060,
+          "status": "pending",
+          "amount": "708166.645868132",
+          "updated_at": "2026-11-20T12:26:59.809628+00:00",
+          "note": {
+            "preview": "toast-note-id=1000000060-rev=0-kac_cw1i6Fc4cpPiFnp3sD97iETlCYsPIq5cOasJGneRSO9XcpmSfu1Lltm-ig8qMjpqL1S6G2xF_qv0UvA3SWdBuc_MZmWJMdrRSDmcF_yowWhz5HZl4y3V3tOYVzhUflnYFF23HBeYmxEwPOxFOS3Twi87EiikMn_fBsE31...",
+            "char_len": 6175,
+            "utf8_bytes": 6175,
+            "sha256": "570c3d944cbc5c7b78953414440cffb5e82763084ea7ada7d1f94f54789ec51f"
+          },
+          "payload": {
+            "preview": "{\"rev\": 0, \"blob\": \"y2BdVTS6fY2AzEOP9c-y2zj9xZshM8UCj2Qq_rJzm1SP1nHhvO55YjS7vCm5Z2cLo0JNf6PGEUCKiZMVYe3quYbG-pZa4-0_bhZWC8tT8F9BVVVhGP7yc-H4VC1huWLpHYQ7XE2qUZoS7wnYhc0MII-3cK6gTahb5T_tqMMGexdzc34wUxaI...",
+            "char_len": 6259,
+            "utf8_bytes": 6259,
+            "sha256": "0ec5b5dbb2f538a7e9cf31aac82b98f2f288399a381749f8af917622b497975a"
+          },
+          "discount": "63972.254456246"
+        }
+      },
+      {
+        "id": 1000000061,
+        "source_row": {
+          "id": 1000000061,
+          "status": "processing",
+          "amount": "209128.117769051",
+          "updated_at": "2026-11-20T12:27:00.310118+00:00",
+          "note": "ins-1000000061",
+          "payload": "{\"id\": 1000000061, \"op\": \"ins\", \"seq\": 391}",
+          "discount": "673019.743310585"
+        }
+      },
+      {
+        "id": 1000000062,
+        "source_row": {
+          "id": 1000000062,
+          "status": "processing",
+          "amount": "748578.894682943",
+          "updated_at": "2026-11-20T12:27:01.309694+00:00",
+          "note": "ins-1000000062",
+          "payload": "{\"id\": 1000000062, \"op\": \"ins\", \"seq\": 401}",
+          "discount": null
+        }
+      },
+      {
+        "id": 1000000063,
+        "source_row": {
+          "id": 1000000063,
+          "status": "created",
+          "amount": "980310.001459280",
+          "updated_at": "2026-11-20T12:27:02.210013+00:00",
+          "note": "ins-1000000063",
+          "payload": "{\"id\": 1000000063, \"op\": \"ins\", \"seq\": 410}",
+          "discount": "467733.080330868"
+        }
+      },
+      {
+        "id": 1000000064,
+        "source_row": {
+          "id": 1000000064,
+          "status": "shipped",
+          "amount": "715157.586423458",
+          "updated_at": "2026-11-20T12:27:02.709952+00:00",
+          "note": "ins-1000000064",
+          "payload": "{\"id\": 1000000064, \"op\": \"ins\", \"seq\": 415}",
+          "discount": "257501.606011014"
+        }
+      },
+      {
+        "id": 1000000065,
+        "source_row": {
+          "id": 1000000065,
+          "status": "cancelled",
+          "amount": "783439.048962927",
+          "updated_at": "2026-11-20T12:27:02.910304+00:00",
+          "note": "ins-1000000065",
+          "payload": "{\"id\": 1000000065, \"op\": \"ins\", \"seq\": 417}",
+          "discount": "121191.103967853"
+        }
+      },
+      {
+        "id": 1000000066,
+        "source_row": {
+          "id": 1000000066,
+          "status": "cancelled",
+          "amount": "508712.828231856",
+          "updated_at": "2026-11-20T12:27:03.110340+00:00",
+          "note": "ins-1000000066",
+          "payload": "{\"id\": 1000000066, \"op\": \"ins\", \"seq\": 419}",
+          "discount": "240458.225848110"
+        }
+      },
+      {
+        "id": 1000000067,
+        "source_row": {
+          "id": 1000000067,
+          "status": "pending",
+          "amount": "116957.856043451",
+          "updated_at": "2026-11-20T12:27:03.710745+00:00",
+          "note": "ins-1000000067",
+          "payload": "{\"id\": 1000000067, \"op\": \"ins\", \"seq\": 425}",
+          "discount": "110488.059070492"
+        }
+      },
+      {
+        "id": 1000000068,
+        "source_row": {
+          "id": 1000000068,
+          "status": "shipped",
+          "amount": "448936.768026968",
+          "updated_at": "2026-11-20T12:27:04.509788+00:00",
+          "note": "ins-1000000068",
+          "payload": "{\"id\": 1000000068, \"op\": \"ins\", \"seq\": 433}",
+          "discount": "780623.460854044"
+        }
+      },
+      {
+        "id": 1000000069,
+        "source_row": {
+          "id": 1000000069,
+          "status": "settled",
+          "amount": "49024.598957303",
+          "updated_at": "2026-11-20T12:27:06.310756+00:00",
+          "note": "ins-1000000069",
+          "payload": "{\"id\": 1000000069, \"op\": \"ins\", \"seq\": 451}",
+          "discount": "873672.999917789"
+        }
+      },
+      {
+        "id": 1000000070,
+        "source_row": {
+          "id": 1000000070,
+          "status": "processing",
+          "amount": "978718.292958080",
+          "updated_at": "2026-11-20T12:27:06.609681+00:00",
+          "note": "ins-1000000070",
+          "payload": "{\"id\": 1000000070, \"op\": \"ins\", \"seq\": 454}",
+          "discount": null
+        }
+      },
+      {
+        "id": 1000000071,
+        "source_row": {
+          "id": 1000000071,
+          "status": "pending",
+          "amount": "112536.522289869",
+          "updated_at": "2026-11-20T12:27:09.009982+00:00",
+          "note": "ins-1000000071",
+          "payload": "{\"id\": 1000000071, \"op\": \"ins\", \"seq\": 478}",
+          "discount": "866106.709360651"
+        }
+      },
+      {
+        "id": 1000000072,
+        "source_row": {
+          "id": 1000000072,
+          "status": "created",
+          "amount": "929406.184690106",
+          "updated_at": "2026-11-20T12:27:09.110031+00:00",
+          "note": "ins-1000000072",
+          "payload": "{\"id\": 1000000072, \"op\": \"ins\", \"seq\": 479}",
+          "discount": "831893.833099397"
+        }
+      },
+      {
+        "id": 1000000073,
+        "source_row": {
+          "id": 1000000073,
+          "status": "shipped",
+          "amount": "875749.377034854",
+          "updated_at": "2026-11-20T12:27:10.609848+00:00",
+          "note": "ins-1000000073",
+          "payload": "{\"id\": 1000000073, \"op\": \"ins\", \"seq\": 494}",
+          "discount": "192834.603646038"
+        }
+      },
+      {
+        "id": 1000000074,
+        "source_row": {
+          "id": 1000000074,
+          "status": "shipped",
+          "amount": "505289.773303308",
+          "updated_at": "2026-11-20T12:27:11.409792+00:00",
+          "note": "ins-1000000074",
+          "payload": "{\"id\": 1000000074, \"op\": \"ins\", \"seq\": 502}",
+          "discount": "164040.195867964"
+        }
+      },
+      {
+        "id": 1000000075,
+        "source_row": {
+          "id": 1000000075,
+          "status": "created",
+          "amount": "729548.152153860",
+          "updated_at": "2026-11-20T12:27:12.510092+00:00",
+          "note": "ins-1000000075",
+          "payload": "{\"id\": 1000000075, \"op\": \"ins\", \"seq\": 513}",
+          "discount": null
+        }
+      },
+      {
+        "id": 1000000076,
+        "source_row": {
+          "id": 1000000076,
+          "status": "cancelled",
+          "amount": "691147.294400378",
+          "updated_at": "2026-11-20T12:27:13.209970+00:00",
+          "note": "ins-1000000076",
+          "payload": "{\"id\": 1000000076, \"op\": \"ins\", \"seq\": 520}",
+          "discount": null
+        }
+      },
+      {
+        "id": 1000000077,
+        "source_row": {
+          "id": 1000000077,
+          "status": "processing",
+          "amount": "184120.329685316",
+          "updated_at": "2026-11-20T12:27:14.210342+00:00",
+          "note": "ins-1000000077",
+          "payload": "{\"id\": 1000000077, \"op\": \"ins\", \"seq\": 530}",
+          "discount": null
+        }
+      },
+      {
+        "id": 1000000078,
+        "source_row": {
+          "id": 1000000078,
+          "status": "settled",
+          "amount": "789547.716072841",
+          "updated_at": "2026-11-20T12:27:14.509692+00:00",
+          "note": "ins-1000000078",
+          "payload": "{\"id\": 1000000078, \"op\": \"ins\", \"seq\": 533}",
+          "discount": "811131.950267159"
+        }
+      },
+      {
+        "id": 1000000079,
+        "source_row": {
+          "id": 1000000079,
+          "status": "cancelled",
+          "amount": "807845.019553148",
+          "updated_at": "2026-11-20T12:27:14.610103+00:00",
+          "note": "ins-1000000079",
+          "payload": "{\"id\": 1000000079, \"op\": \"ins\", \"seq\": 534}",
+          "discount": null
+        }
+      },
+      {
+        "id": 1000000080,
+        "source_row": {
+          "id": 1000000080,
+          "status": "pending",
+          "amount": "410403.161158145",
+          "updated_at": "2026-11-20T12:27:14.809790+00:00",
+          "note": {
+            "preview": "toast-note-id=1000000080-rev=0-4pGYZLujsgvoNxFhopNkIir2i9hQbAJCjYbNt4CsaF75smcVCkg-09A6aRXXFT1UZre-OPw5bnhITYWiuTIvYFQgh5WKfSrwcuchS-_L3GTuyTbyY4QyzwMkcjVPO6UOhNsB66dbAkTiPY8HYBHxvXmXhvzYHxaQNQ92mbniU...",
+            "char_len": 6175,
+            "utf8_bytes": 6175,
+            "sha256": "c234a4b492b75635304efec178b0529d61b82cbdb5379e2ca34cb9d432b0d3df"
+          },
+          "payload": {
+            "preview": "{\"rev\": 0, \"blob\": \"eDTJ6p_JZwbG36MDnB5Ves_KJ1ekR5rB1jFuHXQMmxwhFXbgk9zU3mwBamcmE6B90RnLNiLNPl8lm-3WuBlRlD2q5lWCiyTCLeRzH3nIYgMAb_xWkkX_7KAtVyR0qkaUf-Z6BmeRxxLY0anKViI5Kfl2nAaBLFaMQfmZvaGeAUHp_pI1aqLK...",
+            "char_len": 6259,
+            "utf8_bytes": 6259,
+            "sha256": "e0d4f27b1e33854612b747a17357c041ed97f814ddaf17a24f248997c44b39c2"
+          },
+          "discount": null
+        }
+      },
+      {
+        "id": 1000000081,
+        "source_row": {
+          "id": 1000000081,
+          "status": "processing",
+          "amount": "652004.428892845",
+          "updated_at": "2026-11-20T12:27:16.610410+00:00",
+          "note": "ins-1000000081",
+          "payload": "{\"id\": 1000000081, \"op\": \"ins\", \"seq\": 554}",
+          "discount": "744238.212800676"
+        }
+      },
+      {
+        "id": 1000000082,
+        "source_row": {
+          "id": 1000000082,
+          "status": "created",
+          "amount": "632932.819847303",
+          "updated_at": "2026-11-20T12:27:17.409828+00:00",
+          "note": "ins-1000000082",
+          "payload": "{\"id\": 1000000082, \"op\": \"ins\", \"seq\": 562}",
+          "discount": "419261.472583267"
+        }
+      },
+      {
+        "id": 1000000083,
+        "source_row": {
+          "id": 1000000083,
+          "status": "settled",
+          "amount": "202470.726630591",
+          "updated_at": "2026-11-20T12:27:17.810431+00:00",
+          "note": "ins-1000000083",
+          "payload": "{\"id\": 1000000083, \"op\": \"ins\", \"seq\": 566}",
+          "discount": null
+        }
+      },
+      {
+        "id": 1000000084,
+        "source_row": {
+          "id": 1000000084,
+          "status": "processing",
+          "amount": "985334.101082643",
+          "updated_at": "2026-11-20T12:27:18.010029+00:00",
+          "note": "ins-1000000084",
+          "payload": "{\"id\": 1000000084, \"op\": \"ins\", \"seq\": 568}",
+          "discount": "146716.906765782"
+        }
+      },
+      {
+        "id": 1000000085,
+        "source_row": {
+          "id": 1000000085,
+          "status": "cancelled",
+          "amount": "490523.830944880",
+          "updated_at": "2026-11-20T12:27:19.509802+00:00",
+          "note": "ins-1000000085",
+          "payload": "{\"id\": 1000000085, \"op\": \"ins\", \"seq\": 583}",
+          "discount": "94267.843879405"
+        }
+      },
+      {
+        "id": 1000000086,
+        "source_row": {
+          "id": 1000000086,
+          "status": "shipped",
+          "amount": "267834.473825982",
+          "updated_at": "2026-11-20T12:27:19.710824+00:00",
+          "note": "ins-1000000086",
+          "payload": "{\"id\": 1000000086, \"op\": \"ins\", \"seq\": 585}",
+          "discount": null
+        }
+      },
+      {
+        "id": 1000000087,
+        "source_row": {
+          "id": 1000000087,
+          "status": "shipped",
+          "amount": "180382.391947125",
+          "updated_at": "2026-11-20T12:27:19.910158+00:00",
+          "note": "ins-1000000087",
+          "payload": "{\"id\": 1000000087, \"op\": \"ins\", \"seq\": 587}",
+          "discount": "619920.964587155"
+        }
+      },
+      {
+        "id": 1000000088,
+        "source_row": {
+          "id": 1000000088,
+          "status": "shipped",
+          "amount": "231362.607480201",
+          "updated_at": "2026-11-20T12:27:21.410158+00:00",
+          "note": "ins-1000000088",
+          "payload": "{\"id\": 1000000088, \"op\": \"ins\", \"seq\": 602}",
+          "discount": null
+        }
+      },
+      {
+        "id": 1000000089,
+        "source_row": {
+          "id": 1000000089,
+          "status": "cancelled",
+          "amount": "848954.186159350",
+          "updated_at": "2026-11-20T12:27:21.509829+00:00",
+          "note": "ins-1000000089",
+          "payload": "{\"id\": 1000000089, \"op\": \"ins\", \"seq\": 603}",
+          "discount": "787743.736545979"
+        }
+      },
+      {
+        "id": 1000000090,
+        "source_row": {
+          "id": 1000000090,
+          "status": "pending",
+          "amount": "94666.179913526",
+          "updated_at": "2026-11-20T12:27:21.609851+00:00",
+          "note": "ins-1000000090",
+          "payload": "{\"id\": 1000000090, \"op\": \"ins\", \"seq\": 604}",
+          "discount": "213355.534342638"
+        }
+      },
+      {
+        "id": 1000000091,
+        "source_row": {
+          "id": 1000000091,
+          "status": "cancelled",
+          "amount": "546853.772653036",
+          "updated_at": "2026-11-20T12:27:22.909629+00:00",
+          "note": "ins-1000000091",
+          "payload": "{\"id\": 1000000091, \"op\": \"ins\", \"seq\": 617}",
+          "discount": "738809.619208515"
+        }
+      },
+      {
+        "id": 1000000092,
+        "source_row": {
+          "id": 1000000092,
+          "status": "processing",
+          "amount": "880712.708350216",
+          "updated_at": "2026-11-20T12:27:23.609646+00:00",
+          "note": "ins-1000000092",
+          "payload": "{\"id\": 1000000092, \"op\": \"ins\", \"seq\": 624}",
+          "discount": "904035.863723740"
+        }
+      },
+      {
+        "id": 1000000093,
+        "source_row": {
+          "id": 1000000093,
+          "status": "settled",
+          "amount": "687798.371565909",
+          "updated_at": "2026-11-20T12:27:24.509766+00:00",
+          "note": "ins-1000000093",
+          "payload": "{\"id\": 1000000093, \"op\": \"ins\", \"seq\": 633}",
+          "discount": "321049.026352910"
+        }
+      },
+      {
+        "id": 1000000094,
+        "source_row": {
+          "id": 1000000094,
+          "status": "pending",
+          "amount": "721363.271691975",
+          "updated_at": "2026-11-20T12:27:25.909718+00:00",
+          "note": "ins-1000000094",
+          "payload": "{\"id\": 1000000094, \"op\": \"ins\", \"seq\": 647}",
+          "discount": "80708.738033286"
+        }
+      },
+      {
+        "id": 1000000095,
+        "source_row": {
+          "id": 1000000095,
+          "status": "pending",
+          "amount": "880506.614742203",
+          "updated_at": "2026-11-20T12:27:26.709845+00:00",
+          "note": "ins-1000000095",
+          "payload": "{\"id\": 1000000095, \"op\": \"ins\", \"seq\": 655}",
+          "discount": null
+        }
+      },
+      {
+        "id": 1000000096,
+        "source_row": {
+          "id": 1000000096,
+          "status": "created",
+          "amount": "309881.480764076",
+          "updated_at": "2026-11-20T12:27:28.510054+00:00",
+          "note": "ins-1000000096",
+          "payload": "{\"id\": 1000000096, \"op\": \"ins\", \"seq\": 673}",
+          "discount": null
+        }
+      },
+      {
+        "id": 1000000097,
+        "source_row": {
+          "id": 1000000097,
+          "status": "shipped",
+          "amount": "486912.536998402",
+          "updated_at": "2026-11-20T12:27:28.710546+00:00",
+          "note": "ins-1000000097",
+          "payload": "{\"id\": 1000000097, \"op\": \"ins\", \"seq\": 675}",
+          "discount": "575834.503346056"
+        }
+      }
+    ],
+    "lake_only_count": 48,
+    "lake_only_examples": [
+      {
+        "id": 1227,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 1227,
+          "status": "pending",
+          "amount": "116397.892590289",
+          "updated_at": "2026-11-19T12:00:01.227966+00:00",
+          "note": null,
+          "payload": "{\"tag\": \"t3\", \"items\": [37, 12], \"order_id\": 1227, \"priority\": true}",
+          "discount": "18244.143098179"
+        }
+      },
+      {
+        "id": 1743,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 1743,
+          "status": "shipped",
+          "amount": "316597.676501253",
+          "updated_at": "2026-11-19T12:00:01.743510+00:00",
+          "note": "",
+          "payload": "{\"tag\": \"t9\", \"items\": [26, 25], \"order_id\": 1743, \"priority\": false}",
+          "discount": null
+        }
+      },
+      {
+        "id": 1844,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 1844,
+          "status": "pending",
+          "amount": "607875.388193816",
+          "updated_at": "2026-11-19T12:00:01.844650+00:00",
+          "note": "order-1844-batch-1",
+          "payload": "{\"tag\": \"t8\", \"items\": [11, 9], \"order_id\": 1844, \"priority\": false}",
+          "discount": "661751.998589938"
+        }
+      },
+      {
+        "id": 1845,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 1845,
+          "status": "shipped",
+          "amount": "28859.201851088",
+          "updated_at": "2026-11-19T12:00:01.845871+00:00",
+          "note": "order-1845-batch-1",
+          "payload": null,
+          "discount": null
+        }
+      },
+      {
+        "id": 2150,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 2150,
+          "status": "created",
+          "amount": "-417962.174176695",
+          "updated_at": "2026-11-19T12:00:02.150231+00:00",
+          "note": "order-2150-batch-2",
+          "payload": "{\"tag\": \"t8\", \"items\": [21, 16], \"order_id\": 2150, \"priority\": true}",
+          "discount": "676160.271777390"
+        }
+      },
+      {
+        "id": 2574,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 2574,
+          "status": "settled",
+          "amount": "257192.651601805",
+          "updated_at": "2026-11-19T12:00:02.574514+00:00",
+          "note": "order-2574-batch-2",
+          "payload": "{\"tag\": \"t7\", \"items\": [48, 47], \"order_id\": 2574, \"priority\": false}",
+          "discount": "297775.852473033"
+        }
+      },
+      {
+        "id": 2825,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 2825,
+          "status": "pending",
+          "amount": "754456.280342725",
+          "updated_at": "2026-11-19T12:00:02.825760+00:00",
+          "note": null,
+          "payload": "null",
+          "discount": "940220.905683305"
+        }
+      },
+      {
+        "id": 5105,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 5105,
+          "status": "shipped",
+          "amount": "168082.184035435",
+          "updated_at": "2026-11-19T12:00:05.105562+00:00",
+          "note": "order-5105-batch-5",
+          "payload": "{\"tag\": \"t5\", \"items\": [27, 21], \"order_id\": 5105, \"priority\": false}",
+          "discount": "445199.666470209"
+        }
+      },
+      {
+        "id": 5764,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 5764,
+          "status": "created",
+          "amount": "23115.192314849",
+          "updated_at": "2026-11-19T12:00:05.764542+00:00",
+          "note": "order-5764-batch-5",
+          "payload": "{\"tag\": \"t1\", \"items\": [41, 11], \"order_id\": 5764, \"priority\": true}",
+          "discount": "738703.198847555"
+        }
+      },
+      {
+        "id": 6201,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 6201,
+          "status": "pending",
+          "amount": "330201.013717223",
+          "updated_at": "2026-11-19T12:00:06.201728+00:00",
+          "note": "order-6201   ",
+          "payload": "{\"tag\": \"t13\", \"items\": [19, 18], \"order_id\": 6201, \"priority\": true}",
+          "discount": "762113.120073205"
+        }
+      },
+      {
+        "id": 6552,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 6552,
+          "status": "cancelled",
+          "amount": "465445.612096197",
+          "updated_at": "2026-11-19T12:00:06.552760+00:00",
+          "note": "order-6552   ",
+          "payload": "{\"tag\": \"t7\", \"items\": [48, 23], \"order_id\": 6552, \"priority\": false}",
+          "discount": "94761.558771148"
+        }
+      },
+      {
+        "id": 6687,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 6687,
+          "status": "settled",
+          "amount": "679314.849852054",
+          "updated_at": "2026-11-19T12:00:06.687849+00:00",
+          "note": null,
+          "payload": "{\"tag\": \"t6\", \"items\": [7, 34], \"order_id\": 6687, \"priority\": true}",
+          "discount": "708735.716745251"
+        }
+      },
+      {
+        "id": 6757,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 6757,
+          "status": "processing",
+          "amount": "430336.934779356",
+          "updated_at": "2026-11-19T12:00:06.757553+00:00",
+          "note": "order-6757-batch-6",
+          "payload": "{\"tag\": \"t8\", \"items\": [5, 21], \"order_id\": 6757, \"priority\": false}",
+          "discount": "767191.682760965"
+        }
+      },
+      {
+        "id": 6803,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 6803,
+          "status": "pending",
+          "amount": "952462.554500542",
+          "updated_at": "2026-11-19T12:00:06.803307+00:00",
+          "note": "order-6803-batch-6",
+          "payload": "{\"tag\": \"t3\", \"items\": [36, 18], \"order_id\": 6803, \"priority\": false}",
+          "discount": "83619.562464996"
+        }
+      },
+      {
+        "id": 7077,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 7077,
+          "status": "cancelled",
+          "amount": "123276.452831659",
+          "updated_at": "2026-11-19T12:00:07.077535+00:00",
+          "note": "order-7077-batch-7",
+          "payload": null,
+          "discount": "484800.169962019"
+        }
+      },
+      {
+        "id": 7546,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 7546,
+          "status": "shipped",
+          "amount": "944540.073104414",
+          "updated_at": "2026-11-19T12:00:07.546451+00:00",
+          "note": "order-7546-batch-7",
+          "payload": "{\"tag\": \"t15\", \"items\": [3, 38], \"order_id\": 7546, \"priority\": false}",
+          "discount": "31032.978943053"
+        }
+      },
+      {
+        "id": 8187,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 8187,
+          "status": "cancelled",
+          "amount": "222476.178834920",
+          "updated_at": "2026-11-19T12:00:08.187514+00:00",
+          "note": "order-8187-batch-8",
+          "payload": null,
+          "discount": "572949.179567755"
+        }
+      },
+      {
+        "id": 8665,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 8665,
+          "status": "cancelled",
+          "amount": "906002.771981779",
+          "updated_at": "2026-11-19T12:00:08.665472+00:00",
+          "note": "order-8665   ",
+          "payload": "{\"tag\": \"t12\", \"items\": [21, 4], \"order_id\": 8665, \"priority\": false}",
+          "discount": "552604.280164816"
+        }
+      },
+      {
+        "id": 9229,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 9229,
+          "status": "created",
+          "amount": "46366.723123003",
+          "updated_at": "2026-11-19T12:00:09.229209+00:00",
+          "note": "order-9229-batch-9",
+          "payload": "{\"tag\": \"t15\", \"items\": [28, 27], \"order_id\": 9229, \"priority\": false}",
+          "discount": "101191.331770272"
+        }
+      },
+      {
+        "id": 9972,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 9972,
+          "status": "settled",
+          "amount": "530094.545367800",
+          "updated_at": "2026-11-19T12:00:09.972007+00:00",
+          "note": "order-9972-batch-9",
+          "payload": "{\"tag\": \"t10\", \"items\": [40, 39], \"order_id\": 9972, \"priority\": false}",
+          "discount": null
+        }
+      },
+      {
+        "id": 10390,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 10390,
+          "status": "cancelled",
+          "amount": "752044.104130732",
+          "updated_at": "2026-11-19T12:00:10.390607+00:00",
+          "note": "order-10390-batch-10",
+          "payload": "{\"tag\": \"t3\", \"items\": [3, 1], \"order_id\": 10390, \"priority\": false}",
+          "discount": "127994.698974436"
+        }
+      },
+      {
+        "id": 10405,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 10405,
+          "status": "processing",
+          "amount": "276344.978621478",
+          "updated_at": "2026-11-19T12:00:10.405580+00:00",
+          "note": "order-10405-batch-10",
+          "payload": "{\"tag\": \"t1\", \"items\": [47, 39], \"order_id\": 10405, \"priority\": false}",
+          "discount": "920747.829456791"
+        }
+      },
+      {
+        "id": 10447,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 10447,
+          "status": "created",
+          "amount": "566967.169266872",
+          "updated_at": "2026-11-19T12:00:10.447244+00:00",
+          "note": null,
+          "payload": "{\"tag\": \"t9\", \"items\": [47, 5], \"order_id\": 10447, \"priority\": false}",
+          "discount": "-676211.059581260"
+        }
+      },
+      {
+        "id": 10837,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 10837,
+          "status": "shipped",
+          "amount": "152813.360011293",
+          "updated_at": "2026-11-19T12:00:10.837356+00:00",
+          "note": "order-10837-batch-10",
+          "payload": "{\"tag\": \"t8\", \"items\": [1, 33], \"order_id\": 10837, \"priority\": false}",
+          "discount": null
+        }
+      },
+      {
+        "id": 11080,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 11080,
+          "status": "created",
+          "amount": "627235.849677310",
+          "updated_at": "2026-11-19T12:00:11.080715+00:00",
+          "note": "order-11080-batch-11",
+          "payload": "{\"tag\": \"t13\", \"items\": [12, 4], \"order_id\": 11080, \"priority\": false}",
+          "discount": "466903.111302124"
+        }
+      },
+      {
+        "id": 11352,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 11352,
+          "status": "settled",
+          "amount": "750496.645393688",
+          "updated_at": "2026-11-19T12:00:11.352700+00:00",
+          "note": "order-11352-batch-11",
+          "payload": "{\"tag\": \"t13\", \"items\": [15, 4], \"order_id\": 11352, \"priority\": false}",
+          "discount": null
+        }
+      },
+      {
+        "id": 11501,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 11501,
+          "status": "cancelled",
+          "amount": "527187.649212896",
+          "updated_at": "2026-11-19T12:00:11.501815+00:00",
+          "note": "order-11501-batch-11",
+          "payload": "{\"tag\": \"t9\", \"items\": [2, 10], \"order_id\": 11501, \"priority\": false}",
+          "discount": null
+        }
+      },
+      {
+        "id": 13822,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 13822,
+          "status": "pending",
+          "amount": "652785.861678597",
+          "updated_at": "2026-11-19T12:00:13.822851+00:00",
+          "note": "order-13822-batch-13",
+          "payload": "{\"tag\": \"t1\", \"items\": [50, 20], \"order_id\": 13822, \"priority\": false}",
+          "discount": null
+        }
+      },
+      {
+        "id": 13986,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 13986,
+          "status": "created",
+          "amount": "648556.350970690",
+          "updated_at": "2026-11-19T12:00:13.986203+00:00",
+          "note": "order-13986-batch-13",
+          "payload": "{\"tag\": \"t12\", \"items\": [45, 11], \"order_id\": 13986, \"priority\": false}",
+          "discount": null
+        }
+      },
+      {
+        "id": 14053,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 14053,
+          "status": "created",
+          "amount": "338526.523657419",
+          "updated_at": "2026-11-19T12:00:14.053256+00:00",
+          "note": "order-14053-batch-14",
+          "payload": null,
+          "discount": null
+        }
+      },
+      {
+        "id": 14691,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 14691,
+          "status": "processing",
+          "amount": "677327.522727226",
+          "updated_at": "2026-11-19T12:00:14.691529+00:00",
+          "note": "order-14691-batch-14",
+          "payload": "{\"tag\": \"t3\", \"items\": [46, 15], \"order_id\": 14691, \"priority\": true}",
+          "discount": null
+        }
+      },
+      {
+        "id": 14974,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 14974,
+          "status": "settled",
+          "amount": "168637.519814726",
+          "updated_at": "2026-11-19T12:00:14.974989+00:00",
+          "note": "order-14974-batch-14",
+          "payload": "{\"tag\": \"t14\", \"items\": [12, 14], \"order_id\": 14974, \"priority\": false}",
+          "discount": "928723.436439753"
+        }
+      },
+      {
+        "id": 15108,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 15108,
+          "status": "created",
+          "amount": "652870.473077796",
+          "updated_at": "2026-11-19T12:00:15.108715+00:00",
+          "note": "order-15108-batch-15",
+          "payload": "{\"tag\": \"t12\", \"items\": [2, 22], \"order_id\": 15108, \"priority\": false}",
+          "discount": null
+        }
+      },
+      {
+        "id": 15167,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 15167,
+          "status": "settled",
+          "amount": "183801.591334805",
+          "updated_at": "2026-11-19T12:00:15.167164+00:00",
+          "note": "order-15167-batch-15",
+          "payload": "{\"tag\": \"t3\", \"items\": [12, 32], \"order_id\": 15167, \"priority\": true}",
+          "discount": "354334.379971951"
+        }
+      },
+      {
+        "id": 16412,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 16412,
+          "status": "settled",
+          "amount": "954774.826356841",
+          "updated_at": "2026-11-19T12:00:16.412419+00:00",
+          "note": "order-16412-batch-16",
+          "payload": "{\"tag\": \"t7\", \"items\": [31, 5], \"order_id\": 16412, \"priority\": true}",
+          "discount": null
+        }
+      },
+      {
+        "id": 17253,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 17253,
+          "status": "settled",
+          "amount": "259068.936615533",
+          "updated_at": "2026-11-19T12:00:17.253076+00:00",
+          "note": "order-17253-batch-17",
+          "payload": "{\"tag\": \"t15\", \"items\": [22, 16], \"order_id\": 17253, \"priority\": true}",
+          "discount": "250778.340424501"
+        }
+      },
+      {
+        "id": 17731,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 17731,
+          "status": "settled",
+          "amount": "224329.985688399",
+          "updated_at": "2026-11-19T12:00:17.731891+00:00",
+          "note": "order-17731-batch-17",
+          "payload": "{\"tag\": \"t0\", \"items\": [11, 18], \"order_id\": 17731, \"priority\": false}",
+          "discount": null
+        }
+      },
+      {
+        "id": 19136,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 19136,
+          "status": "cancelled",
+          "amount": "161695.437889931",
+          "updated_at": "2026-11-19T12:00:19.136000+00:00",
+          "note": "order-19136-batch-19",
+          "payload": "{\"tag\": \"t11\", \"items\": [12, 42], \"order_id\": 19136, \"priority\": false}",
+          "discount": null
+        }
+      },
+      {
+        "id": 19584,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 19584,
+          "status": "settled",
+          "amount": "-689911.270487662",
+          "updated_at": "2026-11-19T12:00:19.584838+00:00",
+          "note": "order-19584-batch-19",
+          "payload": "{\"tag\": \"t0\", \"items\": [19, 47], \"order_id\": 19584, \"priority\": false}",
+          "discount": "649060.836605951"
+        }
+      },
+      {
+        "id": 20451,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 20451,
+          "status": "shipped",
+          "amount": "819393.132687499",
+          "updated_at": "2026-11-19T12:00:20.451310+00:00",
+          "note": "order-20451-batch-20",
+          "payload": "{\"tag\": \"t0\", \"items\": [16, 32], \"order_id\": 20451, \"priority\": false}",
+          "discount": "72564.073971076"
+        }
+      },
+      {
+        "id": 21563,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 21563,
+          "status": "pending",
+          "amount": "715605.528041990",
+          "updated_at": "2026-11-19T12:00:21.563848+00:00",
+          "note": "order-21563-batch-21",
+          "payload": "{\"tag\": \"t7\", \"items\": [31, 15], \"order_id\": 21563, \"priority\": false}",
+          "discount": "803448.284248192"
+        }
+      },
+      {
+        "id": 21789,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 21789,
+          "status": "created",
+          "amount": "65229.636324802",
+          "updated_at": "2026-11-19T12:00:21.789175+00:00",
+          "note": "",
+          "payload": "{\"tag\": \"t12\", \"items\": [22, 48], \"order_id\": 21789, \"priority\": true}",
+          "discount": "497849.184729300"
+        }
+      },
+      {
+        "id": 22979,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 22979,
+          "status": "created",
+          "amount": "311927.200763557",
+          "updated_at": "2026-11-19T12:00:22.979498+00:00",
+          "note": "order-22979   ",
+          "payload": "{\"tag\": \"t12\", \"items\": [13, 49], \"order_id\": 22979, \"priority\": false}",
+          "discount": "-345689.234085471"
+        }
+      },
+      {
+        "id": 23261,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 23261,
+          "status": "settled",
+          "amount": "333417.778482418",
+          "updated_at": "2026-11-19T12:00:23.261348+00:00",
+          "note": "order-23261-batch-23",
+          "payload": "{\"tag\": \"t5\", \"items\": [7, 13], \"order_id\": 23261, \"priority\": false}",
+          "discount": "410236.634331402"
+        }
+      },
+      {
+        "id": 23540,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 23540,
+          "status": "processing",
+          "amount": "178774.372928315",
+          "updated_at": "2026-11-19T12:00:23.540832+00:00",
+          "note": "order-23540-batch-23",
+          "payload": null,
+          "discount": "302547.105576749"
+        }
+      },
+      {
+        "id": 23878,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 23878,
+          "status": "shipped",
+          "amount": "349322.817292816",
+          "updated_at": "2026-11-19T12:00:23.878888+00:00",
+          "note": "order-23878-batch-23",
+          "payload": "{\"tag\": \"t10\", \"items\": [50, 23], \"order_id\": 23878, \"priority\": false}",
+          "discount": "135243.393222262"
+        }
+      },
+      {
+        "id": 24131,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 24131,
+          "status": "pending",
+          "amount": "331026.433727132",
+          "updated_at": "2026-11-19T12:00:24.131312+00:00",
+          "note": "order-24131-batch-24",
+          "payload": "{\"tag\": \"t8\", \"items\": [35, 9], \"order_id\": 24131, \"priority\": true}",
+          "discount": "455759.092703950"
+        }
+      },
+      {
+        "id": 24957,
+        "occurrences": 1,
+        "lake_row": {
+          "id": 24957,
+          "status": "processing",
+          "amount": "254838.478837145",
+          "updated_at": "2026-11-19T12:00:24.957309+00:00",
+          "note": "order-24957-batch-24",
+          "payload": null,
+          "discount": "362285.608187319"
+        }
+      }
+    ],
+    "duplicate_lake_id_count": 0,
+    "duplicate_lake_extra_row_count": 0,
+    "duplicate_lake_examples": [],
+    "duplicate_source_id_count": 0,
+    "duplicate_source_examples": [],
+    "value_mismatch_row_count": 122,
+    "value_mismatch_column_counts": {
+      "note": 116,
+      "payload": 120,
+      "amount": 116,
+      "updated_at": 116,
+      "discount": 104,
+      "status": 89
+    },
+    "value_mismatch_examples": [
+      {
+        "id": 19,
+        "diffs": {
+          "note": {
+            "source": {
+              "preview": "toast-note-id=19-rev=1-0Pc26zQWDWlJ_fRhiVxz0NVAQj7ykV2sIn5oswugrDdAlDwDy7bsM4Sq1R9cDpgDga6RJEO1MN1I15nqdOVG3UPD_-rcs5kQ3DBIGY1It8bUims4bss4X1YzGOC_P62KfQLlTdYk-_-iKWDedIBEv6Ol0p418vjrTYpXOwp03eDq2lvAT...",
+              "char_len": 6167,
+              "utf8_bytes": 6167,
+              "sha256": "b511e1d973ad8705e8a0238c24f81776c29b1864d0c76f52635c6cf4e266987e"
+            },
+            "lake": {
+              "preview": "toast-note-id=19-rev=0-wHsyfYzVYrsYe6zTj4seXOJwZfnL6tonH4qPa2pp-xztylwbWObPP76cudBPZvRLdI5GXI95L6YxkgLLwbkMhWO1rsMdIFaCPzy_MvB4d2KmVo1fja5kb-mo_Cx1IYCwKWqP_JoWwURlJ8NztkiAdSyLk5kdigxGYGYHrxcC0qH9ffFMd...",
+              "char_len": 6167,
+              "utf8_bytes": 6167,
+              "sha256": "470f932dd091071a65efce8de539acf43da230956243592a2722afa7da7f8f14"
+            }
+          },
+          "payload": {
+            "source": {
+              "preview": "{\"rev\": 1, \"blob\": \"hwXkiCHM03CDNi5-y2oSqH7ZmGdq-yYhkJhWgNi-aTDqYeUbG42ccDa1qQC_MzQ260hzzkizU4GN71lHm-1xlimtAUNkYRkG1PDWbKXFH_Xnl4YNStEtSOnw0KPPdobXOjmwvPeA1rB70Dq1Io-W-fNGgGbm7BEK0FleOdACN1GmLCS5LNY1...",
+              "char_len": 6251,
+              "utf8_bytes": 6251,
+              "sha256": "ca91cf12bca6f97367ffa538f7b672c8266762ef8778f2f91aaa82772befee4e"
+            },
+            "lake": {
+              "preview": "{\"rev\": 0, \"blob\": \"QaqRBDtSUJMjVZhVczPuxkTc3ohjYfbcDDjYmfcSS5-WSKZs2edF-f8qtXoGTyzhMyL1faIQeWOLeLJokwwFG8E5yyu8qi7SvOoifX718LBvF6bk3IUv3CWhgeCDSjFBVQLX7oYQ-wrtaddezUU35ABKAZkSXn8SMifyyRyzavjOrFiWNFSZ...",
+              "char_len": 6251,
+              "utf8_bytes": 6251,
+              "sha256": "ab735753bfd2d8dd811ff37cb4872a4640fbc0a99bdff6082d228d08cb07b59b"
+            }
+          }
+        }
+      },
+      {
+        "id": 26,
+        "diffs": {
+          "amount": {
+            "source": "459828.616108741",
+            "lake": "839328.031031053"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:05.810556+00:00",
+            "lake": "2026-11-20T12:26:25.311014+00:00"
+          },
+          "note": {
+            "source": {
+              "preview": "toast-note-id=26-rev=2-sLs66kO8BNw86MdLU6T6nzoAjIFhWVSejWTaze39s08URiOWCQL3zdR4yLgjUIFm1rVfrPwzdsFzN2zs1hg1T9As_nmOZGQk4S7Qm7pVS7lCX6TeJfz7UVpWHgvQsP_9JXDCF1eoORsl79mAt3r8fziou0KmnUXiwRYPJoHqipAdw8YqU...",
+              "char_len": 6167,
+              "utf8_bytes": 6167,
+              "sha256": "7ce01887bd9e6f5dbff4a8445bc6a5a96dc75e6bc10996dc22f31942571222d1"
+            },
+            "lake": {
+              "preview": "toast-note-id=26-rev=1-T6iGlMKIEgXPT2gDrlaz9JC0lUulFrxHATvYYNg6epPLEWKH9ceBYnGVhvdd1xu3C3ZBoZZvJrg9Y4Hrqmyk1ZxYB28x45swyEDGJgqpIFd2uHr5X0Y2_wI__CXZdCTeoJdJRW43D5Y0Ff9I1vLd4rb21NjT9TziJm7MW6lGzwRcSDXWO...",
+              "char_len": 6167,
+              "utf8_bytes": 6167,
+              "sha256": "0af315f32637eabe546a4196a201796d98c0c22e442d2579da15e6e6daba1452"
+            }
+          },
+          "payload": {
+            "source": {
+              "preview": "{\"rev\": 2, \"blob\": \"QYntnAN26sK_aGDrVDDZ_A4ZVDHx5fJeTad4TsTGO1d2NSfrCxEcdKlHgzHbHiEkOUNGOzYUjng19O0e3lOlC8AfAcxAz4lhgfyFw2EWyRSe5dJnoEdy_l_ddwkvbUuNFYDwh9d6SpzM1QJ4qjB8jQPcjGZSM7Z-ywReOr6Ji0CJjo2l5o8b...",
+              "char_len": 6251,
+              "utf8_bytes": 6251,
+              "sha256": "cc016061831bfe0fe183ab68cdb28bbaaf5b7706e5020a674af3d0b9fabe22fd"
+            },
+            "lake": {
+              "preview": "{\"rev\": 1, \"blob\": \"4znXpU_vMs_YQ0NXSjRQGFT3Znsw1fh1oe7W73h6SoUXtbypjCOiN8bYoL-ti3kHBLE--D14VoId-Dg4srPYjvaASZ6DeyAVKkRWZxCMxyHd12Rj8KYMcWGEJDdYlF7Op0TXCEKSCQouA7sWgg4eqDvKDdtrx4V6wjU4S4fMo2ue4o2km-pF...",
+              "char_len": 6251,
+              "utf8_bytes": 6251,
+              "sha256": "8e2921c4c2e9a373b885c5ae6c5ee375a99bec3f520a53ac275bd760a4e37ff0"
+            }
+          },
+          "discount": {
+            "source": "758679.319607397",
+            "lake": "2052.806294118"
+          }
+        }
+      },
+      {
+        "id": 29,
+        "diffs": {
+          "note": {
+            "source": {
+              "preview": "toast-note-id=29-rev=4-RxvOG6LZ3hwa8-IVJsXh13h3VXS0XojahqpIY8l7ThtkECWHKg8jARR0V-boG_LfG90nGyROe46ysSa6LK55wIw231_opRXdcGNBFkSDVm2AnrV_OvVY90o42guMWFJVzIRdY_4Tmhu-fg8hNPVclerxPffuLl9qwEZ8tJ1BlRXYP-6Z6...",
+              "char_len": 6167,
+              "utf8_bytes": 6167,
+              "sha256": "5fd944a7fd4a0acf0184a8e503e754f52f7f03e97a1d59d9db051554a6b98808"
+            },
+            "lake": {
+              "preview": "toast-note-id=29-rev=3-JEeul7j1rDqeLWCqTqcM3sMnLF9-UZyRuvSa_tq4cPA6Q62tmBOKlKVdDxEdv20mTgRs5c4sJT46OSf3fq3g-f9gSldvfCrBtaWP14Nynbp3TCSFS1BAg-bOzekdthjqthK2EJWyLIXcEpVuaJ7m_IPI2BviiA_1UHj8qHNpeRGdilWj9...",
+              "char_len": 6167,
+              "utf8_bytes": 6167,
+              "sha256": "7fd4246469b66044069dae8e506a90d4c7d7993297fe44cbe04395e37e9ef0f4"
+            }
+          },
+          "payload": {
+            "source": {
+              "preview": "{\"rev\": 4, \"blob\": \"SoPBfCciL_3ntUxvIFg8gn5F__xlMbMSW0XCo3TLcoT5PHSqPboZbpOdVimg-yRT1tpwSKGqtENPsH__Mf6BU3epaZHI0HQma9wcn-T8KQy-FX6nkNQTr95ovq5TzcJdbFOws2xksa65JO5O-z-2li46IfH76F6dgLct6lB7hKG3ae0Jw0An...",
+              "char_len": 6251,
+              "utf8_bytes": 6251,
+              "sha256": "0643923c05d073a51fc889dd6cd798562a21dc7f1a92d4e3097655281667c4e1"
+            },
+            "lake": {
+              "preview": "{\"rev\": 3, \"blob\": \"qvy10Qo0BsJ3aRCq9BI6Z027K2ea_-HWrryhipvRnmV7hlnAaJaDcS4hHzssFTnz42pRnQHrBqYj-dFLbAPAtQLiZxzTv2tSJ0BrqdJAPRZ3O8_Hs2zRez41Z61ptL4ipbSy2nY9zWwdYNTe-px96mVkgT_wno1Zc8PMUY8uxZFhPFFT28DI...",
+              "char_len": 6251,
+              "utf8_bytes": 6251,
+              "sha256": "a94ab11db30231e607f82057ad97b321614b3b941536dc91b94b52b673a59495"
+            }
+          }
+        }
+      },
+      {
+        "id": 43,
+        "diffs": {
+          "note": {
+            "source": {
+              "preview": "toast-note-id=43-rev=2-FYtkdD3ZkEIeOJ-U4KgyXK28anVHMban7hia_1hXTnLEBkMWWdZEGEiTzcfVdBujVloPL2Q0rB_DNt36Qcs89P7TfgYr_h8aaZlsJV8MdFGJxvgFaJ4e5OcqrQ9UdKnBR0ykvclLGVHFzsQT-KuaFXkKGGWggqgZ_irzf9LGLxm2mE3Ly...",
+              "char_len": 6167,
+              "utf8_bytes": 6167,
+              "sha256": "5ee570822e21ad0fddccf27883e704a55df1bf7c7722220a18a92d17181fc107"
+            },
+            "lake": {
+              "preview": "toast-note-id=43-rev=0-ObiFaO4FM5LNFk1c8szGpluITbegSApioRhZtrj-bNA1nRYYB_mBZHpWZuh2WksCgUKZtqbt4nbl7p2Y4HUjsl9e7uQvncr8DZE83BPG-8FuxWiWluEYTj43cxWHTXLml96kOEqXDkLzg1rqg7muZfzdD-0KD9_K4cpzMe7eJqZ03BljP...",
+              "char_len": 6167,
+              "utf8_bytes": 6167,
+              "sha256": "c6c26f29a59a6aa83e6c78b63dc2c9bf08cb63ffe53ca666e0386e7314907c2a"
+            }
+          },
+          "payload": {
+            "source": {
+              "preview": "{\"rev\": 2, \"blob\": \"bh9a3yjZ6_ywmcbsvG8BIPf_CNo85cWQGFjMBFPdtMDuzSJLnKq-OkGbekTEOFO2NPMG2sZ9cMcUeLHEiY9R--mo-iUtj3zV9r0UfnyMYOnDtO9puALLsvJYdsNLQGBQo8SfaqyUVtG-HPqt9HrJTlHy9TadJzb5qXDnDjMANtdITD8s3PDc...",
+              "char_len": 6251,
+              "utf8_bytes": 6251,
+              "sha256": "e22bb76948bfe618cbe7e7f62bb9b2ea0308a039023dc58a33e58d1cfa308ed9"
+            },
+            "lake": {
+              "preview": "{\"rev\": 0, \"blob\": \"LllVserDenGj-EXvkpCkwHjETl82C2DFBv6Xrw76QYDVLGEk3c6iwaPNJl0wrFcfcOAX_98YK_reyDjTwhtiA3jUaG0R8PaDbe6F_hGCjZW0xwc7FVlW-FCdMYq-RIuhjLRZ5mqNR_5F4JpymSGBeqJfL_dY06ls8Vhd4J7sDJfovRjNaMt8...",
+              "char_len": 6251,
+              "utf8_bytes": 6251,
+              "sha256": "0196383bcc6d1ff4d44da7c98a51148ffc4c9cac3bf9eceb1a03ebae0e760dc8"
+            }
+          }
+        }
+      },
+      {
+        "id": 47,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "pending"
+          },
+          "amount": {
+            "source": "492518.854266642",
+            "lake": "522735.282703033"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:14.009721+00:00",
+            "lake": "2026-11-20T12:26:27.409961+00:00"
+          },
+          "discount": {
+            "source": "717863.857802092",
+            "lake": "877513.741378712"
+          }
+        }
+      },
+      {
+        "id": 50,
+        "diffs": {
+          "status": {
+            "source": "processing",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "688969.421342865",
+            "lake": "263840.003223589"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:14.910485+00:00",
+            "lake": "2026-11-20T12:26:57.110023+00:00"
+          },
+          "discount": {
+            "source": "-306458.918680369",
+            "lake": "635080.759226429"
+          }
+        }
+      },
+      {
+        "id": 84,
+        "diffs": {
+          "note": {
+            "source": {
+              "preview": "toast-note-id=84-rev=3-IzOyx8YGtbtd2InXpzOe8lStDtS1hWHhWYR7JAG86FcMGzuuQ3ZgvI7jwlaHWmO-3GkIWlYRkpsFGXMeGtUuZej0tdSaa0MVt8jETW-yehsMTFHUWGh7Z6ebmkhKAjYHC3GXHNHogEIEu96RA6Ut1CwTfKly107npyOJINNSs8wOweTKJ...",
+              "char_len": 6167,
+              "utf8_bytes": 6167,
+              "sha256": "d8c3be6ff69156827e6c7afe35fa2bb26fe9b6b134b602d38fdaba26e0b7b04e"
+            },
+            "lake": {
+              "preview": "toast-note-id=84-rev=2-khnrinI0q4kWhQ16kgIn9AyDEVDndxNE3vnfcNSjnQ7J4rbX2HSThtuRbe3vdpLkV7PqgjgsRWoxscqq9USInQ6gl18go_9TeEdxIN_DFZ36pTOCexTs5UmQVFUEG0BUDIHECf1UPvv2J37XaLhwtSwsqVrTOZcW1IhLhv9x2Z9Z_speo...",
+              "char_len": 6167,
+              "utf8_bytes": 6167,
+              "sha256": "32046f00ee7b7b2f6d05b2b432a6fd5df8eead6299f50b137cb043aa03eeeafd"
+            }
+          },
+          "payload": {
+            "source": {
+              "preview": "{\"rev\": 3, \"blob\": \"ILbywZO79yU3SNzSuenWamIFS0H94KABMSu9vdy15uyFhBwT8OEXAXlakC53v5BTWIV-aKO9qrdtgx8pO8JWmfXSp6AC8NKJ30AHGcfGQ0WK0QEiy3PxqpLHAXn_tggZ1nO-PIoC45w8u6Qvi2Ehwrrr79WgZaBUcG0OYECB80e86uTW-Tw_...",
+              "char_len": 6251,
+              "utf8_bytes": 6251,
+              "sha256": "72e716bb4ffa86d353243c9746c33f9d28f249655beb72d51dab5159d0f5219c"
+            },
+            "lake": {
+              "preview": "{\"rev\": 2, \"blob\": \"FSZxMCVfd65YNocBlvonba8SSmUOQyAs_4pu-kxTh8zZiYtB-gBCWu22Oqgj5LSSsl0lYVqf7f3x08NyFLDQLmjrdCaMAV5hqqOTQNV5SZ4M_iiOZYLErQ3CzuKAa8oqPVBIbCF6IQtdbFNLDg1jS5qOpSfCTkVC_QKdEuHj1tOOXMRf4VH2...",
+              "char_len": 6251,
+              "utf8_bytes": 6251,
+              "sha256": "2c5884ffe8ddcc049dccdacea33942647863cb6c44627dae9b0999961ad6ad0f"
+            }
+          }
+        }
+      },
+      {
+        "id": 89,
+        "diffs": {
+          "note": {
+            "source": {
+              "preview": "toast-note-id=89-rev=3-LjqRElIqgXmdJP46tMGWZgqvM0vrDOEWseNrKBc94Tcs-ATDhvhyNmKuQRI2rG2zWqpeIUoK4atsIkJhcE5c74d72BA0h68Eswr1y8A2qtODvsRHTEKWoYkZVSZyABjknKgjnPSjUvB-7H_YiJ5IOQZY-ywNPfVSzeCsO0rEeFlWOI02v...",
+              "char_len": 6167,
+              "utf8_bytes": 6167,
+              "sha256": "4f8b1279d23bf14f2f955c1adcb075fb290443f07271e5e46d417485a09250c5"
+            },
+            "lake": {
+              "preview": "toast-note-id=89-rev=1-67Y6qHcFMhjrlwwss_iLgXXpHc9-mgdq1Bb0hOp9eGtUxXdm0Z_Gs9E3-GEUUeNN5Nkit0h_kEYmoYqscVj_afomLEMCSWe6ye-DfD0WqvBwelAJSG7ChRAChd-z4DA61UYzMlH5EFrsXt5C4kNVWduQiDZPtX9zYfxzWAM0RFYbqnDeu...",
+              "char_len": 6167,
+              "utf8_bytes": 6167,
+              "sha256": "45a29d91fc748b07ca1fe936d96cf6de0e6f81af7a0ea70c8fcf6498d135f118"
+            }
+          },
+          "payload": {
+            "source": {
+              "preview": "{\"rev\": 3, \"blob\": \"wtlibYsYH9tZ_JSWUd5GamRRXTWq-Tl2yFW-18o1lCYHRl_Je7o0KQ4kCEKI3OiBdKZT29ToPSClnmZ_41W_lQmOweC5CuIcMBQU6aDAjCBYQGnjf9_NqXX6nC9qs0h_u0gMN4QQRbC7hB0P6qpXhMIO3wHLGwnfWr5EfSTLvytajJJ24YDN...",
+              "char_len": 6251,
+              "utf8_bytes": 6251,
+              "sha256": "98556acfd1975566c7422f4a3b791ede1cfeef55f7d4b7eae7e00ec40d4cc2dc"
+            },
+            "lake": {
+              "preview": "{\"rev\": 1, \"blob\": \"ZcjuWjwgZz8eTIlAWt-EwESCnORUFc9Lr43pAwb-M4MQPcghGB0zhJ24odhtDZM_0VJi8xwsXL7qa-KhUscnrs7GOVPHGW_2Grq5mRY6E6QSSntXB40mdx8OuH33w6ewxV16Q9QRGU9NgcUrePZZK_VyOFzsYg9ym2jt3VgHS3YBqr6YTcJe...",
+              "char_len": 6251,
+              "utf8_bytes": 6251,
+              "sha256": "3310e729a2d68bd30ec0b70e2bd93069cc2564fd440fd45cd4e07b961b66c5c7"
+            }
+          }
+        }
+      },
+      {
+        "id": 100,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "590327.458216386",
+            "lake": "722653.098263277"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:18.209967+00:00",
+            "lake": "2026-11-20T12:26:54.809779+00:00"
+          },
+          "note": {
+            "source": {
+              "preview": "toast-note-id=100-rev=3-9oKaZsno08GUSOVsPO8gJtqjQsyvILy8-ubPY6DpA9ybk_RpNLVhPW8mj8lNHDBfolkLzInxc4JkeZWxlO-2n7D3e5a9cZF7YxnPhFhNi22TthuwGXFrhB8HfS7ICbtwcniT4xgzDi7vDtRmiiszb0KE9NGZLrpcHRxwp8gDA7HxYMyG...",
+              "char_len": 6168,
+              "utf8_bytes": 6168,
+              "sha256": "8f341e5b9b612af01c98aede3e1afb1defdde8f5935ddd09884647841d798643"
+            },
+            "lake": {
+              "preview": "toast-note-id=100-rev=2-sm4lujCU8r-4V-qLCsma7b-kKiGSGNldxZO5DFtuhoAXeL516tJnbGyDUS6u8OAWSCmhqP38UaBeGac1fjaV5H1VTaVCB-xHABe_-sucCDBtOszPjcGjrALEFDgdGs7aQGClujAImi-nk0jchP0nWd7wiaM4a-9N3WOVMgIhXT3OoCFm...",
+              "char_len": 6168,
+              "utf8_bytes": 6168,
+              "sha256": "b0766af1d67cd0207f31d3c4dff233a43675cc47a70d91d318ad5b9169171b17"
+            }
+          },
+          "payload": {
+            "source": {
+              "preview": "{\"rev\": 3, \"blob\": \"LhiSLcv8w9dWf6yF_3YrSf7s3YpLs13j2UU_W10SPrqugZaSLTeyjQCJDjqfWrP_h26WkYSBsMJj-6P4iMULZ_ThZiY9zi9I-X0Ja_fX-NHRGMLh43WHBCejzf_E0gCV3wulGNyvafVihzKRh65gGD_I6Rq0nRvmU35WAoKxcJUSAXrSx_Mh...",
+              "char_len": 6252,
+              "utf8_bytes": 6252,
+              "sha256": "eb25f9e8e4d24f69bd684899610d9ffbcb4110fe563893b515a4f387a3720411"
+            },
+            "lake": {
+              "preview": "{\"rev\": 2, \"blob\": \"Le6vAfjXqXTHtIwm8cjuANBNS3qusFkPKTfxYaVHuAbtzG5833RH-u8oW251LWeEzOyTCdy92dUBab3kEMSniYKZLEMdXOpW8g0CORcJiSSj_l9RtLm7k-Yfm2TgIsVbw9OW9ogxYhyh8q44LxtMHlVJ6UMV-HRMShNI-3Waq3cRafPP4bE1...",
+              "char_len": 6252,
+              "utf8_bytes": 6252,
+              "sha256": "7409b1d6c7f3e340b6e8742c31ebf1b8571d00184bc63390b0f7e9bf8fbbf6bf"
+            }
+          },
+          "discount": {
+            "source": "266349.177652564",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 101,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "840248.559385384",
+            "lake": "43320.738837774"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:24.945880+00:00",
+            "lake": "2026-11-19T12:00:00.101974+00:00"
+          },
+          "note": {
+            "source": {
+              "preview": "toast-note-id=101-rev=1-POsKekwq2u3dWABr4EgT0cyKJ_0ee5hJevpzf-hssDfirSciHMy_YT8JNM7BGLTm3mpZQx5XFz7alk7G5W2_FVihKxF8GuZboXniDA7UBPKchDJUZuDVm3Ey-PrFYnT5oyFfPC-89Temh7oQxL79CdSVwkSd0oFUx2nS9ksk3r-Qw2MQ...",
+              "char_len": 6168,
+              "utf8_bytes": 6168,
+              "sha256": "1affd7b4bcd5a10bc2891f4fd692b168b995ebd0da5cec3d723679a97c0b8cd8"
+            },
+            "lake": {
+              "preview": "toast-note-id=101-rev=0-Jd_fDHuPrwyG2I1DVtbPf1I2PC70Xy5PiY57_gjeYi8HTprubu7ZJ1LavQR2rs-P6qd1kp4TOA3_yyhyxQdCj2WQ286WcFJBhEN8nE5PHAtCXqdlB7cpa4nGk89A0xl4avwSR8veOqynzmihaqPFveFtnY5Elb6zFm4JdjzPREyRjyR1...",
+              "char_len": 6168,
+              "utf8_bytes": 6168,
+              "sha256": "72ea7bef4e2c418acacd1062f0f92bbea457d3b66242598fd3957d79f853174e"
+            }
+          },
+          "payload": {
+            "source": {
+              "preview": "{\"rev\": 1, \"blob\": \"na9v1L729uJwMB_2_vjKR-R_VJYJeJGEVBBM4GD6LasYA-OD70wFsQ33Bmk2r5Oz_Uc4zn6TgvDt5gdu4XA7dIO6FL33QsOf-Z1HRpUn9-_aUJ3b9ladfJr3s9hXdoZFlIO8TTlLPgvZcfbs6e-EfvMCwOufadCbUd5mtFipc6JdmOvjGPRy...",
+              "char_len": 6252,
+              "utf8_bytes": 6252,
+              "sha256": "f07dad1f066ed117b96b22dc502fb8f930edcb4b07aa327752d41999ed492d7a"
+            },
+            "lake": {
+              "preview": "{\"rev\": 0, \"blob\": \"cYO4dGxF0D94OYvtz9uNnkrL3k2dJDOFrDOBkqMx_Lm0Ifzuoq5vtVzTyw1Mf9aKWEJ4uF-JPrfjkrv5MHdpC9q0ktkjoRAh5RB_eSitCZprjWgoIN1x7HV8XJRa76fOMEelrzPkPoyQF02KwvU1jYa3xpp4_jAm_zLzPU7jf2fExZol7MkG...",
+              "char_len": 6252,
+              "utf8_bytes": 6252,
+              "sha256": "dc61a532962cfd51022902aa41b919b2c2da772892aa40ef3411ce9e477a0bca"
+            }
+          },
+          "discount": {
+            "source": null,
+            "lake": "849005.321144465"
+          }
+        }
+      },
+      {
+        "id": 110,
+        "diffs": {
+          "note": {
+            "source": {
+              "preview": "toast-note-id=110-rev=1-JetZok7ogXC6i04f1mz4Q9RrhehD6fTwaYGv-bDkXt7jzrFJMpkhP_zKWaMVxkHrxrmDGbfYEe7iee5avDCtF342nmrlsmW3AmF-o_QF3Dv7oHVsxX2SkFO7iyADIP2cTIJrf86pmI3OJGYmLZctAMCKLPgMNLwvERcWKfsKVWkWtYEk...",
+              "char_len": 6168,
+              "utf8_bytes": 6168,
+              "sha256": "fafa09d3b846b04a57e0f5d17b470180e361f6e1dc61a0408cd6f15c5459e782"
+            },
+            "lake": {
+              "preview": "toast-note-id=110-rev=0-SZDtNcI924hYywwHZhlupO2peAdHeWXbjdY2lj7ScLkK2VNacMpJXMiP-FBScErG7rfZV3b16woVgaYynISgdxbvstULSCgfqfAnD4ZJNBPWKMW14qFS9QUbP7nkkj3vD6ZWBgBjcUtg76NoSRDxyxOvxaaKHeJj4x4c0iPp3450Z6qV...",
+              "char_len": 6168,
+              "utf8_bytes": 6168,
+              "sha256": "df941e36f8b0d5ae5c1a2ade53cc0aef32b1f7145ce29a0a96a52cc08096c8cf"
+            }
+          },
+          "payload": {
+            "source": {
+              "preview": "{\"rev\": 1, \"blob\": \"oqQRjXCJGC8Fr9R-JL_KeXgZq_gAIIShjYJXaQqpiIH5Kd57J6FUvrAJd7On1MB2x_eX5-PzGm3-DQ7ODh_xggaLe1qniVGcPgwcpx0cJnk5Lwha-XbHAZWZ-hALhUa-5HuwfzIu0D2REBEIAED6UgkUTdtCokIt3LRLTlHhPZF39ucNGacl...",
+              "char_len": 6252,
+              "utf8_bytes": 6252,
+              "sha256": "19f1b94dee4df5015d0752af19f0042667b8927429572466b0830443abd8cd65"
+            },
+            "lake": {
+              "preview": "{\"rev\": 0, \"blob\": \"RIUoTH-mYz4GY5Ke-gQh9Vi8n6A95qUCscE2-FM6wCMbJS4UHswfvaUO6aMc0Abl5P_znHFNZNyYbFDbABG6jrF0tDkH43mnCTXQXV9Y-JpF_ehutwLpybhqumzG4C_oWZvQhIb4aVOzjtDI6-_2zOm8wLJNl4dJJergkTllA9lLfl7Vvymo...",
+              "char_len": 6252,
+              "utf8_bytes": 6252,
+              "sha256": "730a4878522de0ed8887faf1a306536ca66f67c553e1461a392a5ab00702d3ff"
+            }
+          }
+        }
+      },
+      {
+        "id": 306,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "649052.942605471",
+            "lake": "340789.979323393"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:11.310441+00:00",
+            "lake": "2026-11-19T12:00:00.306219+00:00"
+          },
+          "note": {
+            "source": "",
+            "lake": "order-306-batch-0"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 5], \"seq\": 501}",
+            "lake": "{\"tag\": \"t0\", \"items\": [41, 28], \"order_id\": 306, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "992180.378233129"
+          }
+        }
+      },
+      {
+        "id": 368,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "326598.827987893",
+            "lake": "97575.576678849"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:01.509845+00:00",
+            "lake": "2026-11-19T12:00:00.368645+00:00"
+          },
+          "note": {
+            "source": "upd-403-id-368 ",
+            "lake": "order-368-batch-0"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 4], \"seq\": 403}",
+            "lake": "{\"tag\": \"t11\", \"items\": [11, 8], \"order_id\": 368, \"priority\": false}"
+          },
+          "discount": {
+            "source": "-601544.696739422",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 602,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "999579.919328937",
+            "lake": "433903.871457360"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:26.310555+00:00",
+            "lake": "2026-11-19T12:00:00.602458+00:00"
+          },
+          "note": {
+            "source": "upd-651-id-602 ",
+            "lake": ""
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 0], \"seq\": 651}",
+            "lake": "{\"tag\": \"t7\", \"items\": [23, 22], \"order_id\": 602, \"priority\": false}"
+          },
+          "discount": {
+            "source": "554220.698203153",
+            "lake": "420034.521841336"
+          }
+        }
+      },
+      {
+        "id": 638,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "196890.267366851",
+            "lake": "181675.171726250"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:12.809979+00:00",
+            "lake": "2026-11-19T12:00:00.638357+00:00"
+          },
+          "note": {
+            "source": "upd-516-id-638 ",
+            "lake": "order-638-batch-0"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 1], \"seq\": 516}",
+            "lake": "{\"tag\": \"t9\", \"items\": [38, 40], \"order_id\": 638, \"priority\": false}"
+          },
+          "discount": {
+            "source": "289041.336363449",
+            "lake": "617072.805992233"
+          }
+        }
+      },
+      {
+        "id": 910,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "252929.525201974",
+            "lake": "979050.805707668"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:17.309664+00:00",
+            "lake": "2026-11-19T12:00:00.910217+00:00"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 0], \"seq\": 561}",
+            "lake": "{\"tag\": \"t9\", \"items\": [5, 36], \"order_id\": 910, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "776191.863773263"
+          }
+        }
+      },
+      {
+        "id": 1178,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "pending"
+          },
+          "amount": {
+            "source": "591259.897306285",
+            "lake": "435497.681346844"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:16.010100+00:00",
+            "lake": "2026-11-19T12:00:01.178255+00:00"
+          },
+          "note": {
+            "source": "upd-548-id-1178 ",
+            "lake": "order-1178-batch-1"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 2], \"seq\": 548}",
+            "lake": "{\"tag\": \"t5\", \"items\": [50, 36], \"order_id\": 1178, \"priority\": false}"
+          },
+          "discount": {
+            "source": "472413.261112368",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 1239,
+        "diffs": {
+          "amount": {
+            "source": "342297.291107657",
+            "lake": "596557.957536751"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:08.909857+00:00",
+            "lake": "2026-11-19T12:00:01.239641+00:00"
+          },
+          "note": {
+            "source": "upd-477-id-1239 ",
+            "lake": "order-1239-batch-1"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 0], \"seq\": 477}",
+            "lake": "{\"tag\": \"t15\", \"items\": [38, 38], \"order_id\": 1239, \"priority\": true}"
+          },
+          "discount": {
+            "source": "407025.055953497",
+            "lake": "488185.760994754"
+          }
+        }
+      },
+      {
+        "id": 1308,
+        "diffs": {
+          "status": {
+            "source": "settled",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "790057.041031633",
+            "lake": "831219.441769080"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:10.909656+00:00",
+            "lake": "2026-11-19T12:00:01.308225+00:00"
+          },
+          "note": {
+            "source": "upd-497-id-1308 ",
+            "lake": "order-1308-batch-1"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 6], \"seq\": 497}",
+            "lake": "{\"tag\": \"t16\", \"items\": [12, 29], \"order_id\": 1308, \"priority\": false}"
+          },
+          "discount": {
+            "source": "902008.939584901",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 1547,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "pending"
+          },
+          "amount": {
+            "source": "418706.950336938",
+            "lake": "231563.536157918"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:16.409998+00:00",
+            "lake": "2026-11-19T12:00:01.547316+00:00"
+          },
+          "note": {
+            "source": null,
+            "lake": "order-1547-batch-1"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 0], \"seq\": 552}",
+            "lake": "{\"tag\": \"t0\", \"items\": [44, 10], \"order_id\": 1547, \"priority\": false}"
+          },
+          "discount": {
+            "source": "625114.773232994",
+            "lake": "239630.230206762"
+          }
+        }
+      },
+      {
+        "id": 2036,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "571806.635678512",
+            "lake": "776376.377444210"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:20.909926+00:00",
+            "lake": "2026-11-19T12:00:02.036415+00:00"
+          },
+          "note": {
+            "source": "",
+            "lake": null
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 6], \"seq\": 597}",
+            "lake": "{\"tag\": \"t13\", \"items\": [15, 37], \"order_id\": 2036, \"priority\": true}"
+          },
+          "discount": {
+            "source": "557284.045233574",
+            "lake": "-496777.438460220"
+          }
+        }
+      },
+      {
+        "id": 2160,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "237477.062925129",
+            "lake": "574444.303863563"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:02.309783+00:00",
+            "lake": "2026-11-19T12:00:02.160557+00:00"
+          },
+          "note": {
+            "source": "",
+            "lake": "order-2160-batch-2"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 4], \"seq\": 411}",
+            "lake": "{\"tag\": \"t1\", \"items\": [37, 29], \"order_id\": 2160, \"priority\": false}"
+          }
+        }
+      },
+      {
+        "id": 2363,
+        "diffs": {
+          "amount": {
+            "source": "810779.055929959",
+            "lake": "752688.797098975"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:26.110584+00:00",
+            "lake": "2026-11-19T12:00:02.363800+00:00"
+          },
+          "note": {
+            "source": "upd-649-id-2363 ",
+            "lake": "order-2363-batch-2"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 4], \"seq\": 649}",
+            "lake": "null"
+          }
+        }
+      },
+      {
+        "id": 2366,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "pending"
+          },
+          "amount": {
+            "source": "451332.837773124",
+            "lake": "908382.597695980"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:08.110418+00:00",
+            "lake": "2026-11-19T12:00:02.366191+00:00"
+          },
+          "note": {
+            "source": "upd-469-id-2366 ",
+            "lake": "order-2366-batch-2"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 0], \"seq\": 469}",
+            "lake": "{\"tag\": \"t3\", \"items\": [24, 13], \"order_id\": 2366, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "671595.717130876"
+          }
+        }
+      },
+      {
+        "id": 2468,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "214275.660738562",
+            "lake": "684008.141554432"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:24.709687+00:00",
+            "lake": "2026-11-19T12:00:02.468545+00:00"
+          },
+          "note": {
+            "source": "",
+            "lake": "order-2468-batch-2"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 4], \"seq\": 635}",
+            "lake": "{\"tag\": \"t3\", \"items\": [13, 9], \"order_id\": 2468, \"priority\": false}"
+          },
+          "discount": {
+            "source": "572284.598302816",
+            "lake": "690386.450454848"
+          }
+        }
+      },
+      {
+        "id": 2589,
+        "diffs": {
+          "amount": {
+            "source": "175471.914746541",
+            "lake": "218825.616551076"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:16.310220+00:00",
+            "lake": "2026-11-19T12:00:02.589652+00:00"
+          },
+          "note": {
+            "source": "upd-551-id-2589 ",
+            "lake": "order-2589-batch-2"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 6], \"seq\": 551}",
+            "lake": "{\"tag\": \"t5\", \"items\": [50, 31], \"order_id\": 2589, \"priority\": false}"
+          }
+        }
+      },
+      {
+        "id": 2652,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "988524.394486389",
+            "lake": "831789.678391967"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:18.510108+00:00",
+            "lake": "2026-11-19T12:00:02.652372+00:00"
+          },
+          "note": {
+            "source": "upd-573-id-2652 ",
+            "lake": "order-2652-batch-2"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 6], \"seq\": 573}",
+            "lake": "{\"tag\": \"t0\", \"items\": [45, 2], \"order_id\": 2652, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "468175.888389227"
+          }
+        }
+      },
+      {
+        "id": 2943,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "901202.912530951",
+            "lake": "250849.130363667"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:20.409804+00:00",
+            "lake": "2026-11-19T12:00:02.943013+00:00"
+          },
+          "note": {
+            "source": "upd-592-id-2943 ",
+            "lake": "order-2943-batch-2"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 3], \"seq\": 592}",
+            "lake": "{\"tag\": \"t2\", \"items\": [45, 10], \"order_id\": 2943, \"priority\": true}"
+          },
+          "discount": {
+            "source": "518428.349463602",
+            "lake": "310484.440286984"
+          }
+        }
+      },
+      {
+        "id": 3344,
+        "diffs": {
+          "amount": {
+            "source": "167944.601669430",
+            "lake": "266016.716656415"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:26.209771+00:00",
+            "lake": "2026-11-19T12:00:03.344085+00:00"
+          },
+          "note": {
+            "source": "upd-650-id-3344 ",
+            "lake": "order-3344-batch-3"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 5], \"seq\": 650}",
+            "lake": "{\"tag\": \"t12\", \"items\": [5, 50], \"order_id\": 3344, \"priority\": false}"
+          },
+          "discount": {
+            "source": "-886235.470138034",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 3382,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "372460.505796627",
+            "lake": "979255.451137776"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:06.810121+00:00",
+            "lake": "2026-11-19T12:00:03.382234+00:00"
+          },
+          "note": {
+            "source": "upd-456-id-3382 ",
+            "lake": "order-3382-batch-3"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 1], \"seq\": 456}",
+            "lake": "{\"tag\": \"t16\", \"items\": [41, 23], \"order_id\": 3382, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "735642.202149666"
+          }
+        }
+      },
+      {
+        "id": 3429,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "cancelled"
+          },
+          "amount": {
+            "source": "380036.331795825",
+            "lake": "686047.694360099"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:00.410140+00:00",
+            "lake": "2026-11-19T12:00:03.429758+00:00"
+          },
+          "note": {
+            "source": "upd-392-id-3429 ",
+            "lake": "order-3429-batch-3"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 6], \"seq\": 392}",
+            "lake": "{\"tag\": \"t12\", \"items\": [47, 45], \"order_id\": 3429, \"priority\": true}"
+          },
+          "discount": {
+            "source": "546338.522390520",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 3438,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "pending"
+          },
+          "amount": {
+            "source": "522245.386683404",
+            "lake": "599156.202864469"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:06.210100+00:00",
+            "lake": "2026-11-19T12:00:03.438254+00:00"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 1], \"seq\": 450}",
+            "lake": "{\"tag\": \"t4\", \"items\": [18, 20], \"order_id\": 3438, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "567362.013305609"
+          }
+        }
+      },
+      {
+        "id": 3710,
+        "diffs": {
+          "amount": {
+            "source": "361519.803571538",
+            "lake": "574931.268898629"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:18.110101+00:00",
+            "lake": "2026-11-19T12:00:03.710712+00:00"
+          },
+          "note": {
+            "source": "upd-569-id-3710 ",
+            "lake": "order-3710-batch-3"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 0], \"seq\": 569}",
+            "lake": "{\"tag\": \"t4\", \"items\": [18, 41], \"order_id\": 3710, \"priority\": false}"
+          },
+          "discount": {
+            "source": "873688.972330236",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 4221,
+        "diffs": {
+          "amount": {
+            "source": "818861.122435163",
+            "lake": "913318.075048320"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:13.709990+00:00",
+            "lake": "2026-11-19T12:00:04.221670+00:00"
+          },
+          "note": {
+            "source": "upd-525-id-4221 ",
+            "lake": "order-4221-batch-4"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 0], \"seq\": 525}",
+            "lake": "{\"tag\": \"t5\", \"items\": [3, 6], \"order_id\": 4221, \"priority\": true}"
+          },
+          "discount": {
+            "source": "320084.331024890",
+            "lake": "547620.363785415"
+          }
+        }
+      },
+      {
+        "id": 4474,
+        "diffs": {
+          "amount": {
+            "source": "602315.431777090",
+            "lake": "812775.541856866"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:04.609921+00:00",
+            "lake": "2026-11-19T12:00:04.474140+00:00"
+          },
+          "note": {
+            "source": "",
+            "lake": "order-4474-batch-4"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 1], \"seq\": 434}",
+            "lake": "{\"tag\": \"t3\", \"items\": [38, 42], \"order_id\": 4474, \"priority\": false}"
+          }
+        }
+      },
+      {
+        "id": 4593,
+        "diffs": {
+          "amount": {
+            "source": "923455.723454559",
+            "lake": "974749.335674825"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:16.910586+00:00",
+            "lake": "2026-11-19T12:00:04.593166+00:00"
+          },
+          "note": {
+            "source": "upd-557-id-4593 ",
+            "lake": null
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 1], \"seq\": 557}",
+            "lake": "{\"tag\": \"t3\", \"items\": [10, 50], \"order_id\": 4593, \"priority\": false}"
+          },
+          "discount": {
+            "source": "290216.536747809",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 4622,
+        "diffs": {
+          "amount": {
+            "source": "786618.860938979",
+            "lake": "736202.316809650"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:00.909623+00:00",
+            "lake": "2026-11-19T12:00:04.622132+00:00"
+          },
+          "note": {
+            "source": "upd-397-id-4622 ",
+            "lake": "order-4622-batch-4"
+          },
+          "payload": {
+            "source": "null",
+            "lake": "{\"tag\": \"t15\", \"items\": [28, 19], \"order_id\": 4622, \"priority\": false}"
+          },
+          "discount": {
+            "source": "672230.041297737",
+            "lake": "-854420.807496522"
+          }
+        }
+      },
+      {
+        "id": 4854,
+        "diffs": {
+          "status": {
+            "source": "settled",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "964049.866490462",
+            "lake": "143719.958070130"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:27.511189+00:00",
+            "lake": "2026-11-19T12:00:04.854987+00:00"
+          },
+          "note": {
+            "source": "upd-663-id-4854 ",
+            "lake": "order-4854-batch-4"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 3], \"seq\": 663}",
+            "lake": null
+          },
+          "discount": {
+            "source": "267852.529071423",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 5141,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "694476.232196341",
+            "lake": "6119.392202753"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:12.710244+00:00",
+            "lake": "2026-11-19T12:00:05.141261+00:00"
+          },
+          "note": {
+            "source": "upd-515-id-5141 ",
+            "lake": "order-5141   "
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 3], \"seq\": 515}",
+            "lake": "{\"tag\": \"t7\", \"items\": [40, 41], \"order_id\": 5141, \"priority\": false}"
+          },
+          "discount": {
+            "source": "529627.922990413",
+            "lake": "784211.373104354"
+          }
+        }
+      },
+      {
+        "id": 5303,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "583572.732786453",
+            "lake": "337750.301065201"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:15.710269+00:00",
+            "lake": "2026-11-19T12:00:05.303219+00:00"
+          },
+          "note": {
+            "source": "upd-545-id-5303 ",
+            "lake": "order-5303-batch-5"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 4], \"seq\": 545}",
+            "lake": "{\"tag\": \"t16\", \"items\": [28, 2], \"order_id\": 5303, \"priority\": false}"
+          },
+          "discount": {
+            "source": "368743.020911405",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 5932,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "866425.704894760",
+            "lake": "599678.731701270"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:26:59.610317+00:00",
+            "lake": "2026-11-19T12:00:05.932969+00:00"
+          },
+          "note": {
+            "source": "upd-384-id-5932 ",
+            "lake": "order-5932-batch-5"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 3], \"seq\": 384}",
+            "lake": null
+          },
+          "discount": {
+            "source": null,
+            "lake": "2454.716195299"
+          }
+        }
+      },
+      {
+        "id": 6231,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "997884.626115249",
+            "lake": "749064.874683378"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:15.009740+00:00",
+            "lake": "2026-11-19T12:00:06.231702+00:00"
+          },
+          "note": {
+            "source": null,
+            "lake": "order-6231-batch-6"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 1], \"seq\": 538}",
+            "lake": "{\"tag\": \"t9\", \"items\": [25, 38], \"order_id\": 6231, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "878118.002554418"
+          }
+        }
+      },
+      {
+        "id": 6356,
+        "diffs": {
+          "status": {
+            "source": "settled",
+            "lake": "cancelled"
+          },
+          "amount": {
+            "source": "366655.130184916",
+            "lake": "555552.834104184"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:22.709755+00:00",
+            "lake": "2026-11-19T12:00:06.356713+00:00"
+          },
+          "note": {
+            "source": "upd-615-id-6356 ",
+            "lake": "order-6356   "
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 0], \"seq\": 615}",
+            "lake": "null"
+          },
+          "discount": {
+            "source": "219916.991101173",
+            "lake": "473743.638205811"
+          }
+        }
+      },
+      {
+        "id": 6831,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "923926.519658310",
+            "lake": "275977.865402353"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:18.709789+00:00",
+            "lake": "2026-11-19T12:00:06.831392+00:00"
+          },
+          "note": {
+            "source": "upd-575-id-6831 ",
+            "lake": "order-6831-batch-6"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 6], \"seq\": 575}",
+            "lake": "null"
+          }
+        }
+      },
+      {
+        "id": 6941,
+        "diffs": {
+          "status": {
+            "source": "settled",
+            "lake": "pending"
+          },
+          "amount": {
+            "source": "254294.968464376",
+            "lake": "238735.079776190"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:07.710216+00:00",
+            "lake": "2026-11-19T12:00:06.941637+00:00"
+          },
+          "note": {
+            "source": "upd-465-id-6941 ",
+            "lake": "order-6941-batch-6"
+          },
+          "payload": {
+            "source": "null",
+            "lake": "{\"tag\": \"t5\", \"items\": [10, 2], \"order_id\": 6941, \"priority\": true}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "693414.020414895"
+          }
+        }
+      },
+      {
+        "id": 7016,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "287125.906906779",
+            "lake": "678201.666175853"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:16.510782+00:00",
+            "lake": "2026-11-19T12:00:07.016288+00:00"
+          },
+          "note": {
+            "source": "upd-553-id-7016 ",
+            "lake": "order-7016-batch-7"
+          },
+          "payload": {
+            "source": "null",
+            "lake": "{\"tag\": \"t12\", \"items\": [4, 42], \"order_id\": 7016, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "266156.041037170"
+          }
+        }
+      },
+      {
+        "id": 7027,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "697338.065976844",
+            "lake": "-433679.861699738"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:20.509778+00:00",
+            "lake": "2026-11-19T12:00:07.027325+00:00"
+          },
+          "note": {
+            "source": "upd-593-id-7027 ",
+            "lake": "order-7027-batch-7"
+          },
+          "payload": {
+            "source": "null",
+            "lake": "{\"tag\": \"t6\", \"items\": [10, 8], \"order_id\": 7027, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "400828.110667950"
+          }
+        }
+      },
+      {
+        "id": 7083,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "405085.331068352",
+            "lake": "632782.625711803"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:20.709731+00:00",
+            "lake": "2026-11-19T12:00:07.083841+00:00"
+          },
+          "note": {
+            "source": "upd-595-id-7083 ",
+            "lake": "order-7083-batch-7"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 6], \"seq\": 595}",
+            "lake": null
+          },
+          "discount": {
+            "source": "896301.152592222",
+            "lake": "689166.742513605"
+          }
+        }
+      },
+      {
+        "id": 7809,
+        "diffs": {
+          "amount": {
+            "source": "144564.582640812",
+            "lake": "942962.720948028"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:04.709859+00:00",
+            "lake": "2026-11-19T12:00:07.809505+00:00"
+          },
+          "note": {
+            "source": "upd-435-id-7809 ",
+            "lake": "order-7809-batch-7"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 4], \"seq\": 435}",
+            "lake": "{\"tag\": \"t6\", \"items\": [11, 13], \"order_id\": 7809, \"priority\": true}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "251135.909409953"
+          }
+        }
+      },
+      {
+        "id": 7973,
+        "diffs": {
+          "status": {
+            "source": "processing",
+            "lake": "pending"
+          },
+          "amount": {
+            "source": "186370.753121208",
+            "lake": "309006.663596669"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:21.911079+00:00",
+            "lake": "2026-11-19T12:00:07.973379+00:00"
+          },
+          "note": {
+            "source": "upd-607-id-7973 ",
+            "lake": "order-7973-batch-7"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 0], \"seq\": 607}",
+            "lake": null
+          },
+          "discount": {
+            "source": "880959.917199335",
+            "lake": "115706.244424440"
+          }
+        }
+      },
+      {
+        "id": 7999,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "pending"
+          },
+          "amount": {
+            "source": "24690.818614454",
+            "lake": "381282.908755097"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:21.010393+00:00",
+            "lake": "2026-11-19T12:00:07.999075+00:00"
+          },
+          "note": {
+            "source": null,
+            "lake": "order-7999   "
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 5], \"seq\": 598}",
+            "lake": "{\"tag\": \"t9\", \"items\": [49, 41], \"order_id\": 7999, \"priority\": false}"
+          },
+          "discount": {
+            "source": "883478.608096062",
+            "lake": "238026.844596370"
+          }
+        }
+      },
+      {
+        "id": 8171,
+        "diffs": {
+          "status": {
+            "source": "settled",
+            "lake": "cancelled"
+          },
+          "amount": {
+            "source": "574861.570316858",
+            "lake": "732471.120992347"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:07.509610+00:00",
+            "lake": "2026-11-19T12:00:08.171713+00:00"
+          },
+          "note": {
+            "source": "upd-463-id-8171 ",
+            "lake": "order-8171-batch-8"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 2], \"seq\": 463}",
+            "lake": "{\"tag\": \"t11\", \"items\": [32, 11], \"order_id\": 8171, \"priority\": false}"
+          }
+        }
+      },
+      {
+        "id": 8192,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "205570.799461509",
+            "lake": "795190.246309941"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:09.410331+00:00",
+            "lake": "2026-11-19T12:00:08.192569+00:00"
+          },
+          "note": {
+            "source": "upd-482-id-8192 ",
+            "lake": null
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 2], \"seq\": 482}",
+            "lake": "{\"tag\": \"t15\", \"items\": [2, 9], \"order_id\": 8192, \"priority\": false}"
+          },
+          "discount": {
+            "source": "162625.906153744",
+            "lake": "616175.762899214"
+          }
+        }
+      },
+      {
+        "id": 8550,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "-376618.104304956",
+            "lake": "690387.613903457"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:07.810052+00:00",
+            "lake": "2026-11-19T12:00:08.550460+00:00"
+          },
+          "note": {
+            "source": "upd-466-id-8550 ",
+            "lake": "order-8550-batch-8"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 3], \"seq\": 466}",
+            "lake": "{\"tag\": \"t16\", \"items\": [6, 20], \"order_id\": 8550, \"priority\": false}"
+          }
+        }
+      },
+      {
+        "id": 8674,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "459469.676547721",
+            "lake": "235464.771543626"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:05.010116+00:00",
+            "lake": "2026-11-19T12:00:08.674291+00:00"
+          },
+          "note": {
+            "source": "upd-438-id-8674 ",
+            "lake": "order-8674-batch-8"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 1], \"seq\": 438}",
+            "lake": "{\"tag\": \"t4\", \"items\": [11, 9], \"order_id\": 8674, \"priority\": false}"
+          },
+          "discount": {
+            "source": "641101.877893659",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 8941,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "308551.395732337",
+            "lake": "790285.517451658"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:22.025373+00:00",
+            "lake": "2026-11-19T12:00:08.941254+00:00"
+          },
+          "note": {
+            "source": "upd-608-id-8941 ",
+            "lake": "order-8941-batch-8"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 2], \"seq\": 608}",
+            "lake": "{\"tag\": \"t16\", \"items\": [42, 29], \"order_id\": 8941, \"priority\": false}"
+          },
+          "discount": {
+            "source": "784105.748026402",
+            "lake": "82721.968464528"
+          }
+        }
+      },
+      {
+        "id": 9518,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "350390.883781814",
+            "lake": "225133.138203009"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:23.210593+00:00",
+            "lake": "2026-11-19T12:00:09.518682+00:00"
+          },
+          "note": {
+            "source": "upd-620-id-9518 ",
+            "lake": "order-9518-batch-9"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 5], \"seq\": 620}",
+            "lake": "{\"tag\": \"t15\", \"items\": [48, 47], \"order_id\": 9518, \"priority\": false}"
+          },
+          "discount": {
+            "source": "630455.092594451",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 10180,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "270904.381066060",
+            "lake": "716165.092212823"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:11.609660+00:00",
+            "lake": "2026-11-19T12:00:10.180158+00:00"
+          },
+          "note": {
+            "source": "upd-504-id-10180 ",
+            "lake": "order-10180-batch-10"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 2], \"seq\": 504}",
+            "lake": "{\"tag\": \"t14\", \"items\": [45, 35], \"order_id\": 10180, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "326236.350145916"
+          }
+        }
+      },
+      {
+        "id": 10414,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "321289.271093727",
+            "lake": "493832.610057432"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:27.610501+00:00",
+            "lake": "2026-11-19T12:00:10.414357+00:00"
+          },
+          "note": {
+            "source": "upd-664-id-10414 ",
+            "lake": "order-10414-batch-10"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 5], \"seq\": 664}",
+            "lake": "{\"tag\": \"t10\", \"items\": [43, 25], \"order_id\": 10414, \"priority\": true}"
+          }
+        }
+      },
+      {
+        "id": 10625,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "245846.297905677",
+            "lake": "454089.254300929"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:23.309870+00:00",
+            "lake": "2026-11-19T12:00:10.625575+00:00"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 6], \"seq\": 621}",
+            "lake": "{\"tag\": \"t0\", \"items\": [48, 39], \"order_id\": 10625, \"priority\": false}"
+          },
+          "discount": {
+            "source": "754202.881397776",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 10661,
+        "diffs": {
+          "status": {
+            "source": "processing",
+            "lake": "cancelled"
+          },
+          "amount": {
+            "source": "415818.394165591",
+            "lake": "561428.121404772"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:26:59.909653+00:00",
+            "lake": "2026-11-19T12:00:10.661967+00:00"
+          },
+          "note": {
+            "source": "",
+            "lake": "order-10661   "
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 0], \"seq\": 387}",
+            "lake": "{\"tag\": \"t2\", \"items\": [17, 23], \"order_id\": 10661, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "661410.363042341"
+          }
+        }
+      },
+      {
+        "id": 10928,
+        "diffs": {
+          "status": {
+            "source": "settled",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "312007.053072415",
+            "lake": "776302.419375665"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:05.510490+00:00",
+            "lake": "2026-11-19T12:00:10.928276+00:00"
+          },
+          "note": {
+            "source": "upd-443-id-10928 ",
+            "lake": "order-10928-batch-10"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 1], \"seq\": 443}",
+            "lake": "{\"tag\": \"t14\", \"items\": [45, 13], \"order_id\": 10928, \"priority\": false}"
+          },
+          "discount": {
+            "source": "498196.870675244",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 10935,
+        "diffs": {
+          "amount": {
+            "source": "216572.961054388",
+            "lake": "941674.596917808"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:28.109628+00:00",
+            "lake": "2026-11-19T12:00:10.935357+00:00"
+          },
+          "note": {
+            "source": "upd-669-id-10935 ",
+            "lake": "order-10935-batch-10"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 1], \"seq\": 669}",
+            "lake": "{\"tag\": \"t4\", \"items\": [13, 20], \"order_id\": 10935, \"priority\": true}"
+          },
+          "discount": {
+            "source": "38637.076791120",
+            "lake": "82756.887430939"
+          }
+        }
+      },
+      {
+        "id": 10967,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "81674.609605799",
+            "lake": "979673.702191490"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:24.610443+00:00",
+            "lake": "2026-11-19T12:00:10.967393+00:00"
+          },
+          "note": {
+            "source": "upd-634-id-10967 ",
+            "lake": "order-10967-batch-10"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 5], \"seq\": 634}",
+            "lake": "{\"tag\": \"t2\", \"items\": [43, 6], \"order_id\": 10967, \"priority\": false}"
+          },
+          "discount": {
+            "source": "20398.305708035",
+            "lake": "118037.314852942"
+          }
+        }
+      },
+      {
+        "id": 11420,
+        "diffs": {
+          "status": {
+            "source": "processing",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "538211.734024136",
+            "lake": "429271.241908056"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:25.110655+00:00",
+            "lake": "2026-11-19T12:00:11.420825+00:00"
+          },
+          "note": {
+            "source": null,
+            "lake": "order-11420-batch-11"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 3], \"seq\": 639}",
+            "lake": "{\"tag\": \"t13\", \"items\": [44, 43], \"order_id\": 11420, \"priority\": false}"
+          },
+          "discount": {
+            "source": "523602.475291132",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 11742,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "94198.067155324",
+            "lake": "464855.335073667"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:15.409753+00:00",
+            "lake": "2026-11-19T12:00:11.742772+00:00"
+          },
+          "note": {
+            "source": "upd-542-id-11742 ",
+            "lake": null
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 3], \"seq\": 542}",
+            "lake": "{\"tag\": \"t12\", \"items\": [42, 24], \"order_id\": 11742, \"priority\": false}"
+          },
+          "discount": {
+            "source": "964300.852436993",
+            "lake": "766740.296092250"
+          }
+        }
+      },
+      {
+        "id": 11959,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "543574.346151803",
+            "lake": "303989.498026275"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:17.009882+00:00",
+            "lake": "2026-11-19T12:00:11.959494+00:00"
+          },
+          "note": {
+            "source": "upd-558-id-11959 ",
+            "lake": "order-11959-batch-11"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 3], \"seq\": 558}",
+            "lake": "{\"tag\": \"t8\", \"items\": [16, 43], \"order_id\": 11959, \"priority\": false}"
+          },
+          "discount": {
+            "source": "41199.470838193",
+            "lake": "211474.196661404"
+          }
+        }
+      },
+      {
+        "id": 12134,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "363752.993396995",
+            "lake": "237163.622504692"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:00.510129+00:00",
+            "lake": "2026-11-19T12:00:12.134718+00:00"
+          },
+          "note": {
+            "source": "upd-393-id-12134 ",
+            "lake": "order-12134-batch-12"
+          },
+          "payload": {
+            "source": "null",
+            "lake": "{\"tag\": \"t13\", \"items\": [5, 4], \"order_id\": 12134, \"priority\": false}"
+          },
+          "discount": {
+            "source": "801209.712843675",
+            "lake": "800525.494365873"
+          }
+        }
+      },
+      {
+        "id": 12300,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "903835.348783604",
+            "lake": "539700.814675642"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:23.109994+00:00",
+            "lake": "2026-11-19T12:00:12.300134+00:00"
+          },
+          "note": {
+            "source": "upd-619-id-12300 ",
+            "lake": "order-12300-batch-12"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 1], \"seq\": 619}",
+            "lake": "{\"tag\": \"t9\", \"items\": [37, 6], \"order_id\": 12300, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "111631.711878467"
+          }
+        }
+      },
+      {
+        "id": 12446,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "942788.854584760",
+            "lake": "208070.711496361"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:21.709918+00:00",
+            "lake": "2026-11-19T12:00:12.446663+00:00"
+          },
+          "note": {
+            "source": "upd-605-id-12446 ",
+            "lake": "order-12446-batch-12"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 0], \"seq\": 605}",
+            "lake": "{\"tag\": \"t2\", \"items\": [45, 49], \"order_id\": 12446, \"priority\": false}"
+          },
+          "discount": {
+            "source": "756643.140470956",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 12568,
+        "diffs": {
+          "amount": {
+            "source": "448906.284814325",
+            "lake": "734806.578214083"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:17.109632+00:00",
+            "lake": "2026-11-19T12:00:12.568814+00:00"
+          },
+          "note": {
+            "source": "upd-559-id-12568 ",
+            "lake": null
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 3], \"seq\": 559}",
+            "lake": "{\"tag\": \"t5\", \"items\": [42, 26], \"order_id\": 12568, \"priority\": false}"
+          },
+          "discount": {
+            "source": "912489.785465080",
+            "lake": "211779.006330885"
+          }
+        }
+      },
+      {
+        "id": 13028,
+        "diffs": {
+          "amount": {
+            "source": "20197.754589776",
+            "lake": "103633.768896202"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:01.409648+00:00",
+            "lake": "2026-11-19T12:00:13.028034+00:00"
+          },
+          "note": {
+            "source": "upd-402-id-13028 ",
+            "lake": "order-13028-batch-13"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 1], \"seq\": 402}",
+            "lake": null
+          },
+          "discount": {
+            "source": "2021.190770807",
+            "lake": "961221.520150092"
+          }
+        }
+      },
+      {
+        "id": 13041,
+        "diffs": {
+          "status": {
+            "source": "processing",
+            "lake": "cancelled"
+          },
+          "amount": {
+            "source": "134277.711200851",
+            "lake": "36448.312267308"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:13.410217+00:00",
+            "lake": "2026-11-19T12:00:13.041962+00:00"
+          },
+          "note": {
+            "source": "upd-522-id-13041 ",
+            "lake": "order-13041-batch-13"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 0], \"seq\": 522}",
+            "lake": "null"
+          },
+          "discount": {
+            "source": "275076.959886734",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 13060,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "645857.527860912",
+            "lake": "471717.003691402"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:20.610672+00:00",
+            "lake": "2026-11-19T12:00:13.060993+00:00"
+          },
+          "note": {
+            "source": "upd-594-id-13060 ",
+            "lake": "order-13060   "
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 5], \"seq\": 594}",
+            "lake": "{\"tag\": \"t4\", \"items\": [10, 44], \"order_id\": 13060, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "422094.105981256"
+          }
+        }
+      },
+      {
+        "id": 13086,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "pending"
+          },
+          "amount": {
+            "source": "74654.324827036",
+            "lake": "593808.132479542"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:06.410171+00:00",
+            "lake": "2026-11-19T12:00:13.086228+00:00"
+          },
+          "note": {
+            "source": null,
+            "lake": "order-13086-batch-13"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 3], \"seq\": 452}",
+            "lake": null
+          },
+          "discount": {
+            "source": "303131.609626938",
+            "lake": "337117.964100315"
+          }
+        }
+      },
+      {
+        "id": 13179,
+        "diffs": {
+          "amount": {
+            "source": "856419.143195056",
+            "lake": "-874989.038670840"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:11.109775+00:00",
+            "lake": "2026-11-19T12:00:13.179024+00:00"
+          },
+          "note": {
+            "source": "upd-499-id-13179 ",
+            "lake": "order-13179-batch-13"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 5], \"seq\": 499}",
+            "lake": null
+          },
+          "discount": {
+            "source": "579967.125443275",
+            "lake": "720245.207902586"
+          }
+        }
+      },
+      {
+        "id": 13629,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "449418.288406574",
+            "lake": "745587.772645631"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:13.010547+00:00",
+            "lake": "2026-11-19T12:00:13.629064+00:00"
+          },
+          "note": {
+            "source": "upd-518-id-13629 ",
+            "lake": "order-13629   "
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 0], \"seq\": 518}",
+            "lake": "{\"tag\": \"t12\", \"items\": [22, 36], \"order_id\": 13629, \"priority\": false}"
+          },
+          "discount": {
+            "source": "695307.976028489",
+            "lake": "699512.947094371"
+          }
+        }
+      },
+      {
+        "id": 13930,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "cancelled"
+          },
+          "amount": {
+            "source": "501321.897757595",
+            "lake": "194939.986669920"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:13.809826+00:00",
+            "lake": "2026-11-20T12:26:38.310405+00:00"
+          },
+          "note": {
+            "source": "upd-526-id-13930 ",
+            "lake": "upd-171-id-13930 "
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 0], \"seq\": 526}",
+            "lake": "{\"op\": \"upd\", \"arr\": [1, 0], \"seq\": 171}"
+          },
+          "discount": {
+            "source": "261107.207235186",
+            "lake": "377182.671806115"
+          }
+        }
+      },
+      {
+        "id": 13988,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "214347.671741068",
+            "lake": "28213.680586718"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:27.009652+00:00",
+            "lake": "2026-11-19T12:00:13.988961+00:00"
+          },
+          "note": {
+            "source": "upd-658-id-13988 ",
+            "lake": "order-13988-batch-13"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 2], \"seq\": 658}",
+            "lake": "{\"tag\": \"t14\", \"items\": [9, 34], \"order_id\": 13988, \"priority\": true}"
+          },
+          "discount": {
+            "source": "396865.667113304",
+            "lake": "402872.385866405"
+          }
+        }
+      },
+      {
+        "id": 14184,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "176549.103460897",
+            "lake": "405817.277884832"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:09.810681+00:00",
+            "lake": "2026-11-19T12:00:14.184285+00:00"
+          },
+          "note": {
+            "source": "upd-486-id-14184 ",
+            "lake": "order-14184-batch-14"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 2], \"seq\": 486}",
+            "lake": "{\"tag\": \"t6\", \"items\": [45, 34], \"order_id\": 14184, \"priority\": false}"
+          },
+          "discount": {
+            "source": "397853.535773898",
+            "lake": "681906.488021327"
+          }
+        }
+      },
+      {
+        "id": 14221,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "23437506200383357654729962384.426610792",
+            "lake": "935849.461500613"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:21.209787+00:00",
+            "lake": "2026-11-19T12:00:14.221568+00:00"
+          },
+          "note": {
+            "source": "upd-600-id-14221 ",
+            "lake": "order-14221-batch-14"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 4], \"seq\": 600}",
+            "lake": "{\"tag\": \"t9\", \"items\": [28, 47], \"order_id\": 14221, \"priority\": false}"
+          },
+          "discount": {
+            "source": "427680.369888544",
+            "lake": "264377.524541965"
+          }
+        }
+      },
+      {
+        "id": 14225,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "970167.175075336",
+            "lake": "967535.333533065"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:04.809998+00:00",
+            "lake": "2026-11-19T12:00:14.225239+00:00"
+          },
+          "note": {
+            "source": "upd-436-id-14225 ",
+            "lake": "order-14225-batch-14"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 1], \"seq\": 436}",
+            "lake": "{\"tag\": \"t13\", \"items\": [41, 46], \"order_id\": 14225, \"priority\": false}"
+          },
+          "discount": {
+            "source": "450718.223471550",
+            "lake": "-745194.665648880"
+          }
+        }
+      },
+      {
+        "id": 14259,
+        "diffs": {
+          "status": {
+            "source": "processing",
+            "lake": "cancelled"
+          },
+          "amount": {
+            "source": "145214.411947308",
+            "lake": "-203241.235472263"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:25.410238+00:00",
+            "lake": "2026-11-19T12:00:14.259458+00:00"
+          },
+          "note": {
+            "source": "upd-642-id-14259 ",
+            "lake": "order-14259-batch-14"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 0], \"seq\": 642}",
+            "lake": "{\"tag\": \"t13\", \"items\": [50, 32], \"order_id\": 14259, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "544892.186166865"
+          }
+        }
+      },
+      {
+        "id": 14427,
+        "diffs": {
+          "amount": {
+            "source": "738323.123083368",
+            "lake": "548799.850464676"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:16.109699+00:00",
+            "lake": "2026-11-19T12:00:14.427748+00:00"
+          },
+          "note": {
+            "source": null,
+            "lake": "order-14427   "
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 0], \"seq\": 549}",
+            "lake": "{\"tag\": \"t11\", \"items\": [50, 30], \"order_id\": 14427, \"priority\": false}"
+          },
+          "discount": {
+            "source": "239563.408578318",
+            "lake": "865164.579105907"
+          }
+        }
+      },
+      {
+        "id": 14663,
+        "diffs": {
+          "status": {
+            "source": "settled",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "235129.637739430",
+            "lake": "748486.992107120"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:07.309898+00:00",
+            "lake": "2026-11-19T12:00:14.663577+00:00"
+          },
+          "note": {
+            "source": "upd-461-id-14663 ",
+            "lake": "order-14663-batch-14"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 5], \"seq\": 461}",
+            "lake": "{\"tag\": \"t9\", \"items\": [19, 22], \"order_id\": 14663, \"priority\": false}"
+          },
+          "discount": {
+            "source": "645800.869401839",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 14964,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "756186.100678540",
+            "lake": "-451204.460972752"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:08.009724+00:00",
+            "lake": "2026-11-19T12:00:14.964904+00:00"
+          },
+          "note": {
+            "source": "upd-468-id-14964 ",
+            "lake": "order-14964-batch-14"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 5], \"seq\": 468}",
+            "lake": "{\"tag\": \"t4\", \"items\": [19, 12], \"order_id\": 14964, \"priority\": false}"
+          },
+          "discount": {
+            "source": "221328.256027558",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 14997,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "599199.396903183",
+            "lake": "-557243.994093569"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:05.310009+00:00",
+            "lake": "2026-11-19T12:00:14.997854+00:00"
+          },
+          "note": {
+            "source": "upd-441-id-14997 ",
+            "lake": "order-14997-batch-14"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 3], \"seq\": 441}",
+            "lake": "{\"tag\": \"t3\", \"items\": [23, 43], \"order_id\": 14997, \"priority\": false}"
+          },
+          "discount": {
+            "source": "232137.904739328",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 15018,
+        "diffs": {
+          "amount": {
+            "source": "65389.369541133",
+            "lake": "139700.104626014"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:13.309695+00:00",
+            "lake": "2026-11-19T12:00:15.018057+00:00"
+          },
+          "note": {
+            "source": "",
+            "lake": "order-15018-batch-15"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 3], \"seq\": 521}",
+            "lake": null
+          },
+          "discount": {
+            "source": "334675.497057262",
+            "lake": "874036.491402062"
+          }
+        }
+      },
+      {
+        "id": 15085,
+        "diffs": {
+          "amount": {
+            "source": "291367.108827723",
+            "lake": "769749.729680148"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:25.610469+00:00",
+            "lake": "2026-11-19T12:00:15.085341+00:00"
+          },
+          "note": {
+            "source": null,
+            "lake": "order-15085   "
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 0], \"seq\": 644}",
+            "lake": "{\"tag\": \"t6\", \"items\": [36, 44], \"order_id\": 15085, \"priority\": true}"
+          },
+          "discount": {
+            "source": "784610.271181735",
+            "lake": "942069.210032326"
+          }
+        }
+      },
+      {
+        "id": 15117,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "936818.835654232",
+            "lake": "899123.311752760"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:10.710753+00:00",
+            "lake": "2026-11-19T12:00:15.117377+00:00"
+          },
+          "note": {
+            "source": "upd-495-id-15117 ",
+            "lake": "order-15117   "
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 4], \"seq\": 495}",
+            "lake": "{\"tag\": \"t4\", \"items\": [7, 43], \"order_id\": 15117, \"priority\": false}"
+          },
+          "discount": {
+            "source": "848013.295053455",
+            "lake": "910517.113554243"
+          }
+        }
+      },
+      {
+        "id": 15174,
+        "diffs": {
+          "amount": {
+            "source": "643041.361724983",
+            "lake": "270772.513502409"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:02.609870+00:00",
+            "lake": "2026-11-19T12:00:15.174230+00:00"
+          },
+          "note": {
+            "source": "upd-414-id-15174 ",
+            "lake": "order-15174-batch-15"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 5], \"seq\": 414}",
+            "lake": "{\"tag\": \"t10\", \"items\": [7, 39], \"order_id\": 15174, \"priority\": false}"
+          }
+        }
+      },
+      {
+        "id": 15238,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "20320.698156642",
+            "lake": "808359.199469236"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:21.810241+00:00",
+            "lake": "2026-11-19T12:00:15.238618+00:00"
+          },
+          "note": {
+            "source": "upd-606-id-15238 ",
+            "lake": "order-15238-batch-15"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 6], \"seq\": 606}",
+            "lake": "{\"tag\": \"t6\", \"items\": [50, 13], \"order_id\": 15238, \"priority\": false}"
+          },
+          "discount": {
+            "source": "768536.264853232",
+            "lake": "575485.387535388"
+          }
+        }
+      },
+      {
+        "id": 15515,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "270309.197744368",
+            "lake": "355939.455423564"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:15.210488+00:00",
+            "lake": "2026-11-19T12:00:15.515551+00:00"
+          },
+          "note": {
+            "source": null,
+            "lake": "order-15515-batch-15"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 3], \"seq\": 540}",
+            "lake": "{\"tag\": \"t11\", \"items\": [3, 35], \"order_id\": 15515, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "-670507.469122397"
+          }
+        }
+      },
+      {
+        "id": 15788,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "685619.003365968",
+            "lake": "532219.266750994"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:11.910206+00:00",
+            "lake": "2026-11-19T12:00:15.788070+00:00"
+          },
+          "note": {
+            "source": "",
+            "lake": "order-15788-batch-15"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 3], \"seq\": 507}",
+            "lake": "{\"tag\": \"t12\", \"items\": [46, 36], \"order_id\": 15788, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "182132.027785726"
+          }
+        }
+      },
+      {
+        "id": 16260,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "546508.301699493",
+            "lake": "612460.994838570"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:27.210636+00:00",
+            "lake": "2026-11-19T12:00:16.260404+00:00"
+          },
+          "note": {
+            "source": "upd-660-id-16260 ",
+            "lake": "order-16260-batch-16"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 6], \"seq\": 660}",
+            "lake": "{\"tag\": \"t8\", \"items\": [37, 22], \"order_id\": 16260, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "977358.999862406"
+          }
+        }
+      },
+      {
+        "id": 16558,
+        "diffs": {
+          "amount": {
+            "source": "554729.480365337",
+            "lake": "551546.441776345"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:00.710199+00:00",
+            "lake": "2026-11-19T12:00:16.558085+00:00"
+          },
+          "note": {
+            "source": "upd-395-id-16558 ",
+            "lake": "order-16558-batch-16"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 3], \"seq\": 395}",
+            "lake": "{\"tag\": \"t0\", \"items\": [39, 48], \"order_id\": 16558, \"priority\": false}"
+          },
+          "discount": {
+            "source": "923855.739564886",
+            "lake": "-788971.255968749"
+          }
+        }
+      },
+      {
+        "id": 16609,
+        "diffs": {
+          "status": {
+            "source": "processing",
+            "lake": "cancelled"
+          },
+          "amount": {
+            "source": "36712.860864753",
+            "lake": "615934.669191645"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:12.109829+00:00",
+            "lake": "2026-11-19T12:00:16.609055+00:00"
+          },
+          "note": {
+            "source": "upd-509-id-16609 ",
+            "lake": "order-16609-batch-16"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 5], \"seq\": 509}",
+            "lake": "{\"tag\": \"t0\", \"items\": [41, 26], \"order_id\": 16609, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "-395243.795347277"
+          }
+        }
+      },
+      {
+        "id": 16640,
+        "diffs": {
+          "amount": {
+            "source": "145298.211086330",
+            "lake": "261657.073526170"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:07.910035+00:00",
+            "lake": "2026-11-19T12:00:16.640398+00:00"
+          },
+          "note": {
+            "source": "upd-467-id-16640 ",
+            "lake": "order-16640-batch-16"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 1], \"seq\": 467}",
+            "lake": "{\"tag\": \"t14\", \"items\": [48, 14], \"order_id\": 16640, \"priority\": true}"
+          },
+          "discount": {
+            "source": "276695.034226026",
+            "lake": "4397.107262927"
+          }
+        }
+      },
+      {
+        "id": 16938,
+        "diffs": {
+          "amount": {
+            "source": "907614.130704836",
+            "lake": "334810.689160682"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:14.309857+00:00",
+            "lake": "2026-11-19T12:00:16.938047+00:00"
+          },
+          "note": {
+            "source": "upd-531-id-16938 ",
+            "lake": "order-16938-batch-16"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 5], \"seq\": 531}",
+            "lake": "{\"tag\": \"t6\", \"items\": [49, 1], \"order_id\": 16938, \"priority\": true}"
+          },
+          "discount": {
+            "source": "78510.649161945",
+            "lake": "526502.106509014"
+          }
+        }
+      },
+      {
+        "id": 17526,
+        "diffs": {
+          "status": {
+            "source": "settled",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "774422.217508722",
+            "lake": "52761.637412497"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:20.110271+00:00",
+            "lake": "2026-11-19T12:00:17.526966+00:00"
+          },
+          "note": {
+            "source": "upd-589-id-17526 ",
+            "lake": "order-17526-batch-17"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 5], \"seq\": 589}",
+            "lake": "{\"tag\": \"t16\", \"items\": [35, 24], \"order_id\": 17526, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "-746284.514110053"
+          }
+        }
+      },
+      {
+        "id": 18259,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "pending"
+          },
+          "amount": {
+            "source": "140614.773432291",
+            "lake": "880537.830576914"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:10.409863+00:00",
+            "lake": "2026-11-19T12:00:18.259075+00:00"
+          },
+          "note": {
+            "source": "upd-492-id-18259 ",
+            "lake": "order-18259-batch-18"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 3], \"seq\": 492}",
+            "lake": "{\"tag\": \"t1\", \"items\": [26, 40], \"order_id\": 18259, \"priority\": true}"
+          },
+          "discount": {
+            "source": "459557.711256670",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 18583,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "299840.220369879",
+            "lake": "833994.011091960"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:16.709860+00:00",
+            "lake": "2026-11-19T12:00:18.583186+00:00"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 5], \"seq\": 555}",
+            "lake": "{\"tag\": \"t2\", \"items\": [29, 38], \"order_id\": 18583, \"priority\": false}"
+          },
+          "discount": {
+            "source": "865220.630176324",
+            "lake": "762925.627385811"
+          }
+        }
+      },
+      {
+        "id": 19249,
+        "diffs": {
+          "amount": {
+            "source": "-177408.316895760",
+            "lake": "393003.509690053"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:05.610269+00:00",
+            "lake": "2026-11-19T12:00:19.249298+00:00"
+          },
+          "note": {
+            "source": "",
+            "lake": "order-19249-batch-19"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 6], \"seq\": 444}",
+            "lake": null
+          },
+          "discount": {
+            "source": null,
+            "lake": "256563.143500024"
+          }
+        }
+      },
+      {
+        "id": 19280,
+        "diffs": {
+          "amount": {
+            "source": "556228.633080214",
+            "lake": "215741.278380296"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:11.009653+00:00",
+            "lake": "2026-11-19T12:00:19.280563+00:00"
+          },
+          "note": {
+            "source": "upd-498-id-19280 ",
+            "lake": "order-19280-batch-19"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 2], \"seq\": 498}",
+            "lake": "{\"tag\": \"t2\", \"items\": [50, 39], \"order_id\": 19280, \"priority\": true}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "332193.741086791"
+          }
+        }
+      },
+      {
+        "id": 19588,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "257927.446072837",
+            "lake": "346977.585362147"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:07.010118+00:00",
+            "lake": "2026-11-19T12:00:19.588542+00:00"
+          },
+          "note": {
+            "source": "upd-458-id-19588 ",
+            "lake": "order-19588-batch-19"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 2], \"seq\": 458}",
+            "lake": "{\"tag\": \"t4\", \"items\": [11, 27], \"order_id\": 19588, \"priority\": true}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "-3868.879387940"
+          }
+        }
+      },
+      {
+        "id": 20091,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "802812.101486548",
+            "lake": "-106408.528092003"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:25.010788+00:00",
+            "lake": "2026-11-19T12:00:20.091559+00:00"
+          },
+          "note": {
+            "source": "upd-638-id-20091 ",
+            "lake": "order-20091-batch-20"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 1], \"seq\": 638}",
+            "lake": "{\"tag\": \"t14\", \"items\": [27, 3], \"order_id\": 20091, \"priority\": false}"
+          },
+          "discount": {
+            "source": "292069.393893668",
+            "lake": "671634.515152226"
+          }
+        }
+      },
+      {
+        "id": 20417,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "173036.416958860",
+            "lake": "202054.556816948"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:17.210262+00:00",
+            "lake": "2026-11-19T12:00:20.417690+00:00"
+          },
+          "note": {
+            "source": null,
+            "lake": "order-20417-batch-20"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 5], \"seq\": 560}",
+            "lake": "null"
+          },
+          "discount": {
+            "source": null,
+            "lake": "697957.747347978"
+          }
+        }
+      },
+      {
+        "id": 20809,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "201653.142964559",
+            "lake": "658242.141654797"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:00.109818+00:00",
+            "lake": "2026-11-19T12:00:20.809107+00:00"
+          },
+          "note": {
+            "source": "upd-389-id-20809 ",
+            "lake": "order-20809-batch-20"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 5], \"seq\": 389}",
+            "lake": "{\"tag\": \"t1\", \"items\": [12, 29], \"order_id\": 20809, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "949655.288833926"
+          }
+        }
+      },
+      {
+        "id": 21140,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "processing"
+          },
+          "amount": {
+            "source": "168358.672313506",
+            "lake": "209101.840253959"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:07.209731+00:00",
+            "lake": "2026-11-19T12:00:21.140492+00:00"
+          },
+          "note": {
+            "source": null,
+            "lake": "order-21140-batch-21"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 0], \"seq\": 460}",
+            "lake": "{\"tag\": \"t9\", \"items\": [28, 27], \"order_id\": 21140, \"priority\": true}"
+          },
+          "discount": {
+            "source": "359619.843803987",
+            "lake": "-990953.636747167"
+          }
+        }
+      },
+      {
+        "id": 21298,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "cancelled"
+          },
+          "amount": {
+            "source": "765652.456195791",
+            "lake": "204893.624924373"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:02.410130+00:00",
+            "lake": "2026-11-19T12:00:21.298824+00:00"
+          },
+          "note": {
+            "source": "upd-412-id-21298 ",
+            "lake": "order-21298-batch-21"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 4], \"seq\": 412}",
+            "lake": "{\"tag\": \"t14\", \"items\": [49, 19], \"order_id\": 21298, \"priority\": true}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "257841.466342788"
+          }
+        }
+      },
+      {
+        "id": 21466,
+        "diffs": {
+          "amount": {
+            "source": "581070.267119461",
+            "lake": "-346185.173736981"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:09.310302+00:00",
+            "lake": "2026-11-19T12:00:21.466897+00:00"
+          },
+          "note": {
+            "source": "",
+            "lake": "order-21466-batch-21"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [1, 4], \"seq\": 481}",
+            "lake": "{\"tag\": \"t12\", \"items\": [5, 47], \"order_id\": 21466, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "570527.937133266"
+          }
+        }
+      },
+      {
+        "id": 22188,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "cancelled"
+          },
+          "amount": {
+            "source": "194736.731591205",
+            "lake": "968594.591826941"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:11.510102+00:00",
+            "lake": "2026-11-19T12:00:22.188551+00:00"
+          },
+          "note": {
+            "source": "",
+            "lake": "order-22188-batch-22"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 5], \"seq\": 503}",
+            "lake": "{\"tag\": \"t3\", \"items\": [30, 40], \"order_id\": 22188, \"priority\": false}"
+          },
+          "discount": {
+            "source": "-789002.999448373",
+            "lake": "545787.107692181"
+          }
+        }
+      },
+      {
+        "id": 22219,
+        "diffs": {
+          "status": {
+            "source": "pending",
+            "lake": "created"
+          },
+          "amount": {
+            "source": "723767.781159860",
+            "lake": "831685.471827380"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:04.010213+00:00",
+            "lake": "2026-11-19T12:00:22.219937+00:00"
+          },
+          "note": {
+            "source": "upd-428-id-22219 ",
+            "lake": "order-22219-batch-22"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 1], \"seq\": 428}",
+            "lake": "{\"tag\": \"t0\", \"items\": [13, 36], \"order_id\": 22219, \"priority\": true}"
+          },
+          "discount": {
+            "source": "692701.100178373",
+            "lake": "43737.011720520"
+          }
+        }
+      },
+      {
+        "id": 23038,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "106368.381263552",
+            "lake": "457565.856701826"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:27.909698+00:00",
+            "lake": "2026-11-19T12:00:23.038660+00:00"
+          },
+          "note": {
+            "source": "upd-667-id-23038 ",
+            "lake": "order-23038-batch-23"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 1], \"seq\": 667}",
+            "lake": "{\"tag\": \"t3\", \"items\": [43, 11], \"order_id\": 23038, \"priority\": true}"
+          }
+        }
+      },
+      {
+        "id": 23098,
+        "diffs": {
+          "status": {
+            "source": "created",
+            "lake": "pending"
+          },
+          "amount": {
+            "source": "130506.404014590",
+            "lake": "183567.228262568"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:13.610637+00:00",
+            "lake": "2026-11-19T12:00:23.098679+00:00"
+          },
+          "note": {
+            "source": "upd-524-id-23098 ",
+            "lake": "order-23098-batch-23"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 5], \"seq\": 524}",
+            "lake": "{\"tag\": \"t12\", \"items\": [24, 31], \"order_id\": 23098, \"priority\": false}"
+          },
+          "discount": {
+            "source": "583343.780004221",
+            "lake": "741319.732719285"
+          }
+        }
+      },
+      {
+        "id": 23135,
+        "diffs": {
+          "status": {
+            "source": "processing",
+            "lake": "cancelled"
+          },
+          "amount": {
+            "source": "43751.521719235",
+            "lake": "569094.831729368"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:17.709806+00:00",
+            "lake": "2026-11-19T12:00:23.135959+00:00"
+          },
+          "note": {
+            "source": null,
+            "lake": "order-23135-batch-23"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [0, 0], \"seq\": 565}",
+            "lake": "{\"tag\": \"t15\", \"items\": [11, 38], \"order_id\": 23135, \"priority\": false}"
+          },
+          "discount": {
+            "source": "632727.497685309",
+            "lake": "153972.433273609"
+          }
+        }
+      },
+      {
+        "id": 23729,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "settled"
+          },
+          "amount": {
+            "source": "398509.418591166",
+            "lake": "237978.702164109"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:10.110693+00:00",
+            "lake": "2026-11-19T12:00:23.729119+00:00"
+          },
+          "note": {
+            "source": "upd-489-id-23729 ",
+            "lake": null
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 6], \"seq\": 489}",
+            "lake": null
+          },
+          "discount": {
+            "source": "803505.383082838",
+            "lake": "264951.025196001"
+          }
+        }
+      },
+      {
+        "id": 23905,
+        "diffs": {
+          "amount": {
+            "source": "323564.622543114",
+            "lake": "30118.578663741"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:05.910007+00:00",
+            "lake": "2026-11-19T12:00:23.905747+00:00"
+          },
+          "note": {
+            "source": "upd-447-id-23905 ",
+            "lake": null
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 0], \"seq\": 447}",
+            "lake": "{\"tag\": \"t3\", \"items\": [45, 32], \"order_id\": 23905, \"priority\": true}"
+          }
+        }
+      },
+      {
+        "id": 24273,
+        "diffs": {
+          "status": {
+            "source": "processing",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "235380.702447716",
+            "lake": "985598.446982148"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:19.202161+00:00",
+            "lake": "2026-11-19T12:00:24.273525+00:00"
+          },
+          "note": {
+            "source": "upd-579-id-24273 ",
+            "lake": "order-24273   "
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [4, 4], \"seq\": 579}",
+            "lake": "{\"tag\": \"t14\", \"items\": [28, 9], \"order_id\": 24273, \"priority\": true}"
+          },
+          "discount": {
+            "source": "396603.555084574",
+            "lake": null
+          }
+        }
+      },
+      {
+        "id": 24535,
+        "diffs": {
+          "status": {
+            "source": "shipped",
+            "lake": "pending"
+          },
+          "amount": {
+            "source": "561148.058421304",
+            "lake": "526317.248122835"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:27.409705+00:00",
+            "lake": "2026-11-19T12:00:24.535631+00:00"
+          },
+          "note": {
+            "source": "upd-662-id-24535 ",
+            "lake": "order-24535-batch-24"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 0], \"seq\": 662}",
+            "lake": "{\"tag\": \"t4\", \"items\": [31, 35], \"order_id\": 24535, \"priority\": false}"
+          },
+          "discount": {
+            "source": null,
+            "lake": "-356060.281937358"
+          }
+        }
+      },
+      {
+        "id": 24705,
+        "diffs": {
+          "amount": {
+            "source": "632930.246764005",
+            "lake": "2110.839727723"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:26:59.509899+00:00",
+            "lake": "2026-11-19T12:00:24.705473+00:00"
+          },
+          "note": {
+            "source": "upd-383-id-24705 ",
+            "lake": "order-24705-batch-24"
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [3, 2], \"seq\": 383}",
+            "lake": "{\"tag\": \"t4\", \"items\": [39, 2], \"order_id\": 24705, \"priority\": false}"
+          },
+          "discount": {
+            "source": "47899.935277390",
+            "lake": "129611.233167421"
+          }
+        }
+      },
+      {
+        "id": 24884,
+        "diffs": {
+          "status": {
+            "source": "cancelled",
+            "lake": "shipped"
+          },
+          "amount": {
+            "source": "365388.878964698",
+            "lake": "375555.029679295"
+          },
+          "updated_at": {
+            "source": "2026-11-20T12:27:03.910186+00:00",
+            "lake": "2026-11-19T12:00:24.884916+00:00"
+          },
+          "note": {
+            "source": "upd-427-id-24884 ",
+            "lake": ""
+          },
+          "payload": {
+            "source": "{\"op\": \"upd\", \"arr\": [2, 6], \"seq\": 427}",
+            "lake": "{\"tag\": \"t13\", \"items\": [15, 5], \"order_id\": 24884, \"priority\": false}"
+          }
+        }
+      }
+    ],
+    "batches_read_source": 13,
+    "batches_read_lake": 13,
+    "diff_duration_ms": 2418.19
+  }
+}

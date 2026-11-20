@@ -1,0 +1,414 @@
+;
+; Archive created at 2026-11-20 12:27:01 UTC
+;     dbname: lakekeeper
+;     TOC Entries: 403
+;     Compression: gzip
+;     Dump Version: 1.16-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 17.12 (Debian 17.12-1.pgdg12+1)
+;     Dumped by pg_dump version: 17.12 (Debian 17.12-1.pgdg12+1)
+;
+;
+; Selected TOC Entries:
+;
+3658; 3456 16443 COLLATION public case_insensitive postgres
+5; 3079 16907 EXTENSION - btree_gin 
+4632; 0 0 COMMENT - EXTENSION btree_gin 
+6; 3079 18250 EXTENSION - btree_gist 
+4633; 0 0 COMMENT - EXTENSION btree_gist 
+4; 3079 16826 EXTENSION - pg_trgm 
+4634; 0 0 COMMENT - EXTENSION pg_trgm 
+3; 3079 16404 EXTENSION - pgcrypto 
+4635; 0 0 COMMENT - EXTENSION pgcrypto 
+2; 3079 16393 EXTENSION - uuid-ossp 
+4636; 0 0 COMMENT - EXTENSION "uuid-ossp" 
+1396; 1247 17669 TYPE public api_endpoints postgres
+1325; 1247 16739 TYPE public deletion_kind postgres
+1447; 1247 19124 TYPE public entity_type postgres
+1495; 1247 19522 TYPE public grant_principal_type postgres
+1498; 1247 19528 TYPE public grant_resource_type postgres
+1471; 1247 19299 TYPE public iceberg_type_kind postgres
+1468; 1247 19272 TYPE public managed_by postgres
+1354; 1247 17395 TYPE public table_format_version postgres
+1331; 1247 16805 TYPE public tabular_delete_mode postgres
+1444; 1247 19116 TYPE public tabular_type postgres
+1480; 1247 19380 TYPE public tag_source postgres
+1483; 1247 19384 TYPE public tag_value_kind postgres
+1405; 1247 17942 TYPE public task_final_status postgres
+1414; 1247 17988 TYPE public task_intermediate_status postgres
+1339; 1247 17344 TYPE public user_last_updated_with postgres
+1342; 1247 17352 TYPE public user_type postgres
+1298; 1247 16558 TYPE public view_format_version postgres
+1319; 1247 16657 TYPE public view_representation_type postgres
+1280; 1247 16445 TYPE public warehouse_status postgres
+640; 1255 16510 PROCEDURE public add_time_columns(regclass) postgres
+381; 1255 18907 FUNCTION public concat_namespace_name_tabular_name(text[], text) postgres
+655; 1255 19374 FUNCTION public gc_orphaned_columns() postgres
+388; 1255 17617 FUNCTION public get_stats_date_default() postgres
+318; 1255 17619 FUNCTION public get_stats_interval() postgres
+521; 1255 17618 FUNCTION public get_stats_interval_unit() postgres
+630; 1255 19749 FUNCTION public lakekeeper_record_cache_change(text, text[]) postgres
+398; 1255 17405 FUNCTION public prohibit_updates_of_metadata_blob() postgres
+339; 1255 19376 FUNCTION public reject_schema_write() postgres
+340; 1255 16441 FUNCTION public set_updated_at() postgres
+331; 1255 18915 FUNCTION public set_updated_at_and_increment_version() postgres
+517; 1255 19690 FUNCTION public task_schedule_id(text, uuid, text, text) postgres
+371; 1255 16442 FUNCTION public trigger_updated_at(regclass) postgres
+659; 1255 18916 FUNCTION public trigger_updated_at_and_version_if_distinct(regclass) postgres
+364; 1255 17636 FUNCTION public update_counts() postgres
+224; 1259 16385 TABLE public _sqlx_migrations postgres
+229; 1259 16517 TABLE public tabular postgres
+225; 1259 16449 TABLE public warehouse postgres
+268; 1259 19233 VIEW public active_tabulars postgres
+269; 1259 19238 VIEW public active_tables postgres
+270; 1259 19242 VIEW public active_views postgres
+281; 1259 19739 TABLE public cache_change_log postgres
+280; 1259 19738 SEQUENCE public cache_change_log_id_seq postgres
+234; 1259 16626 TABLE public current_view_metadata_version postgres
+278; 1259 19669 TABLE public endpoint_statistics postgres
+266; 1259 19201 TABLE public generic_table postgres
+267; 1259 19219 TABLE public generic_table_properties postgres
+277; 1259 19541 TABLE public grant_assignment postgres
+265; 1259 19099 TABLE public idempotency_record postgres
+227; 1259 16474 TABLE public namespace postgres
+255; 1259 17588 TABLE public partition_statistics postgres
+238; 1259 16812 TABLE public project postgres
+240; 1259 17367 TABLE public role postgres
+262; 1259 19051 TABLE public role_assignment postgres
+263; 1259 19070 TABLE public role_assignment_sync postgres
+264; 1259 19088 TABLE public role_members_sync postgres
+271; 1259 19253 TABLE public role_membership postgres
+273; 1259 19355 TABLE public schema_field postgres
+226; 1259 16464 TABLE public secret postgres
+241; 1259 17384 TABLE public server postgres
+228; 1259 16492 TABLE public table postgres
+243; 1259 17426 TABLE public table_current_schema postgres
+245; 1259 17457 TABLE public table_default_partition_spec postgres
+253; 1259 17551 TABLE public table_default_sort_order postgres
+261; 1259 18235 TABLE public table_encryption_keys postgres
+251; 1259 17522 TABLE public table_metadata_log postgres
+250; 1259 17521 SEQUENCE public table_metadata_log_sequence_number_seq postgres
+4637; 0 0 SEQUENCE OWNED BY public table_metadata_log_sequence_number_seq postgres
+244; 1259 17443 TABLE public table_partition_spec postgres
+246; 1259 17474 TABLE public table_properties postgres
+254; 1259 17568 TABLE public table_refs postgres
+242; 1259 17412 TABLE public table_schema postgres
+247; 1259 17488 TABLE public table_snapshot postgres
+249; 1259 17508 TABLE public table_snapshot_log postgres
+248; 1259 17507 SEQUENCE public table_snapshot_log_sequence_number_seq postgres
+4638; 0 0 SEQUENCE OWNED BY public table_snapshot_log_sequence_number_seq postgres
+252; 1259 17537 TABLE public table_sort_order postgres
+256; 1259 17602 TABLE public table_statistics postgres
+272; 1259 19345 TABLE public tabular_field postgres
+276; 1259 19421 TABLE public tag postgres
+275; 1259 19408 TABLE public tag_allowed_value postgres
+274; 1259 19391 TABLE public tag_definition postgres
+237; 1259 16757 TABLE public task postgres
+259; 1259 17950 TABLE public task_config postgres
+260; 1259 17964 TABLE public task_log postgres
+279; 1259 19692 TABLE public task_schedule postgres
+239; 1259 17357 TABLE public users postgres
+230; 1259 16561 TABLE public view postgres
+231; 1259 16574 TABLE public view_properties postgres
+236; 1259 16659 TABLE public view_representation postgres
+232; 1259 16588 TABLE public view_schema postgres
+233; 1259 16602 TABLE public view_version postgres
+235; 1259 16643 TABLE public view_version_log postgres
+258; 1259 17881 TABLE public warehouse_statistics postgres
+257; 1259 17867 TABLE public warehouse_statistics_history postgres
+4059; 2604 17525 DEFAULT public table_metadata_log sequence_number postgres
+4057; 2604 17511 DEFAULT public table_snapshot_log sequence_number postgres
+4571; 0 16385 TABLE DATA public _sqlx_migrations postgres
+4625; 0 19739 TABLE DATA public cache_change_log postgres
+4581; 0 16626 TABLE DATA public current_view_metadata_version postgres
+4622; 0 19669 TABLE DATA public endpoint_statistics postgres
+4613; 0 19201 TABLE DATA public generic_table postgres
+4614; 0 19219 TABLE DATA public generic_table_properties postgres
+4621; 0 19541 TABLE DATA public grant_assignment postgres
+4612; 0 19099 TABLE DATA public idempotency_record postgres
+4574; 0 16474 TABLE DATA public namespace postgres
+4602; 0 17588 TABLE DATA public partition_statistics postgres
+4585; 0 16812 TABLE DATA public project postgres
+4587; 0 17367 TABLE DATA public role postgres
+4609; 0 19051 TABLE DATA public role_assignment postgres
+4610; 0 19070 TABLE DATA public role_assignment_sync postgres
+4611; 0 19088 TABLE DATA public role_members_sync postgres
+4615; 0 19253 TABLE DATA public role_membership postgres
+4617; 0 19355 TABLE DATA public schema_field postgres
+4573; 0 16464 TABLE DATA public secret postgres
+4588; 0 17384 TABLE DATA public server postgres
+4575; 0 16492 TABLE DATA public table postgres
+4590; 0 17426 TABLE DATA public table_current_schema postgres
+4592; 0 17457 TABLE DATA public table_default_partition_spec postgres
+4600; 0 17551 TABLE DATA public table_default_sort_order postgres
+4608; 0 18235 TABLE DATA public table_encryption_keys postgres
+4598; 0 17522 TABLE DATA public table_metadata_log postgres
+4591; 0 17443 TABLE DATA public table_partition_spec postgres
+4593; 0 17474 TABLE DATA public table_properties postgres
+4601; 0 17568 TABLE DATA public table_refs postgres
+4589; 0 17412 TABLE DATA public table_schema postgres
+4594; 0 17488 TABLE DATA public table_snapshot postgres
+4596; 0 17508 TABLE DATA public table_snapshot_log postgres
+4599; 0 17537 TABLE DATA public table_sort_order postgres
+4603; 0 17602 TABLE DATA public table_statistics postgres
+4576; 0 16517 TABLE DATA public tabular postgres
+4616; 0 19345 TABLE DATA public tabular_field postgres
+4620; 0 19421 TABLE DATA public tag postgres
+4619; 0 19408 TABLE DATA public tag_allowed_value postgres
+4618; 0 19391 TABLE DATA public tag_definition postgres
+4584; 0 16757 TABLE DATA public task postgres
+4606; 0 17950 TABLE DATA public task_config postgres
+4607; 0 17964 TABLE DATA public task_log postgres
+4623; 0 19692 TABLE DATA public task_schedule postgres
+4586; 0 17357 TABLE DATA public users postgres
+4577; 0 16561 TABLE DATA public view postgres
+4578; 0 16574 TABLE DATA public view_properties postgres
+4583; 0 16659 TABLE DATA public view_representation postgres
+4579; 0 16588 TABLE DATA public view_schema postgres
+4580; 0 16602 TABLE DATA public view_version postgres
+4582; 0 16643 TABLE DATA public view_version_log postgres
+4572; 0 16449 TABLE DATA public warehouse postgres
+4605; 0 17881 TABLE DATA public warehouse_statistics postgres
+4604; 0 17867 TABLE DATA public warehouse_statistics_history postgres
+4639; 0 0 SEQUENCE SET public cache_change_log_id_seq postgres
+4640; 0 0 SEQUENCE SET public table_metadata_log_sequence_number_seq postgres
+4641; 0 0 SEQUENCE SET public table_snapshot_log_sequence_number_seq postgres
+4128; 2606 16392 CONSTRAINT public _sqlx_migrations _sqlx_migrations_pkey postgres
+4307; 2606 19747 CONSTRAINT public cache_change_log cache_change_log_pkey postgres
+4168; 2606 18040 CONSTRAINT public current_view_metadata_version current_view_metadata_version_pkey postgres
+4294; 2606 19679 CONSTRAINT public endpoint_statistics endpoint_statistics_pkey postgres
+4296; 2606 19681 CONSTRAINT public endpoint_statistics endpoint_statistics_project_id_warehouse_id_matched_path_st_key postgres
+4256; 2606 19212 CONSTRAINT public generic_table generic_table_pkey postgres
+4258; 2606 19226 CONSTRAINT public generic_table_properties generic_table_properties_pkey postgres
+4281; 2606 19552 CONSTRAINT public grant_assignment grant_assignment_pkey postgres
+4289; 2606 19554 CONSTRAINT public grant_assignment grant_unique postgres
+4253; 2606 19105 CONSTRAINT public idempotency_record idempotency_record_pkey postgres
+4140; 2606 16482 CONSTRAINT public namespace namespace_pkey postgres
+4225; 2606 18060 CONSTRAINT public partition_statistics partition_statistics_pkey postgres
+4187; 2606 17655 CONSTRAINT public project project_pkey postgres
+4246; 2606 19058 CONSTRAINT public role_assignment role_assignment_pkey postgres
+4249; 2606 19077 CONSTRAINT public role_assignment_sync role_assignment_sync_pkey postgres
+4251; 2606 19093 CONSTRAINT public role_members_sync role_members_sync_pkey postgres
+4261; 2606 19259 CONSTRAINT public role_membership role_membership_pkey postgres
+4194; 2606 17373 CONSTRAINT public role role_pkey postgres
+4267; 2606 19361 CONSTRAINT public schema_field schema_field_pkey postgres
+4137; 2606 16472 CONSTRAINT public secret secret_pkey postgres
+4201; 2606 17390 CONSTRAINT public server server_pkey postgres
+4205; 2606 18054 CONSTRAINT public table_current_schema table_current_schema_pkey postgres
+4209; 2606 18056 CONSTRAINT public table_default_partition_spec table_default_partition_spec_pkey postgres
+4221; 2606 18058 CONSTRAINT public table_default_sort_order table_default_sort_order_pkey postgres
+4244; 2606 18241 CONSTRAINT public table_encryption_keys table_encryption_keys_pkey postgres
+4217; 2606 18062 CONSTRAINT public table_metadata_log table_metadata_log_pkey postgres
+4207; 2606 18064 CONSTRAINT public table_partition_spec table_partition_spec_pkey postgres
+4150; 2606 18052 CONSTRAINT public table table_pkey postgres
+4211; 2606 18066 CONSTRAINT public table_properties table_properties_pkey postgres
+4223; 2606 18068 CONSTRAINT public table_refs table_refs_pkey postgres
+4203; 2606 18070 CONSTRAINT public table_schema table_schema_pkey postgres
+4215; 2606 18074 CONSTRAINT public table_snapshot_log table_snapshot_log_pkey postgres
+4213; 2606 18072 CONSTRAINT public table_snapshot table_snapshot_pkey postgres
+4219; 2606 18076 CONSTRAINT public table_sort_order table_sort_order_pkey postgres
+4227; 2606 18078 CONSTRAINT public table_statistics table_statistics_pkey postgres
+4263; 2606 19349 CONSTRAINT public tabular_field tabular_field_pkey postgres
+4153; 2606 18036 CONSTRAINT public tabular tabular_pkey postgres
+4272; 2606 19415 CONSTRAINT public tag_allowed_value tag_allowed_value_pkey postgres
+4270; 2606 19400 CONSTRAINT public tag_definition tag_definition_pkey postgres
+4275; 2606 19431 CONSTRAINT public tag tag_pkey postgres
+4279; 2606 19433 CONSTRAINT public tag tag_unique_target_definition_source postgres
+4234; 2606 18999 CONSTRAINT public task_config task_config_pkey postgres
+4236; 2606 19001 CONSTRAINT public task_config task_config_project_id_warehouse_id_queue_name_key postgres
+4106; 2606 19723 CHECK CONSTRAINT public task task_entity_check postgres
+4110; 2606 19724 CHECK CONSTRAINT public task_log task_log_entity_check postgres
+4239; 2606 17970 CONSTRAINT public task_log task_log_pkey postgres
+4111; 2606 19726 CHECK CONSTRAINT public task_log task_log_resource_demand_check postgres
+4177; 2606 16764 CONSTRAINT public task task_pkey postgres
+4181; 2606 19155 CONSTRAINT public task task_project_warehouse_id_entity_type_entity_id_queue_name_key postgres
+4107; 2606 19725 CHECK CONSTRAINT public task task_resource_demand_check postgres
+4302; 2606 19705 CONSTRAINT public task_schedule task_schedule_pkey postgres
+4158; 2606 18082 CONSTRAINT public tabular unique_name_per_namespace_id postgres
+4144; 2606 18084 CONSTRAINT public namespace unique_namespace_id_per_warehouse postgres
+4146; 2606 16484 CONSTRAINT public namespace unique_namespace_per_warehouse postgres
+4199; 2606 19046 CONSTRAINT public role unique_role_provider_source_in_project postgres
+4164; 2606 18046 CONSTRAINT public view_schema unique_schema_per_view postgres
+4166; 2606 18048 CONSTRAINT public view_version unique_version_per_metadata postgres
+4148; 2606 18901 CONSTRAINT public namespace unique_warehouse_id_namespace_id_namespace_name postgres
+4130; 2606 17845 CONSTRAINT public warehouse unique_warehouse_name_in_project postgres
+4192; 2606 17363 CONSTRAINT public users users_pkey postgres
+4160; 2606 18038 CONSTRAINT public view view_pkey postgres
+4162; 2606 18042 CONSTRAINT public view_properties view_properties_pkey postgres
+4172; 2606 18044 CONSTRAINT public view_representation view_representation_pkey postgres
+4170; 2606 18050 CONSTRAINT public view_version_log view_version_log_pkey postgres
+4132; 2606 16458 CONSTRAINT public warehouse warehouse_pkey postgres
+4230; 2606 17872 CONSTRAINT public warehouse_statistics_history warehouse_statistics_history_pkey postgres
+4232; 2606 17886 CONSTRAINT public warehouse_statistics warehouse_statistics_pkey postgres
+4305; 1259 19748 INDEX public cache_change_log_changed_at postgres
+4282; 1259 19592 INDEX public grant_namespace_idx postgres
+4283; 1259 19596 INDEX public grant_project_idx postgres
+4284; 1259 19595 INDEX public grant_role_idx postgres
+4285; 1259 19598 INDEX public grant_server_idx postgres
+4286; 1259 19593 INDEX public grant_tabular_idx postgres
+4287; 1259 19597 INDEX public grant_tag_idx postgres
+4290; 1259 19594 INDEX public grant_user_idx postgres
+4291; 1259 19591 INDEX public grant_warehouse_idx postgres
+4292; 1259 19665 INDEX public grant_warehouse_level_idx postgres
+4297; 1259 19689 INDEX public idx_endpoint_stats_project_status_time postgres
+4298; 1259 19687 INDEX public idx_endpoint_stats_project_timestamp postgres
+4299; 1259 19688 INDEX public idx_endpoint_stats_project_warehouse_time postgres
+4254; 1259 19111 INDEX public idx_idempotency_created_at postgres
+4228; 1259 17878 INDEX public idx_warehouse_stats_history_time postgres
+4138; 1259 16536 INDEX public namespace_namespace_name_idx postgres
+4141; 1259 19042 INDEX public namespace_warehouse_depth_created_at_idx postgres
+4142; 1259 16491 INDEX public namespace_warehouse_id_idx postgres
+4247; 1259 19069 INDEX public role_assignment_role_id_idx postgres
+4259; 1259 19270 INDEX public role_membership_member_idx postgres
+4195; 1259 19047 INDEX public role_project_created_id_idx postgres
+4196; 1259 18920 INDEX public role_project_name_gist_idx postgres
+4264; 1259 19372 INDEX public schema_field_assembly postgres
+4265; 1259 19373 INDEX public schema_field_by_field postgres
+4151; 1259 18908 INDEX public tabular_name_namespace_name_gist_index postgres
+4154; 1259 19666 INDEX public tabular_warehouse_fs_location_pattern_idx postgres
+4155; 1259 18080 INDEX public tabular_warehouse_id_location_idx postgres
+4156; 1259 19655 INDEX public tabular_warehouse_namespace_created_at_idx postgres
+4273; 1259 19461 INDEX public tag_definition_idx postgres
+4268; 1259 19406 INDEX public tag_definition_name_idx postgres
+4276; 1259 19462 INDEX public tag_reverse_lookup_idx postgres
+4277; 1259 19460 INDEX public tag_tabular_idx postgres
+4174; 1259 19722 INDEX public task_entity_id_idx postgres
+4237; 1259 19721 INDEX public task_log_parent_task_id_idx postgres
+4240; 1259 18028 INDEX public task_log_warehouse_created_at_id_attempt_idx postgres
+4241; 1259 19171 INDEX public task_log_warehouse_id_entity_type_entity_id_idx postgres
+4242; 1259 18029 INDEX public task_log_warehouse_queue_created_at_idx postgres
+4175; 1259 19720 INDEX public task_parent_task_id_idx postgres
+4178; 1259 19025 INDEX public task_project_warehouse_created_at_id_idx postgres
+4179; 1259 19156 INDEX public task_project_warehouse_id_entity_type_entity_id_idx postgres
+4182; 1259 19027 INDEX public task_project_warehouse_queue_created_at_idx postgres
+4183; 1259 19727 INDEX public task_queue_name_status_idx postgres
+4300; 1259 19717 INDEX public task_schedule_due_idx postgres
+4303; 1259 19718 INDEX public task_schedule_scope_idx postgres
+4304; 1259 19719 INDEX public task_schedule_warehouse_idx postgres
+4184; 1259 19246 INDEX public task_warehouse_entity_id_queue_idx postgres
+4185; 1259 18025 INDEX public task_warehouse_queue_created_at_idx postgres
+4197; 1259 17666 INDEX public unique_role_name_in_project postgres
+4188; 1259 19296 INDEX public users_created_at_id_idx postgres
+4189; 1259 19295 INDEX public users_name_email_coalesce_gist_idx postgres
+4190; 1259 19297 INDEX public users_name_gist_idx postgres
+4173; 1259 18079 INDEX public view_representation_view_id_version_id_idx postgres
+4133; 1259 17846 INDEX public warehouse_project_id_name postgres
+4134; 1259 16463 INDEX public warehouse_status_idx postgres
+4135; 1259 19691 INDEX public warehouse_warehouse_id_project_id_idx postgres
+4381; 2620 17406 TRIGGER public table before_insert_check_metadata postgres
+4418; 2620 19375 TRIGGER public schema_field schema_field_gc postgres
+4391; 2620 16642 TRIGGER public current_view_metadata_version set_updated_at postgres
+4421; 2620 19728 TRIGGER public endpoint_statistics set_updated_at postgres
+4417; 2620 19232 TRIGGER public generic_table_properties set_updated_at postgres
+4410; 2620 17601 TRIGGER public partition_statistics set_updated_at postgres
+4379; 2620 16473 TRIGGER public secret set_updated_at postgres
+4397; 2620 17392 TRIGGER public server set_updated_at postgres
+4382; 2620 16508 TRIGGER public table set_updated_at postgres
+4400; 2620 17442 TRIGGER public table_current_schema set_updated_at postgres
+4402; 2620 17473 TRIGGER public table_default_partition_spec set_updated_at postgres
+4408; 2620 17567 TRIGGER public table_default_sort_order set_updated_at postgres
+4415; 2620 18243 TRIGGER public table_encryption_keys set_updated_at postgres
+4406; 2620 17536 TRIGGER public table_metadata_log set_updated_at postgres
+4401; 2620 17456 TRIGGER public table_partition_spec set_updated_at postgres
+4403; 2620 17487 TRIGGER public table_properties set_updated_at postgres
+4409; 2620 17586 TRIGGER public table_refs set_updated_at postgres
+4398; 2620 17425 TRIGGER public table_schema set_updated_at postgres
+4404; 2620 17506 TRIGGER public table_snapshot set_updated_at postgres
+4405; 2620 17520 TRIGGER public table_snapshot_log set_updated_at postgres
+4407; 2620 17550 TRIGGER public table_sort_order set_updated_at postgres
+4411; 2620 17615 TRIGGER public table_statistics set_updated_at postgres
+4383; 2620 16538 TRIGGER public tabular set_updated_at postgres
+4420; 2620 19459 TRIGGER public tag set_updated_at postgres
+4419; 2620 19407 TRIGGER public tag_definition set_updated_at postgres
+4393; 2620 16773 TRIGGER public task set_updated_at postgres
+4414; 2620 17963 TRIGGER public task_config set_updated_at postgres
+4422; 2620 19716 TRIGGER public task_schedule set_updated_at postgres
+4395; 2620 17365 TRIGGER public users set_updated_at postgres
+4386; 2620 16573 TRIGGER public view set_updated_at postgres
+4387; 2620 16587 TRIGGER public view_properties set_updated_at postgres
+4392; 2620 16679 TRIGGER public view_representation set_updated_at postgres
+4388; 2620 16601 TRIGGER public view_schema set_updated_at postgres
+4390; 2620 16625 TRIGGER public view_version set_updated_at postgres
+4413; 2620 17893 TRIGGER public warehouse_statistics set_updated_at postgres
+4412; 2620 17880 TRIGGER public warehouse_statistics_history set_updated_at postgres
+4416; 2620 19218 TRIGGER public generic_table set_updated_at_and_increment_version postgres
+4380; 2620 19112 TRIGGER public namespace set_updated_at_and_increment_version postgres
+4394; 2620 18917 TRIGGER public project set_updated_at_and_increment_version postgres
+4396; 2620 19048 TRIGGER public role set_updated_at_and_increment_version postgres
+4378; 2620 18918 TRIGGER public warehouse set_updated_at_and_increment_version postgres
+4399; 2620 19378 TRIGGER public table_schema table_schema_freeze_jsonb postgres
+4384; 2620 17894 TRIGGER public tabular update_counts postgres
+4385; 2620 17896 TRIGGER public tabular update_counts_trunc postgres
+4389; 2620 19377 TRIGGER public view_schema view_schema_freeze_jsonb postgres
+4318; 2606 18125 FK CONSTRAINT public current_view_metadata_version current_view_metadata_version_view_id_fkey postgres
+4319; 2606 18130 FK CONSTRAINT public current_view_metadata_version current_view_metadata_version_view_id_version_id_fkey postgres
+4375; 2606 19682 FK CONSTRAINT public endpoint_statistics endpoint_statistics_project_id_fkey postgres
+4355; 2606 19227 FK CONSTRAINT public generic_table_properties generic_table_properties_warehouse_id_generic_table_id_fkey postgres
+4354; 2606 19213 FK CONSTRAINT public generic_table generic_table_warehouse_id_generic_table_id_fkey postgres
+4368; 2606 19575 FK CONSTRAINT public grant_assignment grant_namespace_fkey postgres
+4369; 2606 19565 FK CONSTRAINT public grant_assignment grant_project_fkey postgres
+4370; 2606 19560 FK CONSTRAINT public grant_assignment grant_role_fkey postgres
+4371; 2606 19580 FK CONSTRAINT public grant_assignment grant_tabular_fkey postgres
+4372; 2606 19585 FK CONSTRAINT public grant_assignment grant_tag_fkey postgres
+4373; 2606 19555 FK CONSTRAINT public grant_assignment grant_user_fkey postgres
+4374; 2606 19570 FK CONSTRAINT public grant_assignment grant_warehouse_fkey postgres
+4353; 2606 19106 FK CONSTRAINT public idempotency_record idempotency_record_warehouse_id_fkey postgres
+4309; 2606 16485 FK CONSTRAINT public namespace namespace_warehouse_id_fkey postgres
+4338; 2606 18170 FK CONSTRAINT public partition_statistics partition_statistics_table_id_fkey postgres
+4339; 2606 18200 FK CONSTRAINT public partition_statistics partition_statistics_table_id_snapshot_id_fkey postgres
+4348; 2606 19064 FK CONSTRAINT public role_assignment role_assignment_role_id_fkey postgres
+4350; 2606 19083 FK CONSTRAINT public role_assignment_sync role_assignment_sync_project_fkey postgres
+4351; 2606 19078 FK CONSTRAINT public role_assignment_sync role_assignment_sync_user_fkey postgres
+4349; 2606 19059 FK CONSTRAINT public role_assignment role_assignment_user_id_fkey postgres
+4352; 2606 19094 FK CONSTRAINT public role_members_sync role_members_sync_role_fkey postgres
+4356; 2606 19265 FK CONSTRAINT public role_membership role_membership_member_fkey postgres
+4357; 2606 19260 FK CONSTRAINT public role_membership role_membership_parent_fkey postgres
+4324; 2606 17661 FK CONSTRAINT public role role_project_id_fkey postgres
+4359; 2606 19367 FK CONSTRAINT public schema_field schema_field_warehouse_id_tabular_id_field_id_fkey postgres
+4360; 2606 19362 FK CONSTRAINT public schema_field schema_field_warehouse_id_tabular_id_fkey postgres
+4326; 2606 18175 FK CONSTRAINT public table_current_schema table_current_schema_table_id_schema_id_fkey postgres
+4328; 2606 18180 FK CONSTRAINT public table_default_partition_spec table_default_partition_spec_table_id_partition_spec_id_fkey postgres
+4335; 2606 18185 FK CONSTRAINT public table_default_sort_order table_default_sort_order_table_id_sort_order_id_fkey postgres
+4347; 2606 18244 FK CONSTRAINT public table_encryption_keys table_encryption_keys_table_id_fkey postgres
+4333; 2606 18135 FK CONSTRAINT public table_metadata_log table_metadata_log_table_id_fkey postgres
+4327; 2606 18140 FK CONSTRAINT public table_partition_spec table_partition_spec_table_id_fkey postgres
+4329; 2606 18145 FK CONSTRAINT public table_properties table_properties_table_id_fkey postgres
+4336; 2606 18150 FK CONSTRAINT public table_refs table_refs_table_id_fkey postgres
+4337; 2606 18190 FK CONSTRAINT public table_refs table_refs_table_id_snapshot_id_fkey postgres
+4325; 2606 18155 FK CONSTRAINT public table_schema table_schema_table_id_fkey postgres
+4332; 2606 18160 FK CONSTRAINT public table_snapshot_log table_snapshot_log_table_id_fkey postgres
+4330; 2606 19750 FK CONSTRAINT public table_snapshot table_snapshot_table_id_fkey postgres
+4331; 2606 18195 FK CONSTRAINT public table_snapshot table_snapshot_table_id_schema_id_fkey postgres
+4334; 2606 18165 FK CONSTRAINT public table_sort_order table_sort_order_table_id_fkey postgres
+4340; 2606 18205 FK CONSTRAINT public table_statistics table_statistics_table_id_snapshot_id_fkey postgres
+4358; 2606 19350 FK CONSTRAINT public tabular_field tabular_field_warehouse_id_tabular_id_fkey postgres
+4310; 2606 18095 FK CONSTRAINT public table tabular_ident_fk postgres
+4313; 2606 18090 FK CONSTRAINT public view tabular_ident_fk postgres
+4311; 2606 18085 FK CONSTRAINT public tabular tabular_warehouse_id_namespace_id_fkey postgres
+4312; 2606 18902 FK CONSTRAINT public tabular tabular_warehouse_id_namespace_id_namespace_name_fkey postgres
+4362; 2606 19416 FK CONSTRAINT public tag_allowed_value tag_allowed_value_definition_fkey postgres
+4363; 2606 19434 FK CONSTRAINT public tag tag_definition_id_fkey postgres
+4361; 2606 19401 FK CONSTRAINT public tag_definition tag_definition_project_id_fkey postgres
+4364; 2606 19454 FK CONSTRAINT public tag tag_field_fkey postgres
+4365; 2606 19444 FK CONSTRAINT public tag tag_namespace_fkey postgres
+4366; 2606 19449 FK CONSTRAINT public tag tag_tabular_fkey postgres
+4367; 2606 19439 FK CONSTRAINT public tag tag_warehouse_id_fkey postgres
+4343; 2606 18992 FK CONSTRAINT public task_config task_config_project_id_fkey postgres
+4344; 2606 17957 FK CONSTRAINT public task_config task_config_warehouse_id_fkey postgres
+4345; 2606 18978 FK CONSTRAINT public task_log task_log_project_id_fkey postgres
+4346; 2606 17971 FK CONSTRAINT public task_log task_log_warehouse_id_fkey postgres
+4322; 2606 18963 FK CONSTRAINT public task task_project_id_fkey postgres
+4376; 2606 19706 FK CONSTRAINT public task_schedule task_schedule_project_id_fkey postgres
+4377; 2606 19711 FK CONSTRAINT public task_schedule task_schedule_warehouse_fk postgres
+4323; 2606 17919 FK CONSTRAINT public task task_warehouse_id_fk postgres
+4314; 2606 18110 FK CONSTRAINT public view_properties view_properties_view_id_fkey postgres
+4321; 2606 18115 FK CONSTRAINT public view_representation view_representation_view_id_view_version_id_fkey postgres
+4315; 2606 18100 FK CONSTRAINT public view_schema view_schema_view_id_fkey postgres
+4316; 2606 16614 FK CONSTRAINT public view_version view_version_default_namespace_id_fkey postgres
+4320; 2606 18120 FK CONSTRAINT public view_version_log view_version_log_view_id_version_id_fkey postgres
+4317; 2606 18105 FK CONSTRAINT public view_version view_version_view_id_schema_id_fkey postgres
+4308; 2606 17656 FK CONSTRAINT public warehouse warehouse_project_id_fk postgres
+4341; 2606 17873 FK CONSTRAINT public warehouse_statistics_history warehouse_statistics_history_warehouse_id_fkey postgres
+4342; 2606 17887 FK CONSTRAINT public warehouse_statistics warehouse_statistics_warehouse_id_fkey postgres

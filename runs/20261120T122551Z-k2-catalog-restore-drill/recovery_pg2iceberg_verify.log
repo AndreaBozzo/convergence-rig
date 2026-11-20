@@ -1,0 +1,9 @@
+{"timestamp":"2026-11-20T12:31:20.080855Z","level":"INFO","message":"reading config","path":"/etc/pg2iceberg/config.yaml","target":"pg2iceberg::config"}
+{"timestamp":"2026-11-20T12:31:20.110901Z","level":"INFO","message":"Using Static credential provider","target":"object_store::aws::builder"}
+{"timestamp":"2026-11-20T12:31:20.115410Z","level":"INFO","message":"vended-credentials S3 router built (per-table object stores)","tables":1,"target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T12:31:20.537591Z","level":"INFO","message":"verify: ok (no diffs)","table":"public.orders","target":"pg2iceberg::run"}
+OK: 1 table(s) match PG ground truth
+
+--- STDERR ---
+ Container cdclab-pg2iceberg-run-b2dd8fb1bb1e Creating 
+ Container cdclab-pg2iceberg-run-b2dd8fb1bb1e Created 

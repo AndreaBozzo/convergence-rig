@@ -1,0 +1,503 @@
+{
+  "procedure": "pg2iceberg cleanup -> Lakekeeper DELETE table (purgeRequested=false) -> pg2iceberg snapshot -> pg2iceberg run",
+  "started_utc": "2026-11-20T12:30:59.621145Z",
+  "total_recovery_to_verified_ms": 21184.46,
+  "stop_connector_ms": 741.74,
+  "cleanup": {
+    "returncode": 0,
+    "duration_ms": 1023.72,
+    "stdout_tail": "tion\",\"log.module_path\":\"tokio_postgres::connection\",\"log.file\":\"/usr/local/cargo/git/checkouts/rust-postgres-c2560d49ee2b8b43/31acf55/tokio-postgres/src/connection.rs\",\"log.line\":358,\"target\":\"tokio_postgres::connection\"}\n{\"timestamp\":\"2026-11-20T12:31:01.156589Z\",\"level\":\"INFO\",\"message\":\"coordinator schema dropped (CASCADE)\",\"schema\":\"_pg2iceberg\",\"target\":\"pg2iceberg::run\"}\nOK: cleanup complete. Materialized Iceberg tables remain \u2014 drop them via the catalog if you intend a full re-bootstrap.",
+    "pg_slots_after_cleanup": [],
+    "coordinator_tables_after_cleanup": []
+  },
+  "drop_table": {
+    "method": "DELETE",
+    "url": "http://127.0.0.1:18181/catalog/v1/01a1f8eb-c6ff-70a2-bcd4-079d45fbe6d1/namespaces/public/tables/orders?purgeRequested=false",
+    "purge_requested": false,
+    "status": 204,
+    "body": null,
+    "ok": true,
+    "duration_ms": 24.73
+  },
+  "snapshot": {
+    "returncode": 0,
+    "duration_ms": 1515.04,
+    "stdout_tail": "mestamp\":\"2026-11-20T12:31:02.415934Z\",\"level\":\"INFO\",\"message\":\"vended-router: table registered\",\"ident\":\"public.orders\",\"target\":\"pg2iceberg_iceberg::prod::vended\",\"span\":{\"op\":\"register_table\",\"otel.kind\":\"client\",\"otel.name\":\"object_store.register_table\",\"store\":\"object_store\",\"name\":\"request\"},\"spans\":[{\"name\":\"snapshot\"},{\"op\":\"register_table\",\"otel.kind\":\"client\",\"otel.name\":\"object_store.register_table\",\"store\":\"object_store\",\"name\":\"request\"}]}\nOK: snapshot complete at LSN Lsn(43531008)",
+    "new_table_uuid": "01a1f8f0-54dd-77b3-9f44-90f50f699524",
+    "new_table_location": "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524",
+    "initial_snapshot_id": 2923404143815222700,
+    "pg_offsets_after_snapshot": {
+      "current_wal_lsn": "0/02983F58",
+      "slot_active": false,
+      "slot_restart_lsn": "0/029837C8",
+      "slot_confirmed_flush_lsn": "0/02983800",
+      "wal_gap_bytes_confirmed_flush": 1880,
+      "wal_gap_bytes_restart": 1936,
+      "replicated_lsn": null,
+      "flushed_lsn": null,
+      "staged_log_seq": null,
+      "applied_mat_cursor": -1,
+      "pending_unapplied_offsets": null,
+      "log_index_row_count": 0
+    }
+  },
+  "post_recovery_mutations": {
+    "updated_toast_id": 13,
+    "inserted_id": 3000000001,
+    "marker_id": 901000000,
+    "marker_commit_utc": "2026-11-20T12:31:05.804423Z"
+  },
+  "post_recovery_convergence": {
+    "outcome": "converged",
+    "passed": true,
+    "final_marker_id": 901000000,
+    "first_marker_snapshot_id": 8140882095694743008,
+    "first_marker_observed_utc": "2026-11-20T12:31:16.508678Z",
+    "final_marker_visibility_ms": 10704.25,
+    "verified_snapshot_id": 8140882095694743008,
+    "verified_at_utc": "2026-11-20T12:31:19.218938Z",
+    "final_marker_to_verified_match_ms": 13414.51,
+    "diff_duration_ms": 2201.15,
+    "batch_size": 2000,
+    "poll_interval_s": 1.0,
+    "polls": 9,
+    "reader_errors": [],
+    "snapshot_attempts": [
+      {
+        "snapshot_id": 8140882095694743008,
+        "source_read_opened_utc": "2026-11-20T12:31:17.006057Z",
+        "checked_at_utc": "2026-11-20T12:31:19.218828Z",
+        "passed": true,
+        "schema_check": {
+          "passed": true,
+          "schema_id": 0,
+          "format_version": 2,
+          "identifier_field_ids": [
+            1
+          ],
+          "mismatches": [],
+          "actual_fields": [
+            {
+              "id": 1,
+              "name": "id",
+              "required": true,
+              "type": "long"
+            },
+            {
+              "id": 2,
+              "name": "status",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "id": 3,
+              "name": "amount",
+              "required": true,
+              "type": "decimal(38, 9)"
+            },
+            {
+              "id": 4,
+              "name": "updated_at",
+              "required": true,
+              "type": "timestamptz"
+            },
+            {
+              "id": 5,
+              "name": "note",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "id": 6,
+              "name": "payload",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "id": 7,
+              "name": "discount",
+              "required": false,
+              "type": "decimal(38, 9)"
+            }
+          ],
+          "expected_fields": [
+            {
+              "name": "id",
+              "type": "long",
+              "required": true
+            },
+            {
+              "name": "status",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "amount",
+              "type": "decimal(38, 9)",
+              "required": true
+            },
+            {
+              "name": "updated_at",
+              "type": "timestamptz",
+              "required": true
+            },
+            {
+              "name": "note",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "payload",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "discount",
+              "type": "decimal(38, 9)",
+              "required": false
+            }
+          ]
+        },
+        "row_comparison": {
+          "passed": true,
+          "source_row_count": 25041,
+          "lake_row_count": 25041,
+          "matched_id_count": 25041,
+          "exact_match_row_count": 25041,
+          "source_only_count": 0,
+          "source_only_examples": [],
+          "lake_only_count": 0,
+          "lake_only_examples": [],
+          "duplicate_lake_id_count": 0,
+          "duplicate_lake_extra_row_count": 0,
+          "duplicate_lake_examples": [],
+          "duplicate_source_id_count": 0,
+          "duplicate_source_examples": [],
+          "value_mismatch_row_count": 0,
+          "value_mismatch_column_counts": {},
+          "value_mismatch_examples": [],
+          "batches_read_source": 13,
+          "batches_read_lake": 13,
+          "diff_duration_ms": 2201.15
+        },
+        "snapshot_info": {
+          "snapshot_id": 8140882095694743008,
+          "parent_snapshot_id": 2923404143815222700,
+          "sequence_number": 4,
+          "timestamp_ms": 1795177875361,
+          "schema_id": 0,
+          "pg2iceberg_log_start": "0",
+          "pg2iceberg_log_end": "4",
+          "pg2iceberg_log_ends": "{\"default\":4}",
+          "pg2iceberg_log_group": "default",
+          "summary": {
+            "operation": "append",
+            "added-data-files": "1",
+            "added-equality-delete-files": "1",
+            "total-files-size": "4756984",
+            "total-data-files": "4",
+            "total-equality-deletes": "1",
+            "total-records": "25042",
+            "added-delete-files": "1",
+            "pg2iceberg.log-end": "4",
+            "pg2iceberg.log-start": "0",
+            "total-position-deletes": "0",
+            "added-equality-deletes": "1",
+            "added-files-size": "41317",
+            "total-delete-files": "1",
+            "pg2iceberg.log-ends": "{\"default\":4}",
+            "pg2iceberg.log-group": "default",
+            "added-records": "3"
+          }
+        }
+      }
+    ]
+  },
+  "pg2iceberg_verify_after_recovery": {
+    "returncode": 0,
+    "duration_ms": 1583.32,
+    "stdout": "{\"timestamp\":\"2026-11-20T12:31:20.080855Z\",\"level\":\"INFO\",\"message\":\"reading config\",\"path\":\"/etc/pg2iceberg/config.yaml\",\"target\":\"pg2iceberg::config\"}\n{\"timestamp\":\"2026-11-20T12:31:20.110901Z\",\"level\":\"INFO\",\"message\":\"Using Static credential provider\",\"target\":\"object_store::aws::builder\"}\n{\"timestamp\":\"2026-11-20T12:31:20.115410Z\",\"level\":\"INFO\",\"message\":\"vended-credentials S3 router built (per-table object stores)\",\"tables\":1,\"target\":\"pg2iceberg::run\"}\n{\"timestamp\":\"2026-11-20T12:31:20.537591Z\",\"level\":\"INFO\",\"message\":\"verify: ok (no diffs)\",\"table\":\"public.orders\",\"target\":\"pg2iceberg::run\"}\nOK: 1 table(s) match PG ground truth",
+    "stderr": "Container cdclab-pg2iceberg-run-b2dd8fb1bb1e Creating \n Container cdclab-pg2iceberg-run-b2dd8fb1bb1e Created"
+  },
+  "lineage_post_recovery": {
+    "found": true,
+    "table_uuid": "01a1f8f0-54dd-77b3-9f44-90f50f699524",
+    "location": "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524",
+    "metadata_location": "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/00002-01a1f8f0-87b1-75a3-b849-f1fb96390f50.gz.metadata.json",
+    "current_snapshot_id": 8140882095694743008,
+    "current_snapshot": {
+      "snapshot_id": 8140882095694743008,
+      "parent_snapshot_id": 2923404143815222700,
+      "sequence_number": 4,
+      "timestamp_ms": 1795177875361,
+      "schema_id": 0,
+      "operation": "append",
+      "pg2iceberg_log_start": 0,
+      "pg2iceberg_log_end": 4,
+      "pg2iceberg_log_group": "default",
+      "added_records": 3,
+      "added_data_files": 1,
+      "added_equality_deletes": 1,
+      "added_delete_files": 1,
+      "total_records": 25042,
+      "total_data_files": 4,
+      "total_delete_files": 1,
+      "total_equality_deletes": 1,
+      "manifest_list": "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/snap-8140882095694743008-0-01a1f8f0-877e-7900-95c4-39107a18ec56.avro"
+    },
+    "last_sequence_number": 4,
+    "snapshot_count": 4,
+    "snapshot_ids": [
+      8197694267538342738,
+      1370018046851717664,
+      2923404143815222700,
+      8140882095694743008
+    ],
+    "snapshots": [
+      {
+        "snapshot_id": 8197694267538342738,
+        "parent_snapshot_id": null,
+        "sequence_number": 1,
+        "timestamp_ms": 1795177862644,
+        "schema_id": 0,
+        "operation": "append",
+        "pg2iceberg_log_start": null,
+        "pg2iceberg_log_end": null,
+        "pg2iceberg_log_group": null,
+        "added_records": 10000,
+        "added_data_files": 1,
+        "added_equality_deletes": null,
+        "added_delete_files": null,
+        "total_records": 10000,
+        "total_data_files": 1,
+        "total_delete_files": 0,
+        "total_equality_deletes": 0,
+        "manifest_list": "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/snap-8197694267538342738-0-01a1f8f0-55ef-7cb3-990f-cb2bf755e566.avro"
+      },
+      {
+        "snapshot_id": 1370018046851717664,
+        "parent_snapshot_id": 8197694267538342738,
+        "sequence_number": 2,
+        "timestamp_ms": 1795177862644,
+        "schema_id": 0,
+        "operation": "append",
+        "pg2iceberg_log_start": null,
+        "pg2iceberg_log_end": null,
+        "pg2iceberg_log_group": null,
+        "added_records": 10000,
+        "added_data_files": 1,
+        "added_equality_deletes": null,
+        "added_delete_files": null,
+        "total_records": 20000,
+        "total_data_files": 2,
+        "total_delete_files": 0,
+        "total_equality_deletes": 0,
+        "manifest_list": "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/snap-1370018046851717664-0-01a1f8f0-55f4-7e61-a0c7-18f4071bd032.avro"
+      },
+      {
+        "snapshot_id": 2923404143815222700,
+        "parent_snapshot_id": 1370018046851717664,
+        "sequence_number": 3,
+        "timestamp_ms": 1795177862644,
+        "schema_id": 0,
+        "operation": "append",
+        "pg2iceberg_log_start": null,
+        "pg2iceberg_log_end": null,
+        "pg2iceberg_log_group": null,
+        "added_records": 5039,
+        "added_data_files": 1,
+        "added_equality_deletes": null,
+        "added_delete_files": null,
+        "total_records": 25039,
+        "total_data_files": 3,
+        "total_delete_files": 0,
+        "total_equality_deletes": 0,
+        "manifest_list": "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/snap-2923404143815222700-0-01a1f8f0-55f4-7e61-a0c7-190c29f1cadb.avro"
+      },
+      {
+        "snapshot_id": 8140882095694743008,
+        "parent_snapshot_id": 2923404143815222700,
+        "sequence_number": 4,
+        "timestamp_ms": 1795177875361,
+        "schema_id": 0,
+        "operation": "append",
+        "pg2iceberg_log_start": 0,
+        "pg2iceberg_log_end": 4,
+        "pg2iceberg_log_group": "default",
+        "added_records": 3,
+        "added_data_files": 1,
+        "added_equality_deletes": 1,
+        "added_delete_files": 1,
+        "total_records": 25042,
+        "total_data_files": 4,
+        "total_delete_files": 1,
+        "total_equality_deletes": 1,
+        "manifest_list": "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/snap-8140882095694743008-0-01a1f8f0-877e-7900-95c4-39107a18ec56.avro"
+      }
+    ],
+    "metadata_log": [
+      {
+        "timestamp_ms": 1795177862366,
+        "metadata_file": "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/00000-01a1f8f0-54dd-77b3-9f44-90f665eeb744.gz.metadata.json"
+      },
+      {
+        "timestamp_ms": 1795177862676,
+        "metadata_file": "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/00001-01a1f8f0-5614-73e4-bd9d-d9b957647ac0.gz.metadata.json"
+      }
+    ]
+  },
+  "duckdb_post_recovery_metadata_summary": {
+    "total_live_entries": 5,
+    "live_data_files": 4,
+    "live_equality_delete_files": 1,
+    "live_position_delete_files": 0,
+    "live_data_records": 25042,
+    "live_equality_delete_records": 1,
+    "live_position_delete_records": 0
+  },
+  "pg_positions_post_recovery": {
+    "captured_at_utc": "2026-11-20T12:31:20.877303Z",
+    "current_wal_lsn": "0/02992B78",
+    "replication_slots": [
+      {
+        "slot_name": "pg2iceberg_slot",
+        "plugin": "pgoutput",
+        "slot_type": "logical",
+        "temporary": false,
+        "active": true,
+        "active_pid": 1742,
+        "restart_lsn": "0/029837C8",
+        "confirmed_flush_lsn": "0/02992498",
+        "wal_gap_bytes_confirmed_flush": 1760,
+        "wal_gap_bytes_restart": 62384
+      }
+    ],
+    "table_sizes": {
+      "heap_bytes": 5177344,
+      "table_and_toast_bytes": 8937472,
+      "indexes_bytes": 581632,
+      "total_relation_bytes": 9519104,
+      "toast_relation_bytes": 3727360,
+      "replica_identity": "d"
+    },
+    "coordinator_tables": [
+      "consumer",
+      "flushed_lsn",
+      "lock",
+      "log_index",
+      "log_seq",
+      "marker_emissions",
+      "mat_cursor",
+      "pending_markers",
+      "pipeline_meta",
+      "replicated_lsn",
+      "snapshot_progress",
+      "table_epoch",
+      "tables"
+    ],
+    "coordinator_state": {
+      "replicated_lsn": [
+        {
+          "id": 1,
+          "lsn": 43592368,
+          "updated_at": "2026-11-20T12:31:19.233086+00:00"
+        }
+      ],
+      "flushed_lsn": [
+        {
+          "id": 1,
+          "lsn": 43590808,
+          "updated_at": "2026-11-20T12:31:15.200408+00:00"
+        }
+      ],
+      "mat_cursor": [
+        {
+          "group_name": "default#snapshot-lsn",
+          "table_name": "public.orders",
+          "last_offset": 43531008,
+          "last_committed": "2026-11-20T12:31:02.451358+00:00"
+        },
+        {
+          "group_name": "default",
+          "table_name": "public.orders",
+          "last_offset": 4,
+          "last_committed": "2026-11-20T12:31:15.402704+00:00"
+        }
+      ],
+      "snapshot_progress": [],
+      "log_seq": [
+        {
+          "table_name": "public.orders",
+          "next_offset": 4
+        }
+      ],
+      "pipeline_meta": [
+        {
+          "id": 1,
+          "system_identifier": 7710228886260551706,
+          "updated_at": "2026-11-20T12:31:05.121450+00:00"
+        }
+      ],
+      "table_epoch": [
+        {
+          "table_name": "public.orders",
+          "epoch": 3
+        }
+      ],
+      "log_index_row_count": 1
+    }
+  },
+  "silo_post_recovery_summary": {
+    "table_location": "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524",
+    "total_under_table_objects": 18,
+    "total_under_table_bytes": 4827218,
+    "outside_table_count": 215,
+    "counts_by_role": {
+      "data_file": 4,
+      "delete_file": 1,
+      "metadata_json": 3,
+      "manifest": 5,
+      "manifest_list": 4,
+      "pg2iceberg_staging": 1
+    },
+    "bytes_by_role": {
+      "data_file": 4756409,
+      "delete_file": 575,
+      "metadata_json": 2263,
+      "manifest": 19170,
+      "manifest_list": 7493,
+      "pg2iceberg_staging": 41308
+    },
+    "metadata_json_uris": [
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/00000-01a1f8f0-54dd-77b3-9f44-90f665eeb744.gz.metadata.json",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/00001-01a1f8f0-5614-73e4-bd9d-d9b957647ac0.gz.metadata.json",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/00002-01a1f8f0-87b1-75a3-b849-f1fb96390f50.gz.metadata.json"
+    ],
+    "manifest_list_uris": [
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/snap-1370018046851717664-0-01a1f8f0-55f4-7e61-a0c7-18f4071bd032.avro",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/snap-2923404143815222700-0-01a1f8f0-55f4-7e61-a0c7-190c29f1cadb.avro",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/snap-8140882095694743008-0-01a1f8f0-877e-7900-95c4-39107a18ec56.avro",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/snap-8197694267538342738-0-01a1f8f0-55ef-7cb3-990f-cb2bf755e566.avro"
+    ],
+    "under_table_uris": [
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/data/data-4e9bff8fd38f4197954461650f828063.parquet",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/data/data-7ffaf542b9c04948991b33eb01968937.parquet",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/data/data-98918874e85c42a3ad7e0648f5a793a1.parquet",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/data/data-b52cf742f4074981958679b34522a097.parquet",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/data/eq-delete-c2f7367d171f48b2817a092dbc247cb4.parquet",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/00000-01a1f8f0-54dd-77b3-9f44-90f665eeb744.gz.metadata.json",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/00001-01a1f8f0-5614-73e4-bd9d-d9b957647ac0.gz.metadata.json",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/00002-01a1f8f0-87b1-75a3-b849-f1fb96390f50.gz.metadata.json",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/01a1f8f0-55ef-7cb3-990f-cb2bf755e566-m0.avro",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/01a1f8f0-55f4-7e61-a0c7-18f4071bd032-m0.avro",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/01a1f8f0-55f4-7e61-a0c7-190c29f1cadb-m0.avro",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/01a1f8f0-877e-7900-95c4-39107a18ec56-m0.avro",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/01a1f8f0-877e-7900-95c4-39107a18ec56-m1.avro",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/snap-1370018046851717664-0-01a1f8f0-55f4-7e61-a0c7-18f4071bd032.avro",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/snap-2923404143815222700-0-01a1f8f0-55f4-7e61-a0c7-190c29f1cadb.avro",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/snap-8140882095694743008-0-01a1f8f0-877e-7900-95c4-39107a18ec56.avro",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/metadata/snap-8197694267538342738-0-01a1f8f0-55ef-7cb3-990f-cb2bf755e566.avro",
+      "s3://cdclab/warehouse/01a1f8f0-54dd-77b3-9f44-90f50f699524/staged/055d0887789346c58c7dcca797a29deb.parquet"
+    ]
+  }
+}

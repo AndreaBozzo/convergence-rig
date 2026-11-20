@@ -1,0 +1,10 @@
+{"timestamp":"2026-11-20T12:31:01.124991Z","level":"INFO","message":"reading config","path":"/etc/pg2iceberg/config.yaml","target":"pg2iceberg::config"}
+{"timestamp":"2026-11-20T12:31:01.139136Z","level":"INFO","message":"replication slot dropped (or absent)","slot":"pg2iceberg_slot","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T12:31:01.141485Z","level":"INFO","message":"publication dropped (or absent)","publication":"pg2iceberg_pub","target":"pg2iceberg::run"}
+{"timestamp":"2026-11-20T12:31:01.149972Z","level":"INFO","message":"NOTICE: drop cascades to 13 other objects","log.target":"tokio_postgres::connection","log.module_path":"tokio_postgres::connection","log.file":"/usr/local/cargo/git/checkouts/rust-postgres-c2560d49ee2b8b43/31acf55/tokio-postgres/src/connection.rs","log.line":358,"target":"tokio_postgres::connection"}
+{"timestamp":"2026-11-20T12:31:01.156589Z","level":"INFO","message":"coordinator schema dropped (CASCADE)","schema":"_pg2iceberg","target":"pg2iceberg::run"}
+OK: cleanup complete. Materialized Iceberg tables remain — drop them via the catalog if you intend a full re-bootstrap.
+
+--- STDERR ---
+ Container cdclab-pg2iceberg-run-ac1e0bf46561 Creating 
+ Container cdclab-pg2iceberg-run-ac1e0bf46561 Created 
