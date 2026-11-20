@@ -17,3 +17,5 @@ Same on 0.12.0 and on main (`sha-4344888`), 3 of 3 runs each. As far as I can te
 Repro (Postgres 17, Lakekeeper 0.15.1, Silo, pg2iceberg pinned by digest; `P2I_VERSION=main` for main): https://github.com/AndreaBozzo/convergence-rig/tree/main/repro/pg2iceberg-catalog-restore
 
 Happy to send a PR for the check if that's the behaviour you want.
+
+Filed 2026-11-20 as https://github.com/polynya-dev/pg2iceberg/issues/156
