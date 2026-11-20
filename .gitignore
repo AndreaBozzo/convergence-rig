@@ -4,3 +4,5 @@ __pycache__/
 .pytest_cache/
 agent-runs/
 compose/.env.local
+.agy/
+scripts/run-agent.ps1
